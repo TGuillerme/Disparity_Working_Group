@@ -31,7 +31,7 @@ I analysed all 100 <!--@@@ TG: check if I stick to this value or not --> papers 
 
 ## Data wrangling
 
-I then categorised the data as follwos.
+I then categorised the data as follows.
 <!-- @@@ -->
 
 ```{r}
@@ -75,6 +75,32 @@ table.data(fuzzy.sort.data(data[,3+factor], factors[[factor]]), table = "tex")
 
 ```
 
+
+<!-- 
+How many studies use such and such definition: disparate views on disparity -> but maybe disparity is a vague concept?
+How many studies use different definition for such or such parameter recorded: on average, disparity is defined as a single thing...
+
+Parallel with diversity: it was a blurry thing - check out different diversity literature.
+ -->
+
+
+# Supplementary
+
+## Number of papers collected for each parameter
+
+
+```{r, fig.width = 12, fig.height = 12}
+## Get the data for cumulative curves
+total_cumulative <- data_raw[,c(1,3)]
+#data_type_cumulative <- data_raw[,c(1,4)]
+
+## Transform the cumulative data into binary
+results <- grep("-", total_cumulative[,2])
+results <- cbind(results, seq(1:length(results)))
+
+plot(add, type = "line", xlab = "Number of Google Scholar matches", ylab = "Number of new entries")
+
+```
 
 
 <!-- 
