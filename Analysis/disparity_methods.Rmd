@@ -29,6 +29,8 @@ I analysed all 100 <!--@@@ TG: check if I stick to this value or not --> papers 
  * Which test was applied for testing hypothesis?
  * Was phylogeny taken into account?
 
+Additionally I collected the number of matches per year for the terms "morphological disparity" both in the text (fuzzy matching) or in the title (exact matching).
+
 ## Data wrangling
 
 I then categorised the data as follows.
@@ -37,6 +39,7 @@ I then categorised the data as follows.
 ```{r}
 ## Reading the data
 data_raw <- read.csv("../Data/disparity_methods.csv", stringsAsFactors = FALSE)
+search_results <- read.csv("../Data/GoogleSearch_occurences.csv", stringsAsFactors = FALSE)
 
 ## Keeping only the studies with data
 data <- data_raw[apply(data_raw[, 3:9], 1, function(X) ifelse(all(X == "-"), FALSE, TRUE)), ]
@@ -82,6 +85,18 @@ How many studies use different definition for such or such parameter recorded: o
 
 Parallel with diversity: it was a blurry thing - check out different diversity literature.
  -->
+
+
+# Occurence of morphological disparity papers
+
+```{r}
+disparity_fuzzy <- search_results[-c(1:2, 60:65),3]
+disparity_exact <- search_results[-c(1:2, 60:65),2]
+
+## Number of papers
+plot(seq(from = 1960, to = 2016), rev(disparity_fuzzy)/max(disparity_fuzzy), type = "l", xlab = "", ylab = "Proportion of papers")
+lines(seq(from = 1960, to = 2016), rev(disparity_exact)/max(disparity_exact), type = "l", col = "grey")
+```
 
 
 # Supplementary
