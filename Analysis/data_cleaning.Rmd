@@ -1,0 +1,228 @@
+---
+title: "Cleaning the data"
+author: "Thomas Guillerme"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    fig_width: 12
+    fig_height: 6
+---
+
+# Sorting the disparity methods dataset
+
+```{r}
+source("../Functions/fuzzy.sort.data.R")
+```
+
+First lets load the data:
+
+```{r}
+## Reading the data
+data_raw <- read.csv("../Data/disparity_methods.csv", stringsAsFactors = FALSE)
+
+## Keeping only the studies with data
+data <- data_raw[apply(data_raw[, 3:9], 1, function(X) ifelse(all(X == "-"), FALSE, TRUE)), ]
+
+## Removing rogue NA rows
+data <- data[-231,]
+```
+
+Then, lets sort the following variables:
+
+ * The focal biological group
+ * The type of data (3D landmarks, discrete data, etc...)
+ * Whether the full organism was used or not.
+ * How was the morphospace explicitly defined?
+ * How was disparity explicitly defined?
+ * Which test was applied for testing hypothesis?
+ * Was phylogeny taken into account?
+
+## Biological group
+
+Sorting the biological groups into broader categories
+
+```{r}
+## Biological group
+data_taxa <- data[,3]
+
+## Mammals synonyms
+mammals <- c("Felids", "Carnivora", "Primates", "Rodents", "Whales", "Cetacean", "Cetaceans", "Metatheria", "Marsupials", "Humans", "Perissodactyla", "Lipotyphla", "Mammals")
+data_taxa <- ifelse(data_taxa %in% mammals, "mammals", data_taxa)
+
+## Aves synonyms
+aves <- c("Meliphagidae", "Birds")
+data_taxa <- ifelse(data_taxa %in% aves, "aves", data_taxa)
+
+## Archosaurs (non-aves)
+archosaurs <- c("Pterosaurs", "Crocodiles", "Sauropoda", "Dinosaurs", "Theropods", "Archosauria")
+data_taxa <- ifelse(data_taxa %in% archosaurs, "archosaurs", data_taxa)
+
+## Squamates
+squamates <- c("Squamates", "Rhynchocephalia", "Anolis", "Squamates")
+data_taxa <- ifelse(data_taxa %in% squamates, "squamates", data_taxa)
+
+## Other tetrapods
+amphib_other_tetrapods <- c("Plesiosaur", "Captorhinidae", "Anomodonts", "Ichtyosaurs", "Amphibians", "Frogs", "Caecilian")
+data_taxa <- ifelse(data_taxa %in% amphib_other_tetrapods, "amphib_other_tetrapods", data_taxa)
+
+## Arthropods
+arthropods <- c("Odonata", "Trilobites", "Ostracodes", "Scorpions", "Insects", "Eurypterida", "Orthoptera", "Arthropods", "Crustacean", "Beetles", "Hymenoptera", "Amphipodes")
+data_taxa <- ifelse(data_taxa %in% arthropods, "arthropods", data_taxa)
+
+## Plants
+plantae <- c("Angiosperms", "Rubiacea", "Marchantiophyta", "Ferns + angiosperms")
+data_taxa <- ifelse(data_taxa %in% plantae, "plantae", data_taxa)
+
+## Echinoderms
+echinoderms <- c("Echinoderms", "Crinoids", "Echinoids")
+data_taxa <- ifelse(data_taxa %in% echinoderms, "echinoderms", data_taxa)
+
+## Nematods
+cnidaria_other_invert <- c("Nematode", "Brachiopods", "Onychophora", "Palaeoscolecid worms", "Graptolites", "Cnidera", "Corals", "Cnidaria")
+data_taxa <- ifelse(data_taxa %in% cnidaria_other_invert, "cnidaria_other_invert", data_taxa)
+
+## Actinopterigygians
+actino_chondry <- c("Cichlids", "Fish", "Fishes", "Shark")
+data_taxa <- ifelse(data_taxa %in% actino_chondry, "actino_chondry", data_taxa)
+
+## Molluscs
+molluscs <- c("Ammonites", "Gastropod", "Ammonoids", "Cephalopoda", "Mollusca", "Bivalves")
+data_taxa <- ifelse(data_taxa %in% molluscs, "molluscs", data_taxa)
+
+## Unicellulars
+unicellulars <- c("Foraminifera", "Desimidiales", "Acritarch")
+data_taxa <- ifelse(data_taxa %in% unicellulars, "unicellulars", data_taxa)
+
+## General
+general <- c("Metazoans", "Ediacarian", "Blastozoa + Crinoids + Trilobite", "Echinoids + Trilobites", "Crinoids + Balstozoa", "Marine invertebrates", "Amniotes", "Vertebrates")
+data_taxa <- ifelse(data_taxa %in% general, "general", data_taxa)
+
+## Simulated
+simualted <- c("Simulated", "-", "")
+data_taxa <- ifelse(data_taxa %in% simualted, "simualted", data_taxa)
+
+## Selecting the categories
+data_taxa_categories <- unique(data_taxa)
+
+data[,3] <- data_taxa
+```
+
+## Type of data
+
+```{r}
+## Types of data
+data_type <- data[,4]
+
+unique(data_type)
+
+## continuous synonyms
+continuous <- c("1D Continuous", "DTT pipeline", "Continuous")
+data_type <- ifelse(data_type %in% continuous, "continuous", data_type)
+
+## Math transfo
+math_transfo <- c("B-spline", "Elliptic Fourier", "Outlines", "Ellipctic Fourier")
+data_type <- ifelse(data_type %in% math_transfo, "math_transfo", data_type)
+
+## Other_univar
+other_univar <- c("Body mass", "Metabolic Rate", "Body size", "Glands for chemical communication", "Chemical signals", "Colours")
+data_type <- ifelse(data_type %in% other_univar, "other_univar", data_type)
+
+## Discrete
+data_type <- ifelse(data_type == "Discrete", "discrete", data_type)
+
+## Non
+none <- c(NA, "-")
+data_type <- ifelse(data_type %in% none, "none", data_type)
+
+## 2d + discrete
+d2_discrete <- c("Discrete + 2D landmarks")
+data_type <- ifelse(data_type %in% d2_discrete, "discrete + 2D landmarks", data_type)
+
+## 2d + continuous
+d2_continu <- c("Continuous + 2D landmarks")
+data_type <- ifelse(data_type %in% d2_continu, "continuous + 2D landmarks", data_type)
+
+## continuous + other
+continu_other <- c("Continuous + Body size")
+data_type <- ifelse(data_type %in% continu_other, "continuous + other_univar", data_type)
+
+## continuous + discrete
+continu_discrete <- c("Continuous + discrete" )
+data_type <- ifelse(data_type %in% continu_discrete, "continuous + discrete", data_type)
+
+## Selecting the categories
+data_type_categories <- unique(unlist(strsplit(unique(data_type), split = " \\+ ")))
+
+data[,4] <- data_type
+```
+
+## Full organism
+
+```{r}
+## Full organism
+full_organism <- data[,5]
+
+## Selecting the categories
+full_organism_categories <- c("Yes", "No", NA)
+```
+
+## Morphospaces
+
+```{r}
+## Morphospaces
+morphospaces <- data[,6]
+
+unique(morphospaces)
+
+## PCA
+PCA <- c("PCA", "Procrustes PCA", "pPCA", "Regression PCA")
+morphospaces <- ifelse(morphospaces %in% PCA, "PCA", morphospaces)
+
+## PCO PCoA
+PCO <- c("PCO", "PCoA", "PcoA", "FMD (Foote 1993)")
+morphospaces <- ifelse(morphospaces %in% PCO, "PCO", morphospaces)
+
+## MDS NMDS
+MDS <- c("MDS", "NMDS", "nMDS")
+morphospaces <- ifelse(morphospaces %in% MDS, "MDS", morphospaces)
+
+## RWA
+RWA <- c("RWA", "RWA (Relative Warp Analysis)")
+morphospaces <- ifelse(morphospaces %in% RWA, "RWA", morphospaces)
+
+## Canonical Analysis
+canonical <- c("Canonical variables", "canonical correlation analysis (CCA)")
+morphospaces <- ifelse(morphospaces %in% canonical, "canonical", morphospaces)
+
+## Correspondence Analysis
+correspondence <- c("Correspondence analysis", "MCA (multiple correspondence analyses)")
+morphospaces <- ifelse(morphospaces %in% correspondence, "correspondence", morphospaces)
+
+## Other
+other <- c("Eigen shape analysis", "Factorial planes","Biplot (two traits only)", "biplot (residuals of two traits)", "Factorial planes","Procrustes plane (2 D axis)", "Procrustes coordinates")
+morphospaces <- ifelse(morphospaces %in% other, "other", morphospaces)
+
+## None
+none <- c("DTT pipeline")
+morphospaces <- ifelse(morphospaces %in% none, "none", morphospaces)
+morphospaces <- ifelse(is.na(morphospaces), "none", morphospaces)
+
+## Combos
+morphospaces <- ifelse(morphospaces %in% "PCA + canonical variables", "PCA + canonical", morphospaces)
+morphospaces <- ifelse(morphospaces %in% "Dissimilarity matric + PCoA", "PCO + other", morphospaces)
+morphospaces <- ifelse(morphospaces %in% "RWA (Relative Warp Analysis) + PCO", "PCO + RWA", morphospaces)
+morphospaces <- ifelse(morphospaces %in% "CVA + PCA" , "PCA + canonical", morphospaces)
+
+## Selecting the categories
+morphospaces_categories <- unique(unlist(strsplit(unique(morphospaces), split = " \\+ ")))
+
+```
+
+
+```{r}
+disparity <- c("sum of variance", "sum of range", "product of variance", "product of range", "distance", "observed") #TG: Area from observed to estimated (DTT)
+test <- c("anova", "model fitting", "canonical", "confidence interval")
+phylo <- c("yes", "no", "mapped")
+
+factors <- list("data type" = data_type, "full organism" = full_organism, "morphospace" = morphospace, "disparity" = disparity, "test" = test, "phylo correction" = phylo)
+```
