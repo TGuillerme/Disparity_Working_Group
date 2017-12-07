@@ -46,63 +46,63 @@ Sorting the biological groups into broader categories
 data_taxa <- data[,3]
 
 ## Mammals synonyms
-mammals <- c("Felids", "Carnivora", "Primates", "Rodents", "Whales", "Cetacean", "Cetaceans", "Metatheria", "Marsupials", "Humans", "Perissodactyla", "Lipotyphla", "Mammals")
-data_taxa <- ifelse(data_taxa %in% mammals, "mammals", data_taxa)
+mammals <- c("Felids", "Carnivora", "Primates", "Rodents", "Whales", "Cetaceans", "Metatheria", "Marsupials", "Humans", "Perissodactyla", "Lipotyphla", "Mammals", "mammals")
+data_taxa <- multi.gsub(mammals, "mammals", data_taxa)
 
 ## Aves synonyms
 aves <- c("Meliphagidae", "Birds")
-data_taxa <- ifelse(data_taxa %in% aves, "aves", data_taxa)
+data_taxa <- multi.gsub(aves, "aves", data_taxa)
 
 ## Archosaurs (non-aves)
 archosaurs <- c("Pterosaurs", "Crocodiles", "Sauropoda", "Dinosaurs", "Theropods", "Archosauria")
-data_taxa <- ifelse(data_taxa %in% archosaurs, "archosaurs", data_taxa)
+data_taxa <- multi.gsub(archosaurs, "archosaurs", data_taxa)
 
 ## Squamates
 squamates <- c("Squamates", "Rhynchocephalia", "Anolis", "Squamates")
-data_taxa <- ifelse(data_taxa %in% squamates, "squamates", data_taxa)
+data_taxa <- multi.gsub(squamates, "squamates", data_taxa)
 
 ## Other tetrapods
 amphib_other_tetrapods <- c("Plesiosaur", "Captorhinidae", "Anomodonts", "Ichtyosaurs", "Amphibians", "Frogs", "Caecilian")
-data_taxa <- ifelse(data_taxa %in% amphib_other_tetrapods, "amphib_other_tetrapods", data_taxa)
+data_taxa <- multi.gsub(amphib_other_tetrapods, "amphib_other_tetrapods", data_taxa)
 
 ## Arthropods
-arthropods <- c("Odonata", "Trilobites", "Ostracodes", "Scorpions", "Insects", "Eurypterida", "Orthoptera", "Arthropods", "Crustacean", "Beetles", "Hymenoptera", "Amphipodes")
-data_taxa <- ifelse(data_taxa %in% arthropods, "arthropods", data_taxa)
+arthropods <- c("Odonata", "Trilobites", "Trilobite", "Ostracodes", "Scorpions", "Insects", "Eurypterida", "Orthoptera", "Arthropods", "Crustacean", "Beetles", "Hymenoptera", "Amphipodes")
+data_taxa <- multi.gsub(arthropods, "arthropods", data_taxa)
 
 ## Plants
-plantae <- c("Angiosperms", "Rubiacea", "Marchantiophyta", "Ferns + angiosperms")
-data_taxa <- ifelse(data_taxa %in% plantae, "plantae", data_taxa)
+plantae <- c("Angiosperms", "Rubiacea", "Marchantiophyta", "angiosperms", "Ferns")
+data_taxa <- multi.gsub(plantae, "plantae", data_taxa)
 
 ## Echinoderms
-echinoderms <- c("Echinoderms", "Crinoids", "Echinoids")
-data_taxa <- ifelse(data_taxa %in% echinoderms, "echinoderms", data_taxa)
+echinoderms <- c("Echinoderms", "Crinoids", "Echinoids", "Blastozoa", "Balstozoa")
+data_taxa <- multi.gsub(echinoderms, "echinoderms", data_taxa)
 
 ## Nematods
-cnidaria_other_invert <- c("Nematode", "Brachiopods", "Onychophora", "Palaeoscolecid worms", "Graptolites", "Cnidera", "Corals", "Cnidaria")
-data_taxa <- ifelse(data_taxa %in% cnidaria_other_invert, "cnidaria_other_invert", data_taxa)
+other_invert <- c("Nematode", "Brachiopods", "Onychophora", "Palaeoscolecid worms", "Graptolites", "Cnidera", "Corals", "Cnidaria")
+data_taxa <- multi.gsub(other_invert, "other_invert", data_taxa)
 
 ## Actinopterigygians
 actino_chondry <- c("Cichlids", "Fish", "Fishes", "Shark")
-data_taxa <- ifelse(data_taxa %in% actino_chondry, "actino_chondry", data_taxa)
+data_taxa <- multi.gsub(actino_chondry, "actino_chondry", data_taxa)
 
 ## Molluscs
 molluscs <- c("Ammonites", "Gastropod", "Ammonoids", "Cephalopoda", "Mollusca", "Bivalves")
-data_taxa <- ifelse(data_taxa %in% molluscs, "molluscs", data_taxa)
+data_taxa <- multi.gsub(molluscs, "molluscs", data_taxa)
 
 ## Unicellulars
 unicellulars <- c("Foraminifera", "Desimidiales", "Acritarch")
-data_taxa <- ifelse(data_taxa %in% unicellulars, "unicellulars", data_taxa)
+data_taxa <- multi.gsub(unicellulars, "unicellulars", data_taxa)
 
 ## General
-general <- c("Metazoans", "Ediacarian", "Blastozoa + Crinoids + Trilobite", "Echinoids + Trilobites", "Crinoids + Balstozoa", "Marine invertebrates", "Amniotes", "Vertebrates")
-data_taxa <- ifelse(data_taxa %in% general, "general", data_taxa)
+general <- c("Metazoans", "Ediacarian", "Marine invertebrates", "Amniotes", "Vertebrates")
+data_taxa <- multi.gsub(general, "general", data_taxa)
 
 ## Simulated
-simualted <- c("Simulated", "-", "")
-data_taxa <- ifelse(data_taxa %in% simualted, "simualted", data_taxa)
+simulated <- c("Simulated", "-", "")
+data_taxa <- ifelse(data_taxa %in% simulated, "simulated", data_taxa)
 
 ## Selecting the categories
-data_taxa_categories <- unique(data_taxa)
+data_taxa_categories <- unique(unlist(strsplit(unique(data_taxa), split = " \\+ ")))
 
 data[,3] <- data_taxa
 ```
@@ -113,42 +113,26 @@ data[,3] <- data_taxa
 ## Types of data
 data_type <- data[,4]
 
-unique(data_type)
-
 ## continuous synonyms
 continuous <- c("1D Continuous", "DTT pipeline", "Continuous")
-data_type <- ifelse(data_type %in% continuous, "continuous", data_type)
+data_type <- multi.gsub(continuous, "continuous", data_type)
 
 ## Math transfo
 math_transfo <- c("B-spline", "Elliptic Fourier", "Outlines", "Ellipctic Fourier")
-data_type <- ifelse(data_type %in% math_transfo, "math_transfo", data_type)
+data_type <- multi.gsub(math_transfo, "math_transfo", data_type)
 
 ## Other_univar
 other_univar <- c("Body mass", "Metabolic Rate", "Body size", "Glands for chemical communication", "Chemical signals", "Colours")
-data_type <- ifelse(data_type %in% other_univar, "other_univar", data_type)
+data_type <- multi.gsub(other_univar, "other_univar", data_type)
 
 ## Discrete
+data_type <- multi.gsub("Discrete", "discrete", data_type)
+
 data_type <- ifelse(data_type == "Discrete", "discrete", data_type)
 
 ## Non
 none <- c(NA, "-")
 data_type <- ifelse(data_type %in% none, "none", data_type)
-
-## 2d + discrete
-d2_discrete <- c("Discrete + 2D landmarks")
-data_type <- ifelse(data_type %in% d2_discrete, "discrete + 2D landmarks", data_type)
-
-## 2d + continuous
-d2_continu <- c("Continuous + 2D landmarks")
-data_type <- ifelse(data_type %in% d2_continu, "continuous + 2D landmarks", data_type)
-
-## continuous + other
-continu_other <- c("Continuous + Body size")
-data_type <- ifelse(data_type %in% continu_other, "continuous + other_univar", data_type)
-
-## continuous + discrete
-continu_discrete <- c("Continuous + discrete" )
-data_type <- ifelse(data_type %in% continu_discrete, "continuous + discrete", data_type)
 
 ## Selecting the categories
 data_type_categories <- unique(unlist(strsplit(unique(data_type), split = " \\+ ")))
@@ -172,56 +156,219 @@ full_organism_categories <- c("Yes", "No", NA)
 ## Morphospaces
 morphospaces <- data[,6]
 
-unique(morphospaces)
-
 ## PCA
-PCA <- c("PCA", "Procrustes PCA", "pPCA", "Regression PCA")
-morphospaces <- ifelse(morphospaces %in% PCA, "PCA", morphospaces)
+PCA <- c("Procrustes PCA", "pPCA", "Regression PCA")
+morphospaces <- multi.gsub(PCA, "PCA", morphospaces)
 
 ## PCO PCoA
-PCO <- c("PCO", "PCoA", "PcoA", "FMD (Foote 1993)")
-morphospaces <- ifelse(morphospaces %in% PCO, "PCO", morphospaces)
+PCO <- c("PCoA", "PcoA", "FMD (Foote 1993)")
+morphospaces <- multi.gsub(PCO, "PCO", morphospaces)
 
 ## MDS NMDS
-MDS <- c("MDS", "NMDS", "nMDS")
-morphospaces <- ifelse(morphospaces %in% MDS, "MDS", morphospaces)
+MDS <- c("NMDS", "nMDS")
+morphospaces <- multi.gsub(MDS, "MDS", morphospaces)
 
 ## RWA
-RWA <- c("RWA", "RWA (Relative Warp Analysis)")
-morphospaces <- ifelse(morphospaces %in% RWA, "RWA", morphospaces)
+RWA <- c("RWA\\ \\(Relative Warp Analysis\\)")
+morphospaces <- multi.gsub(RWA, "RWA", morphospaces)
 
 ## Canonical Analysis
-canonical <- c("Canonical variables", "canonical correlation analysis (CCA)")
-morphospaces <- ifelse(morphospaces %in% canonical, "canonical", morphospaces)
+canonical <- c("Canonical variables", "canonical correlation analysis\\ \\(CCA\\)", "canonical variables", "CVA")
+morphospaces <- multi.gsub(canonical, "canonical", morphospaces)
+
+## Raup spce
+morphospaces <- multi.gsub("Raup-space", "raup_space", morphospaces)
 
 ## Correspondence Analysis
-correspondence <- c("Correspondence analysis", "MCA (multiple correspondence analyses)")
-morphospaces <- ifelse(morphospaces %in% correspondence, "correspondence", morphospaces)
+correspondence <- c("Correspondence analysis", "MCA\\ \\(multiple correspondence analyses\\)")
+morphospaces <- multi.gsub(correspondence, "correspondence", morphospaces)
 
 ## Other
-other <- c("Eigen shape analysis", "Factorial planes","Biplot (two traits only)", "biplot (residuals of two traits)", "Factorial planes","Procrustes plane (2 D axis)", "Procrustes coordinates")
-morphospaces <- ifelse(morphospaces %in% other, "other", morphospaces)
+other <- c("Eigen shape analysis", "Factorial planes", "Biplot\\ \\(two traits only\\)", "biplot\\ \\(residuals of two traits\\)", "Procrustes plane \\(2 D axis\\)", "Procrustes coordinates", "FMD \\(Foote 1993\\)", "Dissimilarity matric")
+morphospaces <- multi.gsub(other, "other", morphospaces)
 
 ## None
-none <- c("DTT pipeline")
+none <- c("DTT pipeline", "-")
 morphospaces <- ifelse(morphospaces %in% none, "none", morphospaces)
 morphospaces <- ifelse(is.na(morphospaces), "none", morphospaces)
-
-## Combos
-morphospaces <- ifelse(morphospaces %in% "PCA + canonical variables", "PCA + canonical", morphospaces)
-morphospaces <- ifelse(morphospaces %in% "Dissimilarity matric + PCoA", "PCO + other", morphospaces)
-morphospaces <- ifelse(morphospaces %in% "RWA (Relative Warp Analysis) + PCO", "PCO + RWA", morphospaces)
-morphospaces <- ifelse(morphospaces %in% "CVA + PCA" , "PCA + canonical", morphospaces)
 
 ## Selecting the categories
 morphospaces_categories <- unique(unlist(strsplit(unique(morphospaces), split = " \\+ ")))
 
+data[,6] <- morphospaces
+```
+
+## Disparity 
+
+```{r}
+## Disparity
+disparity <- data[,7]
+
+number_unique_disparities <- length(unique(tolower(disparity)))
+
+## variances
+variance <- c("PCA variance", "sum of variance", "Sum of variance", "product of variances", "sum of variances", "Variance", "mean of variance", "sum of variances", "Total variance", "nth root of variance", "product of variance", "geometric mean of variance", "Procrustes variance", "Product of variance", "root product of variances", "total variance", "nth root of varaince")
+disparity <- multi.gsub(variance, "variance", disparity)
+
+## Sum of range
+range <- c("sum of ranges", "product of range", "product of ranges", "mean of range", "range", "total range", "sum of range", "nth root of range", "Range", "geometric mean of range", "root product of ranges", "mean or range")
+disparity <- multi.gsub(range, "range", disparity)
+
+## Distance
+distances <- c("Gower distance", "Euclidean distance", "mean square euclidean distance", "Procrustes distances \\(geomorph\\)", "other distances", "Procrustes distances", "Average square distance", "mean distance", "mean euclidean distance", "mean Manhattan distance", "Euclidean distance between groups", "average squared distance", "mean euclidean distance", "Procrustes distance", "MNND \\(Mean nearest neighbour distance\\)", "Euclidean Procrustes distances", "sum of Procrustes distances", "range of maximum euclidean distance", "average Procrustes distance", "sum of the squared Procrustes distances")
+disparity <- multi.gsub(distances, "distances", disparity)
+
+## Pairwise distance
+pair_distances <- c("DTT \\(morpho evolution in relation to diversification\\)", "DTT pairwise Euclidean distance", "weighted mean pairwise dissimilarity", "pairwise euclidean distance", "DTT pairwise average squared Euclidean distance", "mean pairwise dissimilarity", "sum of squared pairwise distance between coordinates", " pairwise distance", "average pairwise disparity", "Average pairwise squared distance", "average pairwise dissimilarity", "mean square distance between sp", "distance between species", "pairwise character dissimilarity", "mean pairwise distance", "pairwise distance", "mean squared pairwise difference in body size", "average morphological dissimilarity", "Average pairwise dissimilarity", "Pairwise Mahalanobis distance", "sum of the absolute distance for each variable")
+disparity <- multi.gsub(pair_distances, "pair_distances", disparity)
+
+
+## Distance from centroid
+centroids <- c("distance from centroids", "centroid", "Procrustes distances from centre", "distance from centroids", "distance from neighbour", "furthest distance", "Average square distance from centroid", "distance from centroid", "centroid size", "distance from centroid", "Group centroid", "mean distance from centroids", "mean distance to centroid", "mean Procrustes distance from centroid", "distances to centroids")
+disparity <- multi.gsub(centroids, "centroids", disparity)
+
+## Other
+other <- c("MDI \\(Morphological disparity index - observed disparity vs median of expected from BM\\)", "Area between observed and median", "Foote's disparity measurement \\(Foote 1993, Neige 2003\\)", "participation ratio", "Body mass", "Regression score", "lineage density", "function of distance to ancestor and character difference")
+disparity <- multi.gsub(other, "other", disparity)
+
+## Character based
+character <- c("Number of polymorphic characters", "number of unique pairwise characters", "unique pairwise combinations", "mean character difference")
+disparity <- multi.gsub(character, "character", disparity)
+
+## PC scores
+ord_scores <- c("PC1\\&2 values", "space coordinates", "PC contrast values", "sum of the diagonal of the variance covariance matrix of the PCA", "Probability of encountering neighbouring data points in 3D")
+disparity <- multi.gsub(ord_scores, "ord_scores", disparity)
+
+## Volume/surface
+volume <- c("Volume", "convex hull surface", "volume", "convex hull volume", "convex hull", "alpha shape volume", "Disparity Box 3D", "Number of cubes of theoretical morphospace", "PC scores", "PC axis scores")
+disparity <- multi.gsub(volume, "volume", disparity)
+
+## Missing
+disparity <- ifelse(disparity == "?", NA, disparity)
+disparity <- ifelse(disparity == "-", NA, disparity)
+
+## Clean the matchings
+disparity <- gsub("ss", "s", gsub("ss", "s", disparity))
+disparity <- gsub(" and ", " \\+ ", disparity)
+disparity <- gsub("DTT pair_distances", "pair_distances", disparity)
+disparity <- gsub("DTT pair_distances", "pair_distances", disparity)
+disparity <- gsub("range variance", "range \\+ variance", disparity)
+disparity <- gsub("distances from centre", "centroids", disparity)
+disparity <- gsub("distances from centroids", "centroids", disparity)
+disparity <- gsub("distances to centroids", "centroids", disparity)
+disparity <- gsub("mean ", "", disparity)
+disparity <- gsub("median ", "", disparity)
+disparity <- gsub("average ", "", disparity)
+disparity <- gsub("other _ character", "other + character", disparity)
+disparity <- gsub("range \\+variance", "range \\+ variance", disparity)
+disparity <- gsub("geometric ", "", disparity)
+
+disparity_categories <- unique(unlist(strsplit(unique(disparity), split = " \\+ ")))
+
+data[,7] <- disparity
+```
+
+## Tests
+
+```{r}
+# ## Disparity
+# tests <- data[,8]
+
+# unique(tests)
+
+# ## ANOVA
+# anova <- c("MANOVA", "PERMANOVA", "ANOVA")
+
+# ## LDA
+# LDA <- c("LDA")
+
+# ## Model test
+# models <- c("Model fitting")
+
+# ## Mean test
+# t_test <- c("t-test")
+
+# ## Correlation
+# correlation <- c("Correlation \\(Fisher's exact test \\+ Spearman's rank\\)")
+
+# ## linear models
+# linear <- c()
+
+
+# NA 
+# "MANOVA , LDA" 
+# "PERMANOVA" 
+# "Model fitting" 
+# "t-test" 
+# "ANOVA" 
+# "Correlation (Fisher's exact test + Spearman's rank)"
+# "Raup-space" 
+# "?" 
+# "PGLS (PC ~ trait)" 
+# "Mantel test" 
+# "Partial Least Squares" 
+# "Morphological Disparity Index (MDI) statistics" 
+# "Canonical analysis (PCM style)" 
+# "NPMANOVA" 
+# "Procrustes ANOVA" 
+# "phyloANOVA" 
+# "MANOVA" 
+# "lm + t-test" 
+# "Covariance ratio" 
+# "PERMANOVA + CI overlap" 
+# "Cluster dendrogram analysis" 
+# "LDA" 
+# "ANCOVA" 
+# "phyloANOVA + phyloLDA" 
+# "GLS" 
+# "distance PGLS" 
+# "neigbor joining of the centroids" 
+# "comparison to a null expectancy" 
+# "centre of gravity" 
+# "multivariate regression" 
+# "" 
+# "linear regressions" 
+# "confidence interval overlap" 
+# "correlation tests" 
+# "Mann-Whitney" 
+# "Kruskal-Wallis test + Walsh F-test" 
+# "Neares-neighbor test" 
+# "Spearman correlation" 
+# "coefficient of variance" 
+# "GLS multiple regression" 
+# "permutation test" 
+# "Z-test" 
+# "Anova + Kruskal-Wallis" 
+# "Canonical variates analysis" 
+# "F-statistics" 
+# "Wilcoxon" 
+# "multivariate t-test (Hotellings' T^2 test)" 
+# "Nearest neigbhor clustering" 
+# "Ripley's K" 
+# "Hierarchical clustering" 
+# "Canonical variance analysis" 
+# "bootstrap/rarefaction null hypothesis" 
+# "-" 
+# "MANCOVA + MANOVA" 
+# "Branching random walks" 
+# "PICs" 
+# "Kernel analysis" 
+# "Multidimensional Convergence Index" 
+# "Chi-squared" 
+# "Multivariate PGLS" 
+# "Kruskal-Wallis test" 
+# "Breush-Pagan + disparity test" 
+# "Non-linear regressions" 
+# "regression score" 
+
+
+# test <- c("anova", "model fitting", "canonical", "confidence interval")
 ```
 
 
+
+
 ```{r}
-disparity <- c("sum of variance", "sum of range", "product of variance", "product of range", "distance", "observed") #TG: Area from observed to estimated (DTT)
-test <- c("anova", "model fitting", "canonical", "confidence interval")
 phylo <- c("yes", "no", "mapped")
 
 factors <- list("data type" = data_type, "full organism" = full_organism, "morphospace" = morphospace, "disparity" = disparity, "test" = test, "phylo correction" = phylo)
