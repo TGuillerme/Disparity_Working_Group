@@ -43,3 +43,33 @@ fuzzy.sort.data <- function(data, what) {
 
     return(total_matches)
 }
+
+#' @title Multiple gsub
+#'
+#' @description Using gsub with multiple pattern
+#'
+#' @param pattern a vector of greps to replace
+#' @param replacement the value to replace with
+#' @param x the data
+#' 
+#' @examples
+#'
+#' @seealso
+#' 
+#' @author Thomas Guillerme
+#' @export
+
+multi.gsub <- function(pattern, replacement, x, ignore.case = TRUE, ...) {
+
+    pattern <- sort(pattern, decreasing = TRUE)
+
+    for(pat in 1:length(pattern)) {
+        x <- gsub(pattern[pat], replacement, x, ignore.case = ignore.case, ...)
+    }
+
+    return(x)
+}
+
+
+
+
