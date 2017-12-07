@@ -271,98 +271,63 @@ data[,7] <- disparity
 ## Tests
 
 ```{r}
-# ## Disparity
-# tests <- data[,8]
+## Disparity
+tests <- data[,8]
 
-# unique(tests)
+## ANOVA
+anova <- c("MANOVA", "PERMANOVA", "ANOVA", "NPMANOVA", "Procrustes ANOVA", "phyloANOVA", "PERMANOVA", "ANCOVA", "phyloANOVA", "Kruskal-Wallis test", "coefficient of variance", "permutation test", "Anova", "Ripley's K", "MANCOVA", "Chi-squared")
+tests <- multi.gsub(anova, "anova", tests)
 
-# ## ANOVA
-# anova <- c("MANOVA", "PERMANOVA", "ANOVA")
+## LDA
+LDA <- c("LDA", "phyloLDA")
+tests <- multi.gsub(LDA, "LDA", tests)
 
-# ## LDA
-# LDA <- c("LDA")
+## Model test
+models <- c("Model fitting", "comparison to a null expectancy", "bootstrap/rarefaction null hypothesis")
+tests <- multi.gsub(models, "models", tests)
 
-# ## Model test
-# models <- c("Model fitting")
+## Mean test
+t_test <- c("t-test", "Mann-Whitney", "Walsh F-test", "Z-test", "F-statistics", "Wilcoxon", "multivariate t-test \\(Hotellings' T\\^2 test\\)")
+tests <- multi.gsub(t_test, "t_test", tests)
 
-# ## Mean test
-# t_test <- c("t-test")
+## Correlation
+correlation <- c("Correlation \\(Fisher's exact test \\+ Spearman's rank\\)", "Mantel test", "correlation tests", "Spearman correlation")
+tests <- multi.gsub(correlation, "correlation", tests)
 
-# ## Correlation
-# correlation <- c("Correlation \\(Fisher's exact test \\+ Spearman's rank\\)")
+## regressions
+linear <- c("PGLS \\(PC \\~ trait\\)", "Partial Least Squares", "Canonical analysis \\(PCM style\\)", "lm", "Covariance ratio", "GLS", "distance PGLS", "multivariate regression", "linear regressions", "GLS multiple regression", "PICs", "Multivariate PGLS", "Non-linear regressions", "regression score", "Breush-Pagan")
+tests <- multi.gsub(linear, "linear", tests)
 
-# ## linear models
-# linear <- c()
+## non stat
+non_stat <- c("CI overlap", "confidence interval overlap")
+tests <- multi.gsub(non_stat, "non_stat", tests)
 
+## other
+other <- c("Morphological Disparity Index \\(MDI\\) statistics", "centre of gravity", "Canonical variates analysis", "Canonical variance analysis", "Multidimensional Convergence Index", "Kernel analysis", "disparity test")
+tests <- multi.gsub(other, "other", tests)
 
-# NA 
-# "MANOVA , LDA" 
-# "PERMANOVA" 
-# "Model fitting" 
-# "t-test" 
-# "ANOVA" 
-# "Correlation (Fisher's exact test + Spearman's rank)"
-# "Raup-space" 
-# "?" 
-# "PGLS (PC ~ trait)" 
-# "Mantel test" 
-# "Partial Least Squares" 
-# "Morphological Disparity Index (MDI) statistics" 
-# "Canonical analysis (PCM style)" 
-# "NPMANOVA" 
-# "Procrustes ANOVA" 
-# "phyloANOVA" 
-# "MANOVA" 
-# "lm + t-test" 
-# "Covariance ratio" 
-# "PERMANOVA + CI overlap" 
-# "Cluster dendrogram analysis" 
-# "LDA" 
-# "ANCOVA" 
-# "phyloANOVA + phyloLDA" 
-# "GLS" 
-# "distance PGLS" 
-# "neigbor joining of the centroids" 
-# "comparison to a null expectancy" 
-# "centre of gravity" 
-# "multivariate regression" 
-# "" 
-# "linear regressions" 
-# "confidence interval overlap" 
-# "correlation tests" 
-# "Mann-Whitney" 
-# "Kruskal-Wallis test + Walsh F-test" 
-# "Neares-neighbor test" 
-# "Spearman correlation" 
-# "coefficient of variance" 
-# "GLS multiple regression" 
-# "permutation test" 
-# "Z-test" 
-# "Anova + Kruskal-Wallis" 
-# "Canonical variates analysis" 
-# "F-statistics" 
-# "Wilcoxon" 
-# "multivariate t-test (Hotellings' T^2 test)" 
-# "Nearest neigbhor clustering" 
-# "Ripley's K" 
-# "Hierarchical clustering" 
-# "Canonical variance analysis" 
-# "bootstrap/rarefaction null hypothesis" 
-# "-" 
-# "MANCOVA + MANOVA" 
-# "Branching random walks" 
-# "PICs" 
-# "Kernel analysis" 
-# "Multidimensional Convergence Index" 
-# "Chi-squared" 
-# "Multivariate PGLS" 
-# "Kruskal-Wallis test" 
-# "Breush-Pagan + disparity test" 
-# "Non-linear regressions" 
-# "regression score" 
+## clustering
+clustering <- c("Neares-neighbor test", "Cluster dendrogram analysis", "neigbor joining of the centroids", "Nearest neigbhor clustering", "Hierarchical clustering", "Branching random walks")
+tests <- multi.gsub(clustering, "clustering", tests)
 
 
-# test <- c("anova", "model fitting", "canonical", "confidence interval")
+tests <- ifelse(tests == "", NA, tests)
+tests <- ifelse(tests == "?", NA, tests)
+tests <- ifelse(tests == "-", NA, tests)
+tests <- ifelse(tests == "Raup-space", NA, tests)
+
+## Clean the matchings
+tests <- gsub("distance Plinear", "linear", tests)
+tests <- gsub("multivariate t_test \\(Hotellings' T\\^2 test\\)", "t_test", tests)
+tests <- gsub("anova , LDA", "anova + LDA", tests)
+tests <- gsub("Kruskal-Wallis", "anova", tests)
+
+
+tests_categories <- unique(unlist(strsplit(unique(tests), split = " \\+ ")))
+
+
+
+data[,8] <- tests
 ```
 
 
