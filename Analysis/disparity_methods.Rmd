@@ -10,7 +10,9 @@ output:
 
 ```{r}
 source("../Functions/fuzzy.sort.data.R")
+source("../Functions/plot.data.R")
 ```
+
 
 # Data
 
@@ -45,11 +47,12 @@ I then categorised the data as follows.
 
 ```{r}
 ## Reading the data
-data_raw <- read.csv("../Data/disparity_methods.csv", stringsAsFactors = FALSE)
+cleaned_data <- readRDS("../Data/Processed/cleaned_data.Rda")
 search_results <- read.csv("../Data/GoogleSearch_occurences.csv", stringsAsFactors = FALSE)
 
-## Keeping only the studies with data
-data <- data_raw[apply(data_raw[, 3:9], 1, function(X) ifelse(all(X == "-"), FALSE, TRUE)), ]
+## Extracting the cleaned data
+factors <- cleaned_data$factors
+data <- cleaned_data$data
 ```
 
 # Occurrences of morphological disparity papers
@@ -57,14 +60,18 @@ data <- data_raw[apply(data_raw[, 3:9], 1, function(X) ifelse(all(X == "-"), FAL
 This first analysis just shows that disparity analysis in morphology are steadily and rapidly increasing since the 2000s:
 
 ```{r, fig.width = 8, fig.height = 8}
+## Selecting the right data
 disparity_fuzzy <- search_results[-c(1:2, 60:65),3]
 disparity_exact <- search_results[-c(1:2, 60:65),2]
 
 ## Number of papers
-# pdf("../Paper/Figures/GoogleScholarOccurences.pdf", width = 8, height = 8)
+# pdf("../Writing/Figures/GoogleScholarOccurences.pdf", width = 8, height = 8)
 op <- par(bty = "n")
-plot(seq(from = 1960, to = 2016), rev(disparity_fuzzy)/search_results[1,3], type = "l", xlab = "", ylab = "Relative number of papers per year", ylim = c(0, 0.1))
+plot(seq(from = 1960, to = 2016), rev(disparity_fuzzy)/search_results[1,3], type = "l", xlab = "", ylab = "Number of papers per year", ylim = c(0, 0.1), yaxt = "n")
 lines(seq(from = 1960, to = 2016), rev(disparity_exact)/search_results[1,2], type = "l", col = "grey")
+## Adding the axis
+axis(2, at = seq(from = 0, to = 0.08, by = 0.02), labels = round(seq(from = min(disparity_fuzzy), to = max(disparity_fuzzy), length.out = 5)) )
+axis(4, at = seq(from = 0, to = 0.1, by = 0.02), labels = round(seq(from = min(disparity_exact), to = max(disparity_exact), length.out = 6)), col = "grey", las = 2)
 par(op)
 # dev.off()
 ```
@@ -75,39 +82,103 @@ Not much to say here but that it is a trendy topic!
 
 Disparity methods comes in all flavours!
 
-## Sorting the variables
+## Variable distribution
 
-The variables can be sorted as follow:
+What is the proportion of use for each method?
 
-```{r}
-
-## Categories definition
-data_type <- c("3D landmarks", "2D landmarks", "continuous", "discrete", "body", "metabolic")
-full_organism <- c("yes", "no")
-morphospace <- c("PCA", "MDS", "PCO", "PCOA", "Raup")
-disparity <- c("sum of variance", "sum of range", "product of variance", "product of range", "distance", "observed") #TG: Area from observed to estimated (DTT)
-test <- c("anova", "model fitting", "canonical", "confidence interval")
-phylo <- c("yes", "no", "mapped")
-
-factors <- list("data type" = data_type, "full organism" = full_organism, "morphospace" = morphospace, "disparity" = disparity, "test" = test, "phylo correction" = phylo)
-```
-
-
-```{r, fig.width = 12, fig.height = 12}
+```{r, fig.width = 18, fig.height = 6}
 ## Plotting the results
-par(mfrow = c(2, 3))
-for(factor in 1:length(factors)) {
-    plot.data(fuzzy.sort.data(data[,3+factor], factors[[factor]]), proportion = TRUE, ylim = c(0, 100), main = names(factors)[[factor]])    
+pdf("../Writing/Figures/MethodsProportions.pdf", width = 18, height = 6)
+op <- par(mfrow = c(2, 3), bty = "n")
+for(factor in 2:length(factors)) {
+    plot.data(fuzzy.sort.data(data[,factor], factors[[factor]]), proportion = TRUE, ylim = c(0, 100), main = names(factors)[[factor]])
 }
+par(op)
+dev.off()
+```
+
+Methods seem to full in three main categories:
+
+  * The `Claddis` approach: Discrete data for the full organism ordinated with a PCO with a variance based disparity metric and no phylogenetic correction.
+  * The `geomorph` approach: landmark data for part of the organism ordinated with a PCA with a distance based disparity metric and no phylogenetic correction.
+  * The `dtt` approach: continuous data for the full organism, not ordinated, with a pairwise distance based disparity metric and phylogenetic correction.
+
+```{r}
+## Methods types table (empty)
+methods_types <- matrix(NA, nrow = 3, ncol = 6, dimnames = list(c("Claddis", "geomorph", "dtt"), c(names(factors)[-1])))
+
+## Filling the table
+methods_types[,1] <- c("discrete", "landmarks", "continuous")
+methods_types[,2] <- c("yes", "no", "yes")
+methods_types[,3] <- c("PCO", "PCA", "\"pairwise matrix\"")
+methods_types[,4] <- c("variance", "distance", "pairwise distance")
+methods_types[,5] <- c("variable", "anova", "models")
+methods_types[,6] <- c("no", "sometimes", "yes")
+
+knitr::kable(methods_types)
+```
+
+## A disparity-space?
+
+Multivariate data? Let's analysis it using disparity!
+
+But first, a bit of cleaning
+
+```{r}
+## Removing the taxa column
+multi_data <- apply(data[,-1], 2, as.character)
+
+## Replace NAs by "-"
+multi_data <- ifelse(is.na(multi_data), "-", multi_data)
+
+## Selecting only the first variable when multiples
+multi_data <- gsub(" \\+ .*", "", multi_data)
+
+## Transform the data as numeric
+multi_data <- as.list(as.data.frame(multi_data))
+multi_data <- lapply(multi_data, as.numeric)
+multi_data <- matrix(unlist(multi_data), ncol = ncol(data[,-1]), byrow = FALSE)
+
+## Make a pairwise matrix
+pairwise_data <- vegan::vegdist(multi_data, method = "bray")
+
+## Ordinating the distance matrix
+ordinated_data <- stats::cmdscale(pairwise_data, k = sum(unlist(lapply(factors, length))[-1]) - 2)
+#TG: Axis are selected as the number of factors - 2
+```
+
+```{r, fig.width = 8, fig.height = 8}
+## Get the variance per axis
+scree_plot <- dispRity::variances(ordinated_data)
+percentages_scree <- round(scree_plot/sum(scree_plot)*100, digit = 2)
+
+## Variance per dimensions
+barplot(scree_plot, ylab = "Variance per dimension", xlab = "Dimensions")
+```
+
+```{r, fig.width = 8, fig.height = 8}
+
+factor <- 5
+# length(unique(multi_data[,1]))
+# length(factors[[2]])
+
+col_palette <- rainbow(length(unique(data[, factor])))
+colours <- col_palette[as.factor(multi_data[, factor-1])]
+
+plot(ordinated_data[,1], ordinated_data[,2], xlab = paste0("PC1 (",percentages_scree[1], "%)"), ylab = paste0("PC2 (",percentages_scree[2], "%)"), pch = 19, col = colours, main = paste0(names(factors)[factor]))
+
+legend("bottomright", legend = sort(factors[[factor]]), col = col_palette, pch = 19, cex = 0.5)
+
+
 ```
 
 
-```{r}
+<!-- ```{r}
 ## Printing the tables
 factor <- 1
-table.data(fuzzy.sort.data(data[,3+factor], factors[[factor]]), table = "tex")
+table.data(fuzzy.sort.data(data[,factor], factors[[factor]]), table = "tex")
 
-```
+``` -->
 
 
 <!-- 
@@ -118,30 +189,28 @@ Parallel with diversity: it was a blurry thing - check out different diversity l
  -->
 
 
-# Occurrences of morphological disparity papers
+
+## Testing the three categories hypothesis
+
+Setting the data for the three categories hypothesis:
+
+  * The `Claddis` approach: Discrete data for the full organism ordinated with a PCO with a variance based disparity metric and no phylogenetic correction.
+  * The `geomorph` approach: landmark data for part of the organism ordinated with a PCA with a distance based disparity metric and no phylogenetic correction.
+  * The `dtt` approach: continuous data for the full organism, not ordinated, with a pairwise distance based disparity metric and phylogenetic correction.
+
 
 ```{r}
-disparity_fuzzy <- search_results[-c(1:2, 60:65),3]
-disparity_exact <- search_results[-c(1:2, 60:65),2]
+cleaned_data <- readRDS("../Data/Processed/cleaned_data.Rda")
 
-## Number of papers
-pdf("../Writing/Figures/GoogleScholarOccurences.pdf", width = 8, height = 8)
-op <- par(bty = "n")
-plot(seq(from = 1960, to = 2016), rev(disparity_fuzzy)/search_results[1,3], type = "l", xlab = "", ylab = "Number of papers per year", ylim = c(0, 0.1), yaxt = "n")
-lines(seq(from = 1960, to = 2016), rev(disparity_exact)/search_results[1,2], type = "l", col = "grey")
-## Adding the axis
-axis(2, at = seq(from = 0, to = 0.08, by = 0.02), labels = round(seq(from = min(disparity_fuzzy), to = max(disparity_fuzzy), length.out = 5)) )
-axis(4, at = seq(from = 0, to = 0.1, by = 0.02), labels = round(seq(from = min(disparity_exact), to = max(disparity_exact), length.out = 6)), col = "grey", las = 2)
+data <- cleaned_data$data
 
-par(op)
-dev.off()
 ```
+
 
 
 # Supplementary
 
 ## Number of papers collected for each parameter
-
 
 ```{r, fig.width = 12, fig.height = 12}
 ## Get the data for cumulative curves
@@ -153,9 +222,17 @@ results <- grep("-", total_cumulative[,2])
 results <- cbind(results, seq(1:length(results)))
 
 plot(add, type = "line", xlab = "Number of Google Scholar matches", ylab = "Number of new entries")
-
 ```
 
+## Groups studied
+
+Which groups are studied using disparity analysis?
+
+```{r}
+plot.data(fuzzy.sort.data(data[,1], factors[[1]]), proportion = TRUE, ylim = c(0, 100), main = names(factors)[[1]])
+```
+
+It's pretty much even with no big majority!
 
 <!-- 
 ```{r, eval = FALSE, message = FALSE, fig.width = 12, fig.height = 12, echo = FALSE}
