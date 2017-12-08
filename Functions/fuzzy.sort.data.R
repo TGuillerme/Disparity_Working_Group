@@ -23,12 +23,18 @@ fuzzy.sort.data <- function(data, what) {
     ## Loop through the fuzzy matching
     for(element in 1:length(what_l)) {
         ## Check fuzzy match
-        fuzzy_match <- grep(what_l[element], data_l)
+        if(is.na(what_l[element])) {
+            fuzzy_match <- which(is.na(data_l))
+            element_name <- "NA"
+        } else {
+            fuzzy_match <- grep(what_l[element], data_l)
+            element_name <- what[element]
+        }
         length_match <- length(fuzzy_match)
         
         if(length_match > 0) {
             ## If match, record the matches
-            matches <- data.frame("data" = fuzzy_match, "what" = rep(what[element], length_match))
+            matches <- data.frame("data" = fuzzy_match, "what" = rep(element_name, length_match))
             total_matches <- rbind(total_matches, matches)
         }
     }
