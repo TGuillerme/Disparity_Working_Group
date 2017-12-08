@@ -22,9 +22,6 @@ data_raw <- read.csv("../Data/disparity_methods.csv", stringsAsFactors = FALSE)
 
 ## Keeping only the studies with data
 data <- data_raw[apply(data_raw[, 3:9], 1, function(X) ifelse(all(X == "-"), FALSE, TRUE)), ]
-
-## Removing rogue NA rows
-data <- data[-231,]
 ```
 
 Then, lets sort the following variables:
@@ -307,7 +304,7 @@ other <- c("Morphological Disparity Index \\(MDI\\) statistics", "centre of grav
 tests <- multi.gsub(other, "other", tests)
 
 ## clustering
-clustering <- c("Neares-neighbor test", "Cluster dendrogram analysis", "neigbor joining of the centroids", "Nearest neigbhor clustering", "Hierarchical clustering", "Branching random walks")
+clustering <- c("Nearest-neighbour test", "Cluster dendrogram analysis", "neighbour joining of the centroids", "Nearest-neighbour clustering", "Hierarchical clustering", "Branching random walks")
 tests <- multi.gsub(clustering, "clustering", tests)
 
 
@@ -319,22 +316,38 @@ tests <- ifelse(tests == "Raup-space", NA, tests)
 ## Clean the matchings
 tests <- gsub("distance Plinear", "linear", tests)
 tests <- gsub("multivariate t_test \\(Hotellings' T\\^2 test\\)", "t_test", tests)
-tests <- gsub("anova , LDA", "anova + LDA", tests)
 tests <- gsub("Kruskal-Wallis", "anova", tests)
 
 
 tests_categories <- unique(unlist(strsplit(unique(tests), split = " \\+ ")))
 
-
-
 data[,8] <- tests
 ```
 
-
+## Phylogeny
 
 
 ```{r}
-phylo <- c("yes", "no", "mapped")
+phylogeny <- data[,9]
 
-factors <- list("data type" = data_type, "full organism" = full_organism, "morphospace" = morphospace, "disparity" = disparity, "test" = test, "phylo correction" = phylo)
+phylogeny <- multi.gsub("Yes \\(pPC\\)", "pPC", phylogeny)
+phylogeny <- ifelse(phylogeny == "", NA, phylogeny)
+
+phylogeny_categories <- unique(unlist(strsplit(unique(phylogeny), split = " \\+ ")))
+
+data[,9] <- phylogeny
+```
+
+## Wrapping up the data set
+
+
+```{r}
+## Cleaned data
+data <- data[,-c(1,2)]
+cleaned_data <- list("data" = data)
+cleaned_data$factors <- list(data_taxa = data_taxa_categories, data_type = data_type_categories, full_organism = full_organism_categories, morphospaces = morphospaces_categories, disparity = disparity_categories, tests = tests_categories, phylogeny = phylogeny_categories)
+
+## Save the file
+saveRDS(cleaned_data, file = paste0("../Data/Processed/cleaned_data.Rda"))
+
 ```
