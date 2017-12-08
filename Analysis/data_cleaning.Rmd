@@ -91,7 +91,7 @@ unicellulars <- c("Foraminifera", "Desimidiales", "Acritarch")
 data_taxa <- multi.gsub(unicellulars, "unicellulars", data_taxa)
 
 ## General
-general <- c("Metazoans", "Ediacarian", "Marine invertebrates", "Amniotes", "Vertebrates")
+general <- c("Metazoans", "Ediacarian", "Marine invertebrates", "Amniotes", "Vertebrates", "Marine ingeneral")
 data_taxa <- multi.gsub(general, "general", data_taxa)
 
 ## Simulated
@@ -216,7 +216,7 @@ distances <- c("Gower distance", "Euclidean distance", "mean square euclidean di
 disparity <- multi.gsub(distances, "distances", disparity)
 
 ## Pairwise distance
-pair_distances <- c("DTT \\(morpho evolution in relation to diversification\\)", "DTT pairwise Euclidean distance", "weighted mean pairwise dissimilarity", "pairwise euclidean distance", "DTT pairwise average squared Euclidean distance", "mean pairwise dissimilarity", "sum of squared pairwise distance between coordinates", " pairwise distance", "average pairwise disparity", "Average pairwise squared distance", "average pairwise dissimilarity", "mean square distance between sp", "distance between species", "pairwise character dissimilarity", "mean pairwise distance", "pairwise distance", "mean squared pairwise difference in body size", "average morphological dissimilarity", "Average pairwise dissimilarity", "Pairwise Mahalanobis distance", "sum of the absolute distance for each variable")
+pair_distances <- c("DTT \\(morpho evolution in relation to diversification\\)", "DTT pairwise Euclidean distance", "weighted mean pairwise dissimilarity", "pairwise euclidean distance", "DTT pairwise average squared Euclidean distance", "mean pairwise dissimilarity", "sum of squared pairwise distance between coordinates", " pairwise distance", "average pairwise disparity", "Average pairwise squared distance", "average pairwise dissimilarity", "mean square distance between sp", "distance between species", "pairwise character dissimilarity", "mean pairwise distance", "pairwise distance", "mean squared pairwise difference in body size", "average morphological dissimilarity", "Average pairwise dissimilarity", "Pairwise Mahalanobis distance", "sum of the absolute distance for each variable", "DTT pairwise squared distances")
 disparity <- multi.gsub(pair_distances, "pair_distances", disparity)
 
 
@@ -292,8 +292,8 @@ correlation <- c("Correlation \\(Fisher's exact test \\+ Spearman's rank\\)", "M
 tests <- multi.gsub(correlation, "correlation", tests)
 
 ## regressions
-linear <- c("PGLS \\(PC \\~ trait\\)", "Partial Least Squares", "Canonical analysis \\(PCM style\\)", "lm", "Covariance ratio", "GLS", "distance PGLS", "multivariate regression", "linear regressions", "GLS multiple regression", "PICs", "Multivariate PGLS", "Non-linear regressions", "regression score", "Breush-Pagan")
-tests <- multi.gsub(linear, "linear", tests)
+regressions <- c("PGLS \\(PC \\~ trait\\)", "Partial Least Squares", "Canonical analysis \\(PCM style\\)", "lm", "Covariance ratio", "GLS", "distance PGLS", "multivariate regression", "linear regressions", "GLS multiple regression", "PICs", "Multivariate PGLS", "Non-linear regressions", "regression score", "Breush-Pagan")
+tests <- multi.gsub(regressions, "regressions", tests)
 
 ## non stat
 non_stat <- c("CI overlap", "confidence interval overlap")
@@ -317,6 +317,7 @@ tests <- ifelse(tests == "Raup-space", NA, tests)
 tests <- gsub("distance Plinear", "linear", tests)
 tests <- gsub("multivariate t_test \\(Hotellings' T\\^2 test\\)", "t_test", tests)
 tests <- gsub("Kruskal-Wallis", "anova", tests)
+tests <- gsub("distance Pregressions", "regressions", tests)
 
 
 tests_categories <- unique(unlist(strsplit(unique(tests), split = " \\+ ")))
@@ -346,6 +347,7 @@ data[,9] <- phylogeny
 data <- data[,-c(1,2)]
 cleaned_data <- list("data" = data)
 cleaned_data$factors <- list(data_taxa = data_taxa_categories, data_type = data_type_categories, full_organism = full_organism_categories, morphospaces = morphospaces_categories, disparity = disparity_categories, tests = tests_categories, phylogeny = phylogeny_categories)
+cleaned_data$unique_disparity <- number_unique_disparities
 
 ## Save the file
 saveRDS(cleaned_data, file = paste0("../Data/Processed/cleaned_data.Rda"))
