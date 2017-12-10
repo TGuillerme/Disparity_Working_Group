@@ -259,6 +259,8 @@ disparity <- gsub("average ", "", disparity)
 disparity <- gsub("other _ character", "other + character", disparity)
 disparity <- gsub("range \\+variance", "range \\+ variance", disparity)
 disparity <- gsub("geometric ", "", disparity)
+disparity <- gsub("ranges", "range", disparity)
+disparity <- gsub("DTT pairwise squared distances", "pair_distances", disparity)
 
 disparity_categories <- unique(unlist(strsplit(unique(disparity), split = " \\+ ")))
 
@@ -318,6 +320,7 @@ tests <- gsub("distance Plinear", "linear", tests)
 tests <- gsub("multivariate t_test \\(Hotellings' T\\^2 test\\)", "t_test", tests)
 tests <- gsub("Kruskal-Wallis", "anova", tests)
 tests <- gsub("distance Pregressions", "regressions", tests)
+tests <- gsub("Non-regressions", "regressions", tests)
 
 
 tests_categories <- unique(unlist(strsplit(unique(tests), split = " \\+ ")))
