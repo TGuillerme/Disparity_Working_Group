@@ -212,7 +212,7 @@ range <- c("sum of ranges", "product of range", "product of ranges", "mean of ra
 disparity <- multi.gsub(range, "range", disparity)
 
 ## Distance
-distances <- c("Gower distance", "Euclidean distance", "mean square euclidean distance", "Procrustes distances \\(geomorph\\)", "other distances", "Procrustes distances", "Average square distance", "mean distance", "mean euclidean distance", "mean Manhattan distance", "Euclidean distance between groups", "average squared distance", "mean euclidean distance", "Procrustes distance", "MNND \\(Mean nearest neighbour distance\\)", "Euclidean Procrustes distances", "sum of Procrustes distances", "range of maximum euclidean distance", "average Procrustes distance", "sum of the squared Procrustes distances")
+distances <- c("Gower distance", "Euclidean distance", "mean square euclidean distance", "Procrustes distances \\(geomorph\\)", "other distances", "Procrustes distances", "Average square distance", "mean distance", "mean euclidean distance", "mean Manhattan distance", "Euclidean distance between groups", "average squared distance", "mean euclidean distance", "Procrustes distance", "MNND \\(Mean nearest neighbour distance\\)", "Euclidean Procrustes distances", "sum of Procrustes distances", "range of maximum euclidean distance", "average Procrustes distance", "sum of the squared Procrustes distances", "distance from centroids", "centroid", "Procrustes distances from centre", "distance from centroids", "distance from neighbour", "furthest distance", "Average square distance from centroid", "distance from centroid", "centroid size", "distance from centroid", "Group centroid", "mean distance from centroids", "mean distance to centroid", "mean Procrustes distance from centroid", "distances to centroids")
 disparity <- multi.gsub(distances, "distances", disparity)
 
 ## Pairwise distance
@@ -220,9 +220,9 @@ pair_distances <- c("DTT \\(morpho evolution in relation to diversification\\)",
 disparity <- multi.gsub(pair_distances, "pair_distances", disparity)
 
 
-## Distance from centroid
-centroids <- c("distance from centroids", "centroid", "Procrustes distances from centre", "distance from centroids", "distance from neighbour", "furthest distance", "Average square distance from centroid", "distance from centroid", "centroid size", "distance from centroid", "Group centroid", "mean distance from centroids", "mean distance to centroid", "mean Procrustes distance from centroid", "distances to centroids")
-disparity <- multi.gsub(centroids, "centroids", disparity)
+# ## Distance from centroid
+# centroids <- c("distance from centroids", "centroid", "Procrustes distances from centre", "distance from centroids", "distance from neighbour", "furthest distance", "Average square distance from centroid", "distance from centroid", "centroid size", "distance from centroid", "Group centroid", "mean distance from centroids", "mean distance to centroid", "mean Procrustes distance from centroid", "distances to centroids")
+# disparity <- multi.gsub(centroids, "centroids", disparity)
 
 ## Other
 other <- c("MDI \\(Morphological disparity index - observed disparity vs median of expected from BM\\)", "Area between observed and median", "Foote's disparity measurement \\(Foote 1993, Neige 2003\\)", "participation ratio", "Body mass", "Regression score", "lineage density", "function of distance to ancestor and character difference")
