@@ -19,7 +19,7 @@ source("../Functions/plot.data.R")
 
 ## Data collection from google scholars
 
-I collected the data from the 500 first Google Scholar results for the key words "morphological disparity" per order of appearance (accessed 1st of Noveember 2017).
+I collected the data from the 500 first Google Scholar results for the key words "morphological disparity" per order of appearance (accessed 1st of November 2017).
 This resulted in 232 relevant papers for which I collected:
  
  * The focal biological group
