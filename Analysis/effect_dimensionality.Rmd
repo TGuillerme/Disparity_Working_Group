@@ -1,0 +1,83 @@
+---
+title: "Effect of dimensionality on metrics"
+author: "Thomas Guillerme"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    fig_width: 12
+    fig_height: 6
+---
+
+# Effect of dimensionality on disparity metrics
+
+## Preparing the data
+
+```{r}
+set.seed(123)
+library(dispRity)
+data(BeckLee_mat50)
+
+## Measuring for different metrics
+sum_range <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = c(sum, ranges), dimensions = X), simplify = FALSE)
+prod_range <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = c(prod, ranges), dimensions = X), simplify = FALSE)
+sum_var <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = c(sum, variances), dimensions = X), simplify = FALSE)
+prod_var <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = c(prod, variances), dimensions = X), simplify = FALSE)
+med_centroid <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = c(median, centroids), dimensions = X), simplify = FALSE)
+avg_sq <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = function(matrix){mean(pairwise.dist(matrix)^2)}, dimensions = X), simplify = FALSE)
+ell_vol <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = ellipse.volume, dimensions = X), simplify = FALSE)
+n_ball <- sapply(2:48, function(X) dispRity(BeckLee_mat50, metric = n.ball.volume, dimensions = X), simplify = FALSE)
+
+## Extracting the observed values
+sum_range <- unlist(lapply(sum_range, function(X) return(summary(X)$obs)))
+prod_range <- unlist(lapply(prod_range, function(X) return(summary(X)$obs)))
+sum_var <- unlist(lapply(sum_var, function(X) return(summary(X)$obs)))
+prod_var <- unlist(lapply(prod_var, function(X) return(summary(X)$obs)))
+med_centroid <- unlist(lapply(med_centroid, function(X) return(summary(X)$obs)))
+avg_sq <- unlist(lapply(avg_sq, function(X) return(summary(X)$obs)))
+ell_vol <- unlist(lapply(ell_vol, function(X) return(summary(X)$obs)))
+n_ball <- unlist(lapply(n_ball, function(X) return(summary(X)$obs)))
+
+## Scale these scores
+scale.max <- function(x) return(x/max(x))
+sum_range_sca <- scale.max(sum_range)
+prod_range_sca <- scale.max(prod_range)
+sum_var_sca <- scale.max(sum_var)
+prod_var_sca <- scale.max(prod_var)
+med_centroid_sca <- scale.max(med_centroid)
+avg_sq_sca <- scale.max(avg_sq)
+ell_vol_sca <- scale.max(ell_vol)
+n_ball_sca <- scale.max(n_ball)
+
+metrics <- list(sum_range_sca, prod_range_sca, sum_var_sca, prod_var_sca, med_centroid_sca, avg_sq_sca, ell_vol_sca, n_ball_sca)
+metrics_names <-  c("sum of ranges", "product of ranges", "sum of variance", "product of variance", "median distance from centroid", "average squared pairwise distance", "ellispoid volume", "minimum n-ball volume")
+```
+
+
+
+```{r, fig.width = 12, fig.height = 12}
+## gg plot colours
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+cols <- gg_color_hue(8)
+ylim <- c(0,1)
+xlim <- c(2,48)
+
+
+
+## Plotting the results
+pdf("../Writing/Figures/DimensionsEffect.pdf", width = 12, height = 12)
+op <- par(bty = "n")
+
+plot(1,1, type = "n", ylim = ylim, xlim = xlim, xlab = "Dimensions", ylab = "Relative disparity")
+
+for(metric in 1:8) {
+    lines(x = c(2:48), metrics[[metric]], col = cols[metric])
+}
+
+legend("right", legend = metrics_names, col = cols, lty = 1)
+par(op)
+dev.off()
+```
