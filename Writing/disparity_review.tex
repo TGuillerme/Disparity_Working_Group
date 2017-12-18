@@ -206,30 +206,40 @@ For examples a morphospace as a pairwise matrix reflects the dissimilarity betwe
 From the 230 papers analysed, we found 104 unique combination's of metrics to measure disparity (Fig. \ref{Fig:MethodsProportions}).
 Commonly, these metrics are used to approximate the volume occupancy within the morphospace \citep{Wills2001,DonohueDim,diaz2016global}.
 
-However, it has been shown that different metrics reacts differently depending on the dataset 
+However, it has been shown that different metrics reacts differently depending on the dataset \citep[][; and an anecdotal example in Fig. \ref{Fig:DimensionsEffect}]{Wills2001,Ciampaglio2001}.
+For example metrics involving a product of aspects of the matrix (e.g. the volume, the product of the dimensions) are likely to suffer from the \textit{Curse of dimensionality} \citep{bellman1957dynamic} and will quickly tend to null values.
+Some other metrics are not representing all the data captured in the morphospace (e.g. the sum or product of variance ignores the co-variance between dimensions).
+Are these metrics as a description of the ordination a good proxy for the observed biological phenomenon?
 
 
 \begin{figure}[!htbp]
 \centering
    \includegraphics[width=1\textwidth]{Figures/DimensionsEffect.pdf} 
-\caption{Effect of the number of dimensions on different disparity metrics (note that the sum of variance is equal to the average squared pairwise distance in this case).}
+\caption{Effect of the number of dimensions on different disparity metrics (note that the sum of variance is equal to the average squared pairwise distance in this case).
+The data used is one of the example datasets from the \texttt{dispRity R} package \citep[\texttt{BeckLee\_mat50};][]{beckancient2014,dispRityv02} composed of 50 elements and 48 dimensions obtained from a ordination (MDS) of the distance matrix of a discrete morphological character matrix.}
 \label{Fig:DimensionsEffect}
 \end{figure}
 
-Product of variance 
+Despite these caveats, it is important to actually know what the metrics are measuring.
+There has been some attempts to test that through simulations \citep{Ciampaglio2001,  gerber2017geometry} but it is still unclear which metric reflects the best the hypothesis test.
+For example, the average squared pairwise distance (or the sum of ranges) are really popular \citep[e.g.][]{geiger2008} yet has been shown to be fairly senstive, at least in empirical data to the number of sampled taxa, the number of characters and the data completeness \citep[][; although effects were lesser in simulations]{Ciampaglio2001}.
+More fundamentally, the question arises whether one disparity metric could be sufficient to describe changes in disparity?
+Changes in multidimensions might not be readily grasped by unidimensional metrics!
+For example, a given taxonomic group might have the exact same volume as another one yet be in a complete different part of the morphospace \citep[or even overlap or not depending on the dimensions;][]{davis2012acanthodes,brusatte50}.
+In this case, it might more interesting to have multiple metrics (e.g. the position and the volume) [FABRE et. al in prep.] or to use distributions of metrics (e.g. what does the average distance between species or from a point really convey? Is the distribution not more interesting?).
 
-Is disparity only relative?
+Maybe we need metrics that fit explicitly our hypothesis (or fit our hypothesis directly to the metric).
+For example, for competitive replacement, should we not measure whether group A occupies the same place as group B through time and whether that is due to competition or simply because any other place in the space cannot be occupied (and why are such spaces unoccupied)?
 
-Do the disparity metrics really reflect the variation in the hypothesis that are tested?
-E.g. Are the variance/range based metrics a description of the ordination or the observed biological phenomenon (i.e. they are not including covariance and phylogenetic signal)
-E.g. What does the average distance between species or from a point really convey? Is the distribution not more interesting?
-Do we need more like metrics measuring explicitly what is tested in the hypothesis (rather than approximate it). For example, for competitive replacement, should we not measure whether group A occupies the same place as group B through time and whether that is due to competition or simply because any other place in the space cannot be occupied (and why are such spaces unoccupied)?
 
 \section{Is the current statistical toolkit sufficient for testing disparity hypothesis?}
 Are the methods used to test hypothesis in disparity actually testing what we think they’re testing (problem of multidimensional hypothesis)
 What does an anova or related variance based test real infirms/confirms regarding the disparity questions?
 How do we deal with bootstrapped data and pseudo-replications?
-Can we realistically use univariate gaussian models to test hypothesis based on multivariate, probably non-gaussian data?
+Can we realistically use univariate gaussian models to test hypothesis based on multivariate, probably non-gaussian data? \citep{blomberg2017beyond}
+
+Should be take phylogeny into account? \citep{polly2013phylogenetic}
+
 
 
 \section{What are we missing?}
