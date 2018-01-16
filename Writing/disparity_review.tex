@@ -82,12 +82,14 @@ Version dated: \today
 \medskip
 \begin{center}
 
-\noindent{\Large \bf Disparate views on disparity.} 
+\noindent{\Large \bf Variations in multidimensional space.} 
 \bigskip
 
-\noindent {\normalsize \sc Thomas Guillerme$^1$$^,$$^*$, Natalie Cooper$^2$, ..., Philip Donoghue$^3$}\\
+\noindent {\normalsize \sc Thomas Guillerme$^1$$^,$$^*$, Natalie Cooper$^2$, Stephen Brusatte$^3$, Katie Davis$^4$, Andrew Jackson$^5$, Sylvain Gerber$^6$, Anjali Goswami$^2$, Kevin Healy$^7$, Melanie Hopkins$^8$, Graeme Lloyd$^9$, Joseph O'Reilly$^{10}$, Abi Pate$^{10}$, Emilie Rayfield$^{10}$, Erin Saupe$^{11}$, Emma Sherratt$^{12}$, Graham Slater$^{13}$, Gavin H Thomas$^{14}$ and Philip Donoghue$^{10}$}\\
+
+
 \noindent {\small \it 
-$^1$Imperial College London, Silwood Park Campus, Department of Life Sciences, Buckhurst Road, Ascot SL5 7PY, United Kingdom.\\}
+$^1$Imperial College London, Silwood Park Campus, Department of Life Sciences, Buckhurst Road, Ascot SL5 7PY, United Kingdom; $^2$NHM; $^10$Bristol}
 \end{center}
 \medskip
 \noindent{*\bf Corresponding author.} \textit{guillert@tcd.ie}\\  
@@ -96,6 +98,7 @@ $^1$Imperial College London, Silwood Park Campus, Department of Life Sciences, B
 %Line numbering
 \modulolinenumbers[1]
 \linenumbers
+
 
 %---------------------------------------------
 %
@@ -124,132 +127,258 @@ $^1$Imperial College London, Silwood Park Campus, Department of Life Sciences, B
 %
 %---------------------------------------------
 
+
+
 \section{Introduction}
-\label{text:intro}
 
-Biodiversity is not a smooth gradient of forms, functions, ecologies, behaviours, etc., but it is rather variable and discontinuous. %TG: Actually is it?
-This is at the base of biological sciences and is linked to the concept of disparity \citep{Wills2001,Hopkins2017} with the observation that some groups of species are more similar or dissimilar than others.
-This diversity in morphologies is in fact proper in nature and decoupled from taxonomic diversity: some groups may exhibit low diversity of species by high diversity of shapes \citep[or the other way around]{ruta2013,hopkinsdecoupling2013}.
-In palaeobiology, this concept, has been studied since the 90s describing \citep{gould1989wonderful,gould1991disparity,briggs1992morphological,Wills1994,Foote01071994,Foote29111996,jernvall1996molar,foote1997evolution} and as been extended with modifications to macroevolutionary analysis in general since the 2000s (whether based on continuous traits; e.g. \citealt{Harmon961,geiger2008}; or on geometric morphometrics; e.g. \citealt{claude2008morphometrics,zelditch2012geometric,adams2013geomorph,adams2017geometric}).
+%1 -
+% History of disparity methods
+Since the advent of biology and probably before that, it has been observed that variation in morphologies follows discrete patterns rather than a continuous gradient of forms.
+Disparity has shifted from it's English meaning (i.e. dissimilarity) in the seventies to arrive to the ``standardised'' and popularised meaning we now today in biology [Runnegar 1987, Gould, Foote, Webb, etc.].
+In these seminal papers, disparity was used to describe a particular biological, phenotypic, and/or trait variation without strict distinction between the ontology and episthemology (see Semantic Box).
+Over the last 30 years, disparity has been usually used in the morphological disparity context.
+The numerous papers are mainly united through the study of phenotypes, using often multivariate data and methods focused on the species level or above in a macroevolutionary context.
+However, it is important to not that these sets of approaches are not restricted to areas.
+It has been used a microevolutionary levels or even in other fields such as ecology or linguistics.
+Our approach throughout this paper is to not constrain our definition of disparity to not build barriers between disciplines.
+Disparity provides data on the structure of biodiversity.
+In essence, disparity is a pattern of variation.
 
-Since then, morphological disparity has been used for testing a vast array of biological hypotheses such as: how did body plans evolve through time? \citep{Wesley-Hunt2005}; why does some morphologies exist and not other? \cite{gerber2017geometry}; what is the tempo and mode of morphological innovations through time? \citep{Hughes20082013}; what is the effect of mass extinction on disparity? \citep{halliday2016eutherian}; how does competition between groups affect disparity? \citep{Brusatte12092008}; how did morpho-ecological niches get filled through time? \citep{price2014niche}; and many more.
-%
-This apparent versatility of morphological disparity analysis led to a phenomenal amount of papers based on disparity methods (Fig. \ref{Fig:GoogleOccurences})!
-%
-However, ``a lot of disparity studies are inductive fishing trips and are not often designed to test a specific hypothesis.''
-%
-Indeed, compared to the vast amount of publication using morphological disparity, only a handful highlight/solve problems and propose hypothesis testing.
+%2§ what use: commonly used
+The description of these patterns (the disparity of patterns) has thus been used in evolutionary biology to tackle a vast array of questions:
+Developmental constraints [CITE]; 
+Niche width, competition  - ecological perspective / specialisation [CITE];
+Relationship between form and function and evolution functional traits [CITE];
+Disparity through time [CITE];
+Response to extinction - Extinction selectivity [CITE];
+Competition - ecologically relevant [CITE];
+Evolutionary mode [CITE];
+Evolutionary rate [CITE];
+Macroecology (disparity in space)[CITE];
+Tree Structure and the effect on disparity [CITE];
+Adaptive radiation ecological diversification [CITE];
+Scaling micro to macro [CITE];
+Competitive replacements [CITE];
+Tempo and mode of evolution [CITE].
 
-\begin{figure}[!htbp]
-\centering
-   \includegraphics[width=1\textwidth]{Figures/GoogleScholarOccurences.pdf} 
-\caption{Number of papers on Google Scholar matching the search ``morphological disparity'' per year. In black, the match is in the paper and in grey, in the title. We collected the number of matches per year from 1960 to 2016 in Google Scholar for the terms "morphological disparity" both in the text (fuzzy matching) or in the title (exact matching). The data was collected on the 1st of November 2017.}
-\label{Fig:GoogleOccurences}
-\end{figure}
-
-
-\section{What actually \textit{is} disparity?}
-
-\cite{prentice2011} define disparity as: ``a term widely (albeit not always consistently) used to describe the range of forms in a group of organisms, or the difference among different body plans''.
-Disparity can describe either the metric (\citealt{Wills2001}; or index \citealt{Hopkins2017}) or the whole pipeline \citep{zelditch2012geometric,lloyd2016estimating}.
-To assess the usage of disparity in different published studies, we collected methodological data from the 500 first Google Scholar results for the key words ``morphological disparity'' per order of appearance (accessed on the 1st of November 2017).
-For the 230 relevant papers among the 500 matches, we collected the following methodological data: (1) What was the focal biological group? ; (2) What kind of data was measured (e.g. landmarks, discrete data, etc.)?  ; (3) Was data collected on the full organism or not? ; (4) How was the morphospace explicitly defined (e.g. PCA, PCO, MDS, etc.)? ; (5) How was the disparity metric(s) explicitly defined? ; (6) Which statistical test was applied to test the disparity related hypothesis? ; (7) Was phylogeny taken into account or not?
-We used only the explicit definition of the morphospace and the disparity metric(s) in this search since a few number of papers had a vague definition of either or both (e.g. a disparity metric was measured but not described anywhere in the paper).
-The remaining 270 matches were disparity was mentioned but not measured felt in the following categories: papers out of topic, papers mentioning morphological disparity without measuring it, review papers, papers not accessible (either through a broken link or a paywall) or referenced citation without the paper (as a Google Scholar match).
-To reduce the amount of categories for the 230 recorded methods, we concatenated different methods in a smaller number of categories (see supplementary materials and \url{https://github.com/TGuillerme/Disparity_Working_Group/blob/master/Analysis/data_cleaning.Rmd}).
-
-\begin{figure}[!htbp]
-\centering
-   \includegraphics[width=1\textwidth]{Figures/MethodsProportions.pdf} 
-\caption{Disparity methods proportional usage: (1) Data type: which input data was used (...); (2) Morphospace: how was the morphospace obtained (...); (3) disparity: what type of disparity metric was calculated (...); (4) test: what type of test was applied (...).}
-\label{Fig:MethodsProportions}
-\end{figure}
-
-From the collected data, we can highlight the use of three main different disparity analysis with their associated data/morphospace/metric/tests and related to specific methodological implementations.
-
-\begin{itemize}
-    \item \textbf{The ``\texttt{Claddis}'' approach:} this group of methods uses discrete morphological data (sometimes referred to as ``Cladistic'' characters) for the full organisms to build a PCO from the organism's pairwise distance as a morphospace. Disparity is then often measured as a variation of the ordinated matrix dimensions' variances or ranges (e.g. the sum of variance or/and the sum of ranges). Hypothesis are often tested using multivariate ANOVAs on the pairwise distance matrix or by simply comparing the confidence intervals overlap of the disparity from different groups. 
-
-    \item \textbf{The ``\texttt{geomorph}'' approach:} this group of method is based on landmark data (2D or 3D) on parts of the organism studied usually the skull) and use a Procrustes transformation of the landmarks that are then directly ordinated using a PCA (but sometimes RWA). Disparity is often measured as a distance metric (e.g. the distance between the species and a point in the morphospace such as its centroid). Hypothesis are then tested using ANOVA type tests with usually no phylogenetic correction (although phylogeny is sometimes used to correct the morphospace).
-
-    \item \textbf{The ``\texttt{approach}'' approach:} this method can directly use continuous or discrete data for the full organism without any ordination (but not necessarily), and will measure disparity as the average pairwise distance between species (whether euclidean or any other type of distance). Hypothesis of higher/lower disparity can then be measured using null evolutionary models.
-\end{itemize}
-
-%
-The advent of these three approaches coincides with the explosion of disparity analysis (Fig. \ref{Fig:GoogleOccurences}) and suggest a high popularity of disparity analysis.
-%
-Unfortunately, however, few actual tests have been performed on whether any of these approaches \textit{actually} allows to tackle the classic disparity questions (see \ref{text:intro}{Introduction}).
-Are all these methods the right tools to answer these questions are they mere ``inductive fishing trips'' used to describe the data rather than testing any of the hypothesis related to the disparity questions?
-
-\section{Does data used in disparity analysis allows to test hypothesis?}
-In fact, the question of which data to analyse \citep{hetherington2015cladistic} and which part of the data to use has been analysed \citep{hopkins2017well} has rarely been assessed.
-Can the data used in disparity studies actually test the phenomenon researchers are trying to capture?
-
-For example, when studying discrete morphological characters (often following the ``\texttt{Claddis}'' approach), the data used is often recycled data used for phylogenetic analysis.
-These datasets are usually design to recover evolutionary history and differentiate clades and, often due to the preservations of the fossil record, are mainly based on hard tissue characters.
-In phylogenetics, this artefact have been shown to be leading to measurable topological recovery error (for soft \textit{vs} hard characters; \citealt{sansomfossilization2013}; or dental \textit{vs} cranial characters \citealt{sansom2017dental}).
-Therefore, is the morphospace composed of ``fossilisable'' characters enough for answering evolutionary hypothesis?
-For example, are niche replacement hypothesis equivalent to fossilisable-character-based-niches replacement hypothesis?
-
-Similarly, many studies in geometric morphometric are based solely on skull shape using landmark techniques combined with Procrustes superimposition \citep[the ``\texttt{geomorph}'' approach;][]{zelditch2012geometric,adams2017geometric}.
-However, it has been shown that the whole skeleton displays different integrated modules with different specific evolutionary constraints leading to variable rates and modes of evolution (\citealt{Goswami20130254}; and this even at the cranial level \citealt{goswami2010influence}).
-Is skull variation enough for measuring body plans variation through time for example?
-
-In the case where disparity is measured a single continuous trait (or a collection of traits; following the ``\texttt{geiger}'' approach), for example in \cite{price2014niche}, beak and limb length as well as body mass are used to differentiate groups of birds and different zones in the morphospace can then be interpreted as different niches.
-Is this set of traits studied in isolation sufficient to test niche occupancy hypothesis?
-
-Additionally, in many cases, the disparity metrics and hypothesis are often based on a transformation of the data (pairwise distances, PCA, PCO, MDS, RWA, etc.).
-Can these transformation readily reflect the raw data in our hypothesis?
-For examples a morphospace as a pairwise matrix reflects the dissimilarity between the data, a morphospace based on an ordination reflects the variability within the data, a morphospace based on both reflects the variability within the dissimilarity, are each method reflecting that?
-
-\section{Do the disparity metrics (or indices) really reflect variation in the studied phenomenon?}
-From the 230 papers analysed, we found 104 unique combination's of metrics to measure disparity (Fig. \ref{Fig:MethodsProportions}).
-Commonly, these metrics are used to approximate the volume occupancy within the morphospace \citep{Wills2001,DonohueDim,diaz2016global}.
-
-However, it has been shown that different metrics reacts differently depending on the dataset \citep[][; and an anecdotal example in Fig. \ref{Fig:DimensionsEffect}]{Wills2001,Ciampaglio2001}.
-For example metrics involving a product of aspects of the matrix (e.g. the volume, the product of the dimensions) are likely to suffer from the \textit{Curse of dimensionality} \citep{bellman1957dynamic} and will quickly tend to null values.
-Some other metrics are not representing all the data captured in the morphospace (e.g. the sum or product of variance ignores the co-variance between dimensions).
-Are these metrics as a description of the ordination a good proxy for the observed biological phenomenon?
+%3§ problems
+Disparity studies have a great deal promise in helping us to understand the evolution of biological diversity.
+However, we identify three main issues in current disparity studies.
+First, many recent studies have lost focus; they are no longer hypothesis-driven, instead they are undertaken to characterise biological variation for its own sake.
+Second, even where there is a clear question being explored, the data being used for disparity analyses is inappropriate and often driven by the availability of large cladistic datasets.
+Third, the methods being used to analyse these datasets may not always be appropriate for the question and/or data at hand.
+Here we deal with some of these issues and present best practice guidelines/sets of things to think about before performing a disparity analysis.
 
 
-\begin{figure}[!htbp]
-\centering
-   \includegraphics[width=1\textwidth]{Figures/DimensionsEffect.pdf} 
-\caption{Effect of the number of dimensions on different disparity metrics (note that the sum of variance is equal to the average squared pairwise distance in this case).
-The data used is one of the example datasets from the \texttt{dispRity R} package \citep[\texttt{BeckLee\_mat50};][]{beckancient2014,dispRityv02} composed of 50 elements and 48 dimensions obtained from a ordination (MDS) of the distance matrix of a discrete morphological character matrix.}
-\label{Fig:DimensionsEffect}
-\end{figure}
-
-Despite these caveats, it is important to actually know what the metrics are measuring.
-There has been some attempts to test that through simulations \citep{Ciampaglio2001,  gerber2017geometry} but it is still unclear which metric reflects the best the hypothesis test.
-For example, the average squared pairwise distance (or the sum of ranges) are really popular \citep[e.g.][]{geiger2008} yet has been shown to be fairly senstive, at least in empirical data to the number of sampled taxa, the number of characters and the data completeness \citep[][; although effects were lesser in simulations]{Ciampaglio2001}.
-More fundamentally, the question arises whether one disparity metric could be sufficient to describe changes in disparity?
-Changes in multidimensions might not be readily grasped by unidimensional metrics!
-For example, a given taxonomic group might have the exact same volume as another one yet be in a complete different part of the morphospace \citep[or even overlap or not depending on the dimensions;][]{davis2012acanthodes,brusatte50}.
-In this case, it might more interesting to have multiple metrics (e.g. the position and the volume) [FABRE et. al in prep.] or to use distributions of metrics (e.g. what does the average distance between species or from a point really convey? Is the distribution not more interesting?).
-
-Maybe we need metrics that fit explicitly our hypothesis (or fit our hypothesis directly to the metric).
-For example, for competitive replacement, should we not measure whether group A occupies the same place as group B through time and whether that is due to competition or simply because any other place in the space cannot be occupied (and why are such spaces unoccupied)?
-
-
-\section{Is the current statistical toolkit sufficient for testing disparity hypothesis?}
-Are the methods used to test hypothesis in disparity actually testing what we think they’re testing (problem of multidimensional hypothesis)
-What does an anova or related variance based test real infirm/confirms regarding the disparity questions?
-How do we deal with bootstrapped data and pseudo-replications?
-Can we realistically use univariate Gaussian models to test hypothesis based on multivariate, probably non-Gaussian data? \citep{blomberg2017beyond}
-
-Should be take phylogeny into account? \citep{polly2013phylogenetic}
+\subsubsection{Disparity patterns or processes}
+At the core of defining what \textit{is} disparity lies a divide between episthemology and ontology.
+Is there a difference between the pattern (and how researchers characterise it) and how it was ultimately generated?
+If disparity describes patterns of variation, the underlying scientific question ultimately always wants to use them as a proxy for explaining the biological processes.
+In the seminal papers from the late 80s, disparity was solely use to describe and understand the Cambrian Explosion were both the pattern (a high observed dissimilarity between groups) was directly linked to the process (and explosive radiation of multicellular life as championed by Gould).
+Restricting disparity to this initial informal definition (multidimensional morphological at a macroevolutionary scale) can be advantageous for advances in this field but broadening it will allow more interdisciplinary discussion.
+% That is, infer the mode of evolution (how does evolution occur and how does the structure of variation occur - both a constructive and destructive process) and the tempo (i.e., rate) at which it occurs. I think variation can also potentially tell us about ecology (as separate to evolution - for example, function, community structure, competition, etc.)...but...is ecology different from evolution?? ….Something I have been debating is whether it tells us about environment. Can we understand something about past environments from disparity??
 
 
 
-\section{What are we missing?}
+\section{Best practices for disparity analysis}
 
-\subsection{Learning lessons from other fields}
-In ecology, disparity bears strong parallels with $\beta$-diversity in ecology (a measure of ecological communities (dis)similarity): one biological observation described by a vast array of metrics \citep{baselga2010partitioning, anderson2011navigating, donohue2016navigating}.
+\subsection{Find a question}
+Why to perform a disparity analysis?
+It might sound like an obvious question to start with but we would like to stress its crucial importance.
+The last decade have seen a vast array of excellent methodological implementation and documentations rendering disparity analysis easy to perform \citep{bouxin2005ginkgo,oksanen2007vegan,geiger2008,zelditch2012geometric,adams2013geomorph,Claddis,dispRityv02,adams2017geometric}.
+However, this easiness might (conscientiously or not) push authors to perform disparity analysis ``just because''.
+In fact it is important to not rush into a disparity analysis to avoid some basic statistical caveats:
+For example, one major thing to consider is circularity: if your aim is to explore the variation in the data set, a multi-dimensional analysis is perfectly valid.
+However, the resulting groups are then no more appropriate for testing a hypothesis.
+Instead, rather do the data exploration on a subset of the data (preliminary analysis) and then use the full data set to test the resulting hypothesis.
+We believe that clearly framing an hypothesis and its null expectancy will help designing better disparity analysis.
+Once the question clearly framed, which data and which methods will be appropriate to answer it?
 
-\section{Conclusion}
-We need a more hypothesis driven way of analysing disparity.
-Disparity methods should be the tool for answering disparity hypothesis, not merely a description of the data.
+
+\subsection{Collect the appropriate data}
+If disparity is used to describe pattern to explain some process, remember that the every possible data will always only be a proxy for these patterns.
+As a sub-note to this, more data is not necessarily better, especially when the data was originaly designed and collected for different questions (e.g. cladistic data).
+Again, framing the question helps to avoid this caveat.
+For example, if a study is focussing on the ecological adaptive radiation of a group, ecological traits must be crucial for such disparity analysis.
+Additionally different types of data can be collected to answer different questions: (1) discrete data that can be either describing feature (often referred to as ``cladistic'';e.g. the presence or absence of legs, the colour of a tail, etc.) or more simply counts (e.g. number of digits, etc.); (2) continuous data that can be either direct measurements (e.g. body length, etc.) or more sophisticated methods (e.g. geometric morphometrics, mathematical contour description, etc.); (3) or any mix and match of the two former (e.g. ratios, etc.).
+Again, in this case, the main question can help choosing the most appropriate data.
+For example, when looking at variation within bats species, landmarks (for geometric morphometrics analysis) or continuous measurements on bones can be approriate.
+On the other hand, when looking at convergence between bats and birds, these homology of these traits is more complex to define and the contour of the wings might more readily answer the question.
+
+Once the type of appropriate data is decided, sample size and sampling issues should be carefully considered next.
+Does one need to include intra-specific variation with multiple specimen per species when possible?
+For example, if you're studying variation of skull in canids, and you decide to include dogs, it is essential to capture their variation by including intra-specific one.
+On the other hand, if you're looking at variation of canids through time since the Eocene, intra-specific variation will not have major impact (up until the Holocene). http://www.journals.uchicago.edu/doi/abs/10.1086/650372
+
+Also, when comparing multiple groups, it is important to have fair comparative designs (same number of elements per group, etc.) or apply data corrections (e.g. rarefaction).
+-Taxonomic sampling... Depends on the question! E.g. in birds, if you're looking at the family level, if the variables measured do not distinguish any passerine from another family (i.e. all passerine are as dissimilar to a falcon), then taxonomic sampling can be reduced. On the other hand, if the variables distinguish within passerines, then it is important to sample more.
+-Sexual dimorphism.
+-Missing/overlapping/inapplicable/ambiguous/correlated/polymorphic data! Additional considerations: homology - cite a morphometrics paper, polymorphisms how to code, 
+
+•   Scaling
+-For variables with huge ranges, do z or log transforms so that the variables with big ranges are not skewing the analysis towards these variables.
+ 
+ -    Biases in datasets
+If you're using other people's data (however, if you're collecting, try to not include biases yourself), you need an awareness of what the data was collected for.
+One major issue is in phylo data. -phylogenetic analysis vs disparity + if phylo with a particular aim: where the data collected to discriminate groups early in the tree or within a particular clade (i.e. number of synapomorphies vs number of autapomorphies). Recommend to select characters for analysis, not use all characters. E.g. if you;re looking at “feeding” niche, you don't need characters not related to the niche (e.g. sexual dimorphic ones).
+•   Talk about Foote's Crinoid non cladistic data example somewhere. Important distinction between discrete data collected for phylogeny building and that collected for disparity, i.e. one avoids homoplasy, one seeks homoplasies.
+
+Not a one-to-one mapping of form to function
+
+Congruence between data (different parts, different source, different results?).
+
+Finish with: again, think about your questions?
+No data type = best, it depends on Q.
+
+
+\subsection{Use methods appropriate} (avoid caveats)
+https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+
+?controlling for phylogeny
+Methods are still immature
+Separate visualisation from analysis
+Size corrections? Allometry?
+
+\section{Where do we go from there?}
+4 - This a list of problems for the future/moving forward
+    Simulations 
+    Form/function
+Isospaces, glottospaces, acoustospace, ecospace, life-history-spaces, etc. All just a multidimensional analysis? Needs for terms?
+    
+``We asked whether we could but not whether we should'' (Jurassic Park)
+
+
+
+
+
+
+
+% \section{Introduction}
+% \label{text:intro}
+
+% Biodiversity is not a smooth gradient of forms, functions, ecologies, behaviours, etc., but it is rather variable and discontinuous. %TG: Actually is it?
+% This is at the base of biological sciences and is linked to the concept of disparity \citep{Wills2001,Hopkins2017} with the observation that some groups of species are more similar or dissimilar than others.
+% This diversity in morphologies is in fact proper in nature and decoupled from taxonomic diversity: some groups may exhibit low diversity of species by high diversity of shapes \citep[or the other way around]{ruta2013,hopkinsdecoupling2013}.
+% In palaeobiology, this concept, has been studied since the 90s describing \citep{gould1989wonderful,gould1991disparity,briggs1992morphological,Wills1994,Foote01071994,Foote29111996,jernvall1996molar,foote1997evolution} and as been extended with modifications to macroevolutionary analysis in general since the 2000s (whether based on continuous traits; e.g. \citealt{Harmon961,geiger2008}; or on geometric morphometrics; e.g. \citealt{claude2008morphometrics,zelditch2012geometric,adams2013geomorph,adams2017geometric}).
+
+% Since then, morphological disparity has been used for testing a vast array of biological hypotheses such as: how did body plans evolve through time? \citep{Wesley-Hunt2005}; why does some morphologies exist and not other? \cite{gerber2017geometry}; what is the tempo and mode of morphological innovations through time? \citep{Hughes20082013}; what is the effect of mass extinction on disparity? \citep{halliday2016eutherian}; how does competition between groups affect disparity? \citep{Brusatte12092008}; how did morpho-ecological niches get filled through time? \citep{price2014niche}; and many more.
+% %
+% This apparent versatility of morphological disparity analysis led to a phenomenal amount of papers based on disparity methods (Fig. \ref{Fig:GoogleOccurences})!
+% %
+% However, ``a lot of disparity studies are inductive fishing trips and are not often designed to test a specific hypothesis.''
+% %
+% Indeed, compared to the vast amount of publication using morphological disparity, only a handful highlight/solve problems and propose hypothesis testing.
+
+% \begin{figure}[!htbp]
+% \centering
+%    \includegraphics[width=1\textwidth]{Figures/GoogleScholarOccurences.pdf} 
+% \caption{Number of papers on Google Scholar matching the search ``morphological disparity'' per year. In black, the match is in the paper and in grey, in the title. We collected the number of matches per year from 1960 to 2016 in Google Scholar for the terms "morphological disparity" both in the text (fuzzy matching) or in the title (exact matching). The data was collected on the 1st of November 2017.}
+% \label{Fig:GoogleOccurences}
+% \end{figure}
+
+
+% \section{What actually \textit{is} disparity?}
+
+% \cite{prentice2011} define disparity as: ``a term widely (albeit not always consistently) used to describe the range of forms in a group of organisms, or the difference among different body plans''.
+% Disparity can describe either the metric (\citealt{Wills2001}; or index \citealt{Hopkins2017}) or the whole pipeline \citep{zelditch2012geometric,lloyd2016estimating}.
+% To assess the usage of disparity in different published studies, we collected methodological data from the 500 first Google Scholar results for the key words ``morphological disparity'' per order of appearance (accessed on the 1st of November 2017).
+% For the 230 relevant papers among the 500 matches, we collected the following methodological data: (1) What was the focal biological group? ; (2) What kind of data was measured (e.g. landmarks, discrete data, etc.)?  ; (3) Was data collected on the full organism or not? ; (4) How was the morphospace explicitly defined (e.g. PCA, PCO, MDS, etc.)? ; (5) How was the disparity metric(s) explicitly defined? ; (6) Which statistical test was applied to test the disparity related hypothesis? ; (7) Was phylogeny taken into account or not?
+% We used only the explicit definition of the morphospace and the disparity metric(s) in this search since a few number of papers had a vague definition of either or both (e.g. a disparity metric was measured but not described anywhere in the paper).
+% The remaining 270 matches were disparity was mentioned but not measured felt in the following categories: papers out of topic, papers mentioning morphological disparity without measuring it, review papers, papers not accessible (either through a broken link or a paywall) or referenced citation without the paper (as a Google Scholar match).
+% To reduce the amount of categories for the 230 recorded methods, we concatenated different methods in a smaller number of categories (see supplementary materials and \url{https://github.com/TGuillerme/Disparity_Working_Group/blob/master/Analysis/data_cleaning.Rmd}).
+
+% \begin{figure}[!htbp]
+% \centering
+%    \includegraphics[width=1\textwidth]{Figures/MethodsProportions.pdf} 
+% \caption{Disparity methods proportional usage: (1) Data type: which input data was used (...); (2) Morphospace: how was the morphospace obtained (...); (3) disparity: what type of disparity metric was calculated (...); (4) test: what type of test was applied (...).}
+% \label{Fig:MethodsProportions}
+% \end{figure}
+
+% From the collected data, we can highlight the use of three main different disparity analysis with their associated data/morphospace/metric/tests and related to specific methodological implementations.
+
+% \begin{itemize}
+%     \item \textbf{The ``\texttt{Claddis}'' approach:} this group of methods uses discrete morphological data (sometimes referred to as ``Cladistic'' characters) for the full organisms to build a PCO from the organism's pairwise distance as a morphospace. Disparity is then often measured as a variation of the ordinated matrix dimensions' variances or ranges (e.g. the sum of variance or/and the sum of ranges). Hypothesis are often tested using multivariate ANOVAs on the pairwise distance matrix or by simply comparing the confidence intervals overlap of the disparity from different groups. 
+
+%     \item \textbf{The ``\texttt{geomorph}'' approach:} this group of method is based on landmark data (2D or 3D) on parts of the organism studied usually the skull) and use a Procrustes transformation of the landmarks that are then directly ordinated using a PCA (but sometimes RWA). Disparity is often measured as a distance metric (e.g. the distance between the species and a point in the morphospace such as its centroid). Hypothesis are then tested using ANOVA type tests with usually no phylogenetic correction (although phylogeny is sometimes used to correct the morphospace).
+
+%     \item \textbf{The ``\texttt{approach}'' approach:} this method can directly use continuous or discrete data for the full organism without any ordination (but not necessarily), and will measure disparity as the average pairwise distance between species (whether euclidean or any other type of distance). Hypothesis of higher/lower disparity can then be measured using null evolutionary models.
+% \end{itemize}
+
+% %
+% The advent of these three approaches coincides with the explosion of disparity analysis (Fig. \ref{Fig:GoogleOccurences}) and suggest a high popularity of disparity analysis.
+% %
+% Unfortunately, however, few actual tests have been performed on whether any of these approaches \textit{actually} allows to tackle the classic disparity questions (see \ref{text:intro}{Introduction}).
+% Are all these methods the right tools to answer these questions are they mere ``inductive fishing trips'' used to describe the data rather than testing any of the hypothesis related to the disparity questions?
+
+% \section{Does data used in disparity analysis allows to test hypothesis?}
+% In fact, the question of which data to analyse \citep{hetherington2015cladistic} and which part of the data to use has been analysed \citep{hopkins2017well} has rarely been assessed.
+% Can the data used in disparity studies actually test the phenomenon researchers are trying to capture?
+
+% For example, when studying discrete morphological characters (often following the ``\texttt{Claddis}'' approach), the data used is often recycled data used for phylogenetic analysis.
+% These datasets are usually design to recover evolutionary history and differentiate clades and, often due to the preservations of the fossil record, are mainly based on hard tissue characters.
+% In phylogenetics, this artefact have been shown to be leading to measurable topological recovery error (for soft \textit{vs} hard characters; \citealt{sansomfossilization2013}; or dental \textit{vs} cranial characters \citealt{sansom2017dental}).
+% Therefore, is the morphospace composed of ``fossilisable'' characters enough for answering evolutionary hypothesis?
+% For example, are niche replacement hypothesis equivalent to fossilisable-character-based-niches replacement hypothesis?
+
+% Similarly, many studies in geometric morphometric are based solely on skull shape using landmark techniques combined with Procrustes superimposition \citep[the ``\texttt{geomorph}'' approach;][]{zelditch2012geometric,adams2017geometric}.
+% However, it has been shown that the whole skeleton displays different integrated modules with different specific evolutionary constraints leading to variable rates and modes of evolution (\citealt{Goswami20130254}; and this even at the cranial level \citealt{goswami2010influence}).
+% Is skull variation enough for measuring body plans variation through time for example?
+
+% In the case where disparity is measured a single continuous trait (or a collection of traits; following the ``\texttt{geiger}'' approach), for example in \cite{price2014niche}, beak and limb length as well as body mass are used to differentiate groups of birds and different zones in the morphospace can then be interpreted as different niches.
+% Is this set of traits studied in isolation sufficient to test niche occupancy hypothesis?
+
+% Additionally, in many cases, the disparity metrics and hypothesis are often based on a transformation of the data (pairwise distances, PCA, PCO, MDS, RWA, etc.).
+% Can these transformation readily reflect the raw data in our hypothesis?
+% For examples a morphospace as a pairwise matrix reflects the dissimilarity between the data, a morphospace based on an ordination reflects the variability within the data, a morphospace based on both reflects the variability within the dissimilarity, are each method reflecting that?
+
+% \section{Do the disparity metrics (or indices) really reflect variation in the studied phenomenon?}
+% From the 230 papers analysed, we found 104 unique combination's of metrics to measure disparity (Fig. \ref{Fig:MethodsProportions}).
+% Commonly, these metrics are used to approximate the volume occupancy within the morphospace \citep{Wills2001,DonohueDim,diaz2016global}.
+
+% However, it has been shown that different metrics reacts differently depending on the dataset \citep[][; and an anecdotal example in Fig. \ref{Fig:DimensionsEffect}]{Wills2001,Ciampaglio2001}.
+% For example metrics involving a product of aspects of the matrix (e.g. the volume, the product of the dimensions) are likely to suffer from the \textit{Curse of dimensionality} \citep{bellman1957dynamic} and will quickly tend to null values.
+% Some other metrics are not representing all the data captured in the morphospace (e.g. the sum or product of variance ignores the co-variance between dimensions).
+% Are these metrics as a description of the ordination a good proxy for the observed biological phenomenon?
+
+
+% \begin{figure}[!htbp]
+% \centering
+%    \includegraphics[width=1\textwidth]{Figures/DimensionsEffect.pdf} 
+% \caption{Effect of the number of dimensions on different disparity metrics (note that the sum of variance is equal to the average squared pairwise distance in this case).
+% The data used is one of the example datasets from the \texttt{dispRity R} package \citep[\texttt{BeckLee\_mat50};][]{beckancient2014,dispRityv02} composed of 50 elements and 48 dimensions obtained from a ordination (MDS) of the distance matrix of a discrete morphological character matrix.}
+% \label{Fig:DimensionsEffect}
+% \end{figure}
+
+% Despite these caveats, it is important to actually know what the metrics are measuring.
+% There has been some attempts to test that through simulations \citep{Ciampaglio2001,  gerber2017geometry} but it is still unclear which metric reflects the best the hypothesis test.
+% For example, the average squared pairwise distance (or the sum of ranges) are really popular \citep[e.g.][]{geiger2008} yet has been shown to be fairly senstive, at least in empirical data to the number of sampled taxa, the number of characters and the data completeness \citep[][; although effects were lesser in simulations]{Ciampaglio2001}.
+% More fundamentally, the question arises whether one disparity metric could be sufficient to describe changes in disparity?
+% Changes in multidimensions might not be readily grasped by unidimensional metrics!
+% For example, a given taxonomic group might have the exact same volume as another one yet be in a complete different part of the morphospace \citep[or even overlap or not depending on the dimensions;][]{davis2012acanthodes,brusatte50}.
+% In this case, it might more interesting to have multiple metrics (e.g. the position and the volume) [FABRE et. al in prep.] or to use distributions of metrics (e.g. what does the average distance between species or from a point really convey? Is the distribution not more interesting?).
+
+% Maybe we need metrics that fit explicitly our hypothesis (or fit our hypothesis directly to the metric).
+% For example, for competitive replacement, should we not measure whether group A occupies the same place as group B through time and whether that is due to competition or simply because any other place in the space cannot be occupied (and why are such spaces unoccupied)?
+
+
+% \section{Is the current statistical toolkit sufficient for testing disparity hypothesis?}
+% Are the methods used to test hypothesis in disparity actually testing what we think they're testing (problem of multidimensional hypothesis)
+% What does an anova or related variance based test real infirm/confirms regarding the disparity questions?
+% How do we deal with bootstrapped data and pseudo-replications?
+% Can we realistically use univariate Gaussian models to test hypothesis based on multivariate, probably non-Gaussian data? \citep{blomberg2017beyond}
+
+% Should be take phylogeny into account? \citep{polly2013phylogenetic}
+
+
+
+% \section{What are we missing?}
+
+% \subsection{Learning lessons from other fields}
+% In ecology, disparity bears strong parallels with $\beta$-diversity in ecology (a measure of ecological communities (dis)similarity): one biological observation described by a vast array of metrics \citep{baselga2010partitioning, anderson2011navigating, donohue2016navigating}.
+
+% \section{Conclusion}
+% We need a more hypothesis driven way of analysing disparity.
+% Disparity methods should be the tool for answering disparity hypothesis, not merely a description of the data.
 
 
 
