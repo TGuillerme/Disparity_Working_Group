@@ -265,31 +265,63 @@ One of the major problem in disparity analysis is how to analysis data that is, 
 Multidimensional analysis can be a really powerful tool to analysis complex datests but also comes with many mathematical caveats and limitations.
 
 
-\subsubsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)}
+
+\subsection{Visualisations}
+\label{visualisation}
+Hard for high-dimensional data (our brains can really only see three axes tops)
+What do our visualisations imply about the data (but we don’t necessarily want it to)?
+Straight lines in phylomorphospaces are particularly misleading (although no easy alternative)
+Spaghetti plots for time series more helpful than collapsing into a single point estimate (plus CI/HPD etc.)
+Can be hard to visualise uncertainty in an ordination space (be it phylogenetic or ancestral states), but this can be important for establishing robustness of our inferences
+Visualisations can be important for understanding what is going on with your data!
+Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
+If using ancestral estimates visually differentiate these from the empirical data
+Can be hard to, e.g., label tips in a phylomorphospace (or any ordination space) without cluttering plot - perhaps answer is to have interactive plots where hovering over a point with a cursor tells you what it is
+
+The percentage of variation associated with the ordination axes (preferably directly on the axis labels on a figure but at least in a scree plot).
+Make sure that the axes in the morphospace are plotted on the same scale (to who the proportion of variance)
 
 
-Can we go beyond ordination? Yes. By going before. (Unless data are landmarks?)
-We suggest we don’t automatically use ordinations, when the data and the question allow pre-ordination analysis.
-Why the pipeline 
-**data -> distance matrix -> ordination** and not
-**data -> zscore -> PCA**
-**data -> Procrustes superimposition -> projection into tangent space >- PCA [Melanie has image of pipeline; worthwhile getting Emma/Sylvain to check]
-Helps us plot data (e.g., summary stats could be similar for completely different spaces - see Wills 2001, disparity primer, his figure 18)
-For GM data, PCA reduces dimensionality to reflect number of degrees of freedom (which was reduced during superimposition); no issues with geometry because coordinates put into Euclidean space when projected into tangent space, and this is maintained in the PCA. But possible misstep is to rely only on first few axes when interpreting data. Note also that most subsequent analyses do not require coordinates to be in Euclidean space (e.g., linear modeling can be done on the Procrustes coordinates); the projection into tangent space is taken in order to facilitate the visualization.
-If you plan to use everything (e.g., in estimating sum of ranges or sum of variances), it is not necessary to do an ordination (calculate X on the raw data). Else do an ordination and decide which axis to use based on the metric properties (mathematical and computational) or the scree plot, Horns parallel analysis etc.
-In other methods (e.g. discrete data), ordination can be problematic (character hierarchy - i.e. inapplicable -, polymorphisms, missing data), particularly non-Euclidean distances have to be distorted into a Euclidean space, so think before using it.
-Best practices:
-What does an ideal morphospace represent?
-High variance on first two axes (relates to visualisation)
-Reduces dimensionality of data
-Axes that make morphological (or other if data not morphological) sense
-Points close in space are morphologically similar
-If you are going to include an ordination, make sure to do the following:
-Include \% variation associated with ordination axes, preferably on axis labels on figures, but at minimum include a scree plot in supplementary materials
-Make sure axes are plotted on same scale (to show variance in proportion)
-Never calculate disparity indices from discriminant analysis/canonical variate scores
-Never assume that because two (or more) groups overlap on a single bivariate plot they overlap in the whole space (or generally that the proximity between two points holds across the whole space; e.g., being close to the centroid on a single bivariate plot does not mean that a point is the closest to the centroid in the whole space)
-By contrast if two (or more) groups are separate on a single axis they are separate in the whole space
+\subsubsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)?}
+One of the most common approach to analyse multidimensional data is to use ordination techniques.
+This consists in transforming the dataset along its major axis of variation through various mathematical methods [Legender \& Legendre].
+This can be done through three main analysis pipelines:
+\begin{enumerate}
+    \item data -> distance matrix -> ordination
+    \item data -> zscores -> PCA
+    \item data -> Procrustes superimposition -> projection into tangent space -> PCA
+\end{enumerate}
+%TG: Check with Melanie for the figure? - apparently she has one.
+
+%Why to ordinate:
+These pipelines allow to reduce the dimensionality of the data.
+This is advantageous for plotting and visualising the data (see Visualisation section \ref{visualisation}) which can reveal properties of the morphospace not captured by the metrics (see Metrics section \ref{metrics}).
+Additionally, ordinating the data can allow to further reduce the number of dimensions by only selecting a number of axis based on the metric properties (mathematical - e.g. product base metric - or computational - e.g. hull based metric).
+This can be done through the scree plots (cuts off, majority axis, etc.) or other statistical analysis (Horns parallel, etc.).
+
+In the case of geometric morphometric data (point 3 above), ordination can be particularly relevant since it conserves mathematical properties of the data while efficiently reducing the dimensions: the PCA reflects the number of degrees of freedom (resulting from the superimposition), its geometry is conserved (coordinates remain Euclidean when projected into tangent space and ordinated), etc.
+This has clear advantages for interpreting the results in a lower number of dimensions.
+For example, the axis will actually represent gradients of biological variation (e.g. elongation and flattening of the beak).
+This also allows easy interpretation of the proximity of the elements in space which reflects shared biological characters.
+
+However, some caveats can rise from such transformation of the data.
+For example, in the case of an ordination in a geometric morphometric data context, not using all the axes from the ordination (e.g. only the few first) can lead to misinterpretation of the results erroneous statistical results.
+Furthermore, interpreting the biological variation along the axis is always a \textit{post-hoc} procedure and might bear little meaning regarding the disparity question (e.g. the elongation and flattening of the beak when the disparity question is about flight pattern disparity).
+
+In fact, in many cases, depending on the question, ordination might actually not be necessary.
+For example, if the disparity metric relies on all the data (for example the sum of variance or the sum of ranges) it is not necessary to calculate in on ordinated data.
+Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
+For example, when the analysed data is non Euclidean (e.g. discrete morphological characters), the ordination can be problematic (character hierarchy - i.e. inapplicable -, polymorphisms, missing data), and the resulting non-Euclidean ordinated space can be difficult to interpret.
+In such case, distances can be inappropriate in a mathematical (and colloquial) sense (e.g. the distance between A and B might differ from the distance between B and A).
+This can be problematic when comparing the position of groups in the multidimensional space since the measured distances might not be comparable among each other.
+Furthermore, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axis can be simply impossible or meaningless biologically (e.g. the ratio of data coded as 1 rather than 0).
+
+Finally, visualising ordinated data can be missleading to the human eye (or any other being living in three dimensions only).
+It is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
+Note that conversely, when two groups don't overlap on a two or three dimensional plot, they \textit{do not} overlap in the multidimensional space.
+
+Regarding these advantages and inconvenients of ordination technique, we strongly suggest to not automatically ordinate data in multidimensional analysis and to carefully consider whether the question can be answered without ordination.
+
 
 
 \subsection{Phylogeny}
@@ -306,7 +338,9 @@ Ancestors -> estimate? Include?
 This has been well covered here: %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
 
 
+
 \subsection{Metrics}
+\label{metrics}
 Metrics can give the same results from very different morphospaces. Always plot your data (and see pros and cons of ordinations) and try to use multiple metrics.
 What should we be measuring? Volume? Position? Relative position? Density? Which metric? Using a few metrics in concert can be more informative than trying to make inferences from just one. For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution)
 Broad classifications of metrics could be those that relate to distance (mean pairwise, weighted mean pairwise, from centroid, from medioid, nearest neighbour, minimum spanning tree length, variance metrics), volume/occupancy (hypercube/hyperellipsoid/convex hull volume, N hyperquadrats occupied, range metrics) or position (shift of centroid/medioid, distance between medioids). Density?
@@ -343,16 +377,6 @@ Maybe we don’t want to think about a null model but rather think about good mo
 We haven’t explored much about fitting models like explaining holes, effects of extinction etc…
 Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
 
-\subsection{Visualisations}
-Hard for high-dimensional data (our brains can really only see three axes tops)
-What do our visualisations imply about the data (but we don’t necessarily want it to)?
-Straight lines in phylomorphospaces are particularly misleading (although no easy alternative)
-Spaghetti plots for time series more helpful than collapsing into a single point estimate (plus CI/HPD etc.)
-Can be hard to visualise uncertainty in an ordination space (be it phylogenetic or ancestral states), but this can be important for establishing robustness of our inferences
-Visualisations can be important for understanding what is going on with your data!
-Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
-If using ancestral estimates visually differentiate these from the empirical data
-Can be hard to, e.g., label tips in a phylomorphospace (or any ordination space) without cluttering plot - perhaps answer is to have interactive plots where hovering over a point with a cursor tells you what it is
 
 \subsection{Do we need to adapt our methods?}
 Are there lessons/methods from other fields we use?
