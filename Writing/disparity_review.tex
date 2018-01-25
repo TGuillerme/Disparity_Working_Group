@@ -89,7 +89,7 @@ Version dated: \today
 
 
 \noindent {\small \it 
-$^1$Imperial College London, Silwood Park Campus, Department of Life Sciences, Buckhurst Road, Ascot SL5 7PY, United Kingdom; $^2$NHM; $^10$Bristol}
+$^1$School of Biological Sciences, University of Queensland, St. Lucia, Queensland, Australia.; $^2$NHM; $^10$Bristol}
 \end{center}
 \medskip
 \noindent{*\bf Corresponding author.} \textit{guillert@tcd.ie}\\  
@@ -170,7 +170,7 @@ Third, the methods being used to analyse these datasets may not always be approp
 Here we deal with some of these issues and present best practice guidelines/sets of things to think about before performing a disparity analysis.
 
 
-\subsubsection{Disparity patterns or processes}
+\subsubsection{[Box]Disparity patterns or processes}
 At the core of defining what \textit{is} disparity lies a divide between episthemology and ontology.
 Is there a difference between the pattern (and how researchers characterise it) and how it was ultimately generated?
 If disparity describes patterns of variation, the underlying scientific question ultimately always wants to use them as a proxy for explaining the biological processes.
@@ -200,44 +200,186 @@ If disparity is used to describe pattern to explain some process, remember that 
 As a sub-note to this, more data is not necessarily better, especially when the data was originaly designed and collected for different questions (e.g. cladistic data).
 Again, framing the question helps to avoid this caveat.
 For example, if a study is focussing on the ecological adaptive radiation of a group, ecological traits must be crucial for such disparity analysis.
-Additionally different types of data can be collected to answer different questions: (1) discrete data that can be either describing feature (often referred to as ``cladistic'';e.g. the presence or absence of legs, the colour of a tail, etc.) or more simply counts (e.g. number of digits, etc.); (2) continuous data that can be either direct measurements (e.g. body length, etc.) or more sophisticated methods (e.g. geometric morphometrics, mathematical contour description, etc.); (3) or any mix and match of the two former (e.g. ratios, etc.).
-Again, in this case, the main question can help choosing the most appropriate data.
+
+\subsubsection{Which type of data}
+Additionally different types of data can be collected to answer different questions:
+(1) discrete data that can be either describing feature (often referred to as ``cladistic'';e.g. the presence or absence of legs, the colour of a tail, etc.) or more simply counts (e.g. number of digits, etc.);
+(2) continuous data that can be either direct measurements (e.g. body length, etc.) or more sophisticated methods (e.g. geometric morphometrics, mathematical contour description, etc.);
+(3) or any mix and match of the two former (e.g. ratios, etc.).
+In this case, the main question can help choosing the most appropriate data.
 For example, when looking at variation within bats species, landmarks (for geometric morphometrics analysis) or continuous measurements on bones can be approriate.
 On the other hand, when looking at convergence between bats and birds, these homology of these traits is more complex to define and the contour of the wings might more readily answer the question.
 
 Once the type of appropriate data is decided, sample size and sampling issues should be carefully considered next.
 Does one need to include intra-specific variation with multiple specimen per species when possible?
 For example, if you're studying variation of skull in canids, and you decide to include dogs, it is essential to capture their variation by including intra-specific one.
-On the other hand, if you're looking at variation of canids through time since the Eocene, intra-specific variation will not have major impact (up until the Holocene). http://www.journals.uchicago.edu/doi/abs/10.1086/650372
+On the other hand, if you're looking at variation of canids through time since the Eocene, intra-specific variation will not have major impact (up until the Holocene). %http://www.journals.uchicago.edu/doi/abs/10.1086/650372
 
-Also, when comparing multiple groups, it is important to have fair comparative designs (same number of elements per group, etc.) or apply data corrections (e.g. rarefaction).
--Taxonomic sampling... Depends on the question! E.g. in birds, if you're looking at the family level, if the variables measured do not distinguish any passerine from another family (i.e. all passerine are as dissimilar to a falcon), then taxonomic sampling can be reduced. On the other hand, if the variables distinguish within passerines, then it is important to sample more.
--Sexual dimorphism.
--Missing/overlapping/inapplicable/ambiguous/correlated/polymorphic data! Additional considerations: homology - cite a morphometrics paper, polymorphisms how to code, 
+Another aspect to consider regarding the amount of data to collect is to make sure it will allow to be used fairly for subsequent statistical analysis.
+For example, if the question is to compare disparity among groups, collect a similar number of elements per groups or, when not possible (e.g. palaeontological data), use rarefied data.
+Also, are the elements consistent and comparable them?
+Does the studied group present clear sexual dimorphism?
+Are they collected at a relevant taxonomic scope?
+For example in birds, if you're looking at the family level, if the variables measured do not distinguish any passerine from another family (i.e. all passerine are as dissimilar to a falcon), then taxonomic sampling can be reduced. On the other hand, if the variables distinguish within passerines, then it is important to sample more.
 
-•   Scaling
--For variables with huge ranges, do z or log transforms so that the variables with big ranges are not skewing the analysis towards these variables.
- 
- -    Biases in datasets
-If you're using other people's data (however, if you're collecting, try to not include biases yourself), you need an awareness of what the data was collected for.
-One major issue is in phylo data. -phylogenetic analysis vs disparity + if phylo with a particular aim: where the data collected to discriminate groups early in the tree or within a particular clade (i.e. number of synapomorphies vs number of autapomorphies). Recommend to select characters for analysis, not use all characters. E.g. if you;re looking at “feeding” niche, you don't need characters not related to the niche (e.g. sexual dimorphic ones).
-•   Talk about Foote's Crinoid non cladistic data example somewhere. Important distinction between discrete data collected for phylogeny building and that collected for disparity, i.e. one avoids homoplasy, one seeks homoplasies.
+Finally, it is important to remember that morphological data can be patchy.
+Data can be missing, non overlapping, hierarchical (e.g. inapplicable), ambiguous, polymorphic or correlated.
+Each of these might be a problem in specific cases.
+For example, hierarchical data can be problematic when comparing groups: if the question is about the disparity in locomotory modes among vertebrates, data can be collected from limbs but will then not be applicable to non-tetrapods or some specific tetrapods (e.g. snakes).
+This problem can be linked to whether only homologuous characters should be used or not.
 
-Not a one-to-one mapping of form to function
+\subsubsection{Recycling data}
+Another important type of data is... other studies' data!
+In fact, it is a common (and good) practice to recycle data from previous studies whether published by the same author or not.
+It is then important to remember where this data comes from and why it was collected.
+For example, when using discrete morphological data used for phylogenetic analysis, it is important to be aware that disparity in such dataset can be maximised depending on the coded characters.
+It has actually been argued [by Foote - crinoids non-cladistic paper] that 
+Some discrete morphological datasets for phylogenetic uses can be designed to minimise homoplasy to obtain well resolved trees (thus increasing disparity among taxa).
+Conversely some discrete morphological datasets for the same group can be designed to maximise homoplasy to study the similarity among groups [cite Foote's crinoids paper].
 
-Congruence between data (different parts, different source, different results?).
+One relatively simple way to control for this specific bias can be to not use all the available data but select within the dataset the most pertinent characters for the question.
+For example, in a study on disparity of dietary niches, removing non-dietary characters (e.g. sexually dimorphic ones) can be a good approach.
+However, it is important to keep in mind that there is no one-to-one mapping between form a function and that some characters can be linked to multiple functions (e.g. limb traits can be both linked to locomotion and diet!).
 
-Finish with: again, think about your questions?
-No data type = best, it depends on Q.
+\subsubsection{[Box]Data check list}
+
+When collecting data:
+\begin{itemize}
+    \item Which type of data?
+    \item Which traits?
+    \item Which sample size? (or correction)
+    \item Which taxonomic level?
+    \item Are their data caveats (missing, hierarchical, non-homologuous)?
+\end{itemize}
+
+When recycling data:
+\begin{itemize}
+    \item What was the data collected for?
+    \item Which traits are relevant to the question?
+    \item Are their data caveats (missing, hierarchical, non-homologuous)?
+\end{itemize}
 
 
-\subsection{Use methods appropriate} (avoid caveats)
-https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+\subsection{Use methods appropriate} 
+One of the major problem in disparity analysis is how to analysis data that is, in a vast majority of cases multidimensional.
+Multidimensional analysis can be a really powerful tool to analysis complex datests but also comes with many mathematical caveats and limitations.
 
-?controlling for phylogeny
-Methods are still immature
-Separate visualisation from analysis
-Size corrections? Allometry?
+
+\subsubsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)}
+
+
+Can we go beyond ordination? Yes. By going before. (Unless data are landmarks?)
+We suggest we don’t automatically use ordinations, when the data and the question allow pre-ordination analysis.
+Why the pipeline 
+**data -> distance matrix -> ordination** and not
+**data -> zscore -> PCA**
+**data -> Procrustes superimposition -> projection into tangent space >- PCA [Melanie has image of pipeline; worthwhile getting Emma/Sylvain to check]
+Helps us plot data (e.g., summary stats could be similar for completely different spaces - see Wills 2001, disparity primer, his figure 18)
+For GM data, PCA reduces dimensionality to reflect number of degrees of freedom (which was reduced during superimposition); no issues with geometry because coordinates put into Euclidean space when projected into tangent space, and this is maintained in the PCA. But possible misstep is to rely only on first few axes when interpreting data. Note also that most subsequent analyses do not require coordinates to be in Euclidean space (e.g., linear modeling can be done on the Procrustes coordinates); the projection into tangent space is taken in order to facilitate the visualization.
+If you plan to use everything (e.g., in estimating sum of ranges or sum of variances), it is not necessary to do an ordination (calculate X on the raw data). Else do an ordination and decide which axis to use based on the metric properties (mathematical and computational) or the scree plot, Horns parallel analysis etc.
+In other methods (e.g. discrete data), ordination can be problematic (character hierarchy - i.e. inapplicable -, polymorphisms, missing data), particularly non-Euclidean distances have to be distorted into a Euclidean space, so think before using it.
+Best practices:
+What does an ideal morphospace represent?
+High variance on first two axes (relates to visualisation)
+Reduces dimensionality of data
+Axes that make morphological (or other if data not morphological) sense
+Points close in space are morphologically similar
+If you are going to include an ordination, make sure to do the following:
+Include \% variation associated with ordination axes, preferably on axis labels on figures, but at minimum include a scree plot in supplementary materials
+Make sure axes are plotted on same scale (to show variance in proportion)
+Never calculate disparity indices from discriminant analysis/canonical variate scores
+Never assume that because two (or more) groups overlap on a single bivariate plot they overlap in the whole space (or generally that the proximity between two points holds across the whole space; e.g., being close to the centroid on a single bivariate plot does not mean that a point is the closest to the centroid in the whole space)
+By contrast if two (or more) groups are separate on a single axis they are separate in the whole space
+
+
+\subsection{Phylogeny}
+\subsubsection{Ancestral states estimation}
+Do not use phylogeny just to increase sample size!
+Beware edge effects in time series if using phylogeny to "correct" data, especially if leading into an extinction event
+Disparity time series should be simulated along the sample phylogeny to give a sensible null expectation to assess how much of the recovered pattern is simply reflecting the phylogeny itself and not morphological change
+Pre/post ordination ancestral states debate -> see upcoming litterature.
+* if you filled the morphospace with ancestral estimation, the nearest neighbour distance would go to zero. 
+* ancestral estimation to balance sample sizes.. Is this appropriate?
+Ancestors -> estimate? Include?
+
+\subsubsection{Multivariate Phylogenetic Comparative Methods}
+This has been well covered here: %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+
+
+\subsection{Metrics}
+Metrics can give the same results from very different morphospaces. Always plot your data (and see pros and cons of ordinations) and try to use multiple metrics.
+What should we be measuring? Volume? Position? Relative position? Density? Which metric? Using a few metrics in concert can be more informative than trying to make inferences from just one. For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution)
+Broad classifications of metrics could be those that relate to distance (mean pairwise, weighted mean pairwise, from centroid, from medioid, nearest neighbour, minimum spanning tree length, variance metrics), volume/occupancy (hypercube/hyperellipsoid/convex hull volume, N hyperquadrats occupied, range metrics) or position (shift of centroid/medioid, distance between medioids). Density?
+range: same problems as as max/min/hulls.. there are no unbiased estimators
+distance to centroid same as variance
+product of variances should be proportional to ellipsoid volume
+Should we use distributions or single metrics? (Distributions also relevant to tests and visualisations, see below)
+Can also classify as pre- or post-ordination metrics, although former can not be volume/occupancy(?)
+We are interested in separate questions relating to spread of group in space, or position of group in space (e.g., position can shift without altering volume, or vice versa)
+sums of variance (misses out correlations... this is ok if all PCA transformed, but not ok if subsets of data are then taken and calculated separately)
+
+
+Best practices:
+We suggest not calling metrics "disparity" (especially in figure labels) but rather "sum of variance", etc...
+
+\subsection{Tests}
+Just two sentences: check out the test assumptions. (and make sure your metrics are capturing what you are testing). Know if and how your dataset is violating assumptions. Check also if we need to talk about geometric morphometrics specific tests?
+Sample size is an issue (type I error inflation).
+Is bootstrapping valid?
+How can we test for differences statistically?
+Bayesian
+What stats are appropriate?
+permutation tests
+variance compared to range
+Mantel tests
+Including fossils is a good idea! (adds time’s arrow, constraints history/ancestral state estimates etc.)
+
+\subsection{Models}
+What are our null hypotheses?
+Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic null is that disparity increases with diversity; how do we diverge from that (show these morpho/genome distance divergence/convergence).
+We can have a null model that is based on simple Brownian increase in disparity (gradual). 
+Null: is the null increase in disparity dependent on a random walk and on a tree shape?
+Maybe we don’t want to think about a null model but rather think about good models to fit. 
+We haven’t explored much about fitting models like explaining holes, effects of extinction etc…
+Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
+
+\subsection{Visualisations}
+Hard for high-dimensional data (our brains can really only see three axes tops)
+What do our visualisations imply about the data (but we don’t necessarily want it to)?
+Straight lines in phylomorphospaces are particularly misleading (although no easy alternative)
+Spaghetti plots for time series more helpful than collapsing into a single point estimate (plus CI/HPD etc.)
+Can be hard to visualise uncertainty in an ordination space (be it phylogenetic or ancestral states), but this can be important for establishing robustness of our inferences
+Visualisations can be important for understanding what is going on with your data!
+Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
+If using ancestral estimates visually differentiate these from the empirical data
+Can be hard to, e.g., label tips in a phylomorphospace (or any ordination space) without cluttering plot - perhaps answer is to have interactive plots where hovering over a point with a cursor tells you what it is
+
+\subsection{Do we need to adapt our methods?}
+Are there lessons/methods from other fields we use?
+Sample sizes: we need to be careful about them! (e.g. for detecting holes etc.).
+Time series: same! Palaeontology data is not readily available (hence ancestral estimates) and might not be appropriate for doing time series analysis (across long time scales at least).
+Caveats of disparity
+Statistical issues e.g. covariance
+95\% or all PCs?
+Phylogenetic correlations
+
+Do a check list of suggestions for standardisation: put your \% variance on the axis (and scale them)!
+Andrew’s list of things
+* should we z-score our data always?
+* volume of a n-dimensional ellipsoid scales with number of dimensions, initially increasing and then decreasing with the shape contingent on the radius R.
+Need good understanding of your data
+Is space Euclidean?
+Visualisation vs. analysis
+Holes in morphospace? How to deal with these?
+What to do with phylogeny/about phylogenetic autocorrelation?
+What about other forms of autocorrelation
+Size correction?
+Avoid using shiny new methods unless you understand
+Avoid being too prescriptive in advice of paper
+Outline assumptions of different approaches--make clear caveats
+
+
+
 
 \section{Where do we go from there?}
 4 - This a list of problems for the future/moving forward
