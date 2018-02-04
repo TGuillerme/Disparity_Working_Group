@@ -145,29 +145,30 @@ Disparity provides data on the structure of biodiversity.
 In essence, disparity is a pattern of variation.
 
 %2§ what use: commonly used
-The description of these patterns (the disparity of patterns) has thus been used in evolutionary biology to tackle a vast array of questions:
-Developmental constraints [CITE]; 
-Niche width, competition  - ecological perspective / specialisation [CITE];
-Relationship between form and function and evolution functional traits [CITE];
-Disparity through time [CITE];
-Response to extinction - Extinction selectivity [CITE];
-Competition - ecologically relevant [CITE];
-Evolutionary mode [CITE];
-Evolutionary rate [CITE];
-Macroecology (disparity in space)[CITE];
-Tree Structure and the effect on disparity [CITE];
-Adaptive radiation ecological diversification [CITE];
+The description of these patterns (the disparity of patterns) has thus been used in evolutionary biology to tackle a vast array of questions.
+Disparity patterns have been used to tackle questions in Evo-devo through
+%evo-devo
+Developmental constraints [CITE],
+Relationship between form and function and evolution functional traits [CITE] or
 Scaling micro to macro [CITE];
-Competitive replacements [CITE];
+% Ecology
+in ecology with
+Competition - ecologically relevant [CITE],
+Niche width, competition  - ecological perspective / specialisation [CITE] or
+Macroecology (disparity in space)[CITE];
+% Evolution
+on in macroevolution:
+Response to extinction - Extinction selectivity [CITE],
+Competitive replacements [CITE] or
 Tempo and mode of evolution [CITE].
 
 %3§ problems
-Disparity studies have a great deal promise in helping us to understand the evolution of biological diversity.
-However, we identify three main issues in current disparity studies.
+Disparity studies have a great deal of promise in helping us to understand the evolution of biological diversity.
+With the expansion of such methodological approaches in the last decade, however, we also identify three main issues that, if not tackled could reduce the power of such analysis.
 First, many recent studies have lost focus; they are no longer hypothesis-driven, instead they are undertaken to characterise biological variation for its own sake.
-Second, even where there is a clear question being explored, the data being used for disparity analyses is inappropriate and often driven by the availability of large cladistic datasets.
+Second, even where there is a clear question being explored, the data being used for disparity analyses is inappropriate and often driven by the availability of large datasets.
 Third, the methods being used to analyse these datasets may not always be appropriate for the question and/or data at hand.
-Here we deal with some of these issues and present best practice guidelines/sets of things to think about before performing a disparity analysis.
+Here we deal with some of these issues and present best practice guidelines to allow researchers to optimise their questions before performing a disparity analysis.
 
 
 \subsubsection{[Box]Disparity patterns or processes}
@@ -177,6 +178,7 @@ If disparity describes patterns of variation, the underlying scientific question
 In the seminal papers from the late 80s, disparity was solely use to describe and understand the Cambrian Explosion were both the pattern (a high observed dissimilarity between groups) was directly linked to the process (and explosive radiation of multicellular life as championed by Gould).
 Restricting disparity to this initial informal definition (multidimensional morphological at a macroevolutionary scale) can be advantageous for advances in this field but broadening it will allow more interdisciplinary discussion.
 % That is, infer the mode of evolution (how does evolution occur and how does the structure of variation occur - both a constructive and destructive process) and the tempo (i.e., rate) at which it occurs. I think variation can also potentially tell us about ecology (as separate to evolution - for example, function, community structure, competition, etc.)...but...is ecology different from evolution?? ….Something I have been debating is whether it tells us about environment. Can we understand something about past environments from disparity??
+\subsubsection{[Box]End}
 
 
 
@@ -186,14 +188,13 @@ Restricting disparity to this initial informal definition (multidimensional morp
 Why to perform a disparity analysis?
 It might sound like an obvious question to start with but we would like to stress its crucial importance.
 The last decade have seen a vast array of excellent methodological implementation and documentations rendering disparity analysis easy to perform \citep{bouxin2005ginkgo,oksanen2007vegan,geiger2008,zelditch2012geometric,adams2013geomorph,Claddis,dispRityv02,adams2017geometric}.
-However, this easiness might (conscientiously or not) push authors to perform disparity analysis ``just because''.
-In fact it is important to not rush into a disparity analysis to avoid some basic statistical caveats:
+However, this facilitation might (conscientiously or not) push authors to perform disparity analysis ``just because''.
+It is important to not rush into a disparity analysis to avoid some basic statistical caveats.
 For example, one major thing to consider is circularity: if your aim is to explore the variation in the data set, a multi-dimensional analysis is perfectly valid.
 However, the resulting groups are then no more appropriate for testing a hypothesis.
 Instead, rather do the data exploration on a subset of the data (preliminary analysis) and then use the full data set to test the resulting hypothesis.
 We believe that clearly framing an hypothesis and its null expectancy will help designing better disparity analysis.
 Once the question clearly framed, which data and which methods will be appropriate to answer it?
-
 
 \subsection{Collect the appropriate data}
 If disparity is used to describe pattern to explain some process, remember that the every possible data will always only be a proxy for these patterns.
@@ -203,12 +204,12 @@ For example, if a study is focussing on the ecological adaptive radiation of a g
 
 \subsubsection{Which type of data}
 Additionally different types of data can be collected to answer different questions:
-(1) discrete data that can be either describing feature (often referred to as ``cladistic'';e.g. the presence or absence of legs, the colour of a tail, etc.) or more simply counts (e.g. number of digits, etc.);
+(1) discrete data that can be either describing feature (often referred to as ``cladistic''; e.g. the presence or absence of legs, the colour of a tail, etc.) or more simply counts (e.g. number of digits, etc.);
 (2) continuous data that can be either direct measurements (e.g. body length, etc.) or more sophisticated methods (e.g. geometric morphometrics, mathematical contour description, etc.);
-(3) or any mix and match of the two former (e.g. ratios, etc.).
+(3) or any mix and match of the two former (e.g. ratios).
 In this case, the main question can help choosing the most appropriate data.
 For example, when looking at variation within bats species, landmarks (for geometric morphometrics analysis) or continuous measurements on bones can be approriate.
-On the other hand, when looking at convergence between bats and birds, these homology of these traits is more complex to define and the contour of the wings might more readily answer the question.
+On the other hand, when looking at convergence between bats and birds, the homology of the traits to measure is more complex to define and the contour of the wings might more readily answer the question.
 
 Once the type of appropriate data is decided, sample size and sampling issues should be carefully considered next.
 Does one need to include intra-specific variation with multiple specimen per species when possible?
@@ -262,27 +263,35 @@ When recycling data:
 
 \subsection{Use methods appropriate} 
 One of the major problem in disparity analysis is how to analysis data that is, in a vast majority of cases multidimensional.
-Multidimensional analysis can be a really powerful tool to analysis complex datests but also comes with many mathematical caveats and limitations.
+Multidimensional analysis can be a really powerful tool to analysis complex datasets but also comes with many mathematical caveats and limitations.
+As any great power, it comes with great responsibilities.
 
 
-
-\subsection{Visualisations}
+\subsection{Visualising the multidimensional problem}
 \label{visualisation}
-Hard for high-dimensional data (our brains can really only see three axes tops)
-What do our visualisations imply about the data (but we don’t necessarily want it to)?
-Straight lines in phylomorphospaces are particularly misleading (although no easy alternative)
-Spaghetti plots for time series more helpful than collapsing into a single point estimate (plus CI/HPD etc.)
-Can be hard to visualise uncertainty in an ordination space (be it phylogenetic or ancestral states), but this can be important for establishing robustness of our inferences
-Visualisations can be important for understanding what is going on with your data!
-Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
-If using ancestral estimates visually differentiate these from the empirical data
-Can be hard to, e.g., label tips in a phylomorphospace (or any ordination space) without cluttering plot - perhaps answer is to have interactive plots where hovering over a point with a cursor tells you what it is
+One really common first step in multidimensional analysis is to reduce the number of dimensions.
+Whether this entails an ordination or not (see box \ref{box_ordination}) it is often good practice to first visualise the data.
+However, the physical reality we're living in allows a maximum of three dimensions to be visualised.
 
-The percentage of variation associated with the ordination axes (preferably directly on the axis labels on a figure but at least in a scree plot).
-Make sure that the axes in the morphospace are plotted on the same scale (to who the proportion of variance)
+First, the interpretation of the data visualisation can be misleading:
+Classically, it is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
+Note that conversely, when two groups don't overlap on a two or three dimensional plot, they \textit{do not} overlap in the multidimensional space.
+Similarly, straight lines in a 2/3D representation of a space can be misleading, depending on the geometrical properties of the space, they could not be interpreted in our intuitive Euclidean distance way.
+For example, the distance between two points A and B might not necessary be equal to the distance between B and A if the space is not Euclidean.
 
+Second, because of the complexity of multidimensional spaces, it is always important to be entirely clear about what is represented in their visualisation.
+In fact, it can be easy (intentionally or not) to mislead a reader into over/under interpreting a spatial pattern if not all the key properties of the space are present in the graph.
+We believe that these should always include the following:
+(1) the percentage of the variation of each axis of the plot (i.e. is the majority - or all - the variation of the data present in the plot or only a fraction?);
+(2) the scale of the axis (ideally, if the space is orthogonal, it is important to keep the same scale between the axis);
+and (3) the error associated with each point, whether this is in term of measurement error (on ordination plots for example) or in standard variation (in further analysis, e.g. disparity through time).
+
+Finally, it is important to remember that for any dimensionality reduction of a multidimensional problem, the visual result will be at best a distortion of the measured reality, at worth, it won't be what it seems.
+
+% Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
 
 \subsubsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)?}
+\label{box_ordination}
 One of the most common approach to analyse multidimensional data is to use ordination techniques.
 This consists in transforming the dataset along its major axis of variation through various mathematical methods [Legender \& Legendre].
 This can be done through three main analysis pipelines:
@@ -316,13 +325,8 @@ In such case, distances can be inappropriate in a mathematical (and colloquial) 
 This can be problematic when comparing the position of groups in the multidimensional space since the measured distances might not be comparable among each other.
 Furthermore, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axis can be simply impossible or meaningless biologically (e.g. the ratio of data coded as 1 rather than 0).
 
-Finally, visualising ordinated data can be missleading to the human eye (or any other being living in three dimensions only).
-It is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
-Note that conversely, when two groups don't overlap on a two or three dimensional plot, they \textit{do not} overlap in the multidimensional space.
-
-Regarding these advantages and inconvenients of ordination technique, we strongly suggest to not automatically ordinate data in multidimensional analysis and to carefully consider whether the question can be answered without ordination.
-
-
+Regarding these advantages and inconvenient of ordination technique, we strongly suggest to not automatically ordinate data in multidimensional analysis and to carefully consider whether the question can be answered without ordination.
+\subsubsection{[Box] end}
 
 \subsection{Phylogeny}
 \subsubsection{Ancestral states estimation}
@@ -336,8 +340,6 @@ Ancestors -> estimate? Include?
 
 \subsubsection{Multivariate Phylogenetic Comparative Methods}
 This has been well covered here: %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
-
-
 
 \subsection{Metrics}
 \label{metrics}
