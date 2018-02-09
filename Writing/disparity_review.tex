@@ -329,20 +329,36 @@ Regarding these advantages and inconvenient of ordination technique, we strongly
 \subsubsection{[Box] end}
 
 \subsection{Phylogeny}
-\subsubsection{Ancestral states estimation}
-Do not use phylogeny just to increase sample size!
-Beware edge effects in time series if using phylogeny to "correct" data, especially if leading into an extinction event
-Disparity time series should be simulated along the sample phylogeny to give a sensible null expectation to assess how much of the recovered pattern is simply reflecting the phylogeny itself and not morphological change
-Pre/post ordination ancestral states debate -> see upcoming litterature.
-* if you filled the morphospace with ancestral estimation, the nearest neighbour distance would go to zero. 
-* ancestral estimation to balance sample sizes.. Is this appropriate?
-Ancestors -> estimate? Include?
+For many disparity analysis looking at macroevolutionary questions, phylogeny is often taken into account, whether for including estimates of ancestors or to add a phylogenetic structure to the data.
+For the latter, multivariate phylogenetic comparative methods have been reviewed recently by [CITE] %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+and will thus not covered further in this review.
 
-\subsubsection{Multivariate Phylogenetic Comparative Methods}
-This has been well covered here: %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+\subsubsection{Ancestral states estimation}
+When looking at disparity in the past (e.g. disparity-through-time) ancestral states estimations are a common approach.
+Ancestral states estimations can be used in two ways:
+(1) either before transformation of the data (e.g. ordination, distance matrix, etc.) by simply estimating the ancestral states based on the original dataset and adding them to it [CITE].
+(2) else after transformation of the data by estimating the ancestral states based on the transformed matrix (e.g. the ordination scores) [CITE].
+The first method is generally thought to be more thorough but can imply longer computation and will change the ordinated space configuration.
+The second is much more faster and does not change the ordinated space configuration (i.e. the ancestors can be seen as averages between tips in the space) but it will change the properties of the space (variance and degrees of freedom).
+MORE UPCOMING WORK ON THAT
+
+More importantly however, one needs to keep in mind that using such methods can come with several caveats.
+First and foremost, although ancestral states estimations are valid methods in macroevolution, they results are highly dependent on the data and chosen methods.
+Secondly, more specific to disparity analysis, when using post-transformation ancestral states estimation, the morphospace can be saturated leading pairwise distance bases metrics to tend to zero.
+In general, using ancestral states estimation can bring much insights for recovering patterns of changes in disparity but should not be ``used'' simply to generate extra data points for statitstical reasons.
+In fact, these extra points are not independent and can also generate side effects which can be problematic, especially when testing the effect of extinctions events on disparity.
+
+Alternatively, ancestral states estimation can be used to provide realistic null expectations from the data.
+In disparity through time analysis, it is possible to sample many ancestral states estimates on the nodes and along to branches to test whether the recovered pattern could be simply explained by the phylogenetic structure itself rather than the morphological changes.
+Furthermore, this method can be pertinent for fitting modes of evolution and see if the recovered disparity metric can be explained by the tested modes of evolution.
+
 
 \subsection{Metrics}
 \label{metrics}
+ 
+
+[INCLUDE WILLS FIGURE HERE]
+
 Metrics can give the same results from very different morphospaces. Always plot your data (and see pros and cons of ordinations) and try to use multiple metrics.
 What should we be measuring? Volume? Position? Relative position? Density? Which metric? Using a few metrics in concert can be more informative than trying to make inferences from just one. For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution)
 Broad classifications of metrics could be those that relate to distance (mean pairwise, weighted mean pairwise, from centroid, from medioid, nearest neighbour, minimum spanning tree length, variance metrics), volume/occupancy (hypercube/hyperellipsoid/convex hull volume, N hyperquadrats occupied, range metrics) or position (shift of centroid/medioid, distance between medioids). Density?
@@ -356,7 +372,7 @@ sums of variance (misses out correlations... this is ok if all PCA transformed, 
 
 
 Best practices:
-We suggest not calling metrics "disparity" (especially in figure labels) but rather "sum of variance", etc...
+Which ever metric is most suited to the disparity question and regarding the amount of different metrics available we would like to emphasise that it is crucial to define clearly the metric rather than calling it simply ``disparity'' but rather ``sum of variances'', etc. (especially in figure labels).
 
 \subsection{Tests}
 Just two sentences: check out the test assumptions. (and make sure your metrics are capturing what you are testing). Know if and how your dataset is violating assumptions. Check also if we need to talk about geometric morphometrics specific tests?
