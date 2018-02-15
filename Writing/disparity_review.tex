@@ -356,23 +356,37 @@ Furthermore, this method can be pertinent for fitting modes of evolution and see
 \subsection{Metrics}
 \label{metrics}
  
-
 [INCLUDE WILLS FIGURE HERE]
 
-Metrics can give the same results from very different morphospaces. Always plot your data (and see pros and cons of ordinations) and try to use multiple metrics.
-What should we be measuring? Volume? Position? Relative position? Density? Which metric? Using a few metrics in concert can be more informative than trying to make inferences from just one. For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution)
-Broad classifications of metrics could be those that relate to distance (mean pairwise, weighted mean pairwise, from centroid, from medioid, nearest neighbour, minimum spanning tree length, variance metrics), volume/occupancy (hypercube/hyperellipsoid/convex hull volume, N hyperquadrats occupied, range metrics) or position (shift of centroid/medioid, distance between medioids). Density?
-range: same problems as as max/min/hulls.. there are no unbiased estimators
-distance to centroid same as variance
-product of variances should be proportional to ellipsoid volume
-Should we use distributions or single metrics? (Distributions also relevant to tests and visualisations, see below)
-Can also classify as pre- or post-ordination metrics, although former can not be volume/occupancy(?)
-We are interested in separate questions relating to spread of group in space, or position of group in space (e.g., position can shift without altering volume, or vice versa)
-sums of variance (misses out correlations... this is ok if all PCA transformed, but not ok if subsets of data are then taken and calculated separately)
+Disparity metrics are essentially a one dimensional summary of a multidimensional object, hence, they are bound to only reflect some aspect of the morphospace and can never encompass its whole complexity.
+With that in mind, the choice of the metric should be essential to summarise the aspect of the morphospace that is the most related to the question.
+In an unidimensional distributions (e.g. histograms) different metrics will readily reflect different aspect of the data.
+For example, metrics can be used to reflect the ``size'' of the distribution (e.g. the range, quantiles or variance) and some other will reflect the most likely value (the central tendency - e.g. the mean, median or mode).
+Among these metrics, some will have more preferable properties than other such as sensitivity to outliers (range, mean or mode \textit{vs.} quantiles, variance or median) and will thus be more or less appropriate to the different questions.
 
+In multidimensionality, this high availability of unidimensional descriptors of the space are really numerous and come with their equally numerous advantages and caveats.
+In this case, the disparity question should again drive the choice of the disparity metric.
+If the question refers to ``size'' of a group in the morphospace (e.g. ``does group A occupy as much space as group B?''), metrics relating to the spread of the group in the morphospace are the most appropriated (e.g. volume [CITE], variance [CITE], range [CITE], distance from the centroid [CITE]).
+Conversely, if the question refers to the ``position'' of a group in the morphospace (e.g. ``does group A occupy the same space as group B?''), metrics relating to the distance of the elements to a point are most appropriated (e.g. distance from a fixed point - e.g. the opposite group).
+Finally, one might also be interested in the density of elements in some regions of the morphospace (e.g. ``is group A more dense than group B?''), metrics relating to the pairwise distances between elements are most appropriated (e.g. nearest neighbour distance, pairwise distances, etc.)
+
+When looking at this positively, any metric can be suitable to any question, when looking at it negatively, it is important to keep in mind several caveats that can apply in any case:
+First, it is important to relate the metrics to the space property.
+For example, measuring the sum of variances of the space's dimensions does not require the co-variance element between the axis in a PCA but only when the full space is considered: if only a subset is measured, co-variance should be added to the sum of variances.
+Second, some metrics automatically relate to the properties of the morphospace.
+For example, range or hull based metrics are really sensitive to outliers and thus biased based on the sample size.
+
+Of course some other aspects could be of interest (or more than one) and thus some other metrics would be more appropriated.
+For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution).
+Furthermore, one future avenue that could be explored is to go beyond single valued disparity metrics and rather express them in terms of distributions.
+For example, when the metric is expressed as the median distance from centroids [e.g. in CITE], it could be informative as well to express it as a full distribution.
+This would allow to both visualise the variation at a glance and use this variation in statistical tests for comparing these distributions.
 
 Best practices:
-Which ever metric is most suited to the disparity question and regarding the amount of different metrics available we would like to emphasise that it is crucial to define clearly the metric rather than calling it simply ``disparity'' but rather ``sum of variances'', etc. (especially in figure labels).
+\begin{itemize}
+\item Facing the amount of different ways to measure disparity and regardless which metric is the most suited to the question, it is crucial to clearly and mathematically define the metric in a disparity paper. The definition can be in plain English: e.g. ``we measure disparity as the sum of the variance of each axis of the ordinated matrix''; or mathematically: e.g. ``we measured disparity as $\sum\sigma_i$ where $\sigma_i$ is the variance of the each ordinated axis $i$.''.
+\item It is important to keep in mind that different metrics can lead to the same results even though the described spaces are different (the opposite is \textit{not} true). We therefore suggest to always plot some dimensions of the space (see Visualisation section \ref{visualisation}) and try multiple metrics.
+\end{itemize}
 
 \subsection{Tests}
 Just two sentences: check out the test assumptions. (and make sure your metrics are capturing what you are testing). Know if and how your dataset is violating assumptions. Check also if we need to talk about geometric morphometrics specific tests?
@@ -386,7 +400,7 @@ variance compared to range
 Mantel tests
 Including fossils is a good idea! (adds time’s arrow, constraints history/ancestral state estimates etc.)
 
-\subsection{Models}
+\subsubsection{Models}
 What are our null hypotheses?
 Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic null is that disparity increases with diversity; how do we diverge from that (show these morpho/genome distance divergence/convergence).
 We can have a null model that is based on simple Brownian increase in disparity (gradual). 
