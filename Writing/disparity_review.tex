@@ -89,7 +89,7 @@ Version dated: \today
 
 
 \noindent {\small \it 
-$^1$School of Biological Sciences, University of Queensland, St. Lucia, Queensland, Australia.; $^2$NHM; $^10$Bristol}
+$^1$School of Biological Sciences, University of Queensland, St. Lucia, Queensland, Australia.; $^2$NHM; $^{10}$Bristol}
 \end{center}
 \medskip
 \noindent{*\bf Corresponding author.} \textit{guillert@tcd.ie}\\  
@@ -389,16 +389,22 @@ Best practices:
 \end{itemize}
 
 \subsection{Tests}
-Just two sentences: check out the test assumptions. (and make sure your metrics are capturing what you are testing). Know if and how your dataset is violating assumptions. Check also if we need to talk about geometric morphometrics specific tests?
-Sample size is an issue (type I error inflation).
-Is bootstrapping valid?
-How can we test for differences statistically?
-Bayesian
-What stats are appropriate?
-permutation tests
-variance compared to range
-Mantel tests
-Including fossils is a good idea! (adds time’s arrow, constraints history/ancestral state estimates etc.)
+Similarly to all the points covered above, which statistical test to apply solely depends on which question is tackled with disparity analysis (i.e. which hypothesis to test).
+On the other hand, some tests (such as permanovas [CITE]) are actually \textit{not} taking into account the disparity measured but are simply based on the distribution of the taxa into the space (or simply their pairwise distances in the case of PERMANOVAS).
+
+Furthermore, bootstraps are often used in morphological disparity analysis as a mean to get a distribution from a single disparity value [CITE].
+While this method is valid in itself, it comes with several caveats.
+First, it is important to consider that bootstrapping the disparity values creates a distribution of them (e.g. a distribution of sum of variances from a bootstrapped morphospace).
+Therefore, the error associated with the bootstrap is reflecting the ``stability'' of the metric, not the extremes of the distribution of the data (\textit{c.f.} when bootstrapping a disparity distribution; e.g. the distribution of all the distances from centroids from a bootstrapped morphospace).
+In the first and most common case, the amount of bootstraps artificially increases the type I error.
+Furthermore, when comparing two groups, the comparison is one of the disparity of two groups using their ``stability'' as variance. 
+
+Best practices:
+\begin{itemize}
+\item make sure your metrics are capturing what you are testing
+\item check out the test assumptions
+\item Know if and how your dataset is violating assumptions.
+\end{itemize}
 
 \subsubsection{Models}
 What are our null hypotheses?
