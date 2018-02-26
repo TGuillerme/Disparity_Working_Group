@@ -92,7 +92,7 @@ What is the proportion of use for each method?
 pdf("../Writing/Figures/MethodsProportions.pdf", width = 12, height = 12)
 op <- par(mfrow = c(2, 2), bty = "n")
 for(factor in c(2,4,5,6)) {
-    plot.data(fuzzy.sort.data(data[,factor], factors[[factor]]), proportion = TRUE, ylim = c(0, 100), main = names(factors)[[factor]])
+    plot.data(fuzzy.sort.data(data[,factor], factors[[factor]]), proportion = TRUE, main = names(factors)[[factor]])
 }
 par(op)
 dev.off()
@@ -127,7 +127,7 @@ But first, a bit of cleaning
 
 ```{r, eval = FALSE}
 ## Removed columns
-removed_factors <- c(1)
+removed_factors <- c(1,6)
 
 ## Removing factors from the data
 multi_data <- apply(data[,-removed_factors], 2, as.character)
@@ -161,19 +161,61 @@ percentages_scree <- round(scree_plot/sum(scree_plot)*100, digit = 2)
 barplot(scree_plot, ylab = "Variance per dimension", xlab = "Dimensions")
 ```
 
+Creating factors for the three approaches (roughly sorting according to `methods_type`).
+
+```{r}
+## Empty array of methods
+methods <- rep(NA, nrow(data))
+
+## Claddis methods
+Claddis_data <- grep("discrete", data[,2])
+Claddis_ordination <- grep("PCO", data[,4])
+Claddis_metric <- unique(grep("variance", data[,5]), grep("ranges", data[,5]))
+Claddis_methods <- unique(Claddis_data, Claddis_ordination, Claddis_metric)
+
+## Geomorph methods
+geomorph_data <- grep("landmarks", data[,2])
+geomorph_ordination <- grep("PCA", data[,4])
+geomorph_metric <- grep("distance", data[,5])
+geomorph_methods <- unique(geomorph_data, geomorph_ordination, geomorph_metric)
+
+## Geiger methods
+Geiger_data <- grep("continuous", data[,2])
+Geiger_ordination <- grep("none", data[,4])
+Geiger_metric <- grep("pair_distances", data[,5])
+Geiger_methods <- unique(Geiger_data, Geiger_ordination, Geiger_metric)
+
+## Multiple methods
+Claddis_methods2 <- Claddis_methods[-c(which(!is.na(match(Claddis_methods, geomorph_methods))), which(!is.na(match(Claddis_methods, Geiger_methods))))]
+geomorph_methods2 <- geomorph_methods[-c(which(!is.na(match(geomorph_methods, Claddis_methods))), which(!is.na(match(geomorph_methods, Geiger_methods))))]
+Geiger_methods2 <- Geiger_methods[-c(which(!is.na(match(Geiger_methods, geomorph_methods))), which(!is.na(match(Geiger_methods, Claddis_methods))))]
+
+## None classsified
+none_methods <- which(is.na(match(seq(1:nrow(data)), c(Claddis_methods2, geomorph_methods2, Geiger_methods2))))
+
+methods[none_methods] <- "other"
+methods[Claddis_methods2] <- "Claddis"
+methods[geomorph_methods2] <- "geomorph"
+methods[Geiger_methods2] <- "Geiger"
+```
+
+
+
 ```{r, fig.width = 8, fig.height = 8, eval = FALSE, echo = FALSE}
+## Colours
+cols <- presentation.palette()[c(1,4,9,8)]
+colours <- cols[as.factor(methods)]
+## Green = geomorph
+## Orange = Claddis
+## Blue = Geiger
+## Light = NA
 
-factor <- 5
-# length(unique(multi_data[,1]))
-# length(factors[[2]])
+plot(ordinated_data[,1], ordinated_data[,3], xlab = paste0("PC1 (",percentages_scree[1], "%)"), ylab = paste0("PC2 (",percentages_scree[2], "%)"), pch = 19, col = colours)
 
-col_palette <- rainbow(length(unique(data[, factor])))
-colours <- col_palette[as.factor(multi_data[, factor-1])]
+legend("bottomright", legend = levels(as.factor(methods)), col = cols, pch = 19, cex = 0.5)
+```
 
-plot(ordinated_data[,1], ordinated_data[,2], xlab = paste0("PC1 (",percentages_scree[1], "%)"), ylab = paste0("PC2 (",percentages_scree[2], "%)"), pch = 19, col = colours, main = paste0(names(factors)[factor]))
-
-legend("bottomright", legend = sort(factors[[factor]]), col = col_palette, pch = 19, cex = 0.5)
-
+```{r}
 
 ```
 

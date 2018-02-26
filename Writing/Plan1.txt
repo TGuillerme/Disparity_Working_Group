@@ -1,0 +1,29 @@
+DISPARATE VIEWS ON DISPARITY:
+
+Introduction:
+1 - disparity is observed everywhere (classic “since the time of the Ancient, blablabla”)
+2 - historical evolution of disparity (first in palaeobiology in the 80-90s and now also in geomorph and other macro-evo methods since the 2000s)
+3 - disparity is really popular (classic google matches through time fig)
+4 - what have we been doing with disparity (why do we need it)
+5 - but is this multitude of ways no a problem?
+
+What is disparity?
+6 - How has disparity really been used since the last decades? What are the variations in data sources, ordinations, metrics and statistics?
+
+This is basically the data collection part of the paper. From 230 papers (for a total of 500 analysed), three main “disparity methods” arise (conveniently named after their R implementation below):
+
+The Claddis approach: this group of methods uses discrete morphological data (sometimes referred to as ``Cladistic'' characters) for the full organisms to build a PCO from the organism's pairwise distance as a morphospace. Disparity is then often measured as a variation of the ordinated matrix dimensions' variances or ranges (e.g. the sum of variance or/and the sum of ranges). Hypothesis are often tested using multivariate ANOVAs on the pairwise distance matrix or by simply comparing the confidence intervals overlap of the disparity from different groups.
+
+The geomorph approach: this group of method is based on landmark data (2D or 3D) on parts of the organism studied usually the skull) and use a Procrustes transformation of the landmarks that are then directly ordinated using a PCA (but sometimes RWA). Disparity is often measured as a distance metric (e.g. the distance between the species and a point in the morphospace such as its centroid). Hypothesis are then tested using ANOVA type tests with usually no phylogenetic correction (although phylogeny is sometimes used to correct the morphospace).
+
+The geiger approach: this method can directly use continuous or discrete data for the full organism without any ordination (but not necessarily), and will measure disparity as the average pairwise distance between species (whether euclidean or any other type of distance). Hypothesis of higher/lower disparity can then be measured using null evolutionary models.
+
+7 - So do we have three disparities? I.e. three approaches for tackling the same problem from different “sub-fields” (e.g. palaeobiology, morphometrics, macroevolution).
+
+Expanding disparity
+8 - How can we make sure these methods are comparable (are they)? + other problems that will arise from the meeting.
+
+9 - Which other “disparities” exist out there (dissimilarity approaches in ecology?).
+
+Conclusion
+10 - A short practical guideline to be more precise when using the word disparity. (Parham et al “best practices for calibration” style?) 
