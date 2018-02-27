@@ -1,0 +1,77 @@
+---
+title: "Figures"
+author: "Thomas Guillerme"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    fig_width: 12
+    fig_height: 6
+---
+
+# Methods part
+
+## Visualisation
+
+A multidimensional space similar to Figure 3 in Davis et al 2012 Nature.
+
+```{r}
+set.seed(1)
+## Sampling the four different groups
+size <- 10            # x                      #y                       #z
+group1 <- cbind(rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25))
+group2 <- cbind(rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size, -0.5, 0.25))
+group3 <- cbind(rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25))
+group4 <- cbind(rnorm(size,  0.5, 0.25), rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25))
+groups <- list(group1, group2, group3, group4)
+
+## Chull coordinates function
+get.chull.coords <- function(x, axis) {
+    chull_points <- chull(x[, c(axis)])
+    chull_coords <- rbind(x[chull_points, axis], x[chull_points[1], axis])
+}
+
+## Getting the coordinates
+chull_coords_xy <- lapply(groups, get.chull.coords, axis = c(1, 2))
+chull_coords_xz <- lapply(groups, get.chull.coords, axis = c(1, 3))
+
+## Empty plot function
+empty.plot <- function(xlab = "Dimension 1", ylab) {
+    par(bty = "n")
+    plot(NULL, xlim = c(-1.1, 1.1), ylim = c(-1.1, 1.1), xlab = xlab, ylab = ylab, xaxt='n', yaxt='n')
+    abline(v = 0)
+    abline(h = 0)
+}
+
+## Setting the colour palette
+col_palette <- as.list(viridis::viridis(4))
+
+
+par(mfrow = c(2, 1))
+par(mar = c(1, 4, 1, 3))
+## Plotting the first coordinates sets
+empty.plot(xlab = "", ylab = "Dimension 2")
+text(-1,1, "1", cex = 2)
+## Adding the points
+plot.points <- function(x, col, axis) points(x[, axis], col = col, pch = 19, cex = 0.7)
+silent <- mapply(plot.points, groups, col_palette, MoreArgs = list(axis = c(1, 2)))
+## Adding the polygons
+plot.polygons <- function(x, col) polygon(x[, 1], x[, 2], col = col, density = 10, border = col)
+silent <- mapply(plot.polygons, chull_coords_xy, col_palette)
+legend("bottomlef", legend = LETTERS[1:4], col = unlist(col_palette), bty = "n", pch = 19, lty = 1)
+
+par(mar = c(4, 4, 1, 3))
+## Plotting the second coordinates sets
+empty.plot(ylab = "Dimension 3")
+text(-1,1, "2", cex = 2)
+## Adding the points
+silent <- mapply(plot.points, groups, col_palette, MoreArgs = list(axis = c(1, 3)))
+## Adding the polygons
+silent <- mapply(plot.polygons, chull_coords_xz, col_palette)
+
+```
+
+
+
+
+```{r, eval = FALSE, message = FALSE, fig.width = 12, fig.height = 12, echo = FALSE}
+```
