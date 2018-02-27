@@ -247,22 +247,29 @@ However, it is important to keep in mind that there is no one-to-one mapping bet
 Ultimately, whether the data has been originally sourced or is recycled and whether any of the caveats described above are taken into account, disparity patterns will eventually be measured and analysed in another multitude of ways a we suggest that, whenever possible, this should first and foremost be considered in the design of the data collection protocol.
 
 \section{Use appropriate methods} 
-One of the major problem in disparity analysis is how to analysis data that is, in a vast majority of cases multidimensional.
+In the vast majority of morphological disparity analysis, the methodological approach ought to be multidimensional.
 Multidimensional analysis can be a really powerful tool to analysis complex datasets but also comes with many mathematical caveats and limitations.
 As any great power, it comes with great responsibilities.
 
+One first step in any statistical analysis is to visualise the data to understand its distribution and limitations at a glance.
+Unfortunately, our brains and physical world only allows us to understand a maximum of three dimensions at the same time.
+Therefore one of the main challenges is multidimensional analysis is how to reduce the number of dimensions whether this is for analysis (see box \ref{box_ordination}) or visualisation.
 
 \subsection{Visualising the multidimensional problem}
 \label{visualisation}
-One really common first step in multidimensional analysis is to reduce the number of dimensions.
-Whether this entails an ordination or not (see box \ref{box_ordination}) it is often good practice to first visualise the data.
-However, the physical reality we're living in allows a maximum of three dimensions to be visualised.
-
-First, the interpretation of the data visualisation can be misleading:
-Classically, it is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
+Because of the limitation of our physical world, it is important to remember first and foremost that visual interpretation of multidimensional data can easily be misleading.
+For example, it is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
 Note that conversely, when two groups don't overlap on a two or three dimensional plot, they \textit{do not} overlap in the multidimensional space.
 Similarly, straight lines in a 2/3D representation of a space can be misleading, depending on the geometrical properties of the space, they could not be interpreted in our intuitive Euclidean distance way.
 For example, the distance between two points A and B might not necessary be equal to the distance between B and A if the space is not Euclidean.
+
+\begin{figure}[!htbp]
+\centering
+   \includegraphics[width=0.5\textwidth]{Figures/dimensionsOverlap.pdf}
+\caption{\small{The overlap (or not) of groups can vary between dimensions.}}
+\label{Fig:RF_results_best}
+\end{figure}
+
 
 Second, because of the complexity of multidimensional spaces, it is always important to be entirely clear about what is represented in their visualisation.
 In fact, it can be easy (intentionally or not) to mislead a reader into over/under interpreting a spatial pattern if not all the key properties of the space are present in the graph.
