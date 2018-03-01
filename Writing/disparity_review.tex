@@ -260,27 +260,23 @@ Therefore one of the main challenges is multidimensional analysis is how to redu
 Because of the limitation of our physical world, it is important to remember first and foremost that visual interpretation of multidimensional data can easily be misleading.
 For example, it is incorrect to assume that because some groups overlap on a bivariate (or 3D) plot, they overlap in the whole multidimensional space (especially if the space is not euclidean!).
 Note that conversely, when two groups don't overlap on a two or three dimensional plot, they \textit{do not} overlap in the multidimensional space.
-Similarly, straight lines in a 2/3D representation of a space can be misleading, depending on the geometrical properties of the space, they could not be interpreted in our intuitive Euclidean distance way.
-For example, the distance between two points A and B might not necessary be equal to the distance between B and A if the space is not Euclidean.
+Furthermore, multidimensional spaces are not necessary Euclidean.
+Such spaces can have some non-intuitive properties, for example straight lines in some dimensions are not straight in the space or, less intuitively, distance between two points A and B might not be equal to the distance between B and A [CITE Sylvain].
 
 \begin{figure}[!htbp]
 \centering
    \includegraphics[width=0.5\textwidth]{Figures/dimensionsOverlap.pdf}
-\caption{\small{The overlap (or not) of groups can vary between dimensions.}}
+\caption{\small{Two groups overlap in some dimensions do not necessary overlap in all the dimensions. Conversely, two groups not overlapping on any dimensions don't overlap in all dimensions. In this example, no group overlaps in the multidimensional space despite the appearances.}}
 \label{Fig:RF_results_best}
 \end{figure}
 
-
-Second, because of the complexity of multidimensional spaces, it is always important to be entirely clear about what is represented in their visualisation.
+It is thus always important to be entirely clear about what is represented in multidimensional spaces visualisation.
 In fact, it can be easy (intentionally or not) to mislead a reader into over/under interpreting a spatial pattern if not all the key properties of the space are present in the graph.
 We believe that these should always include the following:
 (1) the percentage of the variation of each axis of the plot (i.e. is the majority - or all - the variation of the data present in the plot or only a fraction?);
 (2) the scale of the axis (ideally, if the space is orthogonal, it is important to keep the same scale between the axis);
 and (3) the error associated with each point, whether this is in term of measurement error (on ordination plots for example) or in standard variation (in further analysis, e.g. disparity through time).
-
 Finally, it is important to remember that for any dimensionality reduction of a multidimensional problem, the visual result will be at best a distortion of the measured reality, at worth, it won't be what it seems.
-
-% Can we do an Anscombe’s Quartet for disparity? (see: %https://en.wikipedia.org/wiki/Anscombe\%27s_quartet; Revell has done this for PCMs: http://blog.phytools.org/2017/10/phylogenetic-anscombe-datasets.html; Wills 2001 has kinda already done this though, redraw his Figure 18?)
 
 \subsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)?}
 \label{box_ordination}
@@ -297,9 +293,8 @@ This can be done through three main analysis pipelines:
 %Why to ordinate:
 These pipelines allow to reduce the dimensionality of the data.
 This is advantageous for plotting and visualising the data (see Visualisation section \ref{visualisation}) which can reveal properties of the morphospace not captured by the metrics (see Metrics section \ref{metrics}).
-Additionally, ordinating the data can allow to further reduce the number of dimensions by only selecting a number of axis based on the metric properties (mathematical - e.g. product base metric - or computational - e.g. hull based metric).
+Additionally, ordinating the data can allow to further reduce the number of dimensions by only selecting a number of axis based on the hypothesis (e.g. selecting only the axis that describe up to 95\% of the variation).
 This can be done through the scree plots (cuts off, majority axis, etc.) or other statistical analysis (Horns parallel, etc.).
-
 In the case of geometric morphometric data (point 3 above), ordination can be particularly relevant since it conserves mathematical properties of the data while efficiently reducing the dimensions: the PCA reflects the number of degrees of freedom (resulting from the superimposition), its geometry is conserved (coordinates remain Euclidean when projected into tangent space and ordinated), etc.
 This has clear advantages for interpreting the results in a lower number of dimensions.
 For example, the axis will actually represent gradients of biological variation (e.g. elongation and flattening of the beak).
@@ -307,13 +302,12 @@ This also allows easy interpretation of the proximity of the elements in space w
 
 However, some caveats can rise from such transformation of the data.
 For example, in the case of an ordination in a geometric morphometric data context, not using all the axes from the ordination (e.g. only the few first) can lead to misinterpretation of the results erroneous statistical results.
-Furthermore, interpreting the biological variation along the axis is always a \textit{post-hoc} procedure and might bear little meaning regarding the disparity question (e.g. the elongation and flattening of the beak when the disparity question is about flight pattern disparity).
+Furthermore, interpreting the biological variation along the axis is always a \textit{post-hoc} procedure and might bear little meaning regarding the disparity question (e.g. the elongation and flattening of the beak when the question is about flight pattern disparity).
 
 In fact, in many cases, depending on the question, ordination might actually not be necessary.
-For example, if the disparity metric relies on all the data (for example the sum of variance or the sum of ranges) it is not necessary to calculate in on ordinated data.
+For example, if the disparity metric relies on all the data (for example the sum of variance or the sum of ranges) it is not necessary to calculate it on ordinated data [e.g. CITE Close].
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data is non Euclidean (e.g. discrete morphological characters), the ordination can be problematic (character hierarchy - i.e. inapplicable -, polymorphisms, missing data), and the resulting non-Euclidean ordinated space can be difficult to interpret.
-In such case, distances can be inappropriate in a mathematical (and colloquial) sense (e.g. the distance between A and B might differ from the distance between B and A).
+For example, when the analysed data is non Euclidean (e.g. discrete morphological characters), the ordination can be problematic (character hierarchy - inapplicable -, polymorphisms, missing data), and the resulting non-Euclidean ordinated space can be difficult to interpret.
 This can be problematic when comparing the position of groups in the multidimensional space since the measured distances might not be comparable among each other.
 Furthermore, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axis can be simply impossible or meaningless biologically (e.g. the ratio of data coded as 1 rather than 0).
 
@@ -322,19 +316,20 @@ Regarding these advantages and inconvenient of ordination technique, we strongly
 
 \subsection{Phylogeny}
 For many disparity analysis looking at macroevolutionary questions, phylogeny is often taken into account, whether for including estimates of ancestors or to add a phylogenetic structure to the data.
-For the latter, multivariate phylogenetic comparative methods have been reviewed recently by [CITE] %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
+For the latter, multivariate phylogenetic comparative methods have been reviewed recently by [CITE Adams] %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
 and will thus not covered further in this review.
 
 \subsubsection{Ancestral states estimation}
 When looking at disparity in the past (e.g. disparity-through-time) ancestral states estimations are a common approach.
 Ancestral states estimations can be used in two ways:
-(1) either before transformation of the data (e.g. ordination, distance matrix, etc.) by simply estimating the ancestral states based on the original dataset and adding them to it [CITE].
-(2) else after transformation of the data by estimating the ancestral states based on the transformed matrix (e.g. the ordination scores) [CITE].
-The first method is generally thought to be more thorough but can imply longer computation and will change the ordinated space configuration.
-The second is much more faster and does not change the ordinated space configuration (i.e. the ancestors can be seen as averages between tips in the space) but it will change the properties of the space (variance and degrees of freedom).
-MORE UPCOMING WORK ON THAT
+\begin{enumerate}
+\item pre-ordination: the estimations is done before transformation of the data (e.g. ordination, distance matrix, etc.) and is simply based on the original dataset[CITE].
+\item post-ordination: the estimation is done else after transformation of the data by estimating the ancestral states based on the transformed matrix (e.g. the ordination scores) [CITE].
+\end{enumerate}
+Pre-ordination ancestral states estimation can change the ordinated space geometry (i.e. the relation between the points not estimated) and implies longer computational method but once the morphospace is defined, it will remain constant (i.e. its properties won't change).
+Post ordination ancestral states estimation will not change the ordinated space geometry and will be faster to compute, however, it will change the morphopspace's properties such as the number of parameters (i.e. elements in the space - this can be problematic for statistical tests down the line) or the variance per axis [CITE Graeme's paper to be?].
 
-More importantly however, one needs to keep in mind that using such methods can come with several caveats.
+More importantly, however, one needs to keep in mind that using such methods can come with several caveats.
 First and foremost, although ancestral states estimations are valid methods in macroevolution, they results are highly dependent on the data and chosen methods.
 Secondly, more specific to disparity analysis, when using post-transformation ancestral states estimation, the morphospace can be saturated leading pairwise distance bases metrics to tend to zero.
 In general, using ancestral states estimation can bring much insights for recovering patterns of changes in disparity but should not be ``used'' simply to generate extra data points for statitstical reasons.
