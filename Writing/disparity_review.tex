@@ -171,19 +171,21 @@ Second, even where there is a clear question being explored, the data being used
 Third, the methods being used to analyse these datasets may not always be appropriate for the question and/or data at hand.
 Here we deal with some of these issues and present best practice guidelines to allow researchers to optimise their questions before performing a disparity analysis.
 
-\section{What is your question}
-Why are you performing a disparity analysis?
+\section{What is the question?}
+Why perform a disparity analysis?
 This seems like it should be obvious, but we stress its crucial importance.
 The last decade has seen a vast array of new methods being published and implemented in freely available software, making disparity analyses easy to perform \citep{bouxin2005ginkgo,oksanen2007vegan,geiger2008,zelditch2012geometric,adams2013geomorph,Claddis,dispRityv02,adams2017geometric}.
 However, this (consciously or not) pushes authors towards performing disparity analyses simply because of their ease of use, rather than stemming from a question driven approach.
 Before rushing into a disparity analysis, one should consider some basic caveats.
 For example, one major thing to consider is circularity: if the aim is to explore the variation in a dataset, disparity analysis is perfectly valid.
-However, if this exploratory analysis reveals distinct groups, it would be circular to then test for differences among those groups as if this had been your hypothesis all along [CITE stats 1.0].
+However, if this exploratory analysis reveals distinct groups, it would be circular to then test for differences among those groups as if this had been the hypothesis all along [CITE stats 1.0].
 This can easily be avoided by using a subset of the data for preliminary data exploration, and then using the full dataset to test for differences among any groups that emerge.
-Clearly framing your questions and their null expectations will help in designing better disparity analyses.
+Clearly framing questions and their null expectations will help in designing better disparity analyses.
 
 \section{Collect the appropriate data}
-Once you have a clear question, it is important to collect the appropriate data for that question to avoid some major caveats.
+Once you 
+%TG: not sure about using "you" all the time. I feel it does add some patronising tone the whole yoke.
+have a clear question, it is important to collect the appropriate data for that question to avoid some major caveats.
 For example, if a study focusses on the ecological adaptive radiation of a group, ecological traits are crucial and should be preferred over purely evolutionary traits.
 Tangentially, more data are not necessarily better, especially when the data were originally collected for different questions (e.g. cladistic data - see below).
 
@@ -195,16 +197,11 @@ Morphological disparity analysis can be based on three main types of data:
     \item or any mixture of discrete and continuous data (e.g. ratios [CITE]).
 \end{enumerate}
 None of these types of data are fundamentally better but each will be more appropriate for specific questions.
-For example, when investigating variation within bat wing shapes, homologous landmarks (for geometric morphometrics analysis) or continuous measurements of bones may be appropriate.
-On the other hand, if the question focuses on the convergence between bat and bird wings, the homology of the traits to measure is more complex to define and the contour of the wings might more readily answer the question. % NC: This section might need more explanation and/or some more examples
-
-
-
-
-%TG: add the bat example for above
-
-
-
+For example, when investigating variation within bat wing shapes, both homologous landmarks (for geometric morphometrics analysis) or continuous measurements of bones may be appropriate.
+On the other hand, if the question focuses on the convergence between bat and bird wings, the homology of the traits to measure is more complex to define and the contour of the wings might more readily answer the question. % NC: This section might need more explanation and/or some more examples - %TG: here's a try.
+This illustrates the importance of framing the question.
+In this above example, if the question is whether the aerodynamic properties of wings varies within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
+Conversely if the question focuses on phylogenetic convergence aspects between different types of active flights, it might be more pertinent to use evolutionary traits that facilitate active flights within and between both groups (e.g. digits length, head shape, etc.).
 
 \subsection{How much data to collect?}
 Regardless of the type of data, another important consideration is how much data to collect, in terms of numbers of both specimens and traits.
@@ -217,22 +214,23 @@ There are several important considerations.
     Conversely, if a study focuses on canid skull variation through time, interspecific data is most appropriate.
     % intra-specific variation will not have major impact (up until the Holocene). %http://www.journals.uchicago.edu/doi/abs/10.1086/650372
     \item \textit{Sample size}
-    There is always a trade-off between collecting enough data and the time allocated to a project.
+    There is always a trade-off between collecting enough data and the time and resources allocated to a project.
     It is important to ensure that the data is collected in a way that will not bias subsequent statistical analysis.
     For example, if the aim is to compare disparity among groups, one should collect, where possible, a similar amount of data for each group.
     When this is not possible (e.g. for palaeontological data), one should use statistical approaches to correct or assess biases due to data collection (e.g. rarefaction analysis [CITE]).
     Equally, one should ensure that enough data is available so that the methods have power to detect the patterns being tested.
-    \item \textit{Are the data consistent?} %NC: Not suer I get this section. What do you mean by consistent???? Also does this fit into the "how much data" section or is it a seaprate consideration?
-    This is maybe the most important question related to the nature of the data.
-    It is essential that the data is consistent and homogeneous to make sure that the disparity patterns can be linked to general processes rather than being simply the reflection of idiosyncrasies in the data set.
-    For example, are the observed differences between two groups not related to the group's specificities (e.g. sexual dimorphism)?
-    Are the elements fairly consistent and comparable them?
-    Data can be missing, non overlapping, hierarchical (e.g. inapplicable), ambiguous, polymorphic or correlated.
-    In any of these cases, are the patterns a mere reflection of these inconsistencies?
-    For example, if one uses disparity analysis of locomotory modes among vertebrates and the collected data is hierarchical, limb data could create an artificial grouping of non-tetrapods and limbless tetrapods (e.g. snakes) that could not reflect processes.
+    % \item \textit{Are the data consistent?}
+        %NC: Not suer I get this section. What do you mean by consistent???? Also does this fit into the "how much data" section or is it a seaprate consideration?
+        %TG: fair enough. This was kind of the miscellaneous section steming from the discussion on data (bullet points about the importance of sexual dimorphism, etc...)
+    % This is maybe the most important question related to the nature of the data.
+    % It is essential that the data is consistent and homogeneous to make sure that the disparity patterns can be linked to general processes rather than being simply the reflection of idiosyncrasies in the data set.
+    % For example, are the observed differences between two groups not related to the group's specificities (e.g. sexual dimorphism)?
+    % Are the elements fairly consistent and comparable them?
+    % Data can be missing, non overlapping, hierarchical (e.g. inapplicable), ambiguous, polymorphic or correlated.
+    % In any of these cases, are the patterns a mere reflection of these inconsistencies?
+    % For example, if one uses disparity analysis of locomotory modes among vertebrates and the collected data is hierarchical, limb data could create an artificial grouping of non-tetrapods and limbless tetrapods (e.g. snakes) that could not reflect processes.
 \end{itemize}
-Of course in practice some of these caveats are unavoidable. 
-Data collection is often constrained by the time available, financial considerations and other unavoidable issues, however, these caveats should be kept in mind during the analyses and subsequent interpretation of the results. % NC: I'd be tempted to move this to the end of the section to finish it off.
+Of course in practice some of these caveats are unavoidable, especially when dealing with the vertebrate fossil record.
 
 \subsection{Recycling data}
 A common practice in disparity analysis is to recycle data from other studies which can introduce additional problems.
@@ -242,8 +240,10 @@ This data can therefore artificially lead to maximised disparity among taxa [Foo
 A relatively simple way to reduce this specific bias is to select the most pertinent characters for the question from the dataset, rather than using all the data.
 For example, in a study of disparity of dietary niches, removing non-dietary characters is a good approach.
 However, it is important to remember that there is no one-to-one mapping between form and function, and that some characters can have multiple functions (e.g. limb traits can be used for both locomotion and feeding).
-%Ultimately, whether the data was collected for the purpose of the study or is recycled, and whether any of the caveats described above are taken into account, disparity patterns will eventually be measured and analysed in another multitude of ways a we suggest that, whenever possible, this should first and foremost be considered in the design of the data collection protocol. 
-%NC: Not sure these linking statements are needed
+
+Ultimately, data collection is often constrained by the time available, financial considerations and other unavoidable issues, however, these caveats should be kept in mind during the analyses and subsequent interpretation of the results.
+
+
 
 \section{Use appropriate methods} 
 In the vast majority of morphological disparity analyses, the methodological approach will be multidimensional.
