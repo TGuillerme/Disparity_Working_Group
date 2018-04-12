@@ -296,16 +296,26 @@ For example, the axes will represent gradients of biological variation (e.g. elo
 
 However, some caveats can arise from such transformations of the data.
 For example, in the case of an ordination in a geometric morphometric data context, not using all the axes from the ordination (e.g. only the first few) can lead to misinterpretation of the results.
-Furthermore, interpreting biological variation along the axes is always a \textit{post-hoc} procedure and might have little relation to the disparity question (e.g. if the first few axes represent the elongation and flattening of the beak, but the question is about wing disparity).
-In many cases, depending on the question, ordination might not be necessary.
-For example, if the disparity metric being used (see below) relies on all the data (for example the sum of variance or the sum of ranges) it is not necessary to calculate it on ordinated data [e.g. CITE Close].
+Furthermore, interpreting biological variation along the axes is always a \textit{post-hoc} procedure and might have little relation to the disparity question (e.g. if the first few axes represent the elongation of the beak, but the question is about wing disparity).
+
+In many cases, ordination might not be necessary.
+For example, if the disparity metric being used (see below) relies on all the data (see Metric session) it is not necessary to calculate it on ordinated data [e.g. CITE Close].
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data is non-Euclidean (e.g. discrete morphological characters), the ordination can be problematic (due to character hierarchy, inapplicable characters, polymorphisms, and missing data), and the resulting non-Euclidean ordinated space can be difficult to interpret.
+For example, when the analysed data is non-Euclidean (e.g. discrete morphological characters), the ordination can be problematic ([cite Melanie's future paper here]), and the resulting non-Euclidean ordinated space can be difficult to interpret ([probably cite Sylvain's here]).
 This can be problematic when comparing the position of groups in the multidimensional space, as the measured distances might not be comparable.
-Furthermore, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axes can be impossible or biologically meaningless (e.g. the ratio of data coded as 1 rather than 0). % NC: Need to explain this point more clearly
+Finally, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axes can be impossible or biologically meaningless.
+Although some gradients might be easy to detect or interpret (e.g. the elongation of the beak along the first axis), they can often be hard to interpret in morphological gradients terms or simply non-interpretable (e.g. with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more states 0).
 
 Because of these points, we strongly recommend that data for multidimensional analyses is not automatically ordinated, and that careful consideration is given to whether the question can be answered without ordination.
 \subsection{[Box] end}
+
+
+
+
+
+
+
+
 
 \subsection{Phylogeny}
 For many disparity analyses of macroevolutionary questions, phylogeny is often taken into account, whether for including estimates of ancestors or to add phylogenetic structure to the data.
