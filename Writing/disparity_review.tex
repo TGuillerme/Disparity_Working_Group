@@ -265,20 +265,20 @@ Such non-Euclidean spaces often have non-intuitive properties, for example strai
 \caption{\small{Two groups that overlap in some dimensions do not necessary overlap in all dimensions. 
 Conversely, two groups that do not overlap in some dimensions can overlap in other dimensions.
 In this example for the groups A and B to truly overlap, they must overlap in all three dimensions displayed here.
-Although these groups overlap in the two first dimensions (panel 1), they do not overlap between the dimension 1 and 3 thus do no overlap in the multidimensional space at all.
-The inverse is of course true as well: if two groups don't overlap between two dimensions (D and C in panel 1), they do not overlap in the multidimensional space, even if they overlap between any other combination of dimensions (dimensions 1 and 3 in panel 2).}} 
+Although these groups overlap in the two first dimensions (panel 1), they do not overlap in dimensions 1 and 3 thus do not overlap in the multidimensional space at all.
+The inverse is of course true: if two groups don't overlap in two dimensions (D and C in panel 1), they do not overlap in the multidimensional space, even if they overlap in any other combination of dimensions (dimensions 1 and 3 in panel 2).}} 
 \label{Fig:RF_results_best}
 \end{figure}
 
 It is therefore vital to be clear about what is represented in multidimensional space visualisations.
 In fact, it can be easy (intentionally or not) to mislead a reader into over/under interpreting a pattern if all the key properties of the space are not present in the graph.
 We suggest visualisations should include the following:
-(1) the percentage of the variation explained by each axis of the plot (i.e. is the majority - or all - the variation of the data present in the plot or only a fraction?);
+(1) the percentage of the variation explained by each axis of the plot (i.e. is the majority - or all - the variation in the data present in the plot or only a small fraction?);
 (2) the scale of the axes (ideally, if the space is orthogonal, it is important to keep the same scale across the axes);
-and (3) the error associated with each point, whether this is in terms of measurement error (on ordination plots for example) or some other measure of standard variation (in further analysis, e.g. disparity through time).
+and (3) the error associated with each point, whether this is in terms of measurement error (on ordination plots for example) or some other measure of standard variation (in further analysis, e.g. disparity-through-time plots).
 Finally, it is important to remember that for any dimensionality reduction of a multidimensional problem, the visual result will be at best a distortion of the measured reality, at worst, it will be misleading (see box \ref{box_ordination}).
 
-\subsection{[Box]To ordinate or not to ordinate (that is the multidimensional question)?}
+\subsection{[Box]To ordinate or not to ordinate; that is the (multidimensional) question?}
 \label{box_ordination}
 % One of the most common approaches to analysing multidimensional data is to use ordination techniques.
 % These consist of transforming the dataset along its major axis of variation through various mathematical methods [Legender \& Legendre].
@@ -291,7 +291,7 @@ Finally, it is important to remember that for any dimensionality reduction of a 
 % \end{enumerate}
 % %TG: Check with Melanie for the figure? - apparently she has one.
 
-Reducing the dimensionality through ordination of the data can be advantageous for plotting and visualising the data which can reveal properties of the morphospace not captured by the metrics (see Metrics section \ref{metrics}).
+Reducing the dimensionality of data through ordination can be advantageous for plotting and visualising the data, and can reveal properties of the morphospace not captured by disparity metrics (see Metrics section \ref{metrics}).
 Additionally, after ordinating the data it is possible to further reduce the number of dimensions by only selecting a certain number of axes (e.g. selecting only the axes that describe up to 95\% of the variation).
 In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions.
 %the PCA reflects the number of degrees of freedom (resulting from the superimposition), its geometry is conserved (coordinates remain Euclidean when projected into tangent space and ordinated), etc.%TG: removed below for now.
@@ -303,23 +303,15 @@ For example, in the case of an ordination in a geometric morphometric data conte
 Furthermore, interpreting biological variation along the axes is always a \textit{post-hoc} procedure and might have little relation to the disparity question (e.g. if the first few axes represent the elongation of the beak, but the question is about wing disparity).
 
 In many cases, ordination might not be necessary.
-For example, if the disparity metric being used (see below) relies on all the data (see Metric session) it is not necessary to calculate it on ordinated data [e.g. CITE Close].
+For example, if the disparity metric being used relies on all the data (see Metrics section \ref{metrics}) it is not necessary to calculate it on ordinated data [e.g. CITE Close].
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
 For example, when the analysed data is non-Euclidean (e.g. discrete morphological characters), the ordination can be problematic ([cite Melanie's future paper here]), and the resulting non-Euclidean ordinated space can be difficult to interpret ([probably cite Sylvain's here]).
 This can be problematic when comparing the position of groups in the multidimensional space, as the measured distances might not be comparable.
 Finally, the \textit{post-hoc} interpretation of the gradient of variation on the ordination axes can be impossible or biologically meaningless.
-Although some gradients might be easy to detect or interpret (e.g. the elongation of the beak along the first axis), they can often be hard to interpret in morphological gradients terms or simply non-interpretable (e.g. with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more states 0).
+Although some gradients might be easy to detect or interpret (e.g. the elongation of the beak along the first axis), they are often hard to interpret in terms of morphological gradients or simply non-interpretable (e.g. with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more in state 0 has no biological meaning).
 
 Because of these points, we strongly recommend that data for multidimensional analyses is not automatically ordinated, and that careful consideration is given to whether the question can be answered without ordination.
 \subsection{[Box] end}
-
-
-
-
-
-
-
-
 
 \subsection{Phylogeny}
 For many disparity analyses of macroevolutionary questions, phylogeny is often taken into account, whether for including estimates of ancestors or to add phylogenetic structure to the data.
