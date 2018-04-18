@@ -113,9 +113,16 @@ $^{10}$Bristol}
 \newpage
 \begin{abstract}
 
-\begin{enumerate}
-    blablalbalba
-\end{enumerate}
+Variation in organisms' shape, ecology or behaviour is often more discrete rather than continuous.
+One way to study this variation was pioneered in the 1990s by looking at the disparity of morphologies in the Cambrian.
+Morphological disparity analysis - a term encompassing both the patterns and process of morphological evolution through time - became rapidly popular and lead to numerous publications in the last two decades.
+
+Here, we suggest that this diversification of disparity analysis lead to two contrasted effects:
+(1) the great diversity of methodological approaches to study disparity makes it sometimes hard to understand all caveats and pitfalls of such analysis - a problem that can lead to major misinterpretation of disparity patterns - and;
+(2) in essence, disparity is a pattern of variation meaning that disparity analysis can be expanded beyond the study of morphology.
+
+In this review, we propose a set of non-prescriptive guidelines that will help researchers to think about specific disparity analysis designs, with their caveats and their advantages.
+Furthermore, we highlight potential avenues of expansion of disparity analysis both in terms of improving the existing methods for studying morphological disparity and in terms of expanding disparity analysis beyond morphology.
 
 \end{abstract}
 
@@ -168,8 +175,7 @@ With the expansion of methodological approaches in the last decade, we identify 
 First, many recent studies have lost focus; they are no longer hypothesis-driven, instead they are undertaken to characterise biological variation for its own sake.
 Second, even where there is a clear question being explored, the data being used for disparity analyses is inappropriate and often driven by the availability of large datasets rather than the question being asked.
 Third, the methods being used to analyse these datasets may not always be appropriate for the question and/or data at hand.
-Here we deal with some of these issues and present best practice guidelines to allow researchers to optimise their questions % NC: Do we mean questions here or analyses or something else?
- before performing a disparity analysis.
+Here we deal with some of these issues and present best practice guidelines to allow researchers to optimise their disparity analysis.
 
 \section{What is the question?}
 Why perform a disparity analysis?
@@ -184,7 +190,7 @@ Clearly framing questions and their null expectations will help in designing bet
 
 \section{Collect the appropriate data}
 Once one has a clear question, it is important to collect the appropriate data for that question to avoid some major caveats.
-For example, if a study focuses on the ecological adaptive radiation of a group, ecological traits are crucial and should be preferred over other kinds of traits, such as those used for species delimitation. % NC: I changed it from evolutionary here to make it clear what an evolutionary trait would be
+For example, if a study focuses on the ecological adaptive radiation of a group, ecological traits are crucial and should be preferred over other kinds of traits, such as those used for species delimitation.
 Tangentially, more data are not necessarily better, especially when the data were originally collected for different questions (e.g. cladistic data - see below).
 
 \subsection{Data types}
@@ -219,11 +225,6 @@ Regardless of the type of data, another important consideration is how much data
 
 Of course in practice some of these caveats are unavoidable, especially when dealing with the vertebrate fossil record.
 
-    % \item \textit{Are the data consistent?}
-        %NC: Not sure I get this section. What do you mean by consistent???? Also does this fit into the "how much data" section or is it a seaprate consideration?
-        %TG: fair enough. This was kind of the miscellaneous section steming from the discussion on data (bullet points about the importance of sexual dimorphism, etc...) 
-        % NC: How about adding an "other considerations" subsection to mention all this stuff? Draft below, you may want to edit.     
-
 \subsection{Recycling data}
 A common practice in morphological disparity analysis is to recycle data from other studies which can introduce additional problems.
 One classic case is using ``cladistic'' data in palaeobiology.
@@ -236,9 +237,9 @@ However, it is important to remember that there is no one-to-one mapping between
 \subsection{Other data considerations}
 There are many other considerations when choosing the appropriate data to use. 
 It is essential to ensure that disparity patterns can be linked to general processes rather than being simply the reflection of idiosyncrasies in the data.
-For example, are the observed differences between two groups related to factors unrelated to group designation, e.g. sexual dimorphism?
+For example, are the observed differences between two groups related to factors unrelated to group designation such as sexual dimorphism?
 Are the taxa/groups being compared fairly consistent and truly comparable?
-In addition, data can be missing, non-overlapping, hierarchical (e.g. inapplicable), ambiguous, polymorphic or correlated.
+In addition, data can be missing, non-overlapping, hierarchical (e.g. inapplicable), ambiguous, polymorphic or correlated [String of morpho data problems cite].
 It is important to ensure that any patterns detected are not merely reflections of these features of the data.
 
 Ultimately, data collection is often constrained by the time available, financial considerations and other unavoidable issues, however, these caveats should be kept in mind during the analyses and subsequent interpretation of the results.
@@ -258,6 +259,7 @@ For example, it is incorrect to assume that because some groups overlap on a biv
 Conversely, when two groups do not overlap on a two or three dimensional plot, this does not mean they never overlap in the multidimensional space.
 Furthermore, multidimensional spaces are not necessary Euclidean.
 Such non-Euclidean spaces often have non-intuitive properties, for example straight lines in some dimensions are not straight in the space and, even less intuitively, the distance between points A and B might not be equal to the distance between points B and A [CITE Sylvain].
+
 
 \begin{figure}[!htbp]
 \centering
@@ -294,7 +296,6 @@ Finally, it is important to remember that for any dimensionality reduction of a 
 Reducing the dimensionality of data through ordination can be advantageous for plotting and visualising the data, and can reveal properties of the morphospace not captured by disparity metrics (see Metrics section \ref{metrics}).
 Additionally, after ordinating the data it is possible to further reduce the number of dimensions by only selecting a certain number of axes (e.g. selecting only the axes that describe up to 95\% of the variation).
 In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions.
-%the PCA reflects the number of degrees of freedom (resulting from the superimposition), its geometry is conserved (coordinates remain Euclidean when projected into tangent space and ordinated), etc.%TG: removed below for now.
 This has clear advantages for interpreting the results.
 For example, the axes will represent gradients of biological variation (e.g. elongation and flattening of the beak REF).
 
