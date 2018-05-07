@@ -352,7 +352,7 @@ Additionally to the desired properties of what the metrics should capture, it is
 For example, measuring the full sum of the variance of each dimensions of the space does not require to add the co-variance between the axis in a ordinated space using a PCA.
 This is not true however in other mathematical spaces or (even in a PCA) when not all dimensions or all the elements are considered (e.g. when only looking at a group within the morphospace, the sum of variances is not mathematically equal to the sum of the variance of each dimensions in the space).
 Furthermore, multidimensional space have some counter-intuitive properties that needs to be taken into account such as the curse of dimensionality [CITE].
-For example, product based metrics as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards 0 fairly quickly for spaces even with a modest number of dimensions [CITING Bellman 1957; also see \url{https://beta.observablehq.com/@tophtucker/theres-plenty-of-room-in-the-corners} for an excellent illustration of the problem].
+For example, product based metrics as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards 0 fairly quickly for spaces even with a modest number of dimensions [CITING Bellman 1957; also see \url{https://beta.observablehq.com/@tophtucker/theres-plenty-of-room-in-the-corners} for an excellent illustration of the problem and Donoho 2000 Aide-Memoire].
 Some other types of metrics are also extremely sensitive to outliers and can be easily biased by sample size such as range or convex hull based metrics.
 
 
@@ -383,33 +383,41 @@ Therefore, explicitly stating the hypothesis might help understanding which test
 Another caveat for applying statistical tests on disparity data is on which data to actually apply the test.
 In fact, in morphological disparity analysis (especially for palaebiological questions), data is often bootstrapped.
 This has two useful advantages: first, when the disparity metric is unidimensional (e.g. the sum of variances or the average squared pairwise distance), bootstrapping the data will generate a distribution of this unidimensional metric that can then be analysed using the vast statistical toolkit to compare distributions; second, when the data is scarce (e.g. for palaeontological data), bootstrapping the data will allow to introduce statistical variance and will render the test less sensitive to outliers.
-However, bootstrapping the data also comes with an important caveat: the data analysed is pseudo-replicate and thus non-independant.
+However, bootstrapping the data also comes with an important caveat: the data analysed is pseudo-replicate and thus non-independent.
 This can violate most of the parametric statistical tests assumptions.
 Furthermore, it is important to remember that the number of bootstrap pseudo-replicates will inevitably increase the type I error.
 
 \section{Future directions}
+As mentioned above, there is no ``one-size-fit-all'' morphological disparity analysis pipeline.
+As in any multidimensional analysis, there are a lot of nuances in which data to use and how to analyse it, all stemming from the explicit formulation of the disparity hypothesis.
+To understand these nuances, it is important to remember that: (1) morphological disparity analysis are not new in essence and much effort has been made in developing the our methods and (2) multidimensional analysis are by far not restricted to morphological data analysis and solutions to specific problems can be found in the literature not focused on morphology (especially ecology and mathematics).
 
-\subsection{Do we need to adapt our methods?}
-Are there lessons/methods from other fields we use?
-Sample sizes: we need to be careful about them! (e.g. for detecting holes etc.).
-Time series: same! Palaeontology data is not readily available (hence ancestral estimates) and might not be appropriate for doing time series analysis (across long time scales at least).
-Caveats of disparity
-Statistical issues e.g. covariance
-95\% or all PCs?
-Phylogenetic correlations
-Avoid using shiny new methods unless you understand
-Outline assumptions of different approaches--make clear caveats
+We believe that many of the caveats in morphological disparity analysis can arise simply by applying methodological pipelines (often new and powerful ones) but at the expense of sometimes loosing sight of the actual biological question tested in the analysis.
+We therefore advice to keep the methodology simple and tractable, at least in the preliminary analysis.
+Also, many of the caveats and technical problems in disparity analysis have been tackled in other fields namely ecology.
+In fact, ecological questions are often closely related to evolutionary ones and ecological data is also often multidimensional [CITE DONOHUE's papers].
 
+\subsection{How can we adapt our methods?}
+Each of the points outlined above can be the start of an entire new methodological question (and often already are).
+Although it is impossible to cover the state-of-the-art exhaustively for each of these points here are several solutions and/or directions for adapting our methodological choices:
 
-\subsubsection{Disparity models}
-What are our null hypotheses?
-Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic null is that disparity increases with diversity; how do we diverge from that (show these morpho/genome distance divergence/convergence).
-We can have a null model that is based on simple Brownian increase in disparity (gradual). 
-Null: is the null increase in disparity dependent on a random walk and on a tree shape?
-Maybe we don’t want to think about a null model but rather think about good models to fit. 
-We haven’t explored much about fitting models like explaining holes, effects of extinction etc...
-Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
-
+\begin{itemize}
+    \item{Which data?}
+    [One line abstract of Melanie's paper on inapplicable data].
+    Furthermore, some simple methods already exist to correct for caveats in the datasets. 
+    For example, to correct for the scarcity of the fossil record, on can use methods as simple as rarefaction analysis to take sample size into account [CITE].
+    \item{How to visualise it?}
+    [One line abstract of Sylvain's paper on morphospaces plottings].
+    One major problem of such multidimensional analyses is that treating with high dimensional spaces is hard (or even impossible) to conceptualise.
+    One solution to that could be to use more simple 2D/3D ordinations.
+    For examples using and MDS and reducing that data to only two or three dimensions for visualisation purposes only; or alternatively, reducing the number of variables prior to the analysis specifically for visualisation [e.g Raup-spaces CITE].
+    \item{What to measure?}
+    This question, although crucial might actually be the easier to tackle by simply using known metrics with desired properties, proposing new metrics, or (even better) using a combination of metrics that will represent a combinations of properties of interest in the morphospace (for example, focusing on both the size and a position of a group in the morphospace).
+    \item{How to test hypothesis?}
+    Finally, it is possible to use non-parametric methods to test specific disparity questions.
+    For example, using the extant of available software and computer power available, it could be possible to propose specific null models on the expectancy of what disparity results would be expected to look like under such or such model.
+    This has been already successfully used in ecology (DIAZ paper) and is currently implemented in palaeobiology (Mark stuff).
+\end{itemize}
 
 
 \subsection{Where do we go from there?}
