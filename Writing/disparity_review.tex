@@ -370,32 +370,24 @@ Some other types of metrics are also extremely sensitive to outliers and can be 
 % \end{itemize}
 
 \subsection{Tests}
-Similarly to all the points covered above, which statistical test to apply solely depends on which question is tackled with disparity analysis (i.e. which hypothesis to test).
-On the other hand, some tests (such as permanovas [CITE]) are actually \textit{not} taking into account the disparity measured but are simply based on the distribution of the taxa into the space (or simply their pairwise distances in the case of PERMANOVAS).
+Similarly to all the points covered above, the statistical test to apply solely depends on which question is tackled with disparity analysis (i.e. which hypothesis to test).
+Considering the question, the data, the ordination method used (or the absence thereof) and the metric used, the statistical test should be based on a clearly state hypothesis.
+This might seem obvious but we believe doing so greatly enhances the framing of the analysis and its comprehension by future readers.
 
-Furthermore, bootstraps are often used in morphological disparity analysis as a mean to get a distribution from a single disparity value [CITE].
-While this method is valid in itself, it comes with several caveats.
-First, it is important to consider that bootstrapping the disparity values creates a distribution of them (e.g. a distribution of sum of variances from a bootstrapped morphospace).
-Therefore, the error associated with the bootstrap is reflecting the ``stability'' of the metric, not the extremes of the distribution of the data (\textit{c.f.} when bootstrapping a disparity distribution; e.g. the distribution of all the distances from centroids from a bootstrapped morphospace).
-In the first and most common case, the amount of bootstraps artificially increases the type I error.
-Furthermore, when comparing two groups, the comparison is one of the disparity of two groups using their ``stability'' as variance. 
+For example, one commonly used test in morphological analysis, is the non parametric permutation anovas [NPANOVA or PERMANOVA; CITE Anderson + examples].
+This test and its implementations is perfectly valid to test whether two groups have a different variance/covariance but is based on the pairwise distances of the group elements.
+This test will ignore any eventual ordination (if the data was ordinated) and is not based on a uni-dimensional disparity metric.
+In other words, if one observes no overlap between two groups on the two first axis of a PCA, the hypothesis H0 that the two groups overlap in the morphospace is not directly tested by a PERMANOVA which tests rather whether the two groups share the same variance/covariance based in a ``distance-space''.
+Therefore, explicitly stating the hypothesis might help understanding which test to apply depending on the disparity analysis question.
 
-Best practices:
-\begin{itemize}
-\item make sure your metrics are capturing what you are testing
-\item check out the test assumptions
-\item Know if and how your dataset is violating assumptions.
-\end{itemize}
+Another caveat for applying statistical tests on disparity data is on which data to actually apply the test.
+In fact, in morphological disparity analysis (especially for palaebiological questions), data is often bootstrapped.
+This has two useful advantages: first, when the disparity metric is unidimensional (e.g. the sum of variances or the average squared pairwise distance), bootstrapping the data will generate a distribution of this unidimensional metric that can then be analysed using the vast statistical toolkit to compare distributions; second, when the data is scarce (e.g. for palaeontological data), bootstrapping the data will allow to introduce statistical variance and will render the test less sensitive to outliers.
+However, bootstrapping the data also comes with an important caveat: the data analysed is pseudo-replicate and thus non-independant.
+This can violate most of the parametric statistical tests assumptions.
+Furthermore, it is important to remember that the number of bootstrap pseudo-replicates will inevitably increase the type I error.
 
-\subsubsection{Models}
-What are our null hypotheses?
-Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic null is that disparity increases with diversity; how do we diverge from that (show these morpho/genome distance divergence/convergence).
-We can have a null model that is based on simple Brownian increase in disparity (gradual). 
-Null: is the null increase in disparity dependent on a random walk and on a tree shape?
-Maybe we don’t want to think about a null model but rather think about good models to fit. 
-We haven’t explored much about fitting models like explaining holes, effects of extinction etc...
-Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
-
+\section{Future directions}
 
 \subsection{Do we need to adapt our methods?}
 Are there lessons/methods from other fields we use?
@@ -409,14 +401,30 @@ Avoid using shiny new methods unless you understand
 Outline assumptions of different approaches--make clear caveats
 
 
+\subsubsection{Disparity models}
+What are our null hypotheses?
+Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic null is that disparity increases with diversity; how do we diverge from that (show these morpho/genome distance divergence/convergence).
+We can have a null model that is based on simple Brownian increase in disparity (gradual). 
+Null: is the null increase in disparity dependent on a random walk and on a tree shape?
+Maybe we don’t want to think about a null model but rather think about good models to fit. 
+We haven’t explored much about fitting models like explaining holes, effects of extinction etc...
+Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
 
-\section{Where do we go from there?}
+
+
+\subsection{Where do we go from there?}
 4 - This a list of problems for the future/moving forward
     Simulations 
     Form/function
 Isospaces, glottospaces, acoustospace, ecospace, life-history-spaces, etc. All just a multidimensional analysis? Needs for terms?
     
-``We asked whether we could but not whether we should'' (Jurassic Park)
+
+
+
+%Concluding words:
+Although disparity analysis have been rendered easy to perform from the user end (CITE packages tools), it is crucial to remember that they are first and foremost multidimensional analysis; and multidimensional analysis are complex.
+In Jurassic Park, Dr Ian Malcolm summarises this problem in an elegant way: ``[We] scientists were so preoccupied with whether or not [we] could that [we] didn't stop to think if [we] should.''
+We believe that morphological analysis in general will greatly benefit in emphasising the methodological decisions (\textit{whether we should}) rather than simply using disparity analysis because \textit{we can}.
 
 % NC: I do like this quote. The actual quote is: "Your scientists were so preoccupied with whether or not they could that they didn't stop to think if they should." Dr Ian Malcolm. It would be magnificent ot get a jurassic park quote into a paper...
 
