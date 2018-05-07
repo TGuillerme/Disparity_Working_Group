@@ -76,7 +76,7 @@
 Version dated: \today
 \end{flushright}
 \bigskip
-\noindent RH: disparate views on disparity. % NC: Needs to be changed?
+\noindent RH: pest practices for disparity analysis.
 
 \bigskip
 \medskip
@@ -281,17 +281,6 @@ Finally, it is important to remember that for any dimensionality reduction of a 
 
 \subsection{[Box]To ordinate or not to ordinate; that is the (multidimensional) question?}
 \label{box_ordination}
-% One of the most common approaches to analysing multidimensional data is to use ordination techniques.
-% These consist of transforming the dataset along its major axis of variation through various mathematical methods [Legender \& Legendre].
-% This is generally done via three analysis pipelines:
-
-% \begin{enumerate}
-%     \item data -> distance matrix -> ordination
-%     \item data -> zscores -> principal components analysis (PCA)
-%     \item data -> Procrustes superimposition -> projection into tangent space -> PCA
-% \end{enumerate}
-% %TG: Check with Melanie for the figure? - apparently she has one.
-
 Reducing the dimensionality of data through ordination can be advantageous for plotting and visualising the data, and can reveal properties of the morphospace not captured by disparity metrics (see Metrics section \ref{metrics}).
 Additionally, after ordinating the data it is possible to further reduce the number of dimensions by only selecting a certain number of axes (e.g. selecting only the axes that describe up to 95\% of the variation).
 In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions.
@@ -343,7 +332,6 @@ Furthermore, this method can be pertinent for fitting modes of evolution and see
  
 [INCLUDE WILLS FIGURE SOMWHERE AROUND]
 
-
 %TG: add the curse of dimensionality
 
 After building and visualising the morphospace, one can use disparity metrics (or indices) as a one dimensional summary of the space and to test hypotheses.
@@ -361,17 +349,12 @@ Conversely, if the question refers to the ``position'' of a group in the morphos
 Finally, one might also be interested in the density of elements in some regions of the morphospace (e.g. ``is group A more dense than group B?''), metrics relating to the pairwise distances between elements are most appropriated (e.g. nearest neighbour distance, pairwise distances, etc.).
 
 Additionally to the desired properties of what the metrics should capture, it is important to also keep in mind the mathematical properties of the metrics and their associated caveats.
+For example, measuring the full sum of the variance of each dimensions of the space does not require to add the co-variance between the axis in a ordinated space using a PCA.
+This is not true however in other mathematical spaces or (even in a PCA) when not all dimensions or all the elements are considered (e.g. when only looking at a group within the morphospace, the sum of variances is not mathematically equal to the sum of the variance of each dimensions in the space).
+Furthermore, multidimensional space have some counter-intuitive properties that needs to be taken into account such as the curse of dimensionality [CITE].
+For example, product based metrics as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards 0 fairly quickly for spaces even with a modest number of dimensions [CITING Bellman 1957; also see \url{https://beta.observablehq.com/@tophtucker/theres-plenty-of-room-in-the-corners} for an excellent illustration of the problem].
+Some other types of metrics are also extremely sensitive to outliers and can be easily biased by sample size such as range or convex hull based metrics.
 
-\begin{itemize} %TG: not sure how to introduce this list. Do we even need a list? I can shorten these examples and discuss them more in my paper-project on disparity metrics?
-    \item For example, measuring the full sum of the variance of each dimensions of the space does not require to add the co-variance between the axis in a ordinated space using a PCA.
-    This is not true however in other mathematical spaces or (even in a PCA) when not all dimensions or all the elements are considered (e.g. when only looking at a group within the morphospace, the sum of variances is not mathematically equal to the sum of the variance of each dimensions in the space).
-
-    \item Furthermore, multidimensional space have some counter-intuitive properties that needs to be taken into account such as the curse of dimensionality [CITE].
-    For example, product based metrics (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards 0 fairly quickly for spaces with more than 6 to 10 dimensions.
-
-    \item Some other types of metrics are also extremely sensitive to outliers and can be easily biased by sample size such as range or convex hull based metrics.
-
-\end{itemize}
 
 %TG: again, I feel this section is already fairly long, I might include this bit in another paper
 % Of course some other aspects could be of interest (or more than one) and thus some other metrics would be more appropriated.
@@ -410,7 +393,7 @@ Joe’s simulations’ stuff - phylogeny can be used to build a null.One basic n
 We can have a null model that is based on simple Brownian increase in disparity (gradual). 
 Null: is the null increase in disparity dependent on a random walk and on a tree shape?
 Maybe we don’t want to think about a null model but rather think about good models to fit. 
-We haven’t explored much about fitting models like explaining holes, effects of extinction etc…
+We haven’t explored much about fitting models like explaining holes, effects of extinction etc...
 Dealing with uncertainty? Bootstrap Bayesian G matrices \& P matrices!
 
 
