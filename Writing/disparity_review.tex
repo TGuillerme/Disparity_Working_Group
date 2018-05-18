@@ -335,28 +335,31 @@ Furthermore, this method can be pertinent for fitting models of evolution to inv
 %TG: add the curse of dimensionality
 
 After building and visualising the morphospace, one can use disparity metrics (or indices) as a one dimensional summary of the space and to test hypotheses.
-As any summary metric and because of this reduction in dimensionality, disparity metrics are bound to only reflect some aspect of the morphospace and can never encompass its whole complexity.
-It is often beneficial to use more than one such a metric to summarise the different aspects of interest of the morphospace (e.g. it's width, it's spread, etc.).
+As with any summary metric, and because of this reduction in dimensionality, disparity metrics are bound to only reflect some aspect of the morphospace and can never encompass its whole complexity.
+It is often beneficial to use more than one metric to summarise the different aspects of interest of the morphospace (e.g. its width or spread).
 
-The choice of the disparity metric is thus essential to the disparity analysis and should always be driven by the question.
-When considering only one dimension, disparity metrics can be used to reflect the ``size'' of the distribution (e.g. the range, quantiles or variance) and some other will reflect the most likely value (the central tendency - e.g. the mean, median or mode).
-Among these metrics, some will have more preferable properties than other such as sensitivity to outliers (range, mean or mode \textit{vs.} quantiles, variance or median) and will thus be more or less appropriate to the different questions and to the actual properties distribution.
+The choice of disparity metric is thus essential to the disparity analysis and should always be driven by the question.
+When considering only one dimension, disparity metrics can be used to reflect the ``size'' of the distribution (e.g. the range, quantiles or variance), or reflect the most likely value (the central tendency, i.e. the mean, median or mode).
+Among these metrics, some will have more preferable properties than others, such as sensitivity to outliers (range, mean or mode are highly sensitive \textit{vs.} quantiles, variance or median are less sensitive) and will thus be more or less appropriate to the different questions and the properties of the distribution.
 For example, if the data collected is likely to contain outliers, but is fairly normally distributed, one should prefer the median to the mean.
 
-With multidimensionality, this high availability of unidimensional descriptors comes with an equally numerous advantages and caveats and again, the question can help determining which metric would be the most appropriate.
-For example, if the question refers to ``size'' of a group in the morphospace (e.g. ``does group A occupy as much space as group B?''), metrics relating to the spread of the group in the morphospace are the most appropriated (e.g. volume [CITE], variance [CITE], range [CITE], distance from the centroid [CITE]).
-Conversely, if the question refers to the ``position'' of a group in the morphospace (e.g. ``does group A occupy the same space as group B?''), metrics relating to the distance between the elements within a group and a fixed point in the morphospace are most appropriated.
-Finally, one might also be interested in the density of elements in some regions of the morphospace (e.g. ``is group A more dense than group B?''), metrics relating to the pairwise distances between elements are most appropriated (e.g. nearest neighbour distance, pairwise distances, etc.).
+With multidimensionality, this high availability of unidimensional descriptors comes with equally numerous advantages and caveats and again, the question can help in determining which metric is the most appropriate.
+For example, if the question refers to ``size'' of a group in the morphospace (e.g. ``does group A occupy as much space as group B?''), metrics relating to the spread of the group in the morphospace are the most appropriate (e.g. volume [CITE], variance [CITE], range [CITE], distance from the centroid [CITE]).
+Conversely, if the question refers to the ``position'' of a group in the morphospace (e.g. ``does group A occupy the same space as group B?''), metrics relating to the distance between the elements within a group and a fixed point in the morphospace are most appropriate.
+Finally, one might also be interested in the density of elements in some regions of the morphospace (e.g. ``is group A more dense than group B?''), metrics relating to the pairwise distances between elements are most appropriate (e.g. nearest neighbour distance, pairwise distances, etc.).
 
 Additionally to the desired properties of what the metrics should capture, it is important to also keep in mind the mathematical properties of the metrics and their associated caveats.
-For example, measuring the full sum of the variance of each dimensions of the space does not require to add the co-variance between the axis in a ordinated space using a PCA.
-This is not true however in other mathematical spaces or (even in a PCA) when not all dimensions or all the elements are considered (e.g. when only looking at a group within the morphospace, the sum of variances is not mathematically equal to the sum of the variance of each dimensions in the space).
-Furthermore, multidimensional space have some counter-intuitive properties that needs to be taken into account such as the curse of dimensionality [CITE].
-For example, product based metrics as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards 0 fairly quickly for spaces even with a modest number of dimensions [CITING Bellman 1957; also see \url{https://beta.observablehq.com/@tophtucker/theres-plenty-of-room-in-the-corners} for an excellent illustration of the problem and Donoho 2000 Aide-Memoire].
-Some other types of metrics are also extremely sensitive to outliers and can be easily biased by sample size such as range or convex hull based metrics.
+For example, measuring the full sum of the variance of each dimension of the space does not require one to add the co-variance between the axes in a ordinated space using a PCA.
+This is not true however in other mathematical spaces or (even in a PCA) when not all dimensions or elements are considered (e.g. when only looking at a group within the morphospace, the sum of variances is not mathematically equal to the sum of the variance of each dimension in the space).
+Furthermore, multidimensional space has some counter-intuitive properties that need to be taken into account such as the curse of dimensionality [CITE].
+For example, product-based metrics as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) will tend towards zero fairly quickly for spaces with even a modest number of dimensions [CITING Bellman 1957; also see \url{https://beta.observablehq.com/@tophtucker/theres-plenty-of-room-in-the-corners} for an excellent illustration of the problem and Donoho 2000 Aide-Memoire].
+Some other types of metrics are also extremely sensitive to outliers and can be easily biased by sample size, for example range or convex hull based metrics.
 
 
 %TG: again, I feel this section is already fairly long, I might include this bit in another paper
+
+% NC: Sounds reasonable. This could be cut down more, but for now I've just edited the grammar and spelling so we can look at the thing as a whole and also get Phil's input.
+
 % Of course some other aspects could be of interest (or more than one) and thus some other metrics would be more appropriated.
 % For example, differential changes (in direction or relative magnitude) of sum of ranges and sum of variances can be indicative of different modes of extinction selectivity (e.g., Korn et al 2013, Evolution).
 % Furthermore, one future avenue that could be explored is to go beyond single valued disparity metrics and rather express them in terms of distributions.
