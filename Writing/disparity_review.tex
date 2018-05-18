@@ -401,47 +401,47 @@ Also, many of the caveats and technical problems in disparity analyses have been
 This is perhaps unsurprisingly as ecological questions are often closely related to evolutionary questions, and ecological data is also often multidimensional [CITE DONOHUE's papers].
 
 \subsection{How can we adapt our methods?}
-Each of the points outlined above can be the start of new methodological questions (and often already are).
-Although it is impossible to cover the state-of-the-art exhaustively for each of these points here are several solutions and/or directions for adapting our methodological choices:
+Each of the points outlined above may drive new methodological questions (and often already are).
+Although it is impossible to cover the state-of-the-art exhaustively for each of these points here are several solutions and/or directions for adapting existing methods:
 
 \begin{itemize}
-    \item{Which data?}
-    [One line abstract of Melanie's paper on inapplicable data].
-    Furthermore, some simple methods already exist to correct for caveats in the datasets. 
-    For example, to correct for the scarcity of the fossil record, on can use methods as simple as rarefaction analysis to take sample size into account [CITE].
-    \item{How to visualise it?}
+    \item{Which data should we use in disparity analyses?}
+    %[One line abstract of Melanie's paper on inapplicable data].
+    Furthermore, some simple methods already exist to account for caveats in data. 
+    For example, to correct for the paucity of the fossil record, one can use methods like rarefaction analysis to take sample size into account [CITE].
+    % NC: This item currently doesn't seem to actually give advice about which data to use...
+    \item{How should we visualise disparity?} % NC: Tried to make the bullets a bit clearer, might need to edit for correctness and consistency with the rest of the document.
     [One line abstract of Sylvain's paper on morphospaces plottings].
-    One major problem of such multidimensional analyses is that treating with high dimensional spaces is hard (or even impossible) to conceptualise.
-    One solution to that could be to use more simple 2D/3D ordinations.
-    For examples using and MDS and reducing that data to only two or three dimensions for visualisation purposes only; or alternatively, reducing the number of variables prior to the analysis specifically for visualisation [e.g Raup-spaces CITE].
-    \item{What to measure?}
-    This question, although crucial might actually be the easier to tackle by simply using known metrics with desired properties, proposing new metrics, or (even better) using a combination of metrics that will represent a combinations of properties of interest in the morphospace.
-    For example, when reducing a multidimensional variation to one metric, it could be judicious to indicate what this metric represents the results (e.g. in a plot or a table, if the metric used was the sum of variances, labelling it as ``size of the group'' rather than ``disparity'').
-    This will be especially advantageous when using multiple disparity metrics (e.g. ``size of the group'' and ``position of the group'').
-    \item{How to test hypothesis?}
+    One major problem of multidimensional analyses is that highly dimensional spaces are hard (or even impossible) to conceptualise.
+    One solution to this is to use more simple 2D/3D ordinations.
+    For example, using and MDS and reducing that data to only two or three dimensions for visualisation purposes only; or alternatively, reducing the number of variables prior to the analysis specifically for visualisation [e.g Raup-spaces CITE].
+    \item{Which disparity metrics should we use?}
+    This can be tackled by simply using known metrics with desired properties, proposing new metrics, or (even better) using a combination of metrics that will represent a combination of properties of interest in the morphospace.
+    For example, when reducing a multidimensional space to one metric, it would be judicious to indicate what this metric represents in the results (e.g. in a plot or a table, if the metric used was the sum of variances, labelling it as ``size of the group'' rather than ``disparity'').
+    This is especially advantageous when using multiple disparity metrics (e.g. ``size of the group'' and ``position of the group'').
+    \item{How should we test disparity hypotheses?}
     Finally, it is possible to use non-parametric methods to test specific disparity questions.
-    For example, using the extant of available software and computer power available, it could be possible to propose specific null models on the expectancy of what disparity results would be expected to look like under such or such model.
-    This has been already successfully used in ecology [CITE Diaz paper] and is currently implemented in palaeobiology (Mark stuff).
+    For example, using available software and computer power, it is possible to propose specific null models for the expectation of what disparity would be expected to look like under various null models.
+    This has been already successfully used in ecology [CITE Diaz paper] and is currently being implemented in palaeobiology (Mark stuff).
 \end{itemize}
 
 
-\subsection{Where do we go from there?}
-Morphological disparity analysis are a major tool in evolutionary biology proposing a good and more versatile alternative to studying species richness (especially in macroevolutionary studies).
-We believe that morphological disparity analyses, as the analysis of patterns of morphological differences can be of great use for linking evolutionary and ecological processes (e.g. when using morphological disparity as a proxy for ecological niches to test competition-through-time hypotheses).
+\subsection{Where do we go from here?}
+Morphological disparity analyses are a major tool in evolutionary biology, posing a more versatile alternative to studying species richness, especially in macroevolutionary studies.
+We believe that morphological disparity analyses, as the analysis of patterns of morphological differences, can be of great use for linking evolutionary and ecological processes (e.g. when using morphological disparity as a proxy for ecological niches to test competition-through-time hypotheses).
 
-However, as demonstrated above, such analyses would greatly benefit both more development and (mainly) that more care is put into the study design so that the analysis actually reflects the biological question at hand.
-This can not only be done through the points highlighted above but also through linking the observed patterns to both explicit process (for example, the link between organism's form and function) or by putting care into developing null models to potentially explain the observed patterns.
+However, as demonstrated above, such analyses would greatly benefit from more development, and  more care is needed in study design so that the analysis actually reflects the biological question at hand.
+This can not only be done through the points highlighted above but also through linking the observed patterns to an explicit process (for example, the link between an organism's form and function) or by developing null models to potentially explain the observed patterns.
 
 Finally, we encourage to a more cross-disciplinary approach to morphological disparity analyses.
 In fact, as mentioned above, morphological disparity could greatly benefit from advances in multidimensional analysis in different fields (namely ecology) but similarly, the concept of a morphospace could easily be exported to other fields.
-For example, the multidimensional analysis in Diaz [CITE] looking at the patterns of form and functions in plants can be thought as a morphospace or a life-history-space (an ecospace?);
-isotopic analysis in [CITE Andrew's stuff] can be represented as a isotope-space, etc.
-And these generalisation could of course also be exported for any set of traits (e.g. acoustospaces for accoustic traits) and that even beyond evolutionary biology (e.g. glottospaces for linguistic traits) [CITE Katie's review].
+For example, the multidimensional analysis in Diaz [CITE] looking at the patterns of form and function in plants can be thought as a morphospace or a life-history-space (an ecospace?); isotopic analyses in [CITE Andrew's stuff] can be represented as a isotope-space, etc.
+These generalisations could also be exported for any set of traits (e.g. acoustospaces for acoustic traits) and even beyond evolutionary biology (e.g. glottospaces for linguistic traits) [CITE Katie's review].
 
 %Concluding words:
-Although disparity analysis have been rendered easy to perform from the user end (CITE packages tools), it is crucial to remember that they are first and foremost multidimensional analysis; and multidimensional analysis are complex.
+Although disparity analyses are now simple to implement (CITE packages tools), it is crucial to remember that they are multidimensional analyses; and multidimensional analyses are complex.
 In Jurassic Park, Dr Ian Malcolm summarises this problem in an elegant way: ``[We] scientists were so preoccupied with whether or not [we] could that [we] didn't stop to think if [we] should.''
-We believe that morphological analysis in general will greatly benefit in emphasising the methodological decisions (\textit{whether we should}) rather than simply using disparity analysis because \textit{we can}.
+We believe that morphological analysis in general will greatly benefit from emphasising the methodological decisions made (\textit{whether we should}), rather than simply using disparity analysis because \textit{we can}.
 
 % NC: I do like this quote. The actual quote is: "Your scientists were so preoccupied with whether or not they could that they didn't stop to think if they should." Dr Ian Malcolm. It would be magnificent ot get a jurassic park quote into a paper...
 
