@@ -303,7 +303,7 @@ Because of these points, we strongly recommend that data for multidimensional an
 \subsection{[Box] end}
 
 \subsection{Phylogeny}
-For many disparity analyses of macroevolutionary questions, phylogeny is often taken into account, whether for including estimates of ancestors or to add phylogenetic structure to the data.
+For many disparity analyses of macroevolutionary questions, phylogeny is often taken into account, whether for including ancestral state estimates or to incorporate phylogenetic structure in the data.
 For the latter, multivariate phylogenetic comparative methods have been reviewed recently by [CITE Adams] %https://academic.oup.com/sysbio/article-abstract/67/1/14/3867043
 and therefore will not covered further in this review.
 
@@ -314,18 +314,18 @@ Ancestral state estimation can be performed in two ways:
 \item pre-ordination: the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original dataset[CITE].
 \item post-ordination: the estimation is done after transformation of the data by estimating the ancestral states based on the transformed matrix (e.g. the ordination scores) [CITE].
 \end{enumerate}
-Pre-ordination ancestral state estimation can change the ordinated space's geometry (i.e. the relationship between the points not estimated) and implies longer computational method but once the morphospace is defined, it will remain constant (i.e. its properties won't change).
-Post ordination ancestral states estimation will not change the ordinated space geometry and will be faster to compute, however, it will change the morphopspace's properties such as the number of parameters (i.e. elements in the space - this can be problematic for statistical tests down the line) or the variance per axis [CITE Graeme's paper to be?].
+Pre-ordination ancestral state estimation can change the ordinated space's geometry (i.e. the relationship between the points not estimated) and implies longer computational times but, once the morphospace is defined, it will remain constant (i.e. its properties will not change).
+Post ordination ancestral state estimation will not change the ordinated space's geometry and will be faster to compute, however, it will change the morphospace's properties such as the number of parameters (i.e. elements in the space - this can be problematic for statistical tests down the line) or the variance on each axis [CITE Graeme's paper to be?].
 
-More importantly, however, one needs to keep in mind that using such methods can come with several caveats.
-First and foremost, although ancestral states estimations are valid methods in macroevolution, they results are highly dependent on the data and chosen methods.
-Secondly, more specific to disparity analysis, when using post-transformation ancestral states estimation, the morphospace can be saturated leading pairwise distance bases metrics to tend to zero.
-In general, using ancestral states estimation can bring much insights for recovering patterns of changes in disparity but should not be ``used'' simply to generate extra data points for statitstical reasons.
-In fact, these extra points are not independent and can also generate side effects which can be problematic, especially when testing the effect of extinctions events on disparity.
+More importantly, however, one needs to remember that using such ancestral state estimation methods comes with several caveats.
+First and foremost, although ancestral state estimations are valid methods in macroevolution, their results are highly dependent on the data and chosen methods.
+Secondly, more specific to disparity analysis, when using post-transformation ancestral state estimates, the morphospace can be saturated leading pairwise distance metrics to tend to zero.
+In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points for statistical reasons.
+In fact, these extra points are not independent and can also generate side effects that can be problematic, especially when testing the effect of extinction events on disparity.
 
-Alternatively, ancestral states estimation can be used to provide realistic null expectations from the data.
-In disparity through time analysis, it is possible to sample many ancestral states estimates on the nodes and along to branches to test whether the recovered pattern could be simply explained by the phylogenetic structure itself rather than the morphological changes.
-Furthermore, this method can be pertinent for fitting modes of evolution and see if the recovered disparity metric can be explained by the tested modes of evolution.
+Alternatively, ancestral state estimation can be used to provide realistic null expectations from the data.
+In disparity-through-time analysis, it is possible to sample many ancestral state estimates on the nodes and along branches to test whether the recovered pattern could be simply explained by the phylogenetic structure itself rather than by morphological changes.
+Furthermore, this method can be pertinent for fitting models of evolution to investigate whether the recovered disparity metric can be explained by the tested modes of evolution.
 
 \subsection{Metrics}
 \label{metrics}
@@ -424,7 +424,7 @@ Although it is impossible to cover the state-of-the-art exhaustively for each of
 
 \subsection{Where do we go from there?}
 Morphological disparity analysis are a major tool in evolutionary biology proposing a good and more versatile alternative to studying species richness (especially in macroevolutionary studies).
-We believe that morphological disparity analyses, as the analysis of patterns of morphological differences can be of great use for linking evolutionary and ecological processes (e.g. when using morphological disparity as a proxy for ecological niches to test competition through time hypotheses).
+We believe that morphological disparity analyses, as the analysis of patterns of morphological differences can be of great use for linking evolutionary and ecological processes (e.g. when using morphological disparity as a proxy for ecological niches to test competition-through-time hypotheses).
 
 However, as demonstrated above, such analyses would greatly benefit both more development and (mainly) that more care is put into the study design so that the analysis actually reflects the biological question at hand.
 This can not only be done through the points highlighted above but also through linking the observed patterns to both explicit process (for example, the link between organism's form and function) or by putting care into developing null models to potentially explain the observed patterns.
