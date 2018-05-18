@@ -373,22 +373,22 @@ Some other types of metrics are also extremely sensitive to outliers and can be 
 % \end{itemize}
 
 \subsection{Tests}
-Similarly to all the points covered above, the statistical test to apply solely depends on which question is tackled with disparity analysis (i.e. which hypothesis to test).
-Considering the question, the data, the ordination method used (or the absence thereof) and the metric used, the statistical test should be based on a clearly state hypothesis.
-This might seem obvious but we believe doing so greatly enhances the framing of the analysis and its comprehension by future readers.
+The final stage of most disparity analyses is statistical testing of the disparity metrics, to determine whether changes thought time or between groups are statistically significant. 
+Similar to the points above, the statistical test to apply depends on which question is being tackled with disparity analysis, i.e. which hypothesis is being tested.
+It also requires consideration of the data, the ordination method used (or the absence thereof) and the metric used.
 
-For example, one commonly used test in morphological analysis, is the non parametric permutation anovas [NPANOVA or PERMANOVA; CITE Anderson + examples].
-This test and its implementations is perfectly valid to test whether two groups have a different variance/covariance but is based on the pairwise distances of the group elements.
-This test will ignore any eventual ordination (if the data was ordinated) and is not based on a uni-dimensional disparity metric.
-In other words, if one observes no overlap between two groups on the two first axis of a PCA, the hypothesis H0 that the two groups overlap in the morphospace is not directly tested by a PERMANOVA which tests rather whether the two groups share the same variance/covariance based in a ``distance-space''.
-Therefore, explicitly stating the hypothesis might help understanding which test to apply depending on the disparity analysis question.
+For example, one commonly used test in morphological analysis, is the non parametric permutation analysis of variance [NPANOVA or PERMANOVA; CITE Anderson + examples].
+This test and its implementation is perfectly valid to test whether two groups have a different variance/covariance, but is based on the pairwise distances of the group elements.
+This test will ignore any ordination (if the data was ordinated) and is not based on a unidimensional disparity metric.
+In other words, if one observes no overlap between two groups on the two first axes of a PCA, the null hypothesis that the two groups overlap in the morphospace is not directly tested by a PERMANOVA which tests rather whether the two groups share the same variance/covariance in a ``distance-space''.
+Therefore, explicitly stating the hypothesis might help understanding which test to apply depending on the question.
 
-Another caveat for applying statistical tests on disparity data is on which data to actually apply the test.
-In fact, in morphological disparity analysis (especially for palaebiological questions), data is often bootstrapped.
-This has two useful advantages: first, when the disparity metric is unidimensional (e.g. the sum of variances or the average squared pairwise distance), bootstrapping the data will generate a distribution of this unidimensional metric that can then be analysed using the vast statistical toolkit to compare distributions; second, when the data is scarce (e.g. for palaeontological data), bootstrapping the data will allow to introduce statistical variance and will render the test less sensitive to outliers.
-However, bootstrapping the data also comes with an important caveat: the data analysed is pseudo-replicate and thus non-independent.
-This can violate most of the parametric statistical tests assumptions.
-Furthermore, it is important to remember that the number of bootstrap pseudo-replicates will inevitably increase the type I error.
+Another caveat for applying statistical tests on disparity data is that it is important to consider which data to apply the test on.
+For example, in morphological disparity analysis (especially for palaeobiological questions), data is often bootstrapped.
+This has two useful advantages: first, when the disparity metric is unidimensional (e.g. the sum of variances or the average squared pairwise distance), bootstrapping the data generates a distribution of this unidimensional metric that can then be analysed using the vast statistical toolkit available for comparing distributions; second, when the data is scarce (e.g. for palaeontological data), bootstrapping the data allows users to introduce statistical variance, rendering the test less sensitive to outliers.
+However, bootstrapping the data also comes with an important caveat: the data analysed are pseudo-replicated and thus non-independent.
+This can violate the assumptions of parametric statistical tests.
+Furthermore, it is important to remember that the number of bootstrap pseudo-replicates will inevitably increase the Type I error.
 
 \section{Future directions}
 As mentioned above, there is no ``one-size-fit-all'' morphological disparity analysis pipeline.
