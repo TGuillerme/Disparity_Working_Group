@@ -1,0 +1,151 @@
+---
+title: "Figures"
+author: "Thomas Guillerme"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    fig_width: 12
+    fig_height: 6
+---
+
+# Methods part
+
+```{r}
+library(dispRity)
+```
+
+
+## Visualisation
+
+A multidimensional space similar to Figure 3 in Davis et al 2012 Nature.
+
+```{r, fig.width = 5, fig.height = 8.33333}
+set.seed(42)
+## Sampling the four different groups
+size <- 10            # x                      #y                       #z
+group1 <- cbind(rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25))
+group2 <- cbind(rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size, -0.5, 0.25))
+group3 <- cbind(rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25), rnorm(size,  0.5, 0.25))
+group4 <- cbind(rnorm(size,  0.5, 0.25), rnorm(size, -0.5, 0.25), rnorm(size,  0.5, 0.25))
+groups <- list(group1, group2, group3, group4)
+
+## Chull coordinates function
+get.chull.coords <- function(x, axis) {
+    chull_points <- chull(x[, c(axis)])
+    chull_coords <- rbind(x[chull_points, axis], x[chull_points[1], axis])
+}
+
+## Getting the coordinates
+chull_coords_xy <- lapply(groups, get.chull.coords, axis = c(1, 2))
+chull_coords_xz <- lapply(groups, get.chull.coords, axis = c(1, 3))
+
+## Empty plot function
+empty.plot <- function(xlab = "Dimension 1", ylab) {
+    par(bty = "n")
+    plot(NULL, xlim = c(-1.1, 1.1), ylim = c(-1.1, 1.1), xlab = xlab, ylab = ylab, xaxt='n', yaxt='n')
+    abline(v = 0)
+    abline(h = 0)
+}
+
+## Setting the colour palette
+col_palette <- as.list(viridis::viridis(4))
+
+plot.figure.dimensionality <- function(){
+    par(mfrow = c(2, 1))
+    par(mar = c(1, 4, 1, 3))
+    ## Plotting the first coordinates sets
+    empty.plot(xlab = "", ylab = "Dimension 2")
+    text(-1,1, "1", cex = 2)
+    ## Adding the points
+    plot.points <- function(x, col, axis) points(x[, axis], col = col, pch = 19, cex = 0.7)
+    silent <- mapply(plot.points, groups, col_palette, MoreArgs = list(axis = c(1, 2)))
+    ## Adding the polygons
+    plot.polygons <- function(x, col) polygon(x[, 1], x[, 2], col = col, density = 10, border = col)
+    silent <- mapply(plot.polygons, chull_coords_xy, col_palette)
+    legend("bottomlef", legend = LETTERS[1:4], col = unlist(col_palette), bty = "n", pch = 19, lty = 1)
+
+
+    par(mar = c(4, 4, 1, 3))
+    ## Plotting the second coordinates sets
+    empty.plot(ylab = "Dimension 3")
+    text(-1,1, "2", cex = 2)
+    ## Adding the points
+    silent <- mapply(plot.points, groups, col_palette, MoreArgs = list(axis = c(1, 3)))
+    ## Adding the polygons
+    silent <- mapply(plot.polygons, chull_coords_xz, col_palette)
+}
+
+plot.figure.dimensionality()
+
+## Figure for the paper
+pdf(file = "../Writing/Figures/figure_dimensionality.pdf", width = 5, height = 8.33333)
+plot.figure.dimensionality()
+dev.off()
+```
+
+
+## Metrics
+
+```{r, fig.width = 10, fig.height = 10}
+set.seed(42)
+
+## Scale the results to be between -1 and 1
+scale.matrix <- function(matrix) {
+    ## Get the range for scaling
+    range <- apply(matrix, 2, range)
+
+    ## Shift to positive
+    shift_matrix <- matrix
+    shift_matrix[,1] <- matrix[,1] + abs(range[1,1])
+    shift_matrix[,2] <- matrix[,2] + abs(range[1,2])
+
+    ## Scale the matrix (to + 2)
+    shift_matrix <- apply(shift_matrix, 2, function(x) x/(max(x)/2))
+
+    ## Reshift the matrix
+    return(shift_matrix - 1)
+}
+
+## Plotting the two matrices
+plot.both.matrices <- function(matrix1, matrix2, col = c("blue", "orange"), ...) {
+    plot(matrix1, pch = 21, bg = col[1], ..., xlab = "", ylab = "")
+    points(matrix2, pch = 21, bg = col[2])
+}
+
+## Two similar correlation matrices
+cor_mat_positive <- matrix(c(1, 0.8, 0.8, 1), 2, 2)
+cor_mat_negative <- matrix(c(1, -0.8, -0.8, 1), 2, 2)
+
+## Correlation differences
+correlated_positive <- scale.matrix(space.maker(100, 2, rnorm, cor.matrix = cor_mat_positive))
+correlated_negative <- scale.matrix(space.maker(100, 2, rnorm, cor.matrix = cor_mat_negative))
+
+## Doughnut differences
+outer <- space.maker(100, 2, random.circle, arguments = list(list(runif, inner = 0.5)))
+inner <- space.maker(100, 2, random.circle, arguments = list(list(runif, outer = 0.5)))
+
+## Density differences
+base_matrix <- space.maker(100, 2, runif, arguments = list(list(max = 1, min = -1)))
+modif_matrix <- apply(base_matrix, 2, function(x) x+rnorm(length(x), sd = 0.035))
+
+## Position differences
+upper_right <- space.maker(100, 2, rnorm, arguments = list(list(mean = 0.5, sd = 0.2)))
+lower_left <- space.maker(100, 2, rnorm, arguments = list(list(mean = -0.5, sd = 0.2)))
+
+plot.figure.metrics <- function(){
+    par(mfrow = c(2,2), mar = c(2.5,2.5,2.5,2.5))
+    plot.both.matrices(correlated_positive, correlated_negative, main = "Correlation")
+    plot.both.matrices(outer, inner, main = "Filling")
+    plot.both.matrices(base_matrix, modif_matrix, main = "Density")
+    plot.both.matrices(upper_right, lower_left, xlim = c(-1, 1), ylim = c(-1, 1), main = "Position")
+}
+
+plot.figure.metrics()
+
+## Figure for the paper
+pdf(file = "../Writing/Figures/figure_metrics.pdf", width = 10, height = 10)
+plot.figure.metrics()
+dev.off()
+
+```
+
