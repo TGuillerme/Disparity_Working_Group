@@ -149,3 +149,37 @@ dev.off()
 
 ```
 
+
+
+## Figure methods
+
+```{r}
+set.seed(42)
+## Creating a 5 trait space
+iris_rand <- cbind(iris[seq(from = 1, to = 150, by = 5), 1:4], rnorm(30))
+
+## Plotting the 5 traits
+pdf(file = "../Writing/Figures/figure_methods_biplot.pdf", width = 5, height = 5)
+plot(iris_rand, pch = 19, xaxt = "n", yaxt = "n")
+dev.off()
+
+## Making a distance matrix
+iris_dist <- dist(iris_rand)
+
+## Making it 2D
+pdf(file = "../Writing/Figures/figure_methods_2dPCO.pdf", width = 5, height = 5)
+plot(cmdscale(iris_dist, k = 2), pch = 19, xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+dev.off()
+
+## Making a PCA
+pca <- princomp(iris_rand)$scores
+pdf(file = "../Writing/Figures/figure_methods_PCA1.pdf", width = 5, height = 5)
+plot(pca[,1:2], pch = 19, xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+dev.off()
+pdf(file = "../Writing/Figures/figure_methods_PCA2.pdf", width = 5, height = 5)
+plot(pca[,3:4], pch = 19, xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+dev.off()
+pdf(file = "../Writing/Figures/figure_methods_PCA3.pdf", width = 5, height = 5)
+plot(pca[,c(5,1)], pch = 19, xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+dev.off()
+```
