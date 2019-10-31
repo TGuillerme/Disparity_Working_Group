@@ -217,12 +217,17 @@ plot(iris[, -5],
 dev.off()
 
 ## PCO
+pdf(file = "../Writing/Figures/figure_methods_PCO.pdf", width = 5, height = 5)
+
 vars <- round(apply(iris_pco, 2, var)/sum(apply(iris_pco, 2, var))*100, 2)
 plot(iris_pco,
     pch = 19,
     col = col_var,
     xlab = paste0("PCO 1 (", vars[1], "%)"),
-    ylab = paste0("PCO 21 (", vars[2], "%)"))
+    ylab = paste0("PCO 21 (", vars[2], "%)"),
+    xlim = range(iris_pco),
+    ylim = range(iris_pco))
+dev.off()
 
 ## PCA
 pdf(file = "../Writing/Figures/figure_methods_PCA.pdf", width = 5, height = 5)
@@ -233,7 +238,7 @@ par(mfrow = c(4,4), mar = c(1,1,1,1), oma = c(2,2,2,2))
 ## First row
 # 1
 plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
-text(0,0, paste0("PCA 1\n(", vars[1], "%)"), cex = 1)
+text(0,0, paste0("PC 1\n(", vars[1], "%)"), cex = 1.9)
 # 2
 plot(iris_pca[, c(1,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
     pch = 19,
@@ -258,7 +263,7 @@ plot(iris_pca[, c(2,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
 axis(2)
 # 2
 plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
-text(0,0, paste0("PCA 2\n(", vars[2], "%)"), cex = 1)
+text(0,0, paste0("PC 2\n(", vars[2], "%)"), cex = 1.9)
 # 3
 plot(iris_pca[, c(2,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
     pch = 19,
@@ -281,7 +286,7 @@ plot(iris_pca[, c(3,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
     col = col_var)
 # 3
 plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
-text(0,0, paste0("PCA 3\n(", vars[3], "%)"), cex = 1)
+text(0,0, paste0("PC 3\n(", vars[3], "%)"), cex = 1.9)
 # 4
 plot(iris_pca[, c(3,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
     pch = 19,
@@ -306,5 +311,5 @@ plot(iris_pca[, c(4,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",
 axis(1)
 # 4
 plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
-text(0,0, paste0("PCA 4\n(", vars[4], "%)"), cex = 1)
+text(0,0, paste0("PC 4\n(", vars[4], "%)"), cex = 1.9)
 dev.off()
