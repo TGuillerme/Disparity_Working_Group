@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="figure_disparities.svg">
+   sodipodi:docname="figure_disparities.svg"
+   inkscape:export-filename="/Users/TGuillerme/Projects/Disparity_Working_Group/Writing/Figures/figure_disparities.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs2">
     <marker
@@ -42,10 +45,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="310.2737"
+     inkscape:cx="347.98488"
      inkscape:cy="286.40476"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer5"
      showgrid="false"
      inkscape:window-width="2048"
      inkscape:window-height="1103"
@@ -299,7 +302,7 @@
                id="tspan1979"
                x="39.590813"
                y="55.22097"
-               style="font-size:5.64444447px;stroke-width:0.26458332px">Disparity and diveristy</tspan></text>
+               style="font-size:5.64444447px;stroke-width:0.26458332px">Disparity and diversity</tspan></text>
           <rect
              style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.50109035;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.50109036, 1.0021807;stroke-dashoffset:0;stroke-opacity:1"
              id="rect2212"
@@ -539,7 +542,7 @@
            x="612.35449"
            y="896.24554"
            style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'" /></flowRegion><flowPara
-         id="flowPara2230">How much are the two groups overlapping?</flowPara><flowPara
+         id="flowPara2230">How much do the groups overlap?</flowPara><flowPara
          id="flowPara2232">How are the two groups interacting?</flowPara></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
@@ -781,7 +784,7 @@
            x="350"
            y="801.51971" /></flowRegion><flowPara
          id="flowPara2098"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">How does disparity changes through time?</flowPara><flowPara
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">How does disparity change through time?</flowPara><flowPara
          id="flowPara2102"
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic'">How does disparity change in response to an extinction event?</flowPara></flowRoot>  </g>
 </svg>
