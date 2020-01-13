@@ -45,13 +45,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="347.98488"
-     inkscape:cy="286.40476"
+     inkscape:cx="597.30248"
+     inkscape:cy="202.86652"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="g836-0"
      showgrid="false"
-     inkscape:window-width="2048"
-     inkscape:window-height="1103"
+     inkscape:window-width="1440"
+     inkscape:window-height="851"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -159,7 +159,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -216,7 +216,7 @@
          id="tspan2125"
          x="32.634544"
          y="211.88394"
-         style="stroke-width:0.26458332px">Traits</tspan></text>
+         style="stroke-width:0.26458332px">Trait axis</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -230,7 +230,7 @@
          id="tspan2125-1"
          x="-182.30013"
          y="6.4197426"
-         style="stroke-width:0.26458332px">Traits</tspan></text>
+         style="stroke-width:0.26458332px">Trait axis</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -304,7 +304,7 @@
                y="55.22097"
                style="font-size:5.64444447px;stroke-width:0.26458332px">Disparity and diversity</tspan></text>
           <rect
-             style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.50109035;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.50109036, 1.0021807;stroke-dashoffset:0;stroke-opacity:1"
+             style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.50109035;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.50109036, 1.00218070000000004;stroke-dashoffset:0;stroke-opacity:0.5076142"
              id="rect2212"
              width="93.572411"
              height="67.379997"
@@ -412,7 +412,7 @@
          id="tspan1847"
          sodipodi:role="line">?</tspan></text>
     <rect
-       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.52402872;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52402875, 1.0480575;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.52402872;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52402875, 1.04805750000000009;stroke-dashoffset:0;stroke-opacity:0.5076142"
        id="rect2119"
        width="82.705971"
        height="68.039795"
@@ -522,7 +522,7 @@
          y="158.48689"
          style="font-size:5.64444447px;stroke-width:0.26458332px">Disparity and ecology</tspan></text>
     <rect
-       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.53046769;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.53046768, 1.06093537;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.53046769;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.53046768, 1.06093536999999993;stroke-dashoffset:0;stroke-opacity:0.5076142"
        id="rect2222"
        width="101.39691"
        height="67.159668"
@@ -753,7 +753,7 @@
          style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.57136154px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';stroke-width:0.34285212px"
          id="tspan1713">event</tspan></text>
     <rect
-       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.70830429;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.70830426, 1.41660852;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:0.39215686;stroke:#000400;stroke-width:0.70830429;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.70830426, 1.41660852000000004;stroke-dashoffset:0;stroke-opacity:0.5076142"
        id="rect2044"
        width="142.30035"
        height="90.068642"
