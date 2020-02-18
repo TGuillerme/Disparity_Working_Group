@@ -72,18 +72,12 @@ Thanks!
 
 \textbf{Abstract (200 words max)}
 
-Statistical nalyses of morphological disparity have been used to
-characterise and investigate the evolution of variation in the anatomy,
-function, and ecology of organisms since the 1980s. While a diversity of
-methods have been employed, it is unclear whether they provide
-equivalent insights. Here we review the most commonly used approaches
-for characterising and analysing morphological disparity, all of which
-have associated limitations that, if ignored, can lead to
-misinterpretation. We provide best practice guidelines for disparity
-analyses, while noting that there can be no ``one-size-fits-all''
-approach. The available tools should always be used in the context of a
-specific biological question that will determine data and method
-selection at every stage of the analysis.
+Analyses of morphological disparity have been used to characterise and investigate the evolution of variation in the anatomy, function, and ecology of organisms since the 1980s.
+While a diversity of methods have been employed, it is unclear whether they provide
+equivalent insights.
+Here we review the most commonly used approaches for characterising and analysing morphological disparity, all of which have associated limitations that, if ignored, can lead to misinterpretation.
+We provide best practice guidelines for disparity analyses, while noting that there can be no ``one-size-fits-all'' approach.
+The available tools should always be used in the context of a specific biological question that will determine data and method selection at every stage of the analysis.
 
 \textbf{Keywords}: multidimensionality, palaeobiology, ecology,
 morphology, disparity, variance/variation
@@ -91,233 +85,101 @@ morphology, disparity, variance/variation
 \hypertarget{introduction}{%
 \section{1. Introduction}\label{introduction}}
 
-Clades of organisms are characterised by variation in both numbers of
-species and range of phenotypes through time. At the extremes, clades
-may be exceptionally species-rich and phenotypically diverse (e.g.
-cichlids and molluscs), species-rich but phenotypically conservative
-(e.g. bacteria and nematodes), species-poor but phenotypically diverse
-(e.g. Afrotheria), or depauperate in both species and phenotypic
-diversity (e.g. lungfish). These phenomena suggest that taxonomic and
-phenotypic diversity are not inextricably linked, raising important
-questions about how phenotypic diversity arises, such as: How does
-diversity evolve? Are some morphologies more common than others? Can
-anatomy evolve in all ``directions'' or are some anatomies impossible to
-achieve? (Mike Foote 1997, 1995) What role does ecology play in
-structuring morphological diversity?. Analyses of species diversity have
-a venerable history, but those of phenotypic diversity (hereafter
-\emph{disparity}) are a comparatively more recent phenomenon. Originally
-defined as ``multidimensional morphological dissimilarity at a
-macroevolutionary scale'' (Runnegar 1987, Gould
-\href{https://paperpile.com/c/sTGYvp/Uns3}{2000}), this concept of
-disparity emerged from attempts by palaeobiologists to characterise the
-evolutionary origin of animal bodyplans and from attempts by comparative
-developmental biologists to provide causal explanations for their
-emergence. However, analyses of ``disparity'' have since expanded into
-comparative biology as a means of capturing the effect of intrinsic and
-extrinsic causal agents in morphological evolution. Typically, methods
-to capture disparity are based on multidimensional spaces where each
-dimension represents an aspect of morphological variation (a trait) and
-biological observations (taxa) can be placed in this space based on
-their trait values. Such multidimensional spaces (or morphospaces) can
-then be used to tackle a diverse array of questions that can be grouped
-into four main (non-mutually exclusive) classes (Fig. 1):
+Clades of organisms are characterised by variation in both numbers of species and range of phenotypes through time.
+At the extremes, clades may be exceptionally species-rich and phenotypically diverse (e.g. cichlids and molluscs), species-rich but phenotypically conservative (e.g. bacteria and nematodes), species-poor but phenotypically diverse (e.g. Afrotheria), or depauperate in both species and phenotypic diversity (e.g. lungfish).
+These phenomena suggest that taxonomic and phenotypic diversity are not inextricably linked, raising important questions about how phenotypic diversity arises, such as:
+How does diversity evolve?
+Are some morphologies more common than others?
+Can anatomy evolve in all ``directions'' or are some anatomies impossible to achieve? (Mike Foote 1997, 1995)
+What role does ecology play in structuring morphological diversity?
+Analyses of species diversity have a venerable history, but those of phenotypic diversity (hereafter \emph{disparity}) are a comparatively more recent phenomenon. Originally defined as ``multidimensional morphological dissimilarity at a macroevolutionary scale'' (Runnegar 1987, Gould \href{https://paperpile.com/c/sTGYvp/Uns3}{@@@}),
+% Runnegar, Bruce "Rates and modes of evolution in the Mollusca." Rates of evolution. Allen and Unwin, London (1987): 39-60.
+ this concept of disparity emerged from attempts by palaeobiologists to characterise the evolutionary origin of animal bodyplans and from attempts by comparative developmental biologists to provide causal explanations for their emergence.
+However, analyses of ``disparity'' have since expanded into comparative biology as a means of capturing the effect of intrinsic and extrinsic causal agents in morphological evolution.
+Typically, methods to capture disparity are based on multidimensional spaces where each dimension represents an aspect of morphological variation (a trait) and biological observations (taxa) can be placed in this space based on their trait values.
+Such multidimensional spaces (or morphospaces) can then be used to tackle a diverse array of questions that can be grouped into four main (non-mutually exclusive) classes (Fig. 1):
 
-(1) \emph{Descriptive disparity.} The pioneering studies of disparity
-characterised the shapes of organisms and how they differed among groups
-\href{https://paperpile.com/c/sTGYvp/fTJ3+eZ3F}{(Foote 1995; Wills,
-Briggs, and Fortey 1994)}. These studies consist of describing
-multidimensional patterns in the diversity of morphological traits,
-addressing questions such as: why are some morphological trait
-combinations more common than others and what are the biological (or
-mathematical) properties of the resulting morphospace?
-\href{https://paperpile.com/c/sTGYvp/fTJ3+I0Ic+QVvv}{(Foote 1995; Raup
-1961; Gerber 2017)}.
+(1) \emph{Descriptive disparity.} The pioneering studies of disparity characterised the shapes of organisms and how they differed among groups \href{https://paperpile.com/c/sTGYvp/fTJ3+eZ3F}{(Foote 1995; Wills, Briggs, and Fortey 1994)}.
+These studies consist of describing multidimensional patterns in the diversity of morphological traits, addressing questions such as: why are some morphological trait combinations more common than others and what are the biological (or mathematical) properties of the resulting morphospace? \href{https://paperpile.com/c/sTGYvp/fTJ3+I0Ic+QVvv}{(Foote 1995; Raup 1961; Gerber 2017)}.
 
-(2) \emph{Disparity-through-time.} This approach investigates how the
-morphologies of organisms have changed on a temporal scale, focussing on
-the disparity of taxa in particular time intervals or slices. This
-approach has been used widely in palaeobiology to answer a range of
-macroevolutionary questions, such as: how does disparity accumulate over
-the history of a clade
-\href{https://paperpile.com/c/sTGYvp/ekU4+s33b}{(Guillerme and Cooper
-2018; Wright 2017)}, or how does disparity change leading up to and
-across mass extinction events
-\href{https://paperpile.com/c/sTGYvp/EETc}{(Friedman 2010)}?
+(2) \emph{Disparity-through-time.} This approach investigates how the morphologies of organisms have changed on a temporal scale, focussing on the disparity of taxa in particular time intervals or slices.
+This approach has been used widely in palaeobiology to answer a range of macroevolutionary questions, such as: how does disparity accumulate over the history of a clade \href{https://paperpile.com/c/sTGYvp/ekU4+s33b}{(Guillerme and Cooper 2018; Wright 2017)}, or how does disparity change leading up to and across mass extinction events \href{https://paperpile.com/c/sTGYvp/EETc}{(Friedman 2010)}?
 
-(3) \emph{Disparity and taxonomic diversity.} Morphological disparity
-provides another perspective on biodiversity; high morphological
-disparity represents a high diversity of morphologies (i.e. shapes or
-body plans) and is, presumably, associated with high levels of
-ecological and functional diversity (though see below). This makes
-disparity an informative complement to diversity measures based on
-species richness alone. Indeed, most studies that have investigated
-disparity and taxonomic diversity support an effective decoupling
-\href{https://paperpile.com/c/sTGYvp/2tbJ+geAO+hea5+aVVj}{(e.g., Fortey,
-Briggs, and Wills 1996; Ruta et al. 2013; M. J. Hopkins 2013; Moyne and
-Neige 2007)}. This approach has been used to investigate whether some
-groups are more successful than others in their exploration of new
-evolutionary strategies
-\href{https://paperpile.com/c/sTGYvp/dJHu}{(Losos 2011)}.
+(3) \emph{Disparity and taxonomic diversity.} Morphological disparity provides another perspective on biodiversity; high morphological disparity represents a high diversity of morphologies (i.e. shapes or body plans) and is, presumably, associated with high levels of ecological and functional diversity (though see section 4 below).
+This makes disparity an informative complement to diversity measures based on species richness alone. Indeed, most studies that have investigated disparity and taxonomic diversity support an effective decoupling \href{https://paperpile.com/c/sTGYvp/2tbJ+geAO+hea5+aVVj}{(e.g., Fortey, Briggs, and Wills 1996; Ruta et al. 2013; M. J. Hopkins 2013; Moyne and Neige 2007)}.
+This approach has been used to investigate whether some groups are more successful than others in their exploration of new evolutionary strategies \href{https://paperpile.com/c/sTGYvp/dJHu}{(Losos 2011)}.
 
-(4) \emph{Disparity as a proxy for ecology.} The disparity of a group
-can be used as a proxy for either the functional role it plays within an
-ecosystem or its ecological niche. This approach assumes that groups
-with high disparity are also likely to be functionally and ecologically
-diverse, and that groups found in similar regions of shape space will
-have similar functional and ecological roles
-\href{https://paperpile.com/c/sTGYvp/EETc+tSIy+qjj9}{(Friedman 2010;
-Pierce, Angielczyk, and Rayfield 2008; P. S. L. Anderson et al. 2011)}.
+(4) \emph{Disparity as a proxy for ecology.} The disparity of a group can be used as a proxy for either the functional role it plays within an ecosystem or its ecological niche.
+This approach assumes that groups with high disparity are also likely to be functionally and ecologically diverse, and that groups found in similar regions of shape space will have similar functional and ecological roles \href{https://paperpile.com/c/sTGYvp/EETc+tSIy+qjj9}{(Friedman 2010; Pierce, Angielczyk, and Rayfield 2008; P. S. L. Anderson et al. 2011)}.
 The links between form and function, however, are not always clear cut.
-Traits can be linked to multiple functions and multiple functions can be
-linked to a single trait
-\href{https://paperpile.com/c/sTGYvp/Ejzr}{(Wainwright et al. 2005)}.
-This approach has been used to investigate hypotheses of competitive
-replacement (Stephen L. Brusatte et al. 2008) and changes in ecosystem
-function during and after mass extinctions
-\href{https://paperpile.com/c/sTGYvp/EETc}{(Friedman 2010)}. It is
-particularly common in palaeobiology where it is not possible to
-directly observe the ecological or functional characteristics of extinct
-species \href{https://paperpile.com/c/sTGYvp/Ejzr}{(Wainwright et al.}
-2005\href{https://paperpile.com/c/sTGYvp/Ejzr}{)}.
+Traits can be linked to multiple functions and multiple functions can be linked to a single trait \href{https://paperpile.com/c/sTGYvp/Ejzr}{(Wainwright et al. 2005)}.
+This approach has been used to investigate hypotheses of competitive replacement (Stephen L. Brusatte et al. 2008) and changes in ecosystem function during and after mass extinctions \href{https://paperpile.com/c/sTGYvp/EETc}{(Friedman 2010)}.
+It is particularly common in palaeobiology where it is not possible to directly observe the ecological or functional characteristics of extinct species \href{https://paperpile.com/c/sTGYvp/Ejzr}{(Wainwright et al.} 2005\href{https://paperpile.com/c/sTGYvp/Ejzr}{)}.
 
 (5) Disparity and evo-devo. Morphological disparity blalbalbal
+% AG: Although intrinsic constraints are mentioned earlier, it doesn’t enter into any of these topics explicitly, but it is certainly one of the most interesting things one can use disparity for – to bridge development and evolution, looking at developmental biases/constraints. This also includes integration and modularity, which are also central to the topic of disparity and evolvability. Although you touch on these in places, I think it's really important to incorporate it into one of these topics, as there probably isn't room to give it one of its own (although i would argue it warrants equal footing with ecology, given that these are the processes that generate variation in the first place). There is a massive literature on using disparity to test hypotheses of developmental constraints, and also a huge one on disparity and integration/modularity. Let me know if you want me to send you refs.
 
-Fundamental insights into evolutionary biology have been elicited from
-these four types of analysis. One of the most important insights is the
-discovery that morphological disparity is often greatest early in the
-evolutionary history of clades
-\href{https://paperpile.com/c/sTGYvp/xxh5+yqPw}{(Hughes, Gerber, and
-Wills 2013; Foote 1997;}
-\href{https://paperpile.com/c/sTGYvp/EPJ2}{Erwin 2007)}, indicating that
-the capacity for evolutionary innovation wanes with clade age, which
-some have argued reflects the evolutionary assembly of gene regulatory
-networks that constrain later fundamental change
-\href{https://paperpile.com/c/sTGYvp/xxh5+Z6l6}{(Hughes, Gerber, and
-Wills 2013; Erwin 2011)}. However, this example highlights one of the
-most challenging problems confronting researchers who are attempting,
-increasingly, to obtain general insights from multiple independent
-studies: can the insights gained from studies using the diversity of
-methods, approaches and data types employed be considered equivalent?
+Fundamental insights into evolutionary biology have been elicited from these five types of analysis.
+One of the most important insights is the discovery that morphological disparity is often greatest early in the evolutionary history of clades \href{https://paperpile.com/c/sTGYvp/xxh5+yqPw}{(Hughes, Gerber, and Wills 2013; Foote 1997;} \href{https://paperpile.com/c/sTGYvp/EPJ2}{Erwin 2007)}, indicating that the capacity for evolutionary innovation wanes with clade age, which some have argued reflects the evolutionary assembly of gene regulatory networks that constrain later fundamental change \href{https://paperpile.com/c/sTGYvp/xxh5+Z6l6}{(Hughes, Gerber, and Wills 2013; Erwin 2011)}.
+However, this example highlights one of the most challenging problems confronting researchers who are attempting, increasingly, to obtain general insights from multiple independent studies: can the insights gained from studies using the diversity of methods, approaches and data types employed be considered equivalent?
 
-In attempting to answer this question, we review current methods and
-highlight their limitations, as part of a more general attempt to
-propose best practice guidelines for studies of disparity . We first
-discuss the appropriate data required for characterising disparity, then
-review various challenging aspects of these approaches. Throughout, it
-is important to remember these tools should always be used in the
-context of a specific scientific question, as this will drive data and
-methodological choices at every stage of the process.
+In attempting to answer this question, we review current methods and highlight their limitations, as part of a more general attempt to propose best practice guidelines for studies of disparity.
+We first discuss the appropriate data required for characterising disparity, then review various challenging aspects of these approaches.
+Throughout, it is important to remember these tools should always be used in the context of a specific scientific question, as this will drive data and methodological choices at every stage of the process.
 
 \includegraphics[width=6.5in,height=4.94444in]{media/image1.png}
 
-\emph{Figure disparities {[}figure\_disparities.pdf{]}: The four main
-types of disparity analysis. \textbf{Descriptive disparity} focuses on
-describing the features of morphospace occupation;
-\textbf{disparity-through-time} investigates the evolution of the
-morphospace through time including the effect of extinction events;
-\textbf{disparity and taxonomic diversity} compares different measures
-of biodiversity ; \textbf{disparity as a proxy for ecology} uses
-disparity as a proxy for the ecological or functional role of a group.
-These categories are not independent and many disparity studies will
-cover more than one.}
+\emph{Figure disparities {[}figure\_disparities.pdf{]}: The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
+These categories are not independent and many disparity studies will cover more than one.}
+
+%@@@ Add disparity and evo-devo
+
 
 \hypertarget{data-and-disparity}{%
 \section{2. Data and disparity }\label{data-and-disparity}}
 
-Disparity analyses are based on traits, but traits can be characterised
-in a number of ways: (1) discrete ``cladistic'' characters, e.g. coding
-the absence or presence of features or a discrete characteristic of a
-trait \href{https://paperpile.com/c/sTGYvp/PbSx}{(Close et al. 2015)};
-(2) continuous measurements of features (e.g., lengths)
-\href{https://paperpile.com/c/sTGYvp/qjj9}{(P. S. L. Anderson et al.
-2011)}; or (3) more mathematical descriptors from geometric morphometric
-landmark data (e.g. Procrustes coordinates)
-\href{https://paperpile.com/c/sTGYvp/RjqE}{(Cooney et al. 2017)}, and
-Fourier coefficients \href{https://paperpile.com/c/sTGYvp/2Neu}{(Foote
-1989;} \href{https://paperpile.com/c/sTGYvp/ZEDR}{Spriggs et al. 2018)})
-(Fig. 2). None of these approaches are superior, but they may be more or
-less well-suited to characterising traits under comparison and to the
-question being asked of those traits (Hetherington et al 2015; Hopkins
-2017).
+Disparity analyses are based on traits, but traits can be characterised in a number of ways:
+% MH: We do not mention model-based descriptors at all, or the spaces defined by them (e.g. Raup's shell coiling models). I'm not convinced that we must, but it may come across as an notable omission to reviewers
+% SG: I agree. There's for instance Saunders et al. (2004) disparity study of Paleozoic ammonoids using Raup's shell coiling parameters
+(1) discrete ``cladistic'' characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \href{https://paperpile.com/c/sTGYvp/PbSx}{(Close et al. 2015)};
+(2) continuous measurements of features (e.g., lengths) \href{https://paperpile.com/c/sTGYvp/qjj9}{(P. S. L. Anderson et al. 2011)}; or
+(3) more mathematical descriptors from geometric morphometric landmark data (e.g. Procrustes coordinates) \href{https://paperpile.com/c/sTGYvp/RjqE}{(Cooney et al. 2017)}, and Fourier coefficients \href{https://paperpile.com/c/sTGYvp/2Neu}{(Foote 1989;} \href{https://paperpile.com/c/sTGYvp/ZEDR}{Spriggs et al. 2018)}) (Fig. 2).
+None of these approaches are superior, but they may be more or less well-suited to characterising traits under comparison and to the question being asked of those traits (Hetherington et al 2015; Hopkins 2017).
 
-For example, if investigating variation of bat wing shapes, both
-homologous landmarks and continuous measurements of bones may be
-appropriate to capture patterns of wing variation. However, if the
-question focuses on comparing wings between bats and birds, different
-measurements might be more appropriate depending on the specific
-question: for example if the focus is on wing function, i.e. whether the
-aerodynamic properties of wings vary within bats or between bats and
-birds, the traits collected should reflect these aerodynamic properties
-(e.g. wingspan, aspect ratio, etc.). However, if the focus is on
-convergence between different bats and birds, it would be preferable to
-use traits that have facilitated flight in both groups (e.g. digit
-length, integumentary system, etc.). Where there is any doubt about the
-appropriate traits to choose, it may be preferable to use different
-kinds of data for the same feature to determine whether they capture the
-same pattern of disparity.
+For example, if investigating variation of bat wing shapes, both homologous landmarks and continuous measurements of bones may be appropriate to capture patterns of wing variation.
+However, if the question focuses on comparing wings between bats and birds, different measurements might be more appropriate depending on the specific question: for example if the focus is on wing function, i.e. whether the aerodynamic properties of wings vary within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
+However, if the focus is on convergence between different bats and birds, it would be preferable to use traits that have facilitated flight in both groups (e.g. digit length, integumentary system, etc.).
+Where there is any doubt about the appropriate traits to choose, it may be preferable to use different kinds of data for the same feature to determine whether they capture the same pattern of disparity.
 
-The points above assume that researchers are collecting their own data
-for disparity analyses, but often this is not the case. Discrete
-character data are commonly recycled from phylogenetic studies
-(e.g.Foote 1989\href{https://paperpile.com/c/sTGYvp/2Neu+0y4V}{; Deline
-et al. 2018}). This is an efficient approach to character sampling, but
-it may artifactually increase disparity between phylogenetically
-distinct groups because phylogenetic characters are often collected to
-discriminate among groups
-\href{https://paperpile.com/c/sTGYvp/fTJ3}{(Foote 1995)}. This needs to
-be considered when interpreting results, especially as synapomorphies
-will naturally lead to an apparent shift or increase in disparity when
-new clades appear. Furthermore, many datasets are limited to subsets of
-anatomy that are at least implicit samples of overall anatomy, but
-explicit tests of this assumption have shown that different aspects of
-morphology can exhibit different patterns of disparity
-\href{https://paperpile.com/c/sTGYvp/xLdm}{(Melanie J. Hopkins 2017)}.
-This effect of anatomical part on disparity patterns can be especially
-challenging when working on datasets where the available data has
-non-random missing anatomical parts, such as the absence of soft tissue
-in the fossil record \href{https://paperpile.com/c/sTGYvp/0y4V}{(Deline
-et al. 2018)}.
+The points above assume that researchers are collecting their own data for disparity analyses, but often this is not the case.
+Discrete character data are commonly recycled from phylogenetic studies (e.g.Foote 1989\href{https://paperpile.com/c/sTGYvp/2Neu+0y4V}{; Deline et al. 2018}).
+% SG: Foote (1989) is a study of trilobite disparity from Fourier analysis of cranidia. I don't think it has anything to do with discrete data or phylogenetic studies
+% MH: Also the Foote papers that used discrete data weren't taken from phylogenetic studies but collected for the specific purpose of the project -- I think this might be true for the Deline paper as well. But there are many studies out there that used matrices initially intended for phylogenetics. I can look for some if needed.
+This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups \href{https://paperpile.com/c/sTGYvp/fTJ3}{(Foote 1995)}.
+This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
+Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \href{https://paperpile.com/c/sTGYvp/xLdm}{(Melanie J. Hopkins 2017)}.
+This effect of anatomical part on disparity patterns can be especially challenging when working on datasets where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \href{https://paperpile.com/c/sTGYvp/0y4V}{(Deline et al. 2018)}.
 
-Trait data suffer from the same shortcomings as most biological datasets
--- data can be missing, non-overlapping, hierarchical, inapplicable,
-ambiguous, polymorphic, correlated, or there may be an insufficient
-sample size \href{https://paperpile.com/c/sTGYvp/Yrbg}{(Brazeau,
-Guillerme, and Smith 2017};
-\href{https://paperpile.com/c/sTGYvp/yO2t}{Palci and Lee 2018)}.
-Biological phenomena such as allometry and sexual dimorphism may also
-influence trait data. More mundanely, data collection is constrained by
-the time and money available, making collating a ``perfect'' dataset
-difficult. Ultimately, disparity analyses characterise the data, and
-subsamples of the universe of possible data may not have the power to
-uncover holistic patterns of disparity. Therefore, trait data should be
-collected with the question in mind, or the question asked should be
-tailored to the limits of the data available.
+Trait data suffer from the same shortcomings as most biological datasets -- data can be missing, non-overlapping, hierarchical, inapplicable, ambiguous, polymorphic, correlated, or there may be an insufficient sample size \href{https://paperpile.com/c/sTGYvp/Yrbg}{(Brazeau, Guillerme, and Smith 2017}; \href{https://paperpile.com/c/sTGYvp/yO2t}{Palci and Lee 2018)}.
+Biological phenomena such as allometry and sexual dimorphism may also influence trait data.
+More mundanely, data collection is constrained by the time and money available, making collating a ``perfect'' dataset difficult.
+Ultimately, disparity analyses characterise the data, and subsamples of the universe of possible data may not have the power to uncover holistic patterns of disparity.
+Therefore, trait data should be collected with the question in mind, or the question asked should be tailored to the limits of the data available.
 
 \includegraphics[width=5.63542in,height=3.875in]{media/image2.png}3.
 
-\emph{Figure data {[}figure\_data.pdf{]}: Major routes to obtain
-morphological data for disparity analyses. Data can be collected as
-discrete trait observations (e.g. presence or absence data) or as
-continuous data. Continuous data can be collected by various methods
-including linear measurements and landmark coordinates or contours
-(curves). These measurements can then be mathematically transformed
-(logarithm transforms, scaling, Procrustes superimposition, elliptic
-Fourier transforms, etc.). Regardless of the method, data collection
-produces a trait matrix where the observed traits constitute columns and
-the studied elements (generally taxa or OTUs) the rows.}
+\emph{Figure data {[}figure\_data.pdf{]}: Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
+Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
+These measurements can then be mathematically transformed (logarithm transforms, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
+Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows.}
 
 \hypertarget{disparity-methods}{%
 \section{Disparity methods}\label{disparity-methods}}
 
-Once suitable trait data have been collected, the design of the
-disparity analysis itself needs to be considered. Study design
-encompasses several key aspects including (a) the difficulty of dealing
-with multidimensional data; (b) the variety of ordination (dimension
-reduction) techniques available and their limitations; (c) the metrics
-used to summarise the relative disparity of groups; (d) the methods used
-for hypothesis testing within the disparity analysis framework; and (e)
-ancestral state estimations in disparity-through-time analyses. We
-consider these aspects in turn below.
+Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
+Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the variety of ordination (dimension reduction) techniques available and their limitations; (c) the metrics used to summarise the relative disparity of groups; (d) the methods used for hypothesis testing within the disparity analysis framework; and (e) ancestral state estimations in disparity-through-time analyses.
+% @@@ Check the numbering here
+We consider these aspects in turn below.
 
 
 
