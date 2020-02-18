@@ -1,74 +1,130 @@
-RH: disparate disparity analyses.
+\documentclass[12pt,letterpaper]{article}
+\usepackage{natbib}
 
-\textbf{Disparities in the analysis of morphological disparity}
+%Packages
+\usepackage{fixltx2e}
+\usepackage{textcomp}
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{array}
+\usepackage[version=3]{mhchem}
+\usepackage{ifthen}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{enumerate}
+\usepackage[osf]{mathpazo}
+\usepackage{dcolumn}
+\usepackage{lineno}
+\usepackage{pdflscape}
 
-Thomas Guillerme\({}^{1,*, +}\), Natalie Cooper\({}^{2, +}\), Stephen L.
-Brusatte\({}^{3}\), Katie E. Davis\({}^{4}\), Andrew L
-Jackson\({}^{5}\), Sylvain Gerber\({}^{6}\), Anjali Goswami\({}^{2}\),
-Kevin Healy\({}^{7}\), Melanie Hopkins\({}^{8}\), Marc EH
-Jones\({}^{9}\), Graeme T. Lloyd\({}^{10}\), Joseph E.
-O'Reilly\({}^{11}\), Abi Pate\({}^{11}\), Mark N Puttick\({}^{12}\),
-Emiliy Rayfield\({}^{11}\), Erin E. Saupe\({}^{13}\), Emma
-Sherratt\({}^{14}\), Graham Slater\({}^{15}\), Vera
-Weisbecker\({}^{1}\), Gavin H Thomas\({}^{16}\) and Philip
-Donoghue\({}^{11}\)\\
-\({}^{1}\)\emph{School of Biological Sciences, University of Queensland,
-St. Lucia, Queensland, Australia.}\\
-\({}^{2}\)\emph{Department of Life Sciences, Natural History Museum,
-London, Cromwell Road, London, SW7 5BD, UK.}
+\usepackage{color,soul}
 
-\emph{\textsuperscript{3}School of GeoSciences, University of Edinburgh,
-Grant Institute, Edinburgh EH9 3FE, UK}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcolumntype{d}[1]{D{.}{.}{#1}}
 
-\textsuperscript{4} Department of Biology, University of York, YO10 5DD
+\pagenumbering{arabic}
 
-\textsuperscript{5} Department of Zoology, School of Natural Sciences,
-Trinity College.
 
-\textsuperscript{6} Institut de Systématique, Évolution, Biodiversité
-(ISYEB), Muséum national d'Histoire naturelle, CNRS, Sorbonne
-Université, EPHE, Université des Antilles, 57 rue Cuvier CP39, 75005
-Paris, France.
+%Pagination style and stuff
+\linespread{2}
+\raggedright
+\setlength{\parindent}{0.5in}
+\setcounter{secnumdepth}{0} 
+\renewcommand{\section}[1]{%
+\bigskip
+\begin{center}
+\begin{Large}
+\normalfont\scshape #1
+\medskip
+\end{Large}
+\end{center}}
+\renewcommand{\subsection}[1]{%
+\bigskip
+\begin{center}
+\begin{large}
+\normalfont\itshape #1
+\end{large}
+\end{center}}
+\renewcommand{\subsubsection}[1]{%
+\vspace{2ex}
+\noindent
+\textit{#1.}---}
+\renewcommand{\tableofcontents}{}
+%\bibpunct{(}{)}{;}{a}{}{,}
 
-\textsuperscript{7} Ryan Institute, School of Natural Sciences, National
-University of Ireland Galway, Ireland.
+%---------------------------------------------
+%
+%       START
+%
+%---------------------------------------------
 
-\textsuperscript{10} \emph{School of Earth and Environment, University
-of Leeds, Leeds LS2 9JT, UK}\\
-\textsuperscript{11}\emph{School of Earth Sciences, University of
-Bristol, Life Sciences Building, Tyndall Avenue, Bristol BS8 1TQ, UK}
+\begin{document}
+%Running head
+\begin{flushright}
+Version dated: \today
+\end{flushright}
 
-\textsuperscript{12} \emph{Milner Centre for Evolution, University of
-Bath, BA2 7AY}
+\bigskip
+\noindent RH: disparate disparity analyses
+\bigskip
+\medskip
+\begin{center}
+\noindent{\Large \bf Disparities in the analysis of morphological disparity}
+\bigskip
 
-\textsuperscript{13} \emph{Department of Earth Sciences, University of
-Oxford, S Parks Road, Oxford OX1 3AN, UK}
+Thomas Guillerme$^{1,16,*,+}$,
+Natalie Cooper$^{2,+}$,
+Stephen L. Brusatte$^{3}$,
+Katie E. Davis$^{4}$,
+Andrew L Jackson$^{5}$,
+Sylvain Gerber$^{6}$,
+Anjali Goswami$^{2}$,
+Kevin Healy$^{7}$,
+Melanie Hopkins$^{8}$,
+Marc EH Jones$^{9}$,
+Graeme T. Lloyd$^{10}$,
+Joseph E. O'Reilly$^{11}$,
+Abi Pate$^{11}$,
+Mark N Puttick$^{12}$,
+Emiliy Rayfield$^{11}$,
+Erin E. Saupe$^{13}$,
+Emma Sherratt$^{14}$,
+Graham Slater$^{15}$,
+Vera Weisbecker$^{1}$,
+Gavin H Thomas$^{16}$
+and Philip Donoghue$^{11}$\\
 
-\textsuperscript{14} \emph{School of Biological Sciences, The University
-of Adelaide, Adelaide, South Australia 5005, Australia}
 
-+ These authors contributed equally to the manuscript.
+\noindent {\small \it 
+$^1$School of Biological Sciences, University of Queensland, St. Lucia, Queensland, Australia;
+$^2$IDepartment of Life Sciences, Natural History Museum, London, Cromwell Road, London, SW7 5BD, UK;
+$^{3}$School of GeoSciences, University of Edinburgh, Grant Institute, Edinburgh EH9 3FE, UK;
+$^{4}$Department of Biology, University of York, YO10 5DD, UK;
+$^{5}$Department of Zoology, School of Natural Sciences, Trinity College, Ireland;
+$^{6}$Institut de Syst\'{e}matique, \'{E}volution, Biodiversit\'{e} (ISYEB), Muséum national d'Histoire naturelle, CNRS, Sorbonne Universit\'{e}, EPHE, Université des Antilles, 57 rue Cuvier CP39, 75005 Paris, France;
+$^{7}$Ryan Institute, School of Natural Sciences, National University of Ireland Galway, Ireland;
+$^{8}$ @@@;
+$^{10}$School of Earth and Environment, University of Leeds, Leeds LS2 9JT, UK;
+$^{11}$School of Earth Sciences, University of Bristol, Life Sciences Building, Tyndall Avenue, Bristol BS8 1TQ, UK;
+$^{12}$Milner Centre for Evolution, University of Bath, BA2 7AY UK;
+$^{13}$Department of Earth Sciences, University of Oxford, S Parks Road, Oxford OX1 3AN, UK;
+$^{14}$School of Biological Sciences, The University of Adelaide, Adelaide, South Australia 5005, Australia.
+$^{15}$ @@@;
+$^{16}$ @@@;\\
+$^{+}$ These authors contributed equally to the manuscript; $^{*}$ Corresponding author: guillert@tcd.ie\\}
 
-*\textbf{Corresponding author:} \emph{guillert@tcd.ie}
-
-\textbf{NOTE TO ALL THE CO-AUTHORS:}
-
-\textbf{-The word limit for this is 5000 words so we can't add any large
-sections.}
-
-\textbf{-There is no reference limit per se but please don't add too
-many. I will sort out the references later so don't correct the
-formatting of them here.}
-
-\textbf{-Add your affiliation in the author list above}. The
-affiliations count in the word count so please 1) keep it short (max 1
-per person!) and 2) try to use one that's already there. Also add any
-initials I've missed in your names.
-
-- If in doubt, check formatting here:
-\href{https://royalsociety.org/journals/authors/author-guidelines/}{{https://royalsociety.org/journals/authors/author-guidelines/}}
-
-Thanks!
+\end{center}
 
 \textbf{Abstract (200 words max)}
 
@@ -127,7 +183,7 @@ In attempting to answer this question, we review current methods and highlight t
 We first discuss the appropriate data required for characterising disparity, then review various challenging aspects of these approaches.
 Throughout, it is important to remember these tools should always be used in the context of a specific scientific question, as this will drive data and methodological choices at every stage of the process.
 
-\includegraphics[width=6.5in,height=4.94444in]{media/image1.png}
+%\includegraphics[width=6.5in,height=4.94444in]{media/image1.png}
 
 \emph{Figure disparities {[}figure\_disparities.pdf{]}: The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
 These categories are not independent and many disparity studies will cover more than one.}
@@ -166,7 +222,7 @@ More mundanely, data collection is constrained by the time and money available, 
 Ultimately, disparity analyses characterise the data, and subsamples of the universe of possible data may not have the power to uncover holistic patterns of disparity.
 Therefore, trait data should be collected with the question in mind, or the question asked should be tailored to the limits of the data available.
 
-\includegraphics[width=5.63542in,height=3.875in]{media/image2.png}3.
+%\includegraphics[width=5.63542in,height=3.875in]{media/image2.png}3.
 
 \emph{Figure data {[}figure\_data.pdf{]}: Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
 Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
@@ -242,15 +298,6 @@ For example, if a metric (e.g. sum or ranges of variance) used to characterise d
 For all of these reasons, multidimensional data analyses should not be ordinated automatically, and careful consideration should be given to whether the aim of the study can be achieved without ordination (Lloyd 2016, 2018).
 
 
-
-
-% Stopped p.13
-
-
-
-
-
-
 % \hypertarget{a-multidimensionality}{%
 % \subsection{(a) Multidimensionality}\label{a-multidimensionality}}
 
@@ -302,581 +349,500 @@ For all of these reasons, multidimensional data analyses should not be ordinated
 
 
 
-\includegraphics[width=6.5in,height=5.26389in]{media/image3.png}
+%\includegraphics[width=6.5in,height=5.26389in]{media/image3.png}
 
-\emph{Figure methods: Morphospaces: different mathematical
-representations of a} \emph{morphospace. A trait matrix can be
-transformed into a distance matrix (e.g. in Close et al., 2015) or an
-ordinated matrix (e.g. in Brusatte et al.} \emph{2008). In each case,
-all three matrices represent the morphospace for the observations at
-hand. Visualisation: different ways to represent the morphospace in 2D.
-Visualisations can use either trait plots (directly from the trait
-matrix); ``flattening'' ordination of the data (e.g. using
-multidimensional scaling} \emph{forcing all the variance to be contained
-in two dimensions); or ordination axis plots (directly from the
-ordinated matrix).}
+\emph{Figure methods: Morphospaces: different mathematical representations of a} \emph{morphospace.
+% SG: The morphospace is the original trait space within which lie the specimens. Then one performs an ordination to visualize the space. So I would distinguish the morphospace from the ordination space. See also Mitteroecker and Huttegger (2009)
+A trait matrix can be transformed into a distance matrix (e.g. in Close et al., 2015) or an ordinated matrix (e.g. in Brusatte et al.} \emph{2008).
+In each case, all three matrices represent the morphospace for the observations at hand.
+Visualisation: different ways to represent the morphospace in 2D.
+Visualisations can use either trait plots (directly from the trait matrix); ``flattening'' ordination of the data (e.g. using multidimensional scaling} \emph{forcing all the variance to be contained in two dimensions)
+% SG: No, the flattening will not force all the variance to be contained in 2D. First because NMDS is non metric and variance is therefore not preserved as such. Second, because there is a stress associated with the flattening that correlates with the degree of distortion imposed on the data to enforce the 2D representation. Some information (variance) is thus necessarily lost.
+; or ordination axis plots (directly from the ordinated matrix).}
+% ES: I feel like somewhere we should say that in order for the spaces to be Euclidean, the axes must be on same scale. My little bugbear.
+% SG response: I think there are more conditions to be Euclidean (inner product defining the  Euclidean norm..). But surely if axes have different scales and units, it will be difficult to define a distance function and the space won't be metric.
+% @@@ Change references
 
 \hypertarget{b-disparity-indices}{%
+% @@@ Change to indices throughout
 \subsection{(b) Measuring disparity}\label{c-disparity-indices}}
 
-Most disparity datasets are multidimensional and, consequently, a large
-component of any disparity analysis involves considering how to extract
-a meaningful (i.e. interpretable) summary of disparity. This is usually
-achieved with a disparity metric or index
-\href{https://paperpile.com/c/sTGYvp/vTHS}{(Melanie J. Hopkins and
-Gerber 2017)}. As with any summary of multidimensional data, disparity
-metrics will reflect only some aspects of the morphological variation,
-never its whole complexity {[}metrics paper{]}. It is therefore often
-beneficial to use more than one metric to summarise different aspects of
-variation, guided by the aim of the study.
+Most disparity datasets are multidimensional and, consequently, a large component of any disparity analysis involves considering how to extract a meaningful (i.e. interpretable) summary of disparity.
+This is usually achieved with a disparity metric or index \href{https://paperpile.com/c/sTGYvp/vTHS}{(Melanie J. Hopkins and Gerber 2017)}.
+As with any summary of multidimensional data, disparity metrics will reflect only some aspects of the morphological variation, never its whole complexity {[}metrics paper{]}.
+It is therefore often beneficial to use more than one metric to summarise different aspects of variation, guided by the aim of the study.
 
-When considering only one dimension, disparity metrics can be used to
-reflect the spread of the distribution (e.g. the range, quantiles or
-variance) or its central tendency (i.e., mean, median or mode). Among
-these metrics, some will have more attractive properties than others,
-such as sensitivity to outliers. Range and mean are highly sensitive,
-whereas quantiles, variance and median are less so, making them more or
-less appropriate for different questions. For example, if we want to
-characterise the extent of morphospace occupied by a group (e.g. does
-group A occupy as much space as group B?), metrics related to the spread
-of the group in the morphospace are most appropriate (e.g. volume
-\href{https://paperpile.com/c/sTGYvp/47fI}{(Díaz et al. 2016)}, distance
-from the centroid
-\href{https://paperpile.com/c/sTGYvp/vTHS+yyNa}{(Melanie J. Hopkins and
-Gerber 2017; Finlay and Cooper 2015)}, variance and range
-\href{https://paperpile.com/c/sTGYvp/tGyd}{(S. L. Brusatte et al.
-2008)}). Conversely, if we wish to describe the ``position'' of a group
-in a morphospace (e.g. does group A occupy the same space as group B?),
-metrics related to the distance between the elements within a group and
-a fixed point in the morphospace are most appropriate
-(e.g.\href{https://paperpile.com/c/sTGYvp/u1KE}{(Guillerme et al.,
-n.d.)}). Finally, if we aim to characterise the density of morphospace
-occupation (e.g. is group A more closely packed than group B?) metrics
-related to the pairwise distances between elements will be most
-appropriate (e.g. nearest neighbour distance, pairwise distances, etc.
-\href{https://paperpile.com/c/sTGYvp/PbSx}{(Close et al. 2015)}).
+When considering only one dimension, disparity metrics can be used to reflect the spread of the distribution (e.g. the range, quantiles or variance) or its central tendency (i.e., mean, median or mode).
+Among these metrics, some will have more attractive properties than others, such as sensitivity to outliers. Range and mean are highly sensitive, whereas quantiles, variance and median are less so, making them more or less appropriate for different questions.
+For example, if we want to characterise the extent of morphospace occupied by a group (e.g. does group A occupy as much space as group B?), metrics related to the spread of the group in the morphospace are most appropriate (e.g. volume \href{https://paperpile.com/c/sTGYvp/47fI}{(Díaz et al. 2016)}, distance from the centroid \href{https://paperpile.com/c/sTGYvp/vTHS+yyNa}{(Melanie J. Hopkins and Gerber 2017; Finlay and Cooper 2015)}, variance and range \href{https://paperpile.com/c/sTGYvp/tGyd}{(S. L. Brusatte et al. 2008)}).
+Conversely, if we wish to describe the ``position''
+% SG: Note that conceptually and technically,  disparity is about variation. So information on position is another aspect of morphospace occupation. but it is distinct from the meaning of  disparity as originally intended.
+ of a group in a morphospace (e.g. does group A occupy the same space as group B?), metrics related to the distance between the elements within a group and a fixed point in the morphospace are most appropriate (e.g.\href{https://paperpile.com/c/sTGYvp/u1KE}{(Guillerme et al., n.d.)}).
+Finally, if we aim to characterise the density of morphospace occupation (e.g. is group A more closely packed than group B?) metrics related to the pairwise distances between elements will be most appropriate (e.g. nearest neighbour distance, pairwise distances, etc. \href{https://paperpile.com/c/sTGYvp/PbSx}{(Close et al. 2015)}).
+%ES: this para is probably most useful to refer to for the ordinate or not part
 
-In addition to considering what properties of disparity metrics should
-capture, it is important to also consider the mathematical properties of
-the metrics and their associated caveats
-\href{https://paperpile.com/c/sTGYvp/nFf7+ROH8}{(Wills 2001; Ciampaglio,
-Kemp, and McShea 2001)}. For example, measuring the full sum of the
-variance in each dimension of the space does not require we add the
-covariance between the axes in an ordinated space using a PCA. However,
-this is not true of other mathematical spaces or when not all dimensions
-or elements are considered, even in a PCA {[}Legendre \& Legendre
-2012{]}.
+In addition to considering what properties of disparity metrics should capture, it is important to also consider the mathematical properties of the metrics and their associated caveats \href{https://paperpile.com/c/sTGYvp/nFf7+ROH8}{(Wills 2001; Ciampaglio, Kemp, and McShea 2001)}.
+For example, measuring the full sum of the variance in each dimension of the space does not require we add the covariance between the axes in an ordinated space using a PCA.
+% SG: Not very clear to me
+However, this is not true of other mathematical spaces or when not all dimensions or elements are considered, even in a PCA {[}Legendre \& Legendre 2012{]}.
 
-Furthermore, multidimensional spaces also have some counter-intuitive
-properties that need to be considered such as the ``curse of
-dimensionality'' \href{https://paperpile.com/c/sTGYvp/Qsl3}{(Bellman
-1966)}. In spaces with some axis of variance lower than 1, product-based
-metrics used as proxies of volumes (e.g. product of ranges, hypervolume,
-hypercube, etc.) can tend towards zero fairly quickly for spaces with
-even a modest number of dimensions
-\href{https://paperpile.com/c/sTGYvp/Qsl3}{(Bellman 1966)}; Donoho
-2000). Some other types of metrics are also extremely sensitive to
-outliers and can be biased easily by sample size, for example range
-\href{https://paperpile.com/c/sTGYvp/aSSL}{(}Butler et al.
-2012\href{https://paperpile.com/c/sTGYvp/aSSL}{)} or convex hull based
-metrics \href{https://paperpile.com/c/sTGYvp/aSSL+PwyQ}{(Butler et al.
-2012; Jackson et al. 2011)}.
+Furthermore, multidimensional spaces also have some counter-intuitive properties that need to be considered such as the ``curse of dimensionality'' \href{https://paperpile.com/c/sTGYvp/Qsl3}{(Bellman 1966)}.
+In spaces with some axis of variance lower than 1, product-based metrics used as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) can tend towards zero fairly quickly for spaces with even a modest number of dimensions \href{https://paperpile.com/c/sTGYvp/Qsl3}{(Bellman 1966)}; Donoho 2000).
+Some other types of metrics are also extremely sensitive to outliers and can be biased easily by sample size, for example range \href{https://paperpile.com/c/sTGYvp/aSSL}{(}Butler et al. 2012\href{https://paperpile.com/c/sTGYvp/aSSL}{)}
+%SG: Or even better, twenty years earlier, Foote (1992), who orginally described the problem in the context of disparity and suggested a rarefaction approach.
+or convex hull based metrics \href{https://paperpile.com/c/sTGYvp/aSSL+PwyQ}{(Butler et al. 2012; Jackson et al. 2011)}.
 
 \hypertarget{c-testing-hypotheses-on-the-evolution-of-disparity}{%
 \subsection{(c) Testing hypotheses on the evolution of
 disparity}\label{c-testing-hypotheses-on-the-evolution-of-disparity}}
 
-No matter which disparity metrics have been calculated, the research
-question must be framed in an appropriate statistical context. The
-multidimensional statistical toolkit for ecology and evolution has been
-greatly expanded in recent years
-\href{https://paperpile.com/c/sTGYvp/ZnDd}{(Adams and Collyer}
-2018\href{https://paperpile.com/c/sTGYvp/ZnDd}{)}, but some of these
-advances have yet to be implemented in disparity analyses. Instead,
-hypothesis testing has mostly been confined to a small set of
-well-established methods. One commonly used test is the non-parametric
-permutation analysis of variance
-\href{https://paperpile.com/c/sTGYvp/3hy2+SC6L}{(M. J. Anderson and
-Walsh 2013; M. J. Anderson 2001)}, an analysis of variance (ANOVA) of
-the pairwise distances between different groups. Although statistically
-valid, this test is not always directly related to the hypothesis under
-question. For example, PERMANOVA tests whether two groups share the same
-variance/covariance in a ``distance-space''. This is not the same as
-testing whether the two groups overlap in morphospace. Statistical tests
-should be employed that are tailored to the question at hand, rather
-than simply following common practices.
+No matter which disparity metrics have been calculated, the research question must be framed in an appropriate statistical context.
+The multidimensional statistical toolkit for ecology and evolution has been greatly expanded in recent years \href{https://paperpile.com/c/sTGYvp/ZnDd}{(Adams and Collyer} 2018\href{https://paperpile.com/c/sTGYvp/ZnDd}{)}
+%AG: there are others that should be mentioned - mvmorph for example, which is especially important given that there are extremely different approaches to multivariate data in these different packages
+, but some of these advances have yet to be implemented in disparity analyses. Instead, hypothesis testing has mostly been confined to a small set of well-established methods.
+One commonly used test is the non-parametric permutation analysis of variance \href{https://paperpile.com/c/sTGYvp/3hy2+SC6L}{(M. J. Anderson and Walsh 2013; M. J. Anderson 2001)}, an analysis of variance (ANOVA) of the pairwise distances between different groups.
+Although statistically valid, this test is not always directly related to the hypothesis under question.
+For example, PERMANOVA tests whether two groups share the same variance/covariance in a ``distance-space''.
+% SG: What is meant by distance-sapce and in what way is it distinguished from the spaces discussed above?
+This is not the same as testing whether the two groups overlap in morphospace.
+%SG: You're sure of this?
+Statistical tests should be employed that are tailored to the question at hand, rather than simply following common practices.
 
-It is also important to consider which data should be subjected to a
-statistical test. For example, in morphological disparity analysis,
-especially for palaeobiological questions, data are often bootstrapped.
-This has two advantages: (i) when the disparity metric is unidimensional
-(e.g. the sum of variances), bootstrapping the data generates a
-distribution of the metric that can be analysed using the vast
-statistical toolkit available for comparing distributions; (ii) when
-data are scarce, bootstrapping the data allows users to introduce
-variance, rendering the test less sensitive to outliers. However,
-bootstrapped data are pseudoreplicates and thus non-independent. This
-violates the assumptions of most parametric statistical tests.
-Furthermore, the number of bootstrap pseudoreplicates will inevitably
-increase the Type I error rate. These factors are often ignored in
-disparity analyses.
+It is also important to consider which data should be subjected to a statistical test.
+% AG: It would be good to also note here that data should be comparable in terms of having a common reference frame - e.g. comparing disparities across elements with different numbers of landmarks or different landmark configurations that haven't been/can't be superimposed together is problematic but is popping up in the disparity literature
+For example, in morphological disparity analysis, especially for palaeobiological questions, data are often bootstrapped.
+This has two advantages: (i) when the disparity metric is unidimensional (e.g. the sum of variances), bootstrapping the data generates a distribution of the metric that can be analysed using the vast statistical toolkit available for comparing distributions; (ii) when data are scarce, bootstrapping the data allows users to introduce variance, rendering the test less sensitive to outliers.
+However, bootstrapped data are pseudoreplicates and thus non-independent.
+This violates the assumptions of most parametric statistical tests.
+Furthermore, the number of bootstrap pseudoreplicates will inevitably increase the false positive rate (Type I error).
+% @@@ check positive/negative type
+These factors are often ignored in disparity analyses.
+% VW: Surely there's a reference for this?
+% MH: I might be wrong about this, but my impression is that CIs generated from bootstrapping are compared visually (like to assess significance in changes in disparity over time), but that statistical tests are not commonly applied.
 
 %TG: Add section d) within c)
 \hypertarget{d-phylogenetic-autocorrelation}{%
 \subsection{(d) Phylogenetic
 autocorrelation}\label{d-phylogenetic-autocorrelation}}
 
-As with all comparative datasets, the data used in disparity analyses
-are not independent because close relatives will tend to have more
-similar morphologies than more distant relatives
-\href{https://paperpile.com/c/sTGYvp/WXik}{(Harvey and Pagel 1998)}.
+As with all comparative datasets, the data used in disparity analyses are not independent because close relatives will tend to have more similar morphologies than more distant relatives \href{https://paperpile.com/c/sTGYvp/WXik}{(Harvey and Pagel 1998)}.
 Thus, for many disparity analyses, phylogenetic relationships should be
-taken into account. However, it has been noted that some popular
-phylogenetic correction methods (like pPCA) can be inappropriate if
-incorrect assumptions are made about the data (Uyeda et al).
-\href{https://paperpile.com/c/sTGYvp/ZnDd}{(Adams and Collyer 2018)}
-provide a thorough review of multivariate phylogenetic comparative
-methods, and so we do not consider them further here.
+taken into account.
+% SG: Why?
+However, it has been noted that some popular phylogenetic correction methods (like pPCA) can be inappropriate
+% SG: In what way?
+if incorrect assumptions are made about the data (Uyeda et al). \href{https://paperpile.com/c/sTGYvp/ZnDd}{(Adams and Collyer 2018)}
+% @@@ref: https://academic.oup.com/sysbio/article/64/4/677/1649888
+% SG: Which assumption? This part (e) seems a bit vague to me
+% AG: as long as you are using most or ideally all of the variance in a dataset, the rotation of pPCA should have little to no impact on disparity analyses. polly et al 2013 i think
+provide a thorough review of multivariate phylogenetic comparative methods, and so we do not consider them further here.
+% AG: Given this is given quite short treatment, i think if you need room, you could cut it altogether or just have a sentence in another section stating this even more briefly
 
 %TG: Add section e) within c)???
 \hypertarget{e-ancestral-state-estimation-in-disparity-through-time-analyses}{%
 \subsection{(e) Ancestral state estimation in disparity-through-time
 analyses}\label{e-ancestral-state-estimation-in-disparity-through-time-analyses}}
 
-Disparity-through-time analyses often use ancestral state estimation to
-extract disparity estimates for non-sampled taxa and/or nodes of a
-phylogeny. Ancestral state estimation can be performed at two points in
-the disparity analysis pipeline: either (1) pre-ordination, i.e. the
-estimation is done before transformation of the data (e.g. ordination,
-or distance matrix construction) and is simply based on the original
-data; or (2) post-ordination, i.e. the estimation is done after
-transformation of the data by estimating the ancestral states using the
-transformed matrix (e.g. the ordination scores)
-\href{https://paperpile.com/c/sTGYvp/53SJ}{(Lloyd 2018)}.
+Disparity-through-time analyses often use ancestral state estimation to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny.
+Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-ordination, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-ordination, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix (e.g. the ordination scores) \href{https://paperpile.com/c/sTGYvp/53SJ}{(Lloyd 2018)}.
 
-Pre-ordination ancestral state estimation will change the way the
-ordination space is defined -- i.e. the relationship between the points
-are not yet estimated -- and requires longer computational times.
+Pre-ordination ancestral state estimation will change the way the ordination space is defined -- i.e. the relationship between the points are not yet estimated -- and requires longer computational times.
 However, once the morphospace is defined its properties will not change.
-Post-ordination ancestral state estimation will not change the empirical
-ordination space and is faster to compute, but it will add elements in
-the space, whose estimated positions can be problematic for statistical
-tests and evolutionary inferences down the line
-\href{https://paperpile.com/c/sTGYvp/53SJ}{(Lloyd 2018)}.
+Post-ordination ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \href{https://paperpile.com/c/sTGYvp/53SJ}{(Lloyd 2018)}.
 
-No ancestral state estimation method is without drawbacks and above all
-else are highly dependent on the data and method used. In general, using
-ancestral state estimation can help with recovering patterns of changes
-in disparity but should not be used simply to generate extra data points
-to increase statistical power. In fact, these extra points are not
-independent and can also have problematic side effects, especially when
-testing for the influence of mass extinctions on disparity.
+No ancestral state estimation method is without drawbacks
+% @@@ Maybe check in Pennel’s “fossils are needed” paper for ref.
+ and above all else are highly dependent on the data and method used.
+In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points to increase statistical power.
+In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity.
 
 \hypertarget{disparity-analyses-for-the-future}{%
 \section{4. Disparity analyses for the
 future}\label{disparity-analyses-for-the-future}}
 
-Morphological disparity analyses are widely employed in evolutionary
-palaeobiology, and they are based on a diversity of methods and data.
-There is no ``one-size-fits-all'' pipeline for morphological disparity
-analyses. As with any multidimensional analysis, there are many
-variables that have to be considered when deciding which data to use and
-how to analyse it, stemming from the explicit hypotheses being tested.
-Many of the problems in morphological disparity analysis arise from
-``blind'' application of established methodological pipelines without
-consideration of the biological question being addressed. We advocate
-the bespoke assembly of analytic approaches and, given the computational
-efficiency of these methods, an experimental approach that explores the
-impact of competing approaches, such as choice of distance measure,
-ordination method and ancestral state estimation method on disparity
-analysis results. Many of the methods employed in disparity analysis are
-used more widely in other fields, including genomics and ecology, which
-also encompass analyses of multidimensional datasets
-\href{https://paperpile.com/c/sTGYvp/krNU+60H0+cV3v}{(Donohue et al.
-2013; Canter et al. 2018; Saupe et al. 2015)}. Innovations in
-morphological disparity analyses likely await discovery in their
-respective literatures.
+Morphological disparity analyses are widely employed in evolutionary palaeobiology, and they are based on a diversity of methods and data.
+There is no ``one-size-fits-all'' pipeline for morphological disparity analyses.
+As with any multidimensional analysis, there are many variables that have to be considered when deciding which data to use and how to analyse it, stemming from the explicit hypotheses being tested.
+Many of the problems in morphological disparity analysis arise from ``blind'' application of established methodological pipelines without consideration of the biological question being addressed.
+We advocate the bespoke
+%VW: I think there could be just a line or two that takes makes "bespoke design" less daunting. There are loads of well-documented R packages available in morphological and ecological studies that can be relatively straightforwardly adapted.
+assembly of analytic approaches and, given the computational efficiency of these methods, an experimental approach that explores the impact of competing approaches, such as choice of distance measure, ordination method and ancestral state estimation method on disparity analysis results.
+Many of the methods employed in disparity analysis are used more widely in other fields, including genomics and ecology, which also encompass analyses of multidimensional datasets \href{https://paperpile.com/c/sTGYvp/krNU+60H0+cV3v}{(Donohue et al. 2013; Canter et al. 2018; Saupe et al. 2015)}. % @@@ Add Mammola
+Innovations in morphological disparity analyses likely await discovery in their respective literatures.
+% AG: as above, i think you need to add in evodevo work here, it's really fundamental to disparity
 
-While studies of morphological disparity would benefit from advances in
-multidimensional analysis in other fields, the concept of a morphospace
-could reciprocally benefit other disciplines. For example, the
-multidimensional analysis of Diaz
-\href{https://paperpile.com/c/sTGYvp/47fI}{(Díaz et al. 2016)}, which
-analysed patterns of form and function in plants, is essentially an
-ecomorphospace; isotopic analyses of organisms
-\href{https://paperpile.com/c/sTGYvp/PwyQ}{(Jackson et al. 2011)} can be
-represented as an isotope-space; ecosystem functioning in Donohue et al.
-(2013) as an ecosystem-space, etc. These generalisations could also be
-exported for any set of traits (e.g. acousto-spaces for acoustic traits
-or glotto-spaces for linguistic traits). Cognate approaches have been
-adopted recently in the analysis of single cell comparative
-transcriptome data
-\href{https://paperpile.com/c/sTGYvp/856K}{(Sebé-Pedrós et al. 2018)}
-where interpretation of the resulting transcriptome-spaces would be
-improved by heeding the concerns we highlight concerning morphospaces.
+While studies of morphological disparity would benefit from advances in multidimensional analysis in other fields, the concept of a morphospace could reciprocally benefit other disciplines.
+For example, the multidimensional analysis of Diaz \href{https://paperpile.com/c/sTGYvp/47fI}{(Díaz et al. 2016)}, which analysed patterns of form and function in plants, is essentially an ecomorphospace; isotopic analyses of organisms \href{https://paperpile.com/c/sTGYvp/PwyQ}{(Jackson et al. 2011)} can be represented as an isotope-space; ecosystem functioning in Donohue et al. (2013) as an ecosystem-space, etc.
+% AJ: this is a potential nice, although rather data hungry I believe, methods that I think could be worth dropping into the paper somewhere. Either here as a quick drop, or earlier up under overlap seems appropriate if you want to add it https://esajournals.onlinelibrary.wiley.com/doi/10.1890/14-0235.1
+These generalisations could also be exported for any set of traits (e.g. acousto-spaces for acoustic traits or glotto-spaces for linguistic traits).
+%SG: devising 
+Cognate approaches have been adopted recently in the analysis of single cell comparative transcriptome data \href{https://paperpile.com/c/sTGYvp/856K}{(Sebé-Pedrós et al. 2018)} where interpretation of the resulting transcriptome-spaces would be improved by heeding the concerns we highlight concerning morphospaces.
+% ES: Suggested by Erin: reword this sentence
 
-Although disparity analyses are now simple to implement in freely
-available softwares
-\href{https://paperpile.com/c/sTGYvp/xDqf+J2G1+9JdS+9Zoi+bCsU+EmTR+2KmX}{(e.g.,
-Guillerme 2018;} Adams and Otárola-Castillo
-2013\href{https://paperpile.com/c/sTGYvp/xDqf+J2G1+9JdS+9Zoi+bCsU+EmTR+2KmX}{;
-Bouxin 2005; Harmon et al. 2008; Lloyd 2016; Navarro 2003; Dixon 2003)},
-it is crucial to remember that they are multidimensional analyses and
-multidimensional analyses are complex. We assert that future
-morphological analyses will benefit by emphasising the methodological
-decisions made, rather than simply using disparity analysis because
-\emph{we can}.
+Although disparity analyses are now simple to implement in freely available softwares \href{https://paperpile.com/c/sTGYvp/xDqf+J2G1+9JdS+9Zoi+bCsU+EmTR+2KmX}{(e.g., Guillerme 2018;} {; Bouxin 2005; Harmon et al. 2008; Lloyd 2016; Navarro 2003; Oksanen 2007)},
+% @@@ add BAT
+it is crucial to remember that they are multidimensional analyses and multidimensional analyses are complex.
+We assert that future morphological analyses will benefit by emphasising the methodological decisions made, rather than simply using disparity analysis because \emph{we can}.
 
 \hypertarget{author-contributions}{%
 \section{5. Author contributions}\label{author-contributions}}
 
-TG, NC and PD proposed this review; TG and NC led the writing supported
-by PD and GT. All authors edited drafts and approved the final version.
+TG, NC and PD proposed this review; TG and NC led the writing supported by PD and GT. All authors edited drafts and approved the final version.
 
 \hypertarget{acknowledgments}{%
 \section{6. Acknowledgments}\label{acknowledgments}}
 
-This article results from discussion at the Royal Society International
-Science Seminar on `Reconciling disparate views on disparity' held at
-Chicheley Hall, 9-10th January, 2018.
+This article results from discussion at the Royal Society International Science Seminar on `Reconciling disparate views on disparity' held at Chicheley Hall, 9-10th January, 2018.
 
--AG was funded by European Research Council Starting grant 637171
-ADaPTiVE.
+-AG was funded by European Research Council Starting grant 637171 ADaPTiVE.
 
--ALJ was funded by an Irish Research Council Laureate Award
-IRCLA/2017/186. ES was funded by a University of Adelaide Research
-Fellowship;
+-ALJ was funded by an Irish Research Council Laureate Award IRCLA/2017/186. ES was funded by a University of Adelaide Research Fellowship;
 
 -EES was funded by a Leverhulme Trust Research Project Grant (DGR01020).
 
--PD was funded by NERC (NE/P013678/1; NE/N002067/1) and BBSRC
-(BB/N000919/1);
+-PD was funded by NERC (NE/P013678/1; NE/N002067/1) and BBSRC (BB/N000919/1);
 
--SB was funded by European Research Council (ERC) under the European
-Union's Horizon 2020 research and innovation program (grant agreement No
-756226, ERC Starting Grant: PalM) and a Leverhulme Trust Research
-Project Grant (RPG-2017-167);
+-SB was funded by European Research Council (ERC) under the European Union's Horizon 2020 research and innovation program (grant agreement No 756226, ERC Starting Grant: PalM) and a Leverhulme Trust Research Project Grant (RPG-2017-167);
 
 -TG was funded by ARC DP170103227 and FT180100634 awarded to VW;
 
-Donoho, D. L. (2000). High-dimensional data analysis: The curses and
-blessings of dimensionality. \emph{AMS math challenges lecture},
-\emph{1}(2000), 32.
-
-References
-
-\href{http://paperpile.com/b/sTGYvp/ZnDd}{Adams, Dean C., and Michael L.
-Collyer. 2018. ``Multivariate Phylogenetic Comparative Methods:
-Evaluations, Comparisons, and Recommendations.'' \emph{Systematic
-Biology} 67 (1): 14--31.}
-
-\href{http://paperpile.com/b/sTGYvp/J2G1}{Adams, Dean C., and Erik
-Otárola-Castillo. 2013. ``Geomorph: Anrpackage for the Collection and
-Analysis of Geometric Morphometric Shape Data.'' \emph{Methods in
-Ecology and Evolution / British Ecological Society} 4 (4): 393--99.}
-
-\href{http://paperpile.com/b/sTGYvp/SC6L}{Anderson, Marti J. 2001. ``A
-New Method for Non-Parametric Multivariate Analysis of Variance.''
-\emph{Austral Ecology} 26 (1): 32--46.}
-
-\href{http://paperpile.com/b/sTGYvp/3hy2}{Anderson, Marti J., and Daniel
-C. I. Walsh. 2013. ``PERMANOVA, ANOSIM, and the Mantel Test in the Face
-of Heterogeneous Dispersions: What Null Hypothesis Are You Testing?''
-\emph{Ecological Monographs} 83 (4): 557--74.}
-
-\href{http://paperpile.com/b/sTGYvp/qjj9}{Anderson, Philip S. L., Matt
-Friedman, Martin D. Brazeau, and Emily J. Rayfield. 2011. ``Initial
-Radiation of Jaws Demonstrated Stability despite Faunal and
-Environmental Change.'' \emph{Nature} 476 (7359): 206--9.}
-
-\href{http://paperpile.com/b/sTGYvp/Qsl3}{Bellman, R. 1966. ``Dynamic
-Programming.'' \emph{Science} 153 (3731): 34--37.}
-
-\href{http://paperpile.com/b/sTGYvp/1SD2}{Bookstein, Fred L. 1997.
-\emph{Morphometric Tools for Landmark Data: Geometry and Biology}.
-Cambridge University Press.}
-
-\href{http://paperpile.com/b/sTGYvp/sN5d}{---------. 2015. ``The
-Relation between Geometric Morphometrics and Functional Morphology, as
-Explored by Procrustes Interpretation of Individual Shape Measures
-Pertinent to Function.'' \emph{Anatomical Record} 298 (1): 314--27.}
-
-\href{http://paperpile.com/b/sTGYvp/o4w7}{---------. 2017a. ``A Newly
-Noticed Formula Enforces Fundamental Limits on Geometric Morphometric
-Analyses.'' \emph{Evolutionary Biology} 44 (4): 522--41.}
-
-\href{http://paperpile.com/b/sTGYvp/xaUx}{---------. 2017b. ``A Method
-of Factor Analysis for Shape Coordinates.'' \emph{American Journal of
-Physical Anthropology} 164 (2): 221--45.}
-
-\href{http://paperpile.com/b/sTGYvp/9JdS}{Bouxin, Guy. 2005. ``Ginkgo, a
-Multivariate Analysis Package.'' \emph{Journal of Vegetation Science:
-Official Organ of the International Association for Vegetation Science}
-16 (3): 355--59.}
-
-\href{http://paperpile.com/b/sTGYvp/Yrbg}{Brazeau, Martin D., Thomas
-Guillerme, and Martin R. Smith. 2017. ``Morphological Phylogenetic
-Analysis with Inapplicable Data.''
-https://doi.org/}\href{http://dx.doi.org/10.1101/209775}{10.1101/209775}\href{http://paperpile.com/b/sTGYvp/Yrbg}{.}
-
-\href{http://paperpile.com/b/sTGYvp/tGyd}{Brusatte, S. L., M. J. Benton,
-M. Ruta, and G. T. Lloyd. 2008. ``The First 50 Myr of Dinosaur
-Evolution: Macroevolutionary Pattern and Morphological Disparity.''
-\emph{Biology Letters} 4 (6): 733--36.}
-
-\href{http://paperpile.com/b/sTGYvp/EeC8}{Brusatte, Stephen L., Michael
-J. Benton, Marcello Ruta, and Graeme T. Lloyd. 2008. ``Superiority,
-Competition, and Opportunism in the Evolutionary Radiation of
-Dinosaurs.'' \emph{Science} 321 (5895): 1485--88.}
-
-\href{http://paperpile.com/b/sTGYvp/aSSL}{Butler, Richard J., Stephen L.
-Brusatte, Brian Andres, and Roger B. J. Benson. 2012. ``How Do
-Geological Sampling Biases Affect Studies of Morphological Evolution in
-Deep Time? A Case Study of Pterosaur (Reptilia: Archosauria)
-Disparity.'' \emph{Evolution; International Journal of Organic
-Evolution} 66 (1): 147--62.}
-
-\href{http://paperpile.com/b/sTGYvp/60H0}{Canter, Erin J., Catalina
-Cuellar-Gempeler, Abigail I. Pastore, Thomas E. Miller, and Olivia U.
-Mason. 2018. ``Predator Identity More than Predator Richness Structures
-Aquatic Microbial Assemblages in Sarracenia Purpurea Leaves.''
-\emph{Ecology} 99 (3): 652--60.}
-
-\href{http://paperpile.com/b/sTGYvp/ROH8}{Ciampaglio, Charles N.,
-Matthieu Kemp, and Daniel W. McShea. 2001. ``Detecting Changes in
-Morphospace Occupation Patterns in the Fossil Record: Characterization
-and Analysis of Measures of Disparity.'' \emph{Paleobiology} 27 (4):
-695--715.}
-
-\href{http://paperpile.com/b/sTGYvp/PbSx}{Close, Roger A., Matt
-Friedman, Graeme T. Lloyd, and Roger B. J. Benson. 2015. ``Evidence for
-a Mid-Jurassic Adaptive Radiation in Mammals.'' \emph{Current Biology:
-CB} 25 (16): 2137--42.}
-
-\href{http://paperpile.com/b/sTGYvp/RjqE}{Cooney, Christopher R., Jen A.
-Bright, Elliot J. R. Capp, Angela M. Chira, Emma C. Hughes, Christopher
-J. A. Moody, Lara O. Nouri, Zoë K. Varley, and Gavin H. Thomas. 2017.
-``Mega-Evolutionary Dynamics of the Adaptive Radiation of Birds.''
-\emph{Nature} 542 (7641): 344--47.}
-
-\href{http://paperpile.com/b/sTGYvp/0y4V}{Deline, Bradley, Jennifer M.
-Greenwood, James W. Clark, Mark N. Puttick, Kevin J. Peterson, and
-Philip C. J. Donoghue. 2018. ``Evolution of Metazoan Morphological
-Disparity.'' \emph{Proceedings of the National Academy of Sciences of
-the United States of America} 115 (38): E8909--18.}
-
-\href{http://paperpile.com/b/sTGYvp/47fI}{Díaz, Sandra, Jens Kattge,
-Johannes H. C. Cornelissen, Ian J. Wright, Sandra Lavorel, Stéphane
-Dray, Björn Reu, et al. 2016. ``The Global Spectrum of Plant Form and
-Function.'' \emph{Nature} 529 (7585): 167--71.}
-
-\href{http://paperpile.com/b/sTGYvp/2KmX}{Dixon, Philip. 2003. ``VEGAN,
-a Package of R Functions for Community Ecology.'' \emph{Journal of
-Vegetation Science: Official Organ of the International Association for
-Vegetation Science} 14 (6): 927.}
-
-\href{http://paperpile.com/b/sTGYvp/krNU}{Donohue, Ian, Owen L. Petchey,
-José M. Montoya, Andrew L. Jackson, Luke McNally, Mafalda Viana, Kevin
-Healy, Miguel Lurgi, Nessa E. O'Connor, and Mark C. Emmerson. 2013. ``On
-the Dimensionality of Ecological Stability.'' \emph{Ecology Letters} 16
-(4): 421--29.}
-
-\href{http://paperpile.com/b/sTGYvp/EPJ2}{Erwin, Douglas H. 2007.
-``DISPARITY: MORPHOLOGICAL PATTERN AND DEVELOPMENTAL CONTEXT.''
-\emph{Palaeontology}.
-https://doi.org/}\href{http://dx.doi.org/10.1111/j.1475-4983.2006.00614.x}{10.1111/j.1475-4983.2006.00614.x}\href{http://paperpile.com/b/sTGYvp/EPJ2}{.}
-
-\href{http://paperpile.com/b/sTGYvp/Z6l6}{---------. 2011.
-``Evolutionary Uniformitarianism.'' \emph{Developmental Biology} 357
-(1): 27--34.}
-
-\href{http://paperpile.com/b/sTGYvp/yyNa}{Finlay, Sive, and Natalie
-Cooper. 2015. ``Morphological Diversity in Tenrecs (Afrosoricida,
-Tenrecidae): Comparing Tenrec Skull Diversity to Their Closest
-Relatives.'' \emph{PeerJ} 3 (April): e927.}
-
-\href{http://paperpile.com/b/sTGYvp/2Neu}{Foote, Mike. 1989.
-``Perimeter-Based Fourier Analysis: A New Morphometric Method Applied to
-the Trilobite Cranidium.'' \emph{Journal of Paleontology}.
-https://doi.org/}\href{http://dx.doi.org/10.1017/s0022336000036556}{10.1017/s0022336000036556}\href{http://paperpile.com/b/sTGYvp/2Neu}{.}
-
-\href{http://paperpile.com/b/sTGYvp/fTJ3}{---------. 1995.
-``Morphological Diversification of Paleozoic Crinoids.''
-\emph{Paleobiology} 21 (03): 273--99.}
-
-\href{http://paperpile.com/b/sTGYvp/yqPw}{---------. 1997. ``THE
-EVOLUTION OF MORPHOLOGICAL DIVERSITY.'' \emph{Annual Review of Ecology
-and Systematics} 28 (1): 129--52.}
-
-\href{http://paperpile.com/b/sTGYvp/2tbJ}{Fortey, R. A., D. E. G.
-Briggs, and M. A. Wills. 1996. ``The Cambrian Evolutionary `explosion':
-Decoupling Cladogenesis from Morphological Disparity.'' \emph{Biological
-Journal of the Linnean Society. Linnean Society of London} 57 (1):
-13--33.}
-
-\href{http://paperpile.com/b/sTGYvp/EETc}{Friedman, Matt. 2010.
-``Explosive Morphological Diversification of Spiny-Finned Teleost Fishes
-in the Aftermath of the End-Cretaceous Extinction.'' \emph{Proceedings.
-Biological Sciences / The Royal Society} 277 (1688): 1675--83.}
-
-\href{http://paperpile.com/b/sTGYvp/SJbC}{Gerber, Sylvain. 2014. ``Not
-All Roads Can Be Taken: Development Induces Anisotropic Accessibility in
-Morphospace.'' \emph{Evolution \& Development} 16 (6): 373--81.}
-
-\href{http://paperpile.com/b/sTGYvp/QVvv}{---------. 2017. ``The
-Geometry of Morphospaces: Lessons from the Classic Raup Shell Coiling
-Model.'' \emph{Biological Reviews of the Cambridge Philosophical
-Society} 92 (2): 1142--55.}
-
-\href{http://paperpile.com/b/sTGYvp/Uns3}{Gould, Stephen Jay. 2000.
-\emph{Wonderful Life: The Burgess Shale and the Nature of History}.
-Random House.}
-
-\href{http://paperpile.com/b/sTGYvp/xDqf}{Guillerme, Thomas. 2018.
-``dispRity : A Modular R Package for Measuring Disparity.''
-\emph{Methods in Ecology and Evolution / British Ecological Society} 9
-(7): 1755--63.}
-
-\href{http://paperpile.com/b/sTGYvp/ekU4}{Guillerme, Thomas, and Natalie
-Cooper. 2018. ``Time for a Rethink: Time Sub-Sampling Methods in
-Disparity-through-Time Analyses.'' \emph{Palaeontology} 61 (4):
-481--93.}
-
-\href{http://paperpile.com/b/sTGYvp/u1KE}{Guillerme, Thomas, Mark N.
-Puttick, Ariel E. Marcy, and Vera Weisbecker. n.d. ``Shifting Spaces:
-Which Disparity or Dissimilarity Metrics Best Summarise Occupancy in
-Multidimensional Spaces?''
-https://doi.org/}\href{http://dx.doi.org/10.1101/801571}{10.1101/801571}\href{http://paperpile.com/b/sTGYvp/u1KE}{.}
-
-\href{http://paperpile.com/b/sTGYvp/9Zoi}{Harmon, Luke J., Jason T.
-Weir, Chad D. Brock, Richard E. Glor, and Wendell Challenger. 2008.
-``GEIGER: Investigating Evolutionary Radiations.'' \emph{Bioinformatics}
-24 (1): 129--31.}
-
-\href{http://paperpile.com/b/sTGYvp/WXik}{Harvey, Paul H., and Mark D.
-Pagel. 1998. \emph{The Comparative Method in Evolutionary Biology}.
-Oxford University Press, USA.}
-
-\href{http://paperpile.com/b/sTGYvp/3JPy}{Hill, Jennifer J., Mark N.
-Puttick, Thomas L. Stubbs, Emily J. Rayfield, and Philip C. J. Donoghue.
-2018. ``Evolution of Jaw Disparity in Fishes.'' \emph{Palaeontology}.
-https://doi.org/}\href{http://dx.doi.org/10.1111/pala.12371}{10.1111/pala.12371}\href{http://paperpile.com/b/sTGYvp/3JPy}{.}
-
-\href{http://paperpile.com/b/sTGYvp/xLdm}{Hopkins, Melanie J. 2017.
-``How Well Does a Part Represent the Whole? A Comparison of Cranidial
-Shape Evolution with Exoskeletal Character Evolution in the Trilobite
-Family Pterocephaliidae.'' \emph{Palaeontology} 60 (3): 309--18.}
-
-\href{http://paperpile.com/b/sTGYvp/vTHS}{Hopkins, Melanie J., and
-Sylvain Gerber. 2017. ``Morphological Disparity.'' In \emph{Evolutionary
-Developmental Biology}, 1--12.}
-
-\href{http://paperpile.com/b/sTGYvp/hea5}{Hopkins, M. J. 2013.
-``Decoupling of Taxonomic Diversity and Morphological Disparity during
-Decline of the Cambrian Trilobite Family Pterocephaliidae.''
-\emph{Journal of Evolutionary Biology} 26 (8): 1665--76.}
-
-\href{http://paperpile.com/b/sTGYvp/xxh5}{Hughes, Martin, Sylvain
-Gerber, and Matthew Albion Wills. 2013. ``Clades Reach Highest
-Morphological Disparity Early in Their Evolution.'' \emph{Proceedings of
-the National Academy of Sciences of the United States of America} 110
-(34): 13875--79.}
-
-\href{http://paperpile.com/b/sTGYvp/PwyQ}{Jackson, Andrew L., Richard
-Inger, Andrew C. Parnell, and Stuart Bearhop. 2011. ``Comparing Isotopic
-Niche Widths among and within Communities: SIBER - Stable Isotope
-Bayesian Ellipses in R.'' \emph{The Journal of Animal Ecology} 80 (3):
-595--602.}
-
-\href{http://paperpile.com/b/sTGYvp/oFiP}{Legendre, P., and Loic F. J.
-Legendre. 2012. \emph{Numerical Ecology}. Elsevier.}
-
-\href{http://paperpile.com/b/sTGYvp/bCsU}{Lloyd, Graeme T. 2016.
-``Estimating Morphological Diversity and Tempo with Discrete
-Character-Taxon Matrices: Implementation, Challenges, Progress, and
-Future Directions.'' \emph{Biological Journal of the Linnean Society.
-Linnean Society of London} 118 (1): 131--51.}
-
-\href{http://paperpile.com/b/sTGYvp/53SJ}{---------. 2018. ``Journeys
-through Discrete-Character Morphospace: Synthesizing Phylogeny, Tempo,
-and Disparity.'' \emph{Palaeontology} 61 (5): 637--45.}
-
-\href{http://paperpile.com/b/sTGYvp/dJHu}{Losos, Jonathan B. 2011.
-\emph{Lizards in an Evolutionary Tree: Ecology and Adaptive Radiation of
-Anoles}. Univ of California Press.}
-
-\href{http://paperpile.com/b/sTGYvp/aVVj}{Moyne, Sébastien, and Pascal
-Neige. 2007. ``The Space-Time Relationship of Taxonomic Diversity and
-Morphological Disparity in the Middle Jurassic Ammonite Radiation.''
-\emph{Palaeogeography, Palaeoclimatology, Palaeoecology} 248 (1-2):
-82--95.}
-
-\href{http://paperpile.com/b/sTGYvp/EmTR}{Navarro, Nicolas. 2003. ``MDA:
-A MATLAB-Based Program for Morphospace-Disparity Analysis.''
-\emph{Computers \& Geosciences} 29 (5): 655--64.}
-
-\href{http://paperpile.com/b/sTGYvp/yO2t}{Palci, Alessandro, and Michael
-S. Y. Lee. 2018. ``Geometric Morphometrics, Homology and Cladistics:
-Review and Recommendations.'' \emph{Cladistics: The International
-Journal of the Willi Hennig Society}.
-https://doi.org/}\href{http://dx.doi.org/10.1111/cla.12340}{10.1111/cla.12340}\href{http://paperpile.com/b/sTGYvp/yO2t}{.}
-
-\href{http://paperpile.com/b/sTGYvp/tSIy}{Pierce, Stephanie E., Kenneth
-D. Angielczyk, and Emily J. Rayfield. 2008. ``Patterns of Morphospace
-Occupation and Mechanical Performance in Extant Crocodilian Skulls: A
-Combined Geometric Morphometric and Finite Element Modeling Approach.''
-\emph{Journal of Morphology} 269 (7): 840--64.}
-
-\href{http://paperpile.com/b/sTGYvp/I0Ic}{Raup, D. M. 1961. ``THE
-GEOMETRY OF COILING IN GASTROPODS.'' \emph{Proceedings of the National
-Academy of Sciences of the United States of America} 47 (4): 602--9.}
-
-\href{http://paperpile.com/b/sTGYvp/geAO}{Ruta, Marcello, Kenneth D.
-Angielczyk, Jörg Fröbisch, and Michael J. Benton. 2013. ``Decoupling of
-Morphological Disparity and Taxic Diversity during the Adaptive
-Radiation of Anomodont Therapsids.'' \emph{Proceedings. Biological
-Sciences / The Royal Society} 280 (1768): 20131071.}
-
-\href{http://paperpile.com/b/sTGYvp/cV3v}{Saupe, Erin E., Huijie Qiao,
-Jonathan R. Hendricks, Roger W. Portell, Stephen J. Hunter, Jorge
-Soberón, and Bruce S. Lieberman. 2015. ``Niche Breadth and Geographic
-Range Size as Determinants of Species Survival on Geological Time
-Scales.'' \emph{Global Ecology and Biogeography}.
-https://doi.org/}\href{http://dx.doi.org/10.1111/geb.12333}{10.1111/geb.12333}\href{http://paperpile.com/b/sTGYvp/cV3v}{.}
-
-\href{http://paperpile.com/b/sTGYvp/856K}{Sebé-Pedrós, Arnau, Elad
-Chomsky, Kevin Pang, David Lara-Astiaso, Federico Gaiti, Zohar Mukamel,
-Ido Amit, Andreas Hejnol, Bernard M. Degnan, and Amos Tanay. 2018.
-``Early Metazoan Cell Type Diversity and the Evolution of Multicellular
-Gene Regulation.'' \emph{Nature Ecology \& Evolution} 2 (7): 1176--88.}
-
-\href{http://paperpile.com/b/sTGYvp/ZEDR}{Spriggs, Elizabeth L., Samuel
-B. Schmerler, Erika J. Edwards, and Michael J. Donoghue. 2018. ``Leaf
-Form Evolution in Viburnum Parallels Variation within Individual
-Plants.'' \emph{The American Naturalist} 191 (2): 235--49.}
-
-\href{http://paperpile.com/b/sTGYvp/Ejzr}{Wainwright, Peter C., Michael
-E. Alfaro, Daniel I. Bolnick, and C. Darrin Hulsey. 2005. ``Many-to-One
-Mapping of Form to Function: A General Principle in Organismal Design?''
-\emph{Integrative and Comparative Biology} 45 (2): 256--62.}
-
-\href{http://paperpile.com/b/sTGYvp/TZzO}{Weisbecker, Vera, Thomas
-Guillerme, Cruise Speck, Emma Sherratt, Hyab Mehari Abraha, Alana C.
-Sharp, Claire E. Terhune, Simon Collins, Stephen Johnston, and Olga
-Panagiotopoulou. 2019. ``Individual Variation of the Masticatory System
-Dominates 3D Skull Shape in the Herbivory-Adapted Marsupial Wombats.''
-\emph{Frontiers in Zoology} 16 (November): 41.}
-
-\href{http://paperpile.com/b/sTGYvp/nFf7}{Wills, Matthew A. 2001.
-``Morphological Disparity: A Primer.'' In \emph{Topics in Geobiology},
-55--144.}
-
-\href{http://paperpile.com/b/sTGYvp/eZ3F}{Wills, Matthew A., Derek E. G.
-Briggs, and Richard A. Fortey. 1994. ``Disparity as an Evolutionary
-Index: A Comparison of Cambrian and Recent Arthropods.''
-\emph{Paleobiology} 20 (02): 93--130.}
-
-\href{http://paperpile.com/b/sTGYvp/s33b}{Wright, David F. 2017.
-``Phenotypic Innovation and Adaptive Constraints in the Evolutionary
-Radiation of Palaeozoic Crinoids.'' \emph{Scientific Reports} 7 (1):
-13745.}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Donoho, D. L. (2000). High-dimensional data analysis: The curses and
+% blessings of dimensionality. \emph{AMS math challenges lecture},
+% \emph{1}(2000), 32.
+
+% References
+
+% \href{http://paperpile.com/b/sTGYvp/ZnDd}{Adams, Dean C., and Michael L.
+% Collyer. 2018. ``Multivariate Phylogenetic Comparative Methods:
+% Evaluations, Comparisons, and Recommendations.'' \emph{Systematic
+% Biology} 67 (1): 14--31.}
+
+% \href{http://paperpile.com/b/sTGYvp/J2G1}{Adams, Dean C., and Erik
+% Otárola-Castillo. 2013. ``Geomorph: Anrpackage for the Collection and
+% Analysis of Geometric Morphometric Shape Data.'' \emph{Methods in
+% Ecology and Evolution / British Ecological Society} 4 (4): 393--99.}
+
+% \href{http://paperpile.com/b/sTGYvp/SC6L}{Anderson, Marti J. 2001. ``A
+% New Method for Non-Parametric Multivariate Analysis of Variance.''
+% \emph{Austral Ecology} 26 (1): 32--46.}
+
+% \href{http://paperpile.com/b/sTGYvp/3hy2}{Anderson, Marti J., and Daniel
+% C. I. Walsh. 2013. ``PERMANOVA, ANOSIM, and the Mantel Test in the Face
+% of Heterogeneous Dispersions: What Null Hypothesis Are You Testing?''
+% \emph{Ecological Monographs} 83 (4): 557--74.}
+
+% \href{http://paperpile.com/b/sTGYvp/qjj9}{Anderson, Philip S. L., Matt
+% Friedman, Martin D. Brazeau, and Emily J. Rayfield. 2011. ``Initial
+% Radiation of Jaws Demonstrated Stability despite Faunal and
+% Environmental Change.'' \emph{Nature} 476 (7359): 206--9.}
+
+% \href{http://paperpile.com/b/sTGYvp/Qsl3}{Bellman, R. 1966. ``Dynamic
+% Programming.'' \emph{Science} 153 (3731): 34--37.}
+
+% \href{http://paperpile.com/b/sTGYvp/1SD2}{Bookstein, Fred L. 1997.
+% \emph{Morphometric Tools for Landmark Data: Geometry and Biology}.
+% Cambridge University Press.}
+
+% \href{http://paperpile.com/b/sTGYvp/sN5d}{---------. 2015. ``The
+% Relation between Geometric Morphometrics and Functional Morphology, as
+% Explored by Procrustes Interpretation of Individual Shape Measures
+% Pertinent to Function.'' \emph{Anatomical Record} 298 (1): 314--27.}
+
+% \href{http://paperpile.com/b/sTGYvp/o4w7}{---------. 2017a. ``A Newly
+% Noticed Formula Enforces Fundamental Limits on Geometric Morphometric
+% Analyses.'' \emph{Evolutionary Biology} 44 (4): 522--41.}
+
+% \href{http://paperpile.com/b/sTGYvp/xaUx}{---------. 2017b. ``A Method
+% of Factor Analysis for Shape Coordinates.'' \emph{American Journal of
+% Physical Anthropology} 164 (2): 221--45.}
+
+% \href{http://paperpile.com/b/sTGYvp/9JdS}{Bouxin, Guy. 2005. ``Ginkgo, a
+% Multivariate Analysis Package.'' \emph{Journal of Vegetation Science:
+% Official Organ of the International Association for Vegetation Science}
+% 16 (3): 355--59.}
+
+% \href{http://paperpile.com/b/sTGYvp/Yrbg}{Brazeau, Martin D., Thomas
+% Guillerme, and Martin R. Smith. 2017. ``Morphological Phylogenetic
+% Analysis with Inapplicable Data.''
+% https://doi.org/}\href{http://dx.doi.org/10.1101/209775}{10.1101/209775}\href{http://paperpile.com/b/sTGYvp/Yrbg}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/tGyd}{Brusatte, S. L., M. J. Benton,
+% M. Ruta, and G. T. Lloyd. 2008. ``The First 50 Myr of Dinosaur
+% Evolution: Macroevolutionary Pattern and Morphological Disparity.''
+% \emph{Biology Letters} 4 (6): 733--36.}
+
+% \href{http://paperpile.com/b/sTGYvp/EeC8}{Brusatte, Stephen L., Michael
+% J. Benton, Marcello Ruta, and Graeme T. Lloyd. 2008. ``Superiority,
+% Competition, and Opportunism in the Evolutionary Radiation of
+% Dinosaurs.'' \emph{Science} 321 (5895): 1485--88.}
+
+% \href{http://paperpile.com/b/sTGYvp/aSSL}{Butler, Richard J., Stephen L.
+% Brusatte, Brian Andres, and Roger B. J. Benson. 2012. ``How Do
+% Geological Sampling Biases Affect Studies of Morphological Evolution in
+% Deep Time? A Case Study of Pterosaur (Reptilia: Archosauria)
+% Disparity.'' \emph{Evolution; International Journal of Organic
+% Evolution} 66 (1): 147--62.}
+
+% \href{http://paperpile.com/b/sTGYvp/60H0}{Canter, Erin J., Catalina
+% Cuellar-Gempeler, Abigail I. Pastore, Thomas E. Miller, and Olivia U.
+% Mason. 2018. ``Predator Identity More than Predator Richness Structures
+% Aquatic Microbial Assemblages in Sarracenia Purpurea Leaves.''
+% \emph{Ecology} 99 (3): 652--60.}
+
+% \href{http://paperpile.com/b/sTGYvp/ROH8}{Ciampaglio, Charles N.,
+% Matthieu Kemp, and Daniel W. McShea. 2001. ``Detecting Changes in
+% Morphospace Occupation Patterns in the Fossil Record: Characterization
+% and Analysis of Measures of Disparity.'' \emph{Paleobiology} 27 (4):
+% 695--715.}
+
+% \href{http://paperpile.com/b/sTGYvp/PbSx}{Close, Roger A., Matt
+% Friedman, Graeme T. Lloyd, and Roger B. J. Benson. 2015. ``Evidence for
+% a Mid-Jurassic Adaptive Radiation in Mammals.'' \emph{Current Biology:
+% CB} 25 (16): 2137--42.}
+
+% \href{http://paperpile.com/b/sTGYvp/RjqE}{Cooney, Christopher R., Jen A.
+% Bright, Elliot J. R. Capp, Angela M. Chira, Emma C. Hughes, Christopher
+% J. A. Moody, Lara O. Nouri, Zoë K. Varley, and Gavin H. Thomas. 2017.
+% ``Mega-Evolutionary Dynamics of the Adaptive Radiation of Birds.''
+% \emph{Nature} 542 (7641): 344--47.}
+
+% \href{http://paperpile.com/b/sTGYvp/0y4V}{Deline, Bradley, Jennifer M.
+% Greenwood, James W. Clark, Mark N. Puttick, Kevin J. Peterson, and
+% Philip C. J. Donoghue. 2018. ``Evolution of Metazoan Morphological
+% Disparity.'' \emph{Proceedings of the National Academy of Sciences of
+% the United States of America} 115 (38): E8909--18.}
+
+% \href{http://paperpile.com/b/sTGYvp/47fI}{Díaz, Sandra, Jens Kattge,
+% Johannes H. C. Cornelissen, Ian J. Wright, Sandra Lavorel, Stéphane
+% Dray, Björn Reu, et al. 2016. ``The Global Spectrum of Plant Form and
+% Function.'' \emph{Nature} 529 (7585): 167--71.}
+
+% \href{http://paperpile.com/b/sTGYvp/2KmX}{Dixon, Philip. 2003. ``VEGAN,
+% a Package of R Functions for Community Ecology.'' \emph{Journal of
+% Vegetation Science: Official Organ of the International Association for
+% Vegetation Science} 14 (6): 927.}
+
+% \href{http://paperpile.com/b/sTGYvp/krNU}{Donohue, Ian, Owen L. Petchey,
+% José M. Montoya, Andrew L. Jackson, Luke McNally, Mafalda Viana, Kevin
+% Healy, Miguel Lurgi, Nessa E. O'Connor, and Mark C. Emmerson. 2013. ``On
+% the Dimensionality of Ecological Stability.'' \emph{Ecology Letters} 16
+% (4): 421--29.}
+
+% \href{http://paperpile.com/b/sTGYvp/EPJ2}{Erwin, Douglas H. 2007.
+% ``DISPARITY: MORPHOLOGICAL PATTERN AND DEVELOPMENTAL CONTEXT.''
+% \emph{Palaeontology}.
+% https://doi.org/}\href{http://dx.doi.org/10.1111/j.1475-4983.2006.00614.x}{10.1111/j.1475-4983.2006.00614.x}\href{http://paperpile.com/b/sTGYvp/EPJ2}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/Z6l6}{---------. 2011.
+% ``Evolutionary Uniformitarianism.'' \emph{Developmental Biology} 357
+% (1): 27--34.}
+
+% \href{http://paperpile.com/b/sTGYvp/yyNa}{Finlay, Sive, and Natalie
+% Cooper. 2015. ``Morphological Diversity in Tenrecs (Afrosoricida,
+% Tenrecidae): Comparing Tenrec Skull Diversity to Their Closest
+% Relatives.'' \emph{PeerJ} 3 (April): e927.}
+
+% \href{http://paperpile.com/b/sTGYvp/2Neu}{Foote, Mike. 1989.
+% ``Perimeter-Based Fourier Analysis: A New Morphometric Method Applied to
+% the Trilobite Cranidium.'' \emph{Journal of Paleontology}.
+% https://doi.org/}\href{http://dx.doi.org/10.1017/s0022336000036556}{10.1017/s0022336000036556}\href{http://paperpile.com/b/sTGYvp/2Neu}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/fTJ3}{---------. 1995.
+% ``Morphological Diversification of Paleozoic Crinoids.''
+% \emph{Paleobiology} 21 (03): 273--99.}
+
+% \href{http://paperpile.com/b/sTGYvp/yqPw}{---------. 1997. ``THE
+% EVOLUTION OF MORPHOLOGICAL DIVERSITY.'' \emph{Annual Review of Ecology
+% and Systematics} 28 (1): 129--52.}
+
+% \href{http://paperpile.com/b/sTGYvp/2tbJ}{Fortey, R. A., D. E. G.
+% Briggs, and M. A. Wills. 1996. ``The Cambrian Evolutionary `explosion':
+% Decoupling Cladogenesis from Morphological Disparity.'' \emph{Biological
+% Journal of the Linnean Society. Linnean Society of London} 57 (1):
+% 13--33.}
+
+% \href{http://paperpile.com/b/sTGYvp/EETc}{Friedman, Matt. 2010.
+% ``Explosive Morphological Diversification of Spiny-Finned Teleost Fishes
+% in the Aftermath of the End-Cretaceous Extinction.'' \emph{Proceedings.
+% Biological Sciences / The Royal Society} 277 (1688): 1675--83.}
+
+% \href{http://paperpile.com/b/sTGYvp/SJbC}{Gerber, Sylvain. 2014. ``Not
+% All Roads Can Be Taken: Development Induces Anisotropic Accessibility in
+% Morphospace.'' \emph{Evolution \& Development} 16 (6): 373--81.}
+
+% \href{http://paperpile.com/b/sTGYvp/QVvv}{---------. 2017. ``The
+% Geometry of Morphospaces: Lessons from the Classic Raup Shell Coiling
+% Model.'' \emph{Biological Reviews of the Cambridge Philosophical
+% Society} 92 (2): 1142--55.}
+
+% \href{http://paperpile.com/b/sTGYvp/Uns3}{Gould, Stephen Jay. 2000.
+% \emph{Wonderful Life: The Burgess Shale and the Nature of History}.
+% Random House.}
+
+% \href{http://paperpile.com/b/sTGYvp/xDqf}{Guillerme, Thomas. 2018.
+% ``dispRity : A Modular R Package for Measuring Disparity.''
+% \emph{Methods in Ecology and Evolution / British Ecological Society} 9
+% (7): 1755--63.}
+
+% \href{http://paperpile.com/b/sTGYvp/ekU4}{Guillerme, Thomas, and Natalie
+% Cooper. 2018. ``Time for a Rethink: Time Sub-Sampling Methods in
+% Disparity-through-Time Analyses.'' \emph{Palaeontology} 61 (4):
+% 481--93.}
+
+% \href{http://paperpile.com/b/sTGYvp/u1KE}{Guillerme, Thomas, Mark N.
+% Puttick, Ariel E. Marcy, and Vera Weisbecker. n.d. ``Shifting Spaces:
+% Which Disparity or Dissimilarity Metrics Best Summarise Occupancy in
+% Multidimensional Spaces?''
+% https://doi.org/}\href{http://dx.doi.org/10.1101/801571}{10.1101/801571}\href{http://paperpile.com/b/sTGYvp/u1KE}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/9Zoi}{Harmon, Luke J., Jason T.
+% Weir, Chad D. Brock, Richard E. Glor, and Wendell Challenger. 2008.
+% ``GEIGER: Investigating Evolutionary Radiations.'' \emph{Bioinformatics}
+% 24 (1): 129--31.}
+
+% \href{http://paperpile.com/b/sTGYvp/WXik}{Harvey, Paul H., and Mark D.
+% Pagel. 1998. \emph{The Comparative Method in Evolutionary Biology}.
+% Oxford University Press, USA.}
+
+% \href{http://paperpile.com/b/sTGYvp/3JPy}{Hill, Jennifer J., Mark N.
+% Puttick, Thomas L. Stubbs, Emily J. Rayfield, and Philip C. J. Donoghue.
+% 2018. ``Evolution of Jaw Disparity in Fishes.'' \emph{Palaeontology}.
+% https://doi.org/}\href{http://dx.doi.org/10.1111/pala.12371}{10.1111/pala.12371}\href{http://paperpile.com/b/sTGYvp/3JPy}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/xLdm}{Hopkins, Melanie J. 2017.
+% ``How Well Does a Part Represent the Whole? A Comparison of Cranidial
+% Shape Evolution with Exoskeletal Character Evolution in the Trilobite
+% Family Pterocephaliidae.'' \emph{Palaeontology} 60 (3): 309--18.}
+
+% \href{http://paperpile.com/b/sTGYvp/vTHS}{Hopkins, Melanie J., and
+% Sylvain Gerber. 2017. ``Morphological Disparity.'' In \emph{Evolutionary
+% Developmental Biology}, 1--12.}
+
+% \href{http://paperpile.com/b/sTGYvp/hea5}{Hopkins, M. J. 2013.
+% ``Decoupling of Taxonomic Diversity and Morphological Disparity during
+% Decline of the Cambrian Trilobite Family Pterocephaliidae.''
+% \emph{Journal of Evolutionary Biology} 26 (8): 1665--76.}
+
+% \href{http://paperpile.com/b/sTGYvp/xxh5}{Hughes, Martin, Sylvain
+% Gerber, and Matthew Albion Wills. 2013. ``Clades Reach Highest
+% Morphological Disparity Early in Their Evolution.'' \emph{Proceedings of
+% the National Academy of Sciences of the United States of America} 110
+% (34): 13875--79.}
+
+% \href{http://paperpile.com/b/sTGYvp/PwyQ}{Jackson, Andrew L., Richard
+% Inger, Andrew C. Parnell, and Stuart Bearhop. 2011. ``Comparing Isotopic
+% Niche Widths among and within Communities: SIBER - Stable Isotope
+% Bayesian Ellipses in R.'' \emph{The Journal of Animal Ecology} 80 (3):
+% 595--602.}
+
+% \href{http://paperpile.com/b/sTGYvp/oFiP}{Legendre, P., and Loic F. J.
+% Legendre. 2012. \emph{Numerical Ecology}. Elsevier.}
+
+% \href{http://paperpile.com/b/sTGYvp/bCsU}{Lloyd, Graeme T. 2016.
+% ``Estimating Morphological Diversity and Tempo with Discrete
+% Character-Taxon Matrices: Implementation, Challenges, Progress, and
+% Future Directions.'' \emph{Biological Journal of the Linnean Society.
+% Linnean Society of London} 118 (1): 131--51.}
+
+% \href{http://paperpile.com/b/sTGYvp/53SJ}{---------. 2018. ``Journeys
+% through Discrete-Character Morphospace: Synthesizing Phylogeny, Tempo,
+% and Disparity.'' \emph{Palaeontology} 61 (5): 637--45.}
+
+% \href{http://paperpile.com/b/sTGYvp/dJHu}{Losos, Jonathan B. 2011.
+% \emph{Lizards in an Evolutionary Tree: Ecology and Adaptive Radiation of
+% Anoles}. Univ of California Press.}
+
+% \href{http://paperpile.com/b/sTGYvp/aVVj}{Moyne, Sébastien, and Pascal
+% Neige. 2007. ``The Space-Time Relationship of Taxonomic Diversity and
+% Morphological Disparity in the Middle Jurassic Ammonite Radiation.''
+% \emph{Palaeogeography, Palaeoclimatology, Palaeoecology} 248 (1-2):
+% 82--95.}
+
+% \href{http://paperpile.com/b/sTGYvp/EmTR}{Navarro, Nicolas. 2003. ``MDA:
+% A MATLAB-Based Program for Morphospace-Disparity Analysis.''
+% \emph{Computers \& Geosciences} 29 (5): 655--64.}
+
+% \href{http://paperpile.com/b/sTGYvp/yO2t}{Palci, Alessandro, and Michael
+% S. Y. Lee. 2018. ``Geometric Morphometrics, Homology and Cladistics:
+% Review and Recommendations.'' \emph{Cladistics: The International
+% Journal of the Willi Hennig Society}.
+% https://doi.org/}\href{http://dx.doi.org/10.1111/cla.12340}{10.1111/cla.12340}\href{http://paperpile.com/b/sTGYvp/yO2t}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/tSIy}{Pierce, Stephanie E., Kenneth
+% D. Angielczyk, and Emily J. Rayfield. 2008. ``Patterns of Morphospace
+% Occupation and Mechanical Performance in Extant Crocodilian Skulls: A
+% Combined Geometric Morphometric and Finite Element Modeling Approach.''
+% \emph{Journal of Morphology} 269 (7): 840--64.}
+
+% \href{http://paperpile.com/b/sTGYvp/I0Ic}{Raup, D. M. 1961. ``THE
+% GEOMETRY OF COILING IN GASTROPODS.'' \emph{Proceedings of the National
+% Academy of Sciences of the United States of America} 47 (4): 602--9.}
+
+% \href{http://paperpile.com/b/sTGYvp/geAO}{Ruta, Marcello, Kenneth D.
+% Angielczyk, Jörg Fröbisch, and Michael J. Benton. 2013. ``Decoupling of
+% Morphological Disparity and Taxic Diversity during the Adaptive
+% Radiation of Anomodont Therapsids.'' \emph{Proceedings. Biological
+% Sciences / The Royal Society} 280 (1768): 20131071.}
+
+% \href{http://paperpile.com/b/sTGYvp/cV3v}{Saupe, Erin E., Huijie Qiao,
+% Jonathan R. Hendricks, Roger W. Portell, Stephen J. Hunter, Jorge
+% Soberón, and Bruce S. Lieberman. 2015. ``Niche Breadth and Geographic
+% Range Size as Determinants of Species Survival on Geological Time
+% Scales.'' \emph{Global Ecology and Biogeography}.
+% https://doi.org/}\href{http://dx.doi.org/10.1111/geb.12333}{10.1111/geb.12333}\href{http://paperpile.com/b/sTGYvp/cV3v}{.}
+
+% \href{http://paperpile.com/b/sTGYvp/856K}{Sebé-Pedrós, Arnau, Elad
+% Chomsky, Kevin Pang, David Lara-Astiaso, Federico Gaiti, Zohar Mukamel,
+% Ido Amit, Andreas Hejnol, Bernard M. Degnan, and Amos Tanay. 2018.
+% ``Early Metazoan Cell Type Diversity and the Evolution of Multicellular
+% Gene Regulation.'' \emph{Nature Ecology \& Evolution} 2 (7): 1176--88.}
+
+% \href{http://paperpile.com/b/sTGYvp/ZEDR}{Spriggs, Elizabeth L., Samuel
+% B. Schmerler, Erika J. Edwards, and Michael J. Donoghue. 2018. ``Leaf
+% Form Evolution in Viburnum Parallels Variation within Individual
+% Plants.'' \emph{The American Naturalist} 191 (2): 235--49.}
+
+% \href{http://paperpile.com/b/sTGYvp/Ejzr}{Wainwright, Peter C., Michael
+% E. Alfaro, Daniel I. Bolnick, and C. Darrin Hulsey. 2005. ``Many-to-One
+% Mapping of Form to Function: A General Principle in Organismal Design?''
+% \emph{Integrative and Comparative Biology} 45 (2): 256--62.}
+
+% \href{http://paperpile.com/b/sTGYvp/TZzO}{Weisbecker, Vera, Thomas
+% Guillerme, Cruise Speck, Emma Sherratt, Hyab Mehari Abraha, Alana C.
+% Sharp, Claire E. Terhune, Simon Collins, Stephen Johnston, and Olga
+% Panagiotopoulou. 2019. ``Individual Variation of the Masticatory System
+% Dominates 3D Skull Shape in the Herbivory-Adapted Marsupial Wombats.''
+% \emph{Frontiers in Zoology} 16 (November): 41.}
+
+% \href{http://paperpile.com/b/sTGYvp/nFf7}{Wills, Matthew A. 2001.
+% ``Morphological Disparity: A Primer.'' In \emph{Topics in Geobiology},
+% 55--144.}
+
+% \href{http://paperpile.com/b/sTGYvp/eZ3F}{Wills, Matthew A., Derek E. G.
+% Briggs, and Richard A. Fortey. 1994. ``Disparity as an Evolutionary
+% Index: A Comparison of Cambrian and Recent Arthropods.''
+% \emph{Paleobiology} 20 (02): 93--130.}
+
+% \href{http://paperpile.com/b/sTGYvp/s33b}{Wright, David F. 2017.
+% ``Phenotypic Innovation and Adaptive Constraints in the Evolutionary
+% Radiation of Palaeozoic Crinoids.'' \emph{Scientific Reports} 7 (1):
+% 13745.}
