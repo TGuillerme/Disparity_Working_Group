@@ -214,12 +214,12 @@ The points above assume that researchers are collecting their own data for dispa
 Discrete character data are commonly recycled from phylogenetic studies \citep[][e.g]{Foote1989-fd, Deline2018-le}.
 % SG: Foote (1989) is a study of trilobite disparity from Fourier analysis of cranidia. I don't think it has anything to do with discrete data or phylogenetic studies
 % MH: Also the Foote papers that used discrete data weren't taken from phylogenetic studies but collected for the specific purpose of the project -- I think this might be true for the Deline paper as well. But there are many studies out there that used matrices initially intended for phylogenetics. I can look for some if needed.
-This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups \href{https://paperpile.com/c/sTGYvp/fTJ3}{(Foote 1995)}.
+This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups \citep{Foote1995-do}.
 This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
-Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \href{https://paperpile.com/c/sTGYvp/xLdm}{(Melanie J. Hopkins 2017)}.
-This effect of anatomical part on disparity patterns can be especially challenging when working on datasets where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \href{https://paperpile.com/c/sTGYvp/0y4V}{(Deline et al. 2018)}.
+Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017-cf}.
+This effect of anatomical part on disparity patterns can be especially challenging when working on datasets where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018-le}.
 
-Trait data suffer from the same shortcomings as most biological datasets -- data can be missing, non-overlapping, hierarchical, inapplicable, ambiguous, polymorphic, correlated, or there may be an insufficient sample size \href{https://paperpile.com/c/sTGYvp/Yrbg}{(Brazeau, Guillerme, and Smith 2017}; \href{https://paperpile.com/c/sTGYvp/yO2t}{Palci and Lee 2018)}.
+Trait data suffer from the same shortcomings as most biological datasets -- data can be missing, non-overlapping, hierarchical, inapplicable, ambiguous, polymorphic, correlated, or there may be an insufficient sample size \citep{Brazeau2017-kg, Palci2018-ni}.
 Biological phenomena such as allometry and sexual dimorphism may also influence trait data.
 More mundanely, data collection is constrained by the time and money available, making collating a ``perfect'' dataset difficult.
 Ultimately, disparity analyses characterise the data, and subsamples of the universe of possible data may not have the power to uncover holistic patterns of disparity.
@@ -227,13 +227,12 @@ Therefore, trait data should be collected with the question in mind, or the ques
 
 %\includegraphics[width=5.63542in,height=3.875in]{media/image2.png}3.
 
-\emph{Figure data {[}figure\_data.pdf{]}: Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
+\textit{Figure data {[}figure\_data.pdf{]}: Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
 Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
 These measurements can then be mathematically transformed (logarithm transforms, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
 Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows.}
 
-\hypertarget{disparity-methods}{%
-\section{Disparity methods}\label{disparity-methods}}
+\section{Disparity methods}
 
 Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
 Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the variety of ordination (dimension reduction) techniques available and their limitations; (c) the metrics used to summarise the relative disparity of groups; (d) the methods used for hypothesis testing within the disparity analysis framework; and (e) ancestral state estimations in disparity-through-time analyses.
