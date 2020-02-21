@@ -204,11 +204,9 @@ Throughout, it is important to remember these tools should always be used in the
 \label{section:data}
 
 \noindent Disparity analyses are based on traits, but traits can be characterised in a number of ways:
-% MH: We do not mention model-based descriptors at all, or the spaces defined by them (e.g. Raup's shell coiling models). I'm not convinced that we must, but it may come across as an notable omission to reviewers
-% SG: I agree. There's for instance Saunders et al. (2004) disparity study of Paleozoic ammonoids using Raup's shell coiling parameters
-	1) discrete ``cladistic'' characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[][e.g]{Close2015-qi};
+	1) discrete morphological characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[][e.g]{Foote1989-fd, Deline2018-le};
 	2) continuous measurements of features (e.g., lengths) \citep[][e.g]{Anderson2001-qb}; or
-	3) more mathematical descriptors from geometric morphometric landmark data (e.g. Procrustes coordinates) \citep[][e.g]{Cooney2017-ly}, and Fourier coefficients \citep[][e.g]{Foote1995-do, Spriggs2018-nu} (Fig. 2).
+	3) more mathematical descriptors from geometric morphometric landmark data (e.g. Procrustes coordinates) \citep[][e.g]{Cooney2017-ly}, Fourier coefficients \citep[][e.g]{Foote1995-do, Spriggs2018-nu} or model-based descriptors \citep{Raup1961-vx,Saunders2004} (Fig. 2).
 None of these approaches are superior, but they may be more or less well-suited to characterising traits under comparison and to the question being asked of those traits \citep{hetherington2015cladistic,Hopkins2017-cf}.
 
 For example, if investigating variation of bat wing shapes, both homologous landmarks and continuous measurements of bones may be appropriate to capture patterns of wing variation.
@@ -217,10 +215,11 @@ However, if the focus is on convergence between different bats and birds, it wou
 Where there is any doubt about the appropriate traits to choose, it may be preferable to use different kinds of data for the same feature to determine whether they capture the same pattern of disparity.
 
 The points above assume that researchers are collecting their own data for disparity analyses, but often this is not the case.
-Discrete character data are commonly recycled from phylogenetic studies \citep[][e.g]{Foote1989-fd, Deline2018-le}.
-% SG: Foote (1989) is a study of trilobite disparity from Fourier analysis of cranidia. I don't think it has anything to do with discrete data or phylogenetic studies
-% MH: Also the Foote papers that used discrete data weren't taken from phylogenetic studies but collected for the specific purpose of the project -- I think this might be true for the Deline paper as well. But there are many studies out there that used matrices initially intended for phylogenetics. I can look for some if needed.
-This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups \citep{Foote1995-do}.
+Discrete character data can also be use
+
+
+are commonly recycled from phylogenetic studies \citep[][e.g]{Brusatte2008-fx,Close2015-qi,Wright2017-jo}.
+This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups.
 This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017-cf}.
 This effect of anatomical part on disparity patterns can be especially challenging when working on datasets where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018-le}.
@@ -256,16 +255,12 @@ We generalise this definition to any linear transformation ($V \to W$) of this s
 Note that here the morphospace does not need to be Euclidean (although this is often desired or assumed - see section \ref{section:ordination} below).
 If the morphospace is transformed mathematically (i.e. the dataset is transformed using logs, ordinations, distance matrices, etc...) it remains the morphospace as long as all the observation and traits remain in the datatset.
 
-% This generalised definition that we will used throughout the manuscript considers to be a morphospace any mathematical object that contains all the traits and all the observation.
-% For example, the raw trait matrix is a morphospace, the distance matrix obtained from that one is the same morphospace, the ordination of that latter is the same morphospace, etc (again, properties of the space can change as long as all the traits and observations are used).
-% But if a space is comprised of 95\% of the axes of a PCA, this is not a morphospace anymore but a subset of it.
-
 
 \section{Disparity analysis methods}
 \label{section:methods}
 
 \noindent Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
-Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the indices used to summarise the relative disparity of groups; (c) the methods used for hypothesis testing within the disparity analysis framework; and (d) ancestral state estimations in disparity-through-time analyses.
+Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the indices used to summarise the relative disparity of groups; (c) the methods used for hypothesis testing within the disparity analysis framework; and (d) the influence of phylogeny on disparity analyses.
 We consider these aspects in turn below.
 
 \subsection{(a) To ordinate or not to ordinate - that is the (multidimensional) question}
@@ -358,44 +353,26 @@ However, bootstrapped data are pseudoreplicates and thus non-independent.
 This violates the assumptions of most parametric statistical tests.
 Furthermore, the number of bootstrap pseudoreplicates will inevitably increase the false positive rate (Type I error).
 These factors are often ignored in disparity analyses.
-% VW: Surely there's a reference for this?
-% MH: I might be wrong about this, but my impression is that CIs generated from bootstrapping are compared visually (like to assess significance in changes in disparity over time), but that statistical tests are not commonly applied.
 Finally, it is important to understand the limitations of the dataset for performing statistical analysis.
 Mainly, disparity analysis should be restrained to groups within the same morphospace and are more difficult between different morphospaces.
 This can be the case when comparing elements with different numbers of landmarks or different landmark configurations for example: they will result in different morphospaces and comparing disparity indices between them is not trivial.
 
 
-%TG: Add section d) within c)
 \subsection{(d) Disparity and phylogeny}
 \label{section:phylo}
 
 As with all comparative datasets, the data used in disparity analyses are not independent because close relatives will tend to have more similar morphologies than more distant relatives \citep{Harvey1998-xg}.
 Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common) the non-independence between observations should be taken into account to correctly measure phenomenons.
-However, it has been noted that some popular phylogenetic correction methods (like pPCA) can be inappropriate
-% SG: In what way?
-if incorrect assumptions are made about the data \citep{Uyeda2015}.
-% @@@ref: https://academic.oup.com/sysbio/article/64/4/677/1649888
-% SG: Which assumption? This part (e) seems a bit vague to me
-% AG: as long as you are using most or ideally all of the variance in a dataset, the rotation of pPCA should have little to no impact on disparity analyses. polly et al 2013 i think
+However, it has been noted that some popular phylogenetic correction methods (like pPCA) can be inappropriate, especially when using only the first $n$ axis of the ordination and can lead to artefactual interpretations of the data \citep[such as wrongly supported ``early burst'' type patterns;][]{Uyeda2015}.
 
+One other common way to taken phylogeny into account in disparity analyses is using ancestral sates estimations in disparity-through-time analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny.
+Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-transformation, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-transformation, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix (e.g. the ordination scores) \citep{lloyd2018}.
 
-        % provide a thorough review of multivariate phylogenetic comparative methods, and so we do not consider them further here.
-        % % AG: Given this is given quite short treatment, i think if you need room, you could cut it altogether or just have a sentence in another section stating this even more briefly
-
-        % %TG: Add section e) within c)???
-        % \subsection{(e) Ancestral state estimation in disparity-through-time analyses}
-        % \label{section:ACE}
-
-Disparity-through-time analyses often use ancestral state estimation to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny.
-Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-ordination, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-ordination, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix (e.g. the ordination scores) \citep{lloyd2018}.
-
-Pre-ordination ancestral state estimation will change the way the ordination space is defined -- i.e. the relationship between the points are not yet estimated -- and requires longer computational times.
+Pre-transformation ancestral state estimation will change the way the ordination space is defined -- i.e. the relationship between the points are not yet estimated -- and requires longer computational times.
 However, once the morphospace is defined its properties will not change.
-Post-ordination ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \citep{lloyd2018}.
+Post-transformation ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \citep{lloyd2018}.
 
-No ancestral state estimation method is without drawbacks
-% @@@ Maybe check in Pennel’s “fossils are needed” paper for ref.
- and above all else are highly dependent on the data and method used.
+No ancestral state estimation method is without drawbacks and above all else are highly dependent on the data and method used \cite{Louca2019}.
 In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points to increase statistical power.
 In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity.
 
@@ -406,25 +383,16 @@ In fact, these extra points are not independent and can also have problematic si
 There is no ``one-size-fits-all'' pipeline for morphological disparity analyses.
 As with any multidimensional analysis, there are many variables that have to be considered when deciding which data to use and how to analyse it, stemming from the explicit hypotheses being tested.
 Many of the problems in morphological disparity analysis arise from ``blind'' application of established methodological pipelines without consideration of the biological question being addressed.
-We advocate the bespoke
-%VW: I think there could be just a line or two that takes makes "bespoke design" less daunting. There are loads of well-documented R packages available in morphological and ecological studies that can be relatively straightforwardly adapted.
-assembly of analytic approaches and, given the computational efficiency of these methods, an experimental approach that explores the impact of competing approaches, such as choice of distance measure, ordination method and ancestral state estimation method on disparity analysis results.
-Many of the methods employed in disparity analysis are used more widely in other fields, including genomics and ecology, which also encompass analyses of multidimensional datasets
-\citep{Donohue2013-bg, Saupe2015-vm, Canter2018-hk, mammola2019}
-. % @@@ Add Mammola
+We advocate that researchers should assemble their analytical approaches based on an experimental approach that explores the impact of competing methods, such as choice of distance measure, ordination method and ancestral state estimation method on disparity analysis results.
+Thankfully this is now getting easier through the availability of diverse well documented R packages for multidimensional analysis \citep{Navarro2003-vz, Bouxin2005-wk, oksanen2007vegan, Harmon2008-gq, lloyd2016, Guillerme2018-uc}.
+Many of the methods employed in disparity analysis are used more widely in other fields, including genomics and ecology, which also encompass analyses of multidimensional datasets \citep{Donohue2013-bg, Saupe2015-vm, Canter2018-hk, mammola2019}.
 Innovations in morphological disparity analyses likely await discovery in their respective literatures.
-% AG: as above, i think you need to add in evodevo work here, it's really fundamental to disparity
 
 While studies of morphological disparity would benefit from advances in multidimensional analysis in other fields, the concept of a morphospace could reciprocally benefit other disciplines.
-For example, the multidimensional analysis of Diaz \citealt{Diaz2016-mr}, which analysed patterns of form and function in plants, is essentially an ecomorphospace; isotopic analyses of organisms \citep{Jackson2011-kq} can be represented as an isotope-space; ecosystem functioning in \citealt{Donohue2013-bg} as an ecosystem-space, etc.
-% AJ: this is a potential nice, although rather data hungry I believe, methods that I think could be worth dropping into the paper somewhere. Either here as a quick drop, or earlier up under overlap seems appropriate if you want to add it https://esajournals.onlinelibrary.wiley.com/doi/10.1890/14-0235.1
-These generalisations could also be exported for any set of traits (e.g. acousto-spaces for acoustic traits or glotto-spaces for linguistic traits).
-%SG: devising 
-Cognate approaches have been adopted recently in the analysis of single cell comparative transcriptome data \citep{Sebe-Pedros2018-sw} where interpretation of the resulting transcriptome-spaces would be improved by heeding the concerns we highlight concerning morphospaces.
-% ES: Suggested by Erin: reword this sentence
+For example, the multidimensional analysis of \citep{Diaz2016-mr}, which analysed patterns of form and function in plants, is essentially an eco-morphospace; isotopic analyses of organisms \citep{Jackson2011-kq,Swanson2015} can be represented as an isotope-space; ecosystem functioning in \citealt{Donohue2013-bg} as an ecosystem-space, etc.
+These generalisations could also be exported for any set of traits: cognate approaches have been adopted in the analysis of single cell comparative transcriptome data \citep{Sebe-Pedros2018-sw} where interpretation of the resulting transcriptome-spaces would be improved by giving careful attention to the concerns we highlight concerning morphospaces.
 
-Although disparity analyses are now simple to implement in freely available softwares \citep{Navarro2003-vz, Bouxin2005-wk, oksanen2007vegan, Harmon2008-gq, lloyd2016, Guillerme2018-uc}.
-it is crucial to remember that they are multidimensional analyses and multidimensional analyses are complex.
+Although disparity analyses are now simple to implement in freely available softwares \citep{Navarro2003-vz, Bouxin2005-wk, oksanen2007vegan, Harmon2008-gq, lloyd2016, Guillerme2018-uc} it is crucial to remember that they are multidimensional analyses and multidimensional analyses are complex.
 We assert that future morphological analyses will benefit by emphasising the methodological decisions made, rather than simply using disparity analysis because \textit{we can}.
 
 \subsection{Author contributions}
