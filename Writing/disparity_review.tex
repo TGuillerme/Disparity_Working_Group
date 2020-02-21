@@ -139,6 +139,8 @@ morphology, disparity, variance/variation
 
 \section{Introduction}
 
+%@@@ add links to figures
+
 \noindent Clades of organisms are characterised by variation in both numbers of species and range of phenotypes through time.
 At the extremes, clades may be exceptionally species-rich and phenotypically diverse (e.g. cichlids and molluscs), species-rich but phenotypically conservative (e.g. bacteria and nematodes), species-poor but phenotypically diverse (e.g. Afrotheria), or depauperate in both species and phenotypic diversity (e.g. lungfish).
 These phenomena suggest that taxonomic and phenotypic diversity are not inextricably linked, raising important questions about how phenotypic diversity arises, such as:
@@ -241,27 +243,29 @@ Therefore, trait data should be collected with the question in mind, or the ques
 \label{Fig:data}
 \end{figure}
 
+
+\subsection{From data to morphospace}
+
+The concept of what the morphospace \textit{is} can be different between authors and studies but generally used in the common (i.e. non-mathematical) sense of a space containing all possible morphologies.
+For the purpose of this review, we use a generalised version of the definition of \cite{mitteroecker2009concept} where the morphospace is a \textit{p}-dimensional space (or Q-space) containing \textit{n} points \citep{mitteroecker2009concept}.
+In other words, mathematically, the morphospace is the mathematical object that contains the trait values (\textit{p}, the axes of the space) for all the observations (\textit{n}, the specimens); or, biologically, the morphospace contains all the observed combination of traits.
+We generalise this definition to any transformation of this space that retains the biological definition, i.e. the morphospace is the mathematical object that contains the observed combinations of traits or their transformation.
+Note that here the morphospace does not need to be Euclidean (although this is often desired or assumed - see discussion below). %link
+If the morphospace is transformed mathematically (i.e. the dataset is transformed using logs, ordinations, distance matrices, etc...) it remains the morphospace as long as all the observation and traits remain in the datatset.
+
 \section{Disparity analysis methods}
 
 \noindent Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
-Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the variety of ordination (dimension reduction) techniques available and their limitations; (c) the metrics used to summarise the relative disparity of groups; (d) the methods used for hypothesis testing within the disparity analysis framework; and (e) ancestral state estimations in disparity-through-time analyses.
-% @@@ Check the numbering here
+Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the indices used to summarise the relative disparity of groups; (c) the methods used for hypothesis testing within the disparity analysis framework; and (d) ancestral state estimations in disparity-through-time analyses.
 We consider these aspects in turn below.
 
-
-
-
-
-
-
-\subsection{a) To ordinate or not to ordinate - that is the (multidimensional) question}
+\subsection{(a) To ordinate or not to ordinate - that is the (multidimensional) question}
 
 Disparity analyses often use ordination techniques for dimension reduction.
 Ordinations are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
 They come in many flavours depending on the data and the desired morphospace properties.
 For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCO, which is equivalent to metric multidimensional scaling (MDS) or non-metric multidimensional scaling (NMDS) \citep[see][chapter 9 for a detailed overview of ordination methods and properties]{Legendre2012-va}.
 
-% -But mainly ordination is good for visualising.
 One of the reason why ordinations techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at the time which can be more intuitively captured than through disparity indices (see section below). %@@@ LINK
 Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e. selecting only those axes that describe the majority of the variation in the dataset - e.g. 95\%).
 In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions \citep{Legendre2012-va,dryden2016statistical}.
@@ -292,7 +296,6 @@ For all of these reasons, multidimensional data analyses should not be ordinated
    \includegraphics[width=0.9\textwidth]{Figures/figure_space.pdf}
 \caption{
     Morphospaces: different mathematical representations of a morphospace.
-    % SG: The morphospace is the original trait space within which lie the specimens. Then one performs an ordination to visualize the space. So I would distinguish the morphospace from the ordination space. See also Mitteroecker and Huttegger (2009)
     A trait matrix can be transformed into a distance matrix \citep[e.g in][]{Close2015-qi} or an ordinated matrix \citep[e.g. in][]{Brusatte2008-vx}
     In each case, all three matrices represent the morphospace for the observations at hand.
     Visualisation: different ways to represent the morphospace in 2D.
