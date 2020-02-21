@@ -161,7 +161,7 @@ Such multidimensional spaces (or morphospaces) can then be used to tackle a dive
 
 	\item \textbf{Disparity and taxonomic diversity} Morphological disparity provides another perspective on biodiversity; high morphological disparity represents a high diversity of morphologies (i.e. shapes or body plans) and is, presumably, associated with high levels of ecological and functional diversity (though see section 4 below).
 	This makes disparity an informative complement to diversity measures based on species richness alone. Indeed, most studies that have investigated disparity and taxonomic diversity support an effective decoupling 
-	\citep[][e.g.]{Fortey1996-kt, Moyne2007-jm, Ruta2013-iy, Hopkins2013-xt}.
+	\citep[e.g.][]{Fortey1996-kt, Moyne2007-jm, Ruta2013-iy, Hopkins2013-xt}.
 	This approach has been used to investigate whether some groups are more successful than others in their exploration of new evolutionary strategies \citep{Losos2011-fq}.
 
 	\item \textbf{Disparity as a proxy for ecology} The disparity of a group can be used as a proxy for either the functional role it plays within an ecosystem or its ecological niche.
@@ -184,8 +184,6 @@ However, this example highlights one of the most challenging problems confrontin
 In attempting to answer this question, we review current methods and highlight their limitations, as part of a more general attempt to propose best practice guidelines for studies of disparity.
 We first discuss the appropriate data required for characterising disparity, then review various challenging aspects of these approaches.
 Throughout, it is important to remember these tools should always be used in the context of a specific scientific question, as this will drive data and methodological choices at every stage of the process.
-
-%\includegraphics[width=6.5in,height=4.94444in]{media/image1.png}
 
 \begin{figure}[!htbp]
 \centering
@@ -256,103 +254,37 @@ We consider these aspects in turn below.
 
 
 
-
-
 \subsection{a) To ordinate or not to ordinate - that is the (multidimensional) question}
 
-% -Disparity analysis have a history of using ordination techniques
 Disparity analyses often use ordination techniques for dimension reduction.
-Dimension reduction (or ordination) is a powerful tool for visualizing data distribution in disparity analyses, helping to elucidate the underlying structure within datasets.
-%     -Ordination techniques are blablabla
-These are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis -- PCA; principal coordinates analysis -- PCO/PCoA; non-metric multidimensional scaling -- NMDS; etc.).
-Ordination techniques come in many flavours depending on the data and the desired morphospace properties.
-Quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCoA, which is equivalent to metric multidimensional scaling (MDS) or non-metric multidimensional scaling (NMDS) (see Legendre and Legendre 2012,chapter 9, for a detailed explanation of ordination methods and properties).
+Ordinations are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
+They come in many flavours depending on the data and the desired morphospace properties.
+For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCO, which is equivalent to metric multidimensional scaling (MDS) or non-metric multidimensional scaling (NMDS) \citep[see][chapter 9 for a detailed overview of ordination methods and properties]{Legendre2012-va}.
+
 % -But mainly ordination is good for visualising.
-Ordination is advantageous for plotting and visualising data, and can reveal properties of the morphospace not intuitively captured by disparity metrics (see Metrics section below {[}metrics{]}).
-% -Ordination can be good for reducing dimensions if the data has a lot of measurements for a few number of observations (e.g. landmark data, discrete morphological characters, etc.)
-Using ordinations in disparity analysis makes it easier for researchers to comprehend patterns in just two or three spatial dimensions at a time - or, indeed, just the first few axes of a PCA or a PCO.
-Additionally, after ordinating the data, it is possible to reduce further the number of dimensions by focussing on just a subset of axes (e.g. selecting only those axes that describe the majority of the variation) or by fitting the variation to a prescribed number of axes.
-In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions (Legendre and Legendre 2012). %TG: cite also: Dryden and Mardia "Statistical Shape Analysis book"
-This has clear advantages for interpreting the results.
-For example, the axes will represent gradients of biological variation (e.g. elongation and flattening of the beak in birds \citep{Cooney2017-ly}.
+One of the reason why ordinations techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at the time which can be more intuitively captured than through disparity indices (see section below). %@@@ LINK
+Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e. selecting only those axes that describe the majority of the variation in the dataset - e.g. 95\%).
+In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions \citep{Legendre2012-va,dryden2016statistical}.
+In practice, this can allow to interpret only the major axis of a highly dimensional dataset as major gradients of biological variation \citep[e.g. the elongation and flattening of birds beaks;][]{Cooney2017-ly}.
 
-
-% -However ordination can be problematic
 However, like most other aspects of disparity analyses, reducing dimensionality can be tricky.
-However, there are a number of potential problems with these transformations of the data.
-%TG: comment from Sylvain: difference between a morphospace and an ordination space
-%TG: comment from Graeme: the ordination space is decided by the data present (e.g. shoebill)
-%     -It should contain all axis
-In the case of ordination in a geometric morphometric context, subsampling axes from the ordination can lead to misinterpretation of the results. %TG: from Anjali: add that people should use 95% or 99% percent of the data (why not 100% though?)
-%     -It is hard to interpret
-Unfortunately, dimension reduction can introduce errors of interpretation when these principal axes are unrepresentative of the data more generally \citep{Bookstein1997-dn, Bookstein2015-yy, Bookstein2017-qk, Bookstein2017-gu,Weisbecker2019-kp}.
- %TG: Should be Bookstein 1991 "morphometric tools for landmark data" for the first reference
+In the case of ordination in a geometric morphometric context, subsampling axes from the ordination can lead to misinterpretation of the results. 
+Although a common technique is to consider the \textit{n} axis that encompasses 95\% or 99\% of the variance in the dataset, the interpretation of these principal axes can be unrepresentative of the data and lead to miss-interpretation of the biological variation mapped on these axes \citep{Bookstein2015-yy, Bookstein2017-qk, Bookstein2017-gu,Weisbecker2019-kp}.
 Visual interpretations of multidimensional data can be particularly misleading, not least since multidimensional spaces are not necessarily Euclidean even when analysing morphometric data \citep{Deline2018-le, Gerber2017-xi}.
-Furthermore, interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question; for example, if the first few ordination axes represent the elongation of the beak in birds, but the question is about wing disparity.
+
+Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question; for example, if the first few ordination axes represent the elongation of the beak in birds, but the question is about wing disparity.
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging, even if applying an ordination technique is straightforward, \citep{Gerber2017-xi}. %@@@TG: should be Gerber 2019
+For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging, even if applying an ordination technique is straightforward, \citep{Gerber2019}.
 This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear.
-Finally, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible. %TG: Cite Gerber 2019 10.1111/pala.12407
-Although some gradients are easy to detect or interpret (e.g. the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018-ye}), some are not \citep[][e.g.]{Weisbecker2019-kp}.
+Furthermore, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible \citep{Gerber2019}.
+Although some gradients are easy to detect or interpret (e.g. the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018-ye}), some are not \citep[e.g.][]{Weisbecker2019-kp}.
 For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more in state 0, has no biological meaning if these are binary alternate states.
-%     -It can make non-metric spaces
-Categorical data are a good deal more problematic, since the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean and the distribution of the variance is usually normal (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
-Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some two selected dimensions are not actually straight and, even less intuitively, distances are non-metric \citep[][i.e. the distance between A and B is not equal to the distance between B and A]{Gerber2014-ol}.
-%     -It is often not necessary
+
+Finally, categorical data are a good deal more problematic, since the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean and the distribution of the variance is usually normal (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
+Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some two selected dimensions are not actually straight and, even less intuitively, distances are non-metric \citep[i.e. the distance between A and B is not equal to the distance between B and A][]{Gerber2014-ol}.
 And last but not least reason, In many cases, ordination might not be necessary.
-For example, if a metric (e.g. sum or ranges of variance) used to characterise disparity can use all of the data (see Metrics section below metrics%indices
-), it is not necessary to calculate it on ordinated data \citep{Close2015-qi}.
-% -Disparity can be measured directly from the non-ordinated dataset (e.g. via distance matrices)
+For example, if a metric (e.g. sum or ranges of variance) used to characterise disparity can use all of the data, it is not necessary to calculate it on the ordinated dataset \citep{Close2015-qi}.
 For all of these reasons, multidimensional data analyses should not be ordinated automatically, and careful consideration should be given to whether the aim of the study can be achieved without ordination \citep{lloyd2016,lloyd2018}.
-
-
-% \hypertarget{a-multidimensionality}{%
-% \subsection{(a) Multidimensionality}\label{a-multidimensionality}}
-
-% Disparity analyses often use ordination techniques for dimension reduction.
-% These are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis -- PCA; principal coordinates analysis -- PCO/PCoA; non-metric multidimensional scaling -- NMDS; etc.).
-% Using ordinations in disparity analysis makes it easier for researchers to comprehend patterns in just two or three spatial dimensions at a time - or, indeed, just the first few axes of a PCA or a PCO.
-% Unfortunately, dimension reduction can introduce errors of interpretation when these principal axes are unrepresentative of the data more generally \href{https://paperpile.com/c/sTGYvp/1SD2+sN5d+xaUx+o4w7}{(}Bookstein \href{https://paperpile.com/c/sTGYvp/1SD2+sN5d+xaUx+o4w7}{1997, 2015, {[}b{]} 2017, {[}a{]} 2017)}{[}CITE Vera and Thomas paper{]}. %TG: Should be Bookstein 1991 "morphometric tools for landmark data" for the first reference
-% Visual interpretations of multidimensional data can be particularly misleading, not least since multidimensional spaces are not necessarily Euclidean even when analysing morphometric data \href{https://paperpile.com/c/sTGYvp/0y4V+QVvv}{(Deline et al. 2018; Gerber 2017)}.
-% Categorical data are a good deal more problematic, since the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean and the distribution of the variance is usually normal (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
-% Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some two selected dimensions are not actually straight and, even less intuitively, distances are non-metric (\href{https://paperpile.com/c/sTGYvp/SJbC}{i.e. the distance between A and B is not equal to the distance between B and A; Gerber 2014)}.
-
-% \hypertarget{b-to-ordinate-or-not-to-ordinate---that-is-the-multidimensional-question}{%
-% \subsection{(b) To ordinate or not to ordinate - that is the
-% (multidimensional)
-% question}\label{b-to-ordinate-or-not-to-ordinate---that-is-the-multidimensional-question}}
-
-% Dimension reduction (or ordination) is a powerful tool for visualizing data distribution in disparity analyses, helping to elucidate the underlying structure within datasets.
-% However, like most other aspects of disparity analyses, reducing dimensionality can be tricky.
-% Ordination techniques come in many flavours depending on the data and the desired morphospace properties.
-% Quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCoA, which is equivalent to metric multidimensional scaling (MDS) or non-metric multidimensional scaling (NMDS) (see Legendre and Legendre 2012,chapter 9, for a detailed explanation of ordination methods and properties).
-
-% Ordination is advantageous for plotting and visualising data, and can reveal properties of the morphospace not intuitively captured by disparity metrics (see Metrics section below {[}metrics{]}).
-% Additionally, after ordinating the data, it is possible to reduce further the number of dimensions by focussing on just a subset of axes (e.g. selecting only those axes that describe the majority of the variation) or by fitting the variation to a prescribed number of axes.
-% In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions (Legendre and Legendre 2012). %TG: cite also: Dryden and Mardia "Statistical Shape Analysis book"
-% This has clear advantages for interpreting the results.
-% For example, the axes will represent gradients of biological variation (e.g. elongation and flattening of the beak in birds \href{https://paperpile.com/c/sTGYvp/RjqE}{(Cooney et al. 2017}).
-% However, there are a number of potential problems with these transformations of the data.
-% %TG: comment from Sylvain: difference between a morphospace and an ordination space
-% %TG: comment from Graeme: the ordination space is decided by the data present (e.g. shoebill)
-% In the case of ordination in a geometric morphometric context, subsampling axes from the ordination can lead to misinterpretation of the results. %TG: from Anjali: add that people should use 95% or 99% percent of the data (why not 100% though?)
-% Furthermore, interpreting biological variation along the axes is always a \emph{post-hoc} procedure and may have little relation to the overall question; for example, if the first few ordination axes represent the elongation of the beak in birds, but the question is about wing disparity.
-
-% However, In many cases, ordination might not be necessary. For example, if a metric (e.g. sum or ranges of variance) used to characterise disparity can use all of the data (see Metrics section below {[}metrics{]}), it is not necessary to calculate it on ordinated data {[}e.g.\href{https://paperpile.com/c/sTGYvp/PbSx}{(Close et al. 2015)}{]}.
-% Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-% For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging, even if applying an ordination technique is straightforward, \href{https://paperpile.com/c/sTGYvp/SJbC}{(}Gerber 2014\href{https://paperpile.com/c/sTGYvp/SJbC}{)}. %TG: should be Gerber 2019
-% This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear.
-% Finally, \emph{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible. %TG: Cite Gerber 2019 10.1111/pala.12407
-% Although some gradients are easy to detect or interpret (e.g. the elongation and depth of mandibles in fishes on first and second PC axes, respectively; {[}\href{https://paperpile.com/c/sTGYvp/3JPy}{Hill et al. 2018{]}}), some are not (e.g. \href{https://paperpile.com/c/sTGYvp/TZzO}{Weisbecker et al. 2019)}.
-% For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more in state 0, has no biological meaning if these are binary alternate states.
-% For all of these reasons, multidimensional data analyses should not be ordinated automatically, and careful consideration should be given to whether the aim of the study can be achieved without ordination (Lloyd 2016, 2018).
-
-
-
-
-
-
-
 
 
 \begin{figure}[!htbp]
@@ -361,7 +293,7 @@ For all of these reasons, multidimensional data analyses should not be ordinated
 \caption{
     Morphospaces: different mathematical representations of a morphospace.
     % SG: The morphospace is the original trait space within which lie the specimens. Then one performs an ordination to visualize the space. So I would distinguish the morphospace from the ordination space. See also Mitteroecker and Huttegger (2009)
-    A trait matrix can be transformed into a distance matrix \citep[][e.g in]{Close2015-qi} or an ordinated matrix \citep[][e.g. in]{Brusatte2008-vx}
+    A trait matrix can be transformed into a distance matrix \citep[e.g in][]{Close2015-qi} or an ordinated matrix \citep[e.g. in][]{Brusatte2008-vx}
     In each case, all three matrices represent the morphospace for the observations at hand.
     Visualisation: different ways to represent the morphospace in 2D.
     Visualisations can use either trait plots (directly from the trait matrix); ``flattening'' ordination of the data (e.g. using multidimensional scaling forcing all the variance to be contained in two dimensions)
