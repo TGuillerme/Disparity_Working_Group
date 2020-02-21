@@ -2,7 +2,6 @@
 \usepackage{natbib}
 
 %Packages
-\usepackage{fixltx2e}
 \usepackage{textcomp}
 \usepackage{fullpage}
 \usepackage{float}
@@ -128,7 +127,7 @@ $^{+}$ These authors contributed equally to the manuscript; $^{*}$ Corresponding
 
 \textbf{Abstract (200 words max)}
 
-Analyses of morphological disparity have been used to characterise and investigate the evolution of variation in the anatomy, function, and ecology of organisms since the 1980s.
+\noindent Analyses of morphological disparity have been used to characterise and investigate the evolution of variation in the anatomy, function, and ecology of organisms since the 1980s.
 While a diversity of methods have been employed, it is unclear whether they provide
 equivalent insights.
 Here we review the most commonly used approaches for characterising and analysing morphological disparity, all of which have associated limitations that, if ignored, can lead to misinterpretation.
@@ -140,7 +139,7 @@ morphology, disparity, variance/variation
 
 \section{Introduction}
 
-Clades of organisms are characterised by variation in both numbers of species and range of phenotypes through time.
+\noindent Clades of organisms are characterised by variation in both numbers of species and range of phenotypes through time.
 At the extremes, clades may be exceptionally species-rich and phenotypically diverse (e.g. cichlids and molluscs), species-rich but phenotypically conservative (e.g. bacteria and nematodes), species-poor but phenotypically diverse (e.g. Afrotheria), or depauperate in both species and phenotypic diversity (e.g. lungfish).
 These phenomena suggest that taxonomic and phenotypic diversity are not inextricably linked, raising important questions about how phenotypic diversity arises, such as:
 How does diversity evolve?
@@ -188,15 +187,22 @@ Throughout, it is important to remember these tools should always be used in the
 
 %\includegraphics[width=6.5in,height=4.94444in]{media/image1.png}
 
-\textit{Figure disparities {[}figure\_disparities.pdf{]}: The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
-These categories are not independent and many disparity studies will cover more than one.}
+\begin{figure}[!htbp]
+\centering
+   \includegraphics[width=0.9\textwidth]{Figures/figure_disparities.pdf}
+\caption{
+    The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
+    These categories are not independent and many disparity studies will cover more than one.
+    %@@@ Add disparity and evo-devo
+}
+\label{Fig:disparity}
+\end{figure}
 
-%@@@ Add disparity and evo-devo
 
 
 \section{Data and disparity}
 
-Disparity analyses are based on traits, but traits can be characterised in a number of ways:
+\noindent Disparity analyses are based on traits, but traits can be characterised in a number of ways:
 % MH: We do not mention model-based descriptors at all, or the spaces defined by them (e.g. Raup's shell coiling models). I'm not convinced that we must, but it may come across as an notable omission to reviewers
 % SG: I agree. There's for instance Saunders et al. (2004) disparity study of Paleozoic ammonoids using Raup's shell coiling parameters
 	1) discrete ``cladistic'' characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[][e.g]{Close2015-qi};
@@ -225,16 +231,21 @@ More mundanely, data collection is constrained by the time and money available, 
 Ultimately, disparity analyses characterise the data, and subsamples of the universe of possible data may not have the power to uncover holistic patterns of disparity.
 Therefore, trait data should be collected with the question in mind, or the question asked should be tailored to the limits of the data available.
 
-%\includegraphics[width=5.63542in,height=3.875in]{media/image2.png}3.
+\begin{figure}[!htbp]
+\centering
+   \includegraphics[width=0.9\textwidth]{Figures/figure_data.pdf}
+\caption{
+    Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
+    Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
+    These measurements can then be mathematically transformed (logarithm transforms, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
+    Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows.
+}
+\label{Fig:data}
+\end{figure}
 
-\textit{Figure data {[}figure\_data.pdf{]}: Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence or absence data) or as continuous data.
-Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
-These measurements can then be mathematically transformed (logarithm transforms, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
-Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows.}
+\section{Disparity analysis methods}
 
-\section{Disparity methods}
-
-Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
+\noindent Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
 Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the variety of ordination (dimension reduction) techniques available and their limitations; (c) the metrics used to summarise the relative disparity of groups; (d) the methods used for hypothesis testing within the disparity analysis framework; and (e) ancestral state estimations in disparity-through-time analyses.
 % @@@ Check the numbering here
 We consider these aspects in turn below.
@@ -344,21 +355,25 @@ For all of these reasons, multidimensional data analyses should not be ordinated
 
 
 
+\begin{figure}[!htbp]
+\centering
+   \includegraphics[width=0.9\textwidth]{Figures/figure_space.pdf}
+\caption{
+    Morphospaces: different mathematical representations of a morphospace.
+    % SG: The morphospace is the original trait space within which lie the specimens. Then one performs an ordination to visualize the space. So I would distinguish the morphospace from the ordination space. See also Mitteroecker and Huttegger (2009)
+    A trait matrix can be transformed into a distance matrix \citep[][e.g in]{Close2015-qi} or an ordinated matrix \citep[][e.g. in]{Brusatte2008-vx}
+    In each case, all three matrices represent the morphospace for the observations at hand.
+    Visualisation: different ways to represent the morphospace in 2D.
+    Visualisations can use either trait plots (directly from the trait matrix); ``flattening'' ordination of the data (e.g. using multidimensional scaling forcing all the variance to be contained in two dimensions)
+    % SG: No, the flattening will not force all the variance to be contained in 2D. First because NMDS is non metric and variance is therefore not preserved as such. Second, because there is a stress associated with the flattening that correlates with the degree of distortion imposed on the data to enforce the 2D representation. Some information (variance) is thus necessarily lost.
+    ; or ordination axis plots (directly from the ordinated matrix).
+    % ES: I feel like somewhere we should say that in order for the spaces to be Euclidean, the axes must be on same scale. My little bugbear.
+    % SG response: I think there are more conditions to be Euclidean (inner product defining the  Euclidean norm..). But surely if axes have different scales and units, it will be difficult to define a distance function and the space won't be metric.
+    % @@@ Change references
+}
+\label{Fig:morphospace}
+\end{figure}
 
-
-%\includegraphics[width=6.5in,height=5.26389in]{media/image3.png}
-
-\textit{Figure methods: Morphospaces: different mathematical representations of a} \emph{morphospace.
-% SG: The morphospace is the original trait space within which lie the specimens. Then one performs an ordination to visualize the space. So I would distinguish the morphospace from the ordination space. See also Mitteroecker and Huttegger (2009)
-A trait matrix can be transformed into a distance matrix (e.g. in Close et al., 2015) or an ordinated matrix (e.g. in Brusatte et al.} \emph{2008).
-In each case, all three matrices represent the morphospace for the observations at hand.
-Visualisation: different ways to represent the morphospace in 2D.
-Visualisations can use either trait plots (directly from the trait matrix); ``flattening'' ordination of the data (e.g. using multidimensional scaling} \emph{forcing all the variance to be contained in two dimensions)
-% SG: No, the flattening will not force all the variance to be contained in 2D. First because NMDS is non metric and variance is therefore not preserved as such. Second, because there is a stress associated with the flattening that correlates with the degree of distortion imposed on the data to enforce the 2D representation. Some information (variance) is thus necessarily lost.
-; or ordination axis plots (directly from the ordinated matrix).}
-% ES: I feel like somewhere we should say that in order for the spaces to be Euclidean, the axes must be on same scale. My little bugbear.
-% SG response: I think there are more conditions to be Euclidean (inner product defining the  Euclidean norm..). But surely if axes have different scales and units, it will be difficult to define a distance function and the space won't be metric.
-% @@@ Change references
 
 % @@@ Change to indices throughout
 \subsection{(b) Measuring disparity}
@@ -448,9 +463,9 @@ No ancestral state estimation method is without drawbacks
 In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points to increase statistical power.
 In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity.
 
-\section{4. Disparity analyses for the future}
+\section{Disparity analyses for the future}
 
-Morphological disparity analyses are widely employed in evolutionary palaeobiology, and they are based on a diversity of methods and data.
+\noindent Morphological disparity analyses are widely employed in evolutionary palaeobiology, and they are based on a diversity of methods and data.
 There is no ``one-size-fits-all'' pipeline for morphological disparity analyses.
 As with any multidimensional analysis, there are many variables that have to be considered when deciding which data to use and how to analyse it, stemming from the explicit hypotheses being tested.
 Many of the problems in morphological disparity analysis arise from ``blind'' application of established methodological pipelines without consideration of the biological question being addressed.
@@ -479,7 +494,7 @@ We assert that future morphological analyses will benefit by emphasising the met
 
 TG, NC and PD proposed this review; TG and NC led the writing supported by PD and GT. All authors edited drafts and approved the final version.
 
-\subsection{Acknowledgments}
+\subsection{Acknowledgements}
 
 This article results from discussion at the Royal Society International Science Seminar on `Reconciling disparate views on disparity' held at Chicheley Hall, 9-10th January, 2018.
 
@@ -495,6 +510,9 @@ This article results from discussion at the Royal Society International Science 
 
 -TG was funded by ARC DP170103227 and FT180100634 awarded to VW;
 
+
+\bibliographystyle{sysbio}
+\bibliography{References}
 
 
 \end{document}
