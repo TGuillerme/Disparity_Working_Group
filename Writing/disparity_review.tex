@@ -39,27 +39,27 @@
 \linespread{2}
 \raggedright
 \setlength{\parindent}{0.5in}
-\setcounter{secnumdepth}{0} 
-\renewcommand{\section}[1]{%
-\bigskip
-\begin{center}
-\begin{Large}
-\normalfont\scshape #1
-\medskip
-\end{Large}
-\end{center}}
-\renewcommand{\subsection}[1]{%
-\bigskip
-\begin{center}
-\begin{large}
-\normalfont\itshape #1
-\end{large}
-\end{center}}
-\renewcommand{\subsubsection}[1]{%
-\vspace{2ex}
-\noindent
-\textit{#1.}---}
-\renewcommand{\tableofcontents}{}
+% \setcounter{secnumdepth}{0} 
+% \renewcommand{\section}[1]{%
+% \bigskip
+% \begin{center}
+% \begin{Large}
+% \normalfont\scshape #1
+% \medskip
+% \end{Large}
+% \end{center}}
+% \renewcommand{\subsection}[1]{%
+% \bigskip
+% \begin{center}
+% \begin{large}
+% \normalfont\itshape #1
+% \end{large}
+% \end{center}}
+% \renewcommand{\subsubsection}[1]{%
+% \vspace{2ex}
+% \noindent
+% \textit{#1.}---}
+% \renewcommand{\tableofcontents}{}
 %\bibpunct{(}{)}{;}{a}{}{,}
 
 %---------------------------------------------
@@ -125,6 +125,9 @@ $^{+}$ These authors contributed equally to the manuscript; $^{*}$ Corresponding
 
 \end{center}
 
+\modulolinenumbers[1]
+\linenumbers
+
 \textbf{Abstract (200 words max)}
 
 \noindent Analyses of morphological disparity have been used to characterise and investigate the evolution of variation in the anatomy, function, and ecology of organisms since the 1980s.
@@ -133,16 +136,15 @@ equivalent insights.
 Here we review the most commonly used approaches for characterising and analysing morphological disparity, all of which have associated limitations that, if ignored, can lead to misinterpretation.
 We provide best practice guidelines for disparity analyses, while noting that there can be no ``one-size-fits-all'' approach.
 The available tools should always be used in the context of a specific biological question that will determine data and method selection at every stage of the analysis.
-
-\textbf{Keywords}: multidimensionality, palaeobiology, ecology,
-morphology, disparity, variance/variation
+ 
+\textbf{Keywords}: multidimensionality, palaeobiology, ecology, morphology, disparity, variance/variation
 
 \section{Introduction}
 
 %@@@ add links to figures
 
 \noindent Clades of organisms are characterised by variation in both numbers of species and range of phenotypes through time.
-At the extremes, clades may be exceptionally species-rich and phenotypically diverse (e.g. cichlids and molluscs), species-rich but phenotypically conservative (e.g. bacteria and nematodes), species-poor but phenotypically diverse (e.g. Afrotheria), or depauperate in both species and phenotypic diversity (e.g. lungfish).
+At the extremes, clades may be exceptionally species-rich and phenotypically diverse (e.g. cichlids or molluscs), species-rich but phenotypically conservative (e.g. rodents or nematodes), species-poor but phenotypically diverse (e.g. Afrotheria), or depauperate in both species and phenotypic diversity (e.g. lungfish).
 These phenomena suggest that taxonomic and phenotypic diversity are not inextricably linked, raising important questions about how phenotypic diversity arises, such as:
 How does diversity evolve?
 Are some morphologies more common than others?
@@ -150,13 +152,15 @@ Can anatomy evolve in all ``directions'' or are some anatomies impossible to ach
 What role does ecology play in structuring morphological diversity?
 Analyses of species diversity have a venerable history, but those of phenotypic diversity (hereafter \emph{disparity}) are a comparatively more recent phenomenon. Originally defined as ``multidimensional morphological dissimilarity at a macroevolutionary scale'' \citep{runnegar1987rates,Gould1991-nh} this concept of disparity emerged from attempts by palaeobiologists to characterise the evolutionary origin of animal bodyplans and from attempts by comparative developmental biologists to provide causal explanations for their emergence.
 However, analyses of ``disparity'' have since expanded into comparative biology as a means of capturing the effect of intrinsic and extrinsic causal agents in morphological evolution.
-Typically, methods to capture disparity are based on multidimensional spaces where each dimension represents an aspect of morphological variation (a trait) and biological observations (taxa) can be placed in this space based on their trait values.
+Typically, methods to capture disparity are based on multidimensional spaces where each dimension represents an aspect of morphological variation (a trait) and biological observations (e.g. taxa) can be placed in this space based on their trait values.
 Such multidimensional spaces (or morphospaces) can then be used to tackle a diverse array of questions that can be grouped into four main (non-mutually exclusive) classes (Fig. 1):
 
 \begin{enumerate}
 
 	\item \textbf{Descriptive disparity} The pioneering studies of disparity characterised the shapes of organisms and how they differed among groups \citep{Foote1995-do, Briggs1992-pd}.
 	These studies consist of describing multidimensional patterns in the diversity of morphological traits, addressing questions such as: why are some morphological trait combinations more common than others and what are the biological (or mathematical) properties of the resulting morphospace? \citep{Foote1995-do, Raup1961-vx, Gerber2017-xi}.
+    More recently, this approach as also been used to understand the relation between developmental processes and morphology in the evo-devo field.
+    For example, describing disparity patterns has been successfully used to compare modules of evolution in various groups \citep{goswami2010influence,bardua2019morphological} allowing to successfully link the variation in shape to a group's evolutionary or developmental constraints \citep{Hipsley2017}.
 
 	\item \textbf{Disparity-through-time} This approach investigates how the morphologies of organisms have changed on a temporal scale, focussing on the disparity of taxa in particular time intervals or slices.
 	This approach has been used widely in palaeobiology to answer a range of macroevolutionary questions, such as: how does disparity accumulate over the history of a clade \citep{Guillerme2018-uj, Wright2017-jo}, or how does disparity change leading up to and across mass extinction events \citep{Friedman2010-ve}?
@@ -174,12 +178,16 @@ Such multidimensional spaces (or morphospaces) can then be used to tackle a dive
 	This approach has been used to investigate hypotheses of competitive replacement \citep{Brusatte2008-vx} and changes in ecosystem function during and after mass extinctions \citep{Friedman2010-ve}.
 	It is particularly common in palaeobiology where it is not possible to directly observe the ecological or functional characteristics of extinct species \citep{Wainwright2005-or}.
 
-	\item \textbf{Disparity and evo-devo} Morphological disparity blalbalbal
-% AG: Although intrinsic constraints are mentioned earlier, it doesn’t enter into any of these topics explicitly, but it is certainly one of the most interesting things one can use disparity for – to bridge development and evolution, looking at developmental biases/constraints. This also includes integration and modularity, which are also central to the topic of disparity and evolvability. Although you touch on these in places, I think it's really important to incorporate it into one of these topics, as there probably isn't room to give it one of its own (although i would argue it warrants equal footing with ecology, given that these are the processes that generate variation in the first place). There is a massive literature on using disparity to test hypotheses of developmental constraints, and also a huge one on disparity and integration/modularity. Let me know if you want me to send you refs.
+	% \item \textbf{Disparity and evo-devo}
+ %    %TG: This section might be linked to "Descriptive disparity" above but Anjali might probably disagree.
+ %    The disparity of a group can also give information on a group's evolutionary or developmental constraints.
+ %    test hypotheses of developmental constraints,
+ %    disparity and integration/modularity
+
 
 \end{enumerate}
 
-Fundamental insights into evolutionary biology have been elicited from these five types of analysis.
+Fundamental insights into evolutionary biology have been elicited from these four types of analysis.
 One of the most important insights is the discovery that morphological disparity is often greatest early in the evolutionary history of clades \citep{Foote1997-nl, Erwin2007-jz, Hughes2013-td}, indicating that the capacity for evolutionary innovation wanes with clade age, which some have argued reflects the evolutionary assembly of gene regulatory networks that constrain later fundamental change  \citep{Erwin2007-jz, Hughes2013-td}.
 However, this example highlights one of the most challenging problems confronting researchers who are attempting, increasingly, to obtain general insights from multiple independent studies: can the insights gained from studies using the diversity of methods, approaches and data types employed be considered equivalent?
 
@@ -191,7 +199,7 @@ Throughout, it is important to remember these tools should always be used in the
 \centering
    \includegraphics[width=0.9\textwidth]{Figures/figure_disparities.pdf}
 \caption{
-    The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
+    The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation and can be linked to developmental constraints; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity ; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
     These categories are not independent and many disparity studies will cover more than one.
     %@@@ Add disparity and evo-devo
 }
@@ -200,8 +208,7 @@ Throughout, it is important to remember these tools should always be used in the
 
 
 
-\section{Data and disparity}
-\label{section:data}
+\section{Data and disparity} \label{section:data}
 
 \noindent Disparity analyses are based on traits, but traits can be characterised in a number of ways:
 	1) discrete morphological characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[][e.g]{Foote1989-fd, Deline2018-le};
@@ -210,15 +217,12 @@ Throughout, it is important to remember these tools should always be used in the
 None of these approaches are superior, but they may be more or less well-suited to characterising traits under comparison and to the question being asked of those traits \citep{hetherington2015cladistic,Hopkins2017-cf}.
 
 For example, if investigating variation of bat wing shapes, both homologous landmarks and continuous measurements of bones may be appropriate to capture patterns of wing variation.
-However, if the question focuses on comparing wings between bats and birds, different measurements might be more appropriate depending on the specific question: for example if the focus is on wing function, i.e. whether the aerodynamic properties of wings vary within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
+However, if the question focuses on comparing wings between bats and birds, different measurements might be more appropriate depending on the specific question: if the focus is whether the aerodynamic properties of wings vary within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
 However, if the focus is on convergence between different bats and birds, it would be preferable to use traits that have facilitated flight in both groups (e.g. digit length, integumentary system, etc.).
 Where there is any doubt about the appropriate traits to choose, it may be preferable to use different kinds of data for the same feature to determine whether they capture the same pattern of disparity.
 
 The points above assume that researchers are collecting their own data for disparity analyses, but often this is not the case.
-Discrete character data can also be use
-
-
-are commonly recycled from phylogenetic studies \citep[][e.g]{Brusatte2008-fx,Close2015-qi,Wright2017-jo}.
+Discrete character are commonly recycled from phylogenetic studies \citep[e.g.][]{Brusatte2008-fx,Close2015-qi,Wright2017-jo}.
 This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups.
 This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017-cf}.
@@ -243,28 +247,25 @@ Therefore, trait data should be collected with the question in mind, or the ques
 \end{figure}
 
 
-\subsection{From data to morphospace}
-\label{section:morphospace}
+\subsection{From data to morphospace} \label{section:morphospace}
 
 % TG: The whole argument here is the same as for logging data in biology: we conserve the same properties of the biological observation (e.g. a distribution of body mass) but we modify it linearly to make it easier to analyse (e.g. the log(body mass)). In my opinion same goes with a data matrix: a distance matrix or a PCA of the observed trait matrix should no modify the biological properties as long as it it changed linearly (if you start arbitrarily removing axis of the PCA or points in the distance matrix, this results in something different). Therefore, morphospace = collected data matrix (any any linear transformation thereof).
 
-The concept of what the morphospace \textit{is} can be different between authors and studies but generally used in the common (i.e. non-mathematical) sense of a space containing all possible morphologies.
-For the purpose of this review, we use a generalised version of the definition of \cite{mitteroecker2009concept} where the morphospace is a \textit{p}-dimensional space (or Q-space) containing \textit{n} points \citep{mitteroecker2009concept}.
+The concept of what the morphospace \textit{is} can differ between authors and studies but is generally used in the common (i.e. non-mathematical) sense of a space containing all possible morphologies.
+For the purpose of this review, we use a generalised version of the definition of \cite{mitteroecker2009concept} where the morphospace is a \textit{p}-dimensional space (or Q-space) containing \textit{n} points.
 In other words, mathematically, the morphospace is the mathematical object that contains the trait values (\textit{p}, the axes of the space) for all the observations (\textit{n}, the specimens); or, biologically, the morphospace contains all the observed combination of traits.
-We generalise this definition to any linear transformation ($V \to W$) of this space that retains the biological definition, i.e. the morphospace is the mathematical object that contains the observed combinations of traits or their transformation (see appendix \ref{section:appendixmorphospace}).
+We generalise this definition to any linear transformation ($V \to W$) of this space that retains the biological definition, i.e. the morphospace contains all the observed combinations of traits (see appendix \ref{section:appendixmorphospace}).
 Note that here the morphospace does not need to be Euclidean (although this is often desired or assumed - see section \ref{section:ordination} below).
 If the morphospace is transformed mathematically (i.e. the dataset is transformed using logs, ordinations, distance matrices, etc...) it remains the morphospace as long as all the observation and traits remain in the datatset.
 
 
-\section{Disparity analysis methods}
-\label{section:methods}
+\section{Disparity analysis methods} \label{section:methods}
 
 \noindent Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
-Study design encompasses several key aspects including (a) the difficulty of dealing with multidimensional data; (b) the indices used to summarise the relative disparity of groups; (c) the methods used for hypothesis testing within the disparity analysis framework; and (d) the influence of phylogeny on disparity analyses.
+Study design encompasses several key aspects including \ref{section:ordination} the difficulty of dealing with multidimensional data; \ref{section:metrics} the indices used to summarise the relative disparity of groups; \ref{section:testing} the methods used for hypothesis testing within the disparity analysis framework; and \ref{section:phylo} the influence of phylogeny on disparity analyses.
 We consider these aspects in turn below.
 
-\subsection{(a) To ordinate or not to ordinate - that is the (multidimensional) question}
-\label{section:ordination}
+\subsection{To ordinate or not to ordinate - that is the (multidimensional) question} \label{section:ordination}
 
 Disparity analyses often use ordination techniques for dimension reduction.
 Ordinations are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
@@ -283,13 +284,13 @@ Visual interpretations of multidimensional data can be particularly misleading, 
 
 Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question; for example, if the first few ordination axes represent the elongation of the beak in birds, but the question is about wing disparity.
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging, even if applying an ordination technique is straightforward, \citep{Gerber2019}.
+For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
 This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear.
 Furthermore, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible \citep{Gerber2019}.
 Although some gradients are easy to detect or interpret (e.g. the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018-ye}), some are not \citep[e.g.][]{Weisbecker2019-kp}.
 For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and the ones that have more in state 0, has no biological meaning if these are binary alternate states.
 
-Finally, categorical data are a good deal more problematic, since the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean and the distribution of the variance is usually normal (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
+Categorical data are a good deal more problematic, since the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean and the distribution of the variance is usually normal (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
 Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some two selected dimensions are not actually straight and, even less intuitively, distances are non-metric \citep[i.e. the distance between A and B is not equal to the distance between B and A][]{Gerber2014-ol}.
 And last but not least reason, In many cases, ordination might not be necessary.
 For example, if an index (e.g. sum or ranges of variance) used to characterise disparity can use all of the data, it is not necessary to calculate it on the ordinated dataset \citep{Close2015-qi}.
@@ -313,8 +314,7 @@ For all of these reasons, multidimensional data analyses should not be ordinated
 \label{Fig:morphospace}
 \end{figure}
 
-\subsection{(b) Measuring disparity}
-\label{section:metrics}
+\subsection{Measuring disparity} \label{section:metrics}
 
 Most disparity datasets are multidimensional and, consequently, a large component of any disparity analysis involves considering how to extract a meaningful (i.e. interpretable) summary of disparity.
 This is usually achieved with a disparity measure or index \citep{Hopkins2017-cf}.
@@ -336,8 +336,7 @@ Furthermore, multidimensional spaces also have some counter-intuitive properties
 In spaces with some axis of variance lower than 1, product-based indices used as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) can tend towards zero fairly quickly for spaces with even a modest number of dimensions \citep{Bellman1966-mc}.
 Some other types of indices are also extremely sensitive to outliers and can be biased easily by sample size, for example range \citep{Foote1992-zs} or convex hull based indices \citep{Jackson2011-kq}.
 
-\subsection{(c) Testing hypotheses on the evolution of disparity}
-\label{section:testing}
+\subsection{Testing hypotheses on the evolution of disparity} \label{section:testing}
 
 No matter which disparity indices have been calculated, the research question must be framed in an appropriate statistical context.
 The multidimensional statistical toolkit for ecology and evolution has been greatly expanded in recent years \citep{clavel2015mvmorph, Adams2018-mg}, but some of these advances have yet to be implemented in disparity analyses. Instead, hypothesis testing has mostly been confined to a small set of well-established methods.
@@ -358,8 +357,7 @@ Mainly, disparity analysis should be restrained to groups within the same morpho
 This can be the case when comparing elements with different numbers of landmarks or different landmark configurations for example: they will result in different morphospaces and comparing disparity indices between them is not trivial.
 
 
-\subsection{(d) Disparity and phylogeny}
-\label{section:phylo}
+\subsection{Disparity and phylogeny} \label{section:phylo}
 
 As with all comparative datasets, the data used in disparity analyses are not independent because close relatives will tend to have more similar morphologies than more distant relatives \citep{Harvey1998-xg}.
 Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common) the non-independence between observations should be taken into account to correctly measure phenomenons.
@@ -376,8 +374,7 @@ No ancestral state estimation method is without drawbacks and above all else are
 In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points to increase statistical power.
 In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity.
 
-\section{Disparity analyses for the future}
-\label{section:future}
+\section{Disparity analyses for the future} \label{section:future}
 
 \noindent Morphological disparity analyses are widely employed in evolutionary palaeobiology, and they are based on a diversity of methods and data.
 There is no ``one-size-fits-all'' pipeline for morphological disparity analyses.
@@ -402,22 +399,16 @@ TG, NC and PD proposed this review; TG and NC led the writing supported by PD an
 \subsection{Acknowledgements}
 
 This article results from discussion at the Royal Society International Science Seminar on `Reconciling disparate views on disparity' held at Chicheley Hall, 9-10th January, 2018.
-
--AG was funded by European Research Council Starting grant 637171 ADaPTiVE.
-
--ALJ was funded by an Irish Research Council Laureate Award IRCLA/2017/186. ES was funded by a University of Adelaide Research Fellowship;
-
--EES was funded by a Leverhulme Trust Research Project Grant (DGR01020).
-
--PD was funded by NERC (NE/P013678/1; NE/N002067/1) and BBSRC (BB/N000919/1);
-
--SB was funded by European Research Council (ERC) under the European Union's Horizon 2020 research and innovation program (grant agreement No 756226, ERC Starting Grant: PalM) and a Leverhulme Trust Research Project Grant (RPG-2017-167);
-
--TG was funded by ARC DP170103227 and FT180100634 awarded to VW;
+AG was funded by European Research Council Starting grant 637171 ADaPTiVE;
+ALJ was funded by an Irish Research Council Laureate Award IRCLA/2017/186;
+ES was funded by a University of Adelaide Research Fellowship;
+EES was funded by a Leverhulme Trust Research Project Grant (DGR01020);
+PD was funded by NERC (NE/P013678/1; NE/N002067/1) and BBSRC (BB/N000919/1);
+SB was funded by European Research Council (ERC) under the European Union's Horizon 2020 research and innovation program (grant agreement No 756226, ERC Starting Grant: PalM) and a Leverhulme Trust Research Project Grant (RPG-2017-167);
+TG was funded by ARC DP170103227 and FT180100634 awarded to VW;
 
 
-\subsection{Appendix: morphospace definition in this paper}
-\label{section:appendixmorphospace}
+\subsection{Appendix: morphospace definition in this paper} \label{section:appendixmorphospace}
 
 \noindent \cite{mitteroecker2009concept} define a morphospace as:
 
@@ -449,7 +440,7 @@ This generalisation allows to consider linear transformations of $(a_{ij})$ as a
 $M2$ is then just a different representation of the original morphospace $(a_{ij})$ where the properties between the $n$ observations are expressed as distances.
 Note that in our definition, $f_{a_{ij}}$ does not need to result in a metric (or metric Euclidean) space although this is often desired in disparity analysis.
 
-However our definition doesn't consider a matrix to be a morphospace of $(a_{ij})$ if it results from a non-linear transformation of $(a_{ij})$ matrix.
+Our definition doesn't consider a matrix to be a morphospace of $(a_{ij})$ if it results from a non-linear transformation of $(a_{ij})$ matrix.
 For example if one performs an ordination (e.g. PCA) on the matrix $(a_{ij})$ such as:
 
 \begin{equation}
@@ -459,7 +450,7 @@ For example if one performs an ordination (e.g. PCA) on the matrix $(a_{ij})$ su
 \noindent Where $P$ is a principal components linear transformation.
 $M3$ is still a morphospace (i.e. a linear transformation of $(a_{ij})$). However if one only uses the two first axis of $M3$, this would result in a different space since it is no more a linear transformation of $(a_{ij})$.
 
-However, \textbf{\underline{\textit{DO NOT}}} declare that doing such a non-linear transformation is incorrect in a disparity analysis context.
+However, we \textbf{\underline{\textit{DO NOT}}} declare that doing such a non-linear transformation is incorrect in a disparity analysis context.
 As pointed out throughout the main manuscript, different methods can be appropriate for different questions and different datasets.
 The point of this appendix is to develop \textit{our} definition of a morphospace but we do not argue that any other definition is incorrect.
 We do, however, suggest that a definition of ``morphospace'' should be at least briefly noted in papers using this mathematical or biological concept.
