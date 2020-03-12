@@ -1,0 +1,1 @@
+pandoc -o disparity_review.docx -i disparity_review.tex --bibliography References.bib --filter pandoc-citeproc --csl biologyletters.csl
