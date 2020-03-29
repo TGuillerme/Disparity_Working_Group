@@ -379,21 +379,23 @@ In fact, these extra points are not independent and can also have problematic si
 There is no ``one-size-fits-all'' pipeline for morphological disparity analyses.
 As with any multidimensional analysis, there are many variables that have to be considered when deciding which data to use and how to analyse them, stemming from the explicit hypotheses being tested.
 Many of the problems in morphological disparity analysis arise from ``blind'' application of established methodological pipelines without consideration of the biological question being addressed.
-We advocate that researchers should assemble their analytical approaches based on an experimental approach that explores the impact of competing methods, such as choice of indices, ordination method and ancestral state estimation method on disparity analysis results.
-Thankfully this is becoming easier through the availability of diverse well documented R packages for multidimensional analysis \citep{Bouxin2005, oksanen2007vegan, Harmon2008, lloyd2016, Guillerme2018b}.
+We advocate that researchers should assemble their analytical protocol based on an experimental approach that explores the impact of competing methods, such as choice of indices, ordination method, and ancestral state estimation method on disparity analysis results.
+Thankfully, this is becoming easier through the availability of diverse, well documented R packages for multidimensional analysis \citep{Bouxin2005, oksanen2007vegan, Harmon2008, lloyd2016, Guillerme2018b}.
 Many of the methods employed in disparity analysis are used more widely in other fields, including genomics and ecology, which also encompass analyses of multidimensional datasets \citep{Donohue2013, Saupe2015, Canter2018, mammola2019}.
 Innovations in morphological disparity analyses likely await discovery in their respective literatures.
 
 While studies of morphological disparity would benefit from advances in multidimensional analysis in other fields, the concept of a morphospace could reciprocally benefit other disciplines.
-For example, the multidimensional analysis of \citep{Diaz2016}, which analysed patterns of form and function in plants, is essentially an eco-morphospace; isotopic analyses of organisms \citep{Jackson2011,Swanson2015} can be represented as an isotope-space; ecosystem functioning in \citealt{Donohue2013} as an ecosystem-space, etc.
+For example, the multidimensional analysis of \citep{Diaz2016}, which analysed patterns of form and function in plants, is essentially an eco-morphospace; isotopic analyses of organisms \citep{Jackson2011,Swanson2015} can be represented as an isotope-space; ecosystem functioning in \citealt{Donohue2013} as an ecosystem-space \citep{qiao2017}, etc.
 These generalisations could also be exported for any set of traits: cognate approaches have been adopted in the analysis of single cell comparative transcriptome data \citep{Sebe-Pedros2018} where interpretation of the resulting transcriptome-spaces would be improved by giving careful attention to the concerns we highlight concerning morphospaces.
 
 Although disparity analyses are now simple to implement in freely available software \citep{Bouxin2005, oksanen2007vegan, Harmon2008, lloyd2016, Guillerme2018b} it is crucial to remember that they are multidimensional analyses and that multidimensional analyses are complex.
 We assert that future morphological analyses will benefit from emphasising the methodological decisions made, rather than simply using disparity analysis because it exists.
 
+
 \subsection{Author contributions}
 
-TG, NC and PD proposed this review; TG and NC led the writing supported by PD and GT. All authors edited drafts and approved the final version.
+TG, NC and PD proposed this review; TG and NC led the writing supported by PD and GT.
+All authors edited drafts and approved the final version.
 
 \subsection{Acknowledgements}
 
@@ -404,56 +406,8 @@ ES was funded by a University of Adelaide Research Fellowship;
 EES was funded by a Leverhulme Trust Research Project Grant (DGR01020);
 PD was funded by NERC (NE/P013678/1; NE/N002067/1) and BBSRC (BB/N000919/1);
 SB was funded by European Research Council (ERC) under the European Union's Horizon 2020 research and innovation program (grant agreement No 756226, ERC Starting Grant: PalM) and a Leverhulme Trust Research Project Grant (RPG-2017-167);
-TG was funded by ARC DP170103227 and FT180100634 awarded to VW.
-
-
-\subsection{Appendix: morphospace definition in this paper} \label{section:appendixmorphospace}
-
-\noindent \cite{mitteroecker2009concept} define a morphospace as:
-
-\setlength{\leftskip}{1cm}
-\setlength{\rightskip}{1cm}
-
-\noindent \textit{``[a] mathematical spaces describing and relating the phenotypic configuration of biological organisms [...]. In a typical morphospace, the morphological configuration of an organism is represented by a single point, and the dimensionality of the space is determined by the number of measured variables (Q-space).''} \citealt{mitteroecker2009concept} p.55.
-
-\setlength{\leftskip}{0pt}
-\setlength{\rightskip}{0pt}
-
-\noindent Here, we generalise the definition of a morphospace following \cite{mitteroecker2009concept} as the Q-space or any of its linear transformation.
-The morphospace is any matrix $(a_{ij})$ with $n$ observations with $d$ trait values each or any linear transformation $f: V \to W$ of $(a_{ij})$.
-In other words the morphospace is the observed data matrix (e.g. the collected data) or any of it's linear transformation (e.g. a PCA, a distance matrix, a log, etc...).
-In \cite{mitteroecker2009concept}'s definition, the morphospace needs a conserved $n \times d$ dimensions whereas our definition propose only the conservation of $n$ dimensions (the number of observations) as long as the morphospace can be expressed as:
-
-\begin{equation}
-    M1 = f(a_{ij})\in \mathbb{R}^{{n}\times{d}}
-\end{equation}
-
-\noindent Where $f$ can be any linear transformation function (including no transformation: $f(x) = x$).
-This generalisation allows to consider linear transformations of $(a_{ij})$ as a different ``orientations'' or ``resolutions'' (not in the mathematical sense \textit{per se}) of the observed trait matrix $(a_{ij})$. For example, a distance matrix of $(a_{ij})$ can be represented through the following linear transformation:
-
-\begin{equation}
-    M2 = f_{a_{ij}} = D_{a_{ij}}
-\end{equation}
-
-\noindent Where $D$ is a distance function for any pair of $ij$ in the matrix (e.g. if the distance is Euclidean $D_{ij} = \sqrt{\sum(i_{d}-j_{d})^2}$).
-$M2$ is then just a different representation of the original morphospace $(a_{ij})$ where the properties between the $n$ observations are expressed as distances.
-Note that in our definition, $f_{a_{ij}}$ does not need to result in a metric (or metric Euclidean) space although this is often desired in disparity analysis.
-
-Our definition doesn't consider a matrix to be a morphospace of $(a_{ij})$ if it results from a non-linear transformation of $(a_{ij})$ matrix.
-For example if one performs an ordination (e.g. PCA) on the matrix $(a_{ij})$ such as:
-
-\begin{equation}
-    M3 = f_{a_{ij}} = P(a_{ij})
-\end{equation}
-
-\noindent Where $P$ is a principal components linear transformation.
-$M3$ is still a morphospace (i.e. a linear transformation of $(a_{ij})$). However if one only uses the two first axis of $M3$, this would result in a different space because it is no more a linear transformation of $(a_{ij})$.
-
-However, we \textbf{\underline{\textit{DO NOT}}} declare that doing such a non-linear transformation is incorrect in a disparity analysis context.
-As pointed out throughout the main manuscript, different methods can be appropriate for different questions and different datasets.
-The point of this appendix is to develop \textit{our} definition of a morphospace but we do not argue that any other definition is incorrect.
-We do, however, suggest that a definition of ``morphospace'' should be at least briefly noted in papers using this mathematical or biological concept.
-
+TG was funded by ARC DP170103227 and FT180100634 awarded to VW;
+GHT was funded by European Research Council Consolidator Grant 615709 ToLERates and Royal Society University Research Fellowship UF120016.
 
 \bibliographystyle{sysbio}
 \bibliography{References}
