@@ -358,19 +358,20 @@ This can be the case when comparing elements with different numbers of landmarks
 \subsection{Disparity and phylogeny} \label{section:phylo}
 
 As with all comparative datasets, the data used in disparity analyses are not independent because close relatives will tend to have more similar morphologies than more distant relatives \citep{Harvey1998}.
-Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common) the non-independence between observations should be taken into account.
-It has been noted, however, that some popular phylogenetic correction methods (like phylogenetic PCA) can be inappropriate, especially when using only the first $n$ axis of the ordination, and can lead to incorrect interpretations of the data \citep[such as wrongly supporting ``early burst'' type patterns;][]{Uyeda2015}.
+Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common), the non-independence between observations should be taken into account.
+It has been noted, however, that some popular phylogenetic correction methods (like phylogenetic PCA) can be inappropriate, especially when using only the first \textit{d} axis of the ordination, and can lead to incorrect interpretations of the data \citep[such as wrongly supporting ``early burst'' type patterns;][]{Uyeda2015}.
 
-One other common way to take phylogeny into account in disparity analyses is using ancestral state estimations in disparity-through-time analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny.
+One other common way to take phylogeny into account in disparity analyses is using ancestral state estimations in disparity-through-time analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny \citep{brusatte2011phylogenetic}.
 Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-transformation, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-transformation, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix \citep[e.g. the ordination scores;][]{lloyd2018}.
 
-Pre-transformation ancestral state estimation will change the way the ordination space is defined -- i.e. the relationship between the points are not yet estimated -- and requires longer computational times.
-However, once the morphospace is defined its properties will not change.
+Pre-transformation ancestral state estimation will change the way the ordination space is defined -- i.e.
+the relationship between the points is not yet estimated -- and requires longer computational times.
+However, once the morphospace is defined, its properties will not change.
 Post-transformation ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \citep{lloyd2018}.
 
 All ancestral state estimates are highly dependent on the data and method used \cite{Louca2019}.
-In general, using ancestral state estimation can help with recovering patterns of changes in disparity but should not be used simply to generate extra data points to increase statistical power.
-In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity as they artificially increase taxon sampling.
+In general, using ancestral state estimation can help with recovering patterns of change in disparity but should not be used simply to generate extra data points to increase statistical power.
+In fact, these extra points are not independent and can also have problematic side effects, especially when testing for the influence of mass extinctions on disparity as they artificially and asymmetrically increase taxon sampling.
 
 \section{Disparity analyses for the future} \label{section:future}
 
