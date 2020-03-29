@@ -337,23 +337,23 @@ Other types of indices are also extremely sensitive to outliers and can be biase
 \subsection{Testing hypotheses about the evolution of disparity} \label{section:testing}
 
 No matter which disparity indices have been calculated, the research question must be framed in an appropriate statistical context.
-The multidimensional statistical toolkit for ecology and evolution has greatly expanded in recent years \citep{clavel2015mvmorph, Adams2018}, but some of these advances have yet to be implemented in disparity analyses. Instead, hypothesis testing has mostly been confined to a small set of well-established methods.
-One commonly used test is the non-parametric permutation analysis of variance \citep{Anderson2001}, an analysis of variance (ANOVA) of the pairwise distances between different groups.
-Although statistically valid, this test is not always directly related to the hypothesis under question.
-For example, PERMANOVA tests whether two groups share the same variance/covariance based on a distance matrix between observations and therefore does not require the morphospace to be ordinated (see section \ref{section:ordination} above).
+The multidimensional statistical toolkit for ecology and evolution has greatly expanded in recent years \citep{clavel2015mvmorph, Adams2018}, but some of these advances have yet to be implemented in disparity analyses.
+Instead, hypothesis testing has been mostly confined to a small set of well-established methods.
+One commonly used test is the non-parametric permutation analysis of variance (PERMANOVA) \citep{Anderson2001} that tests whether two groups share the same centroid and dispersion based on a distance matrix between observations.
+This test therefore does not require the morphospace to be ordinated (see section \ref{section:ordination} above).
 Statistical tests should be employed that are tailored to the question at hand, rather than simply following common practices.
 
 It is also important to consider which data should be subjected to a statistical test.
 For example, in morphological disparity analysis, especially for palaeobiological questions, data are often bootstrapped.
-This has two advantages: (i) when the disparity index is unidimensional (e.g. the sum of variances), bootstrapping the data generates a distribution of the index that can be analysed using the vast statistical toolkit available for comparing distributions; (ii) when data are scarce, bootstrapping the data allows users to introduce variance, rendering the test less sensitive to outliers.
+This has two advantages: (i) when the disparity index is unidimensional (e.g.
+the sum of variances), bootstrapping the data generates a distribution of the index that can be analysed using the vast statistical toolkit available for comparing distributions; (ii) when data are scarce, bootstrapping the data allows users to introduce variance, rendering the test less sensitive to outliers.
 However, bootstrapped data are pseudoreplicates and thus non-independent.
-This violates the assumptions of most parametric statistical tests.
-Furthermore, the number of bootstrap pseudoreplicates will inevitably increase the false positive rate (Type I error).
+Furthermore, the number of bootstrap pseudoreplicates will inevitably increase the false positive rate (Type I error) \citep{strube1988bootstrap}.
 These factors are often ignored in disparity analyses.
+
 Finally, it is important to understand the limitations of the dataset for performing statistical analysis.
 Mainly, disparity analysis should be restrained to groups within the same morphospace and are more difficult between different morphospaces.
-This can be the case when comparing elements with different numbers of landmarks or different landmark configurations for example: they will result in different morphospaces and comparing disparity indices between them is not trivial.
-
+This can be the case when comparing elements with different numbers of landmarks or different landmark configurations which will result in different morphospaces;comparing disparity indices between these is not trivial.
 
 \subsection{Disparity and phylogeny} \label{section:phylo}
 
