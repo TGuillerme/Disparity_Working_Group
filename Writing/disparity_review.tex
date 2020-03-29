@@ -213,60 +213,51 @@ Throughout, it is important to remember that these tools should always be used i
 
 \section{Data and disparity} \label{section:data}
 
+
 \noindent Disparity analyses are based on traits, but traits can be characterised in a number of ways:
-	1) discrete morphological characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[e.g.][]{Foote1989, Deline2018};
-	2) continuous measurements of features \citep[e.g. lengths in][]{Friedman2010}; or
-	3) more mathematical descriptors from geometric morphometric landmark data (e.g. Procrustes coordinates) \citep[e.g.][]{sherratt2017rates}, Fourier coefficients \citep[e.g.][]{Foote1995, Spriggs2018} or model-based descriptors \citep[e.g.][]{Raup1961,Saunders2004} (Fig. 2).
-None of these approaches are superior, but they may be more or less well-suited to characterising traits under comparison and to the question being asked using those traits \citep{hetherington2015cladistic,Hopkins2017}.
+1) discrete morphological characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait \citep[e.g.][]{Foote1989, Deline2018};
+2) continuous measurements of features \citep[e.g. lengths in][]{Friedman2010};
+or 3) more mathematical descriptors from geometric morphometric landmark data (e.g.
+Procrustes coordinates)  \citep[e.g.][]{sherratt2017rates}, Fourier coefficients \citep[e.g.][]{Foote1995, Spriggs2018} or model-based descriptors \citep[e.g.][]{Raup1961,Saunders2004} (Fig. 2).
+None of these approaches is superior, but they may be more or less well-suited to characterising the traits compared and to the question being asked using those traits \citep{hetherington2015cladistic,Hopkins2017}.
 
 For example, if investigating variation of bat wing shapes, both homologous landmarks and continuous measurements of bones may be appropriate to capture patterns of wing variation.
-If the question focuses on comparing wings between bats and birds, however, different measurements might be more appropriate depending on the specific question: if the focus is whether the aerodynamic properties of wings vary within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
-However, if the focus is on convergence between different bats and birds, it would be preferable to use traits that have facilitated flight in both groups (e.g. digit length, integumentary system, etc.).
-Where there is any doubt about the appropriate traits to choose, it may be preferable to use several different kinds of data for the same feature to determine whether they capture the same pattern of disparity.
+If the question focuses on comparing wings between bats and birds, however, different measurements might be more appropriate depending on the specific question.
+That is, if the focus is whether the aerodynamic properties of wings vary within bats or between bats and birds, the traits collected should reflect these aerodynamic properties (e.g. wingspan, aspect ratio, etc.).
+However, if the focus is on convergence between different bats and birds, it would be preferable to use traits that have facilitated flight in both groups (e.g.
+digit length, integumentary system, etc.).
+Where there is any doubt about which traits to analyse, it may be preferable to use several different kinds of data for the same feature to determine whether they capture the same pattern of disparity.
 
-The points above assume that researchers are collecting their own data for disparity analyses, but often this is not the case.
-Discrete character are commonly recycled from phylogenetic studies \citep[e.g.][]{Brusatte2008,Close2015}.
-This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups because phylogenetic characters are often collected to discriminate among groups.
+The points above assume that researchers are collecting their own data for disparity analyses, but this is often not the case.
+Discrete characters are commonly recycled from phylogenetic studies \citep[e.g.][]{Brusatte2008,Close2015}.
+This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups, since phylogenetic characters are often collected to discriminate among groups.
 This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017}.
-This effect of the anatomical feature used on disparity patterns can be especially challenging where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018}.
+The influence of trait choice on resulting disparity patterns can be especially challenging where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018}.
 
 Trait data suffer from the same shortcomings as most biological datasets -- data can be missing, non-overlapping, hierarchical, inapplicable, ambiguous, polymorphic, correlated, or there may be an insufficient sample size \citep{Palci2018}.
 Biological phenomena such as allometry and sexual dimorphism may also influence trait data.
-More mundanely, data collection is constrained by the time and money available, making collating a ``perfect'' dataset difficult.
-Ultimately, disparity analyses characterise the data, and subsamples of the universe of possible data may not have the power to uncover holistic patterns of disparity.
+More mundanely, data collection is constrained by the time and money available, making collating a ``perfect'' dataset impossible.
+Ultimately, disparity analyses are characterised by the data, and subsamples of the universe of possible data may not have the power to uncover the full patterns of disparity.
 Therefore, trait data should be collected with the scientific question in mind, or the question asked should be tailored to the limits of the data available.
 
 \begin{figure}[!htbp]
 \centering
    \includegraphics[width=0.9\textwidth]{Figures/figure_data.pdf}
 \caption{
-    Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence-absence data) or as continuous data.
-    Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
-    These measurements can then be mathematically transformed (logarithmic transformations, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
-    Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows.
+   Major routes to obtain morphological data for disparity analyses. Data can be collected as discrete trait observations (e.g. presence-absence data) or as continuous data. 
+   Continuous data can be collected by various methods including linear measurements and landmark coordinates or contours (curves).
+   These measurements can then be mathematically transformed (logarithmic transformations, scaling, Procrustes superimposition, elliptic Fourier transforms, etc.).
+   Regardless of the method, data collection produces a trait matrix where the observed traits constitute columns and the studied elements (generally taxa or OTUs) the rows. 
 }
 \label{Fig:data}
 \end{figure}
-
-
-\subsection{From data to morphospace} \label{section:morphospace}
-
-% TG: The whole argument here is the same as for logging data in biology: we conserve the same properties of the biological observation (e.g. a distribution of body mass) but we modify it linearly to make it easier to analyse (e.g. the log(body mass)). In my opinion same goes with a data matrix: a distance matrix or a PCA of the observed trait matrix should no modify the biological properties as long as it it changed linearly (if you start arbitrarily removing axis of the PCA or points in the distance matrix, this results in something different). Therefore, morphospace = collected data matrix (any any linear transformation thereof).
-
-The concept of what the morphospace \textit{is} can differ among authors and studies but is generally used in the common (i.e. non-mathematical) sense of a space containing all possible morphologies.
-For the purpose of this review, we use a generalised version of the definition of \cite{mitteroecker2009concept} where the morphospace is a \textit{p}-dimensional space (or Q-space) containing \textit{n} points.
-In other words, mathematically, the morphospace is the mathematical object that contains the trait values (\textit{p}, the axes of the space) for all the observations (\textit{n}, the specimens); or, biologically, the morphospace contains all the observed combinations of traits.
-We generalise this definition to any linear transformation ($V \to W$) of this space that retains the biological definition, i.e. the morphospace contains all the observed combinations of traits (see appendix \ref{section:appendixmorphospace}).
-Note that here the morphospace does not need to be Euclidean (although this is often desired or assumed - see section \ref{section:ordination} below).
-If the morphospace is transformed mathematically (i.e. the dataset is transformed using logarithms, ordinations, distance matrices, etc.) it remains the morphospace provided all the observation and traits remain in the datatset.
-
 
 \section{Disparity analysis methods} \label{section:methods}
 
 \noindent Once suitable trait data have been collected, the design of the disparity analysis itself needs to be considered.
 Study design encompasses several key aspects including \ref{section:ordination} the difficulty of dealing with multidimensional data; \ref{section:metrics} the indices used to summarise the relative disparity of groups; \ref{section:testing} the methods used for hypothesis testing within the disparity analysis framework; and \ref{section:phylo} the influence of phylogeny on disparity analyses.
-We consider these aspects in turn below.
+We consider these aspects in order below.
 
 \subsection{To ordinate or not to ordinate - that is the (multidimensional) question} \label{section:ordination}
 
