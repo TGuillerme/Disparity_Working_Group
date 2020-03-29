@@ -262,46 +262,46 @@ We consider these aspects in order below.
 \subsection{To ordinate or not to ordinate - that is the (multidimensional) question} \label{section:ordination}
 
 Disparity analyses often use ordination techniques for dimension reduction.
-Ordinations are statistical methods to rearrange observed variables so that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
+Ordinations are statistical methods that map observed variables onto a new space of reduced dimension while maintaining the requirement that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
 They come in many flavours depending on the data and the desired morphospace properties.
-For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCO, which is equivalent to metric multidimensional scaling (MDS) or non-metric multidimensional scaling \citep[NMDS; see][chapter 9 for a detailed overview of ordination methods and properties]{Legendre2012}.
+For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling \citep[NMDS; see][chapter 9 for a detailed overview of ordination methods and properties]{Legendre2012}.
 
 One of the reasons why ordination techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at a time, which can be more intuitive than through disparity indices (see section \ref{section:metrics} below).
-Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e. selecting only those axes that describe the majority of the variation in the dataset - e.g. 95\%).
+Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e.
+selecting only those axes that describe the majority of the variation in the dataset - e.g. 95\%).
 In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions \citep{Legendre2012,dryden2016statistical}.
-In practice, this allows us to interpret only the major axis of a highly dimensional dataset as major gradients of biological variation \citep[e.g. the elongation and flattening of birds beaks;][]{bright2016shapes}.
+In practice, this facilitates interpretation of only the major axis of a highly dimensional dataset as major gradients of biological variation \citep[e.g. the elongation and flattening of birds beaks;][]{bright2016shapes}.
 
-Like most other aspects of disparity analyses, however, reducing dimensionality can be tricky.
-In the case of ordination in a geometric morphometric context, subsampling axes from the ordination can lead to misinterpretation of the results. 
-Although a common technique is to consider the \textit{n} axes that encompasses 95\% or 99\% of the variance in the dataset, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
+Like most other aspects of disparity analyses, however, reducing dimensionality can be fraught.
+In the case of ordination, subsampling axes from the ordination can lead to misinterpretation of the results.
+Although a common technique is to consider the \textit{d} axes that encompasses 95\% or 99\% of the variance in the dataset, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
 Visual interpretations of multidimensional data can be particularly misleading, not least as multidimensional spaces are not necessarily Euclidean even when analysing morphometric data \citep{Deline2018, Gerber2017}.
 
-Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question; for example, if the first few ordination axes represent the elongation of the beak in birds, but the question is about wing disparity.
+Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question (for example, if the first few ordination axes represent elongation of the beak in birds, but the question is about wing disparity).
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data is non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
+For example, when the analysed data are non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
 This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear.
 Furthermore, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible \citep{Gerber2019}.
-Although some gradients are easy to detect or interpret (e.g. the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018}), some are not \citep[e.g.][]{Weisbecker2019}.
-For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and those that have more in state 0, has no biological meaning if these are binary alternate states.
+Although some gradients are easy to detect or interpret (e.g.
+the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018}), some are not \citep[e.g.][]{Weisbecker2019}.
+For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and those that have more in state 0 has no biological meaning if these are binary alternate states.
 
-Categorical data are a good deal more problematic, because the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean, and the distribution of the variance is usually more evenly distributed across axes (i.e. contrary to a PCA, the first few axis do not encompass most variance of the dataset).
-Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some dimensions are not actually straight and, even less intuitively, distances are non-metric \citep[i.e. the distance between A and B is not equal to the distance between B and A;][]{Gerber2014}.
+In general, categorical data are a good deal more problematic than continuous data, because the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean, and the distribution of the variance is usually more evenly distributed across axes (i.e. contrary to a PCA, the first few axes do not encompass most variance of the dataset).
+Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some dimensions are not actually straight and, character coding and missing data can make the pairwise dissimilarity matrix lose its metric properties \citep[i.e. the distance between A and B is not equal to the distance between B and A;][]{Gerber2014}.
 Last, but not least, in many cases, ordination might not be necessary.
-For example, if an index (e.g. sum or range of variance) used to characterise disparity can use all of the data, it is not necessary to calculate it on the ordinated dataset \citep[e.g.][]{Close2015}.
+For example, if an index characterising disparity can use all of the data, it is not necessary to calculate it on the ordinated dataset \citep[e.g.][]{Close2015}.
 For all of these reasons, multidimensional data should not be ordinated automatically, and careful consideration should be given to whether the aim of the study can be achieved without ordination \citep{lloyd2016,lloyd2018}.
-
 
 \begin{figure}[!htbp]
 \centering
    \includegraphics[width=0.9\textwidth]{Figures/figure_space.pdf}
 \caption{
     \tiny{
-    Morphospaces: different mathematical representations of a morphospace.
-    A trait matrix can be transformed into a distance matrix \citep[e.g in][]{Close2015} or an ordinated matrix \citep[e.g. in][]{tyler2011detecting}.
+    \textbf{Morphospaces}: different mathematical representations of a morphospace. A trait matrix can be transformed into a distance matrix \citep[e.g in][]{Close2015} or an ordinated matrix \citep[e.g. in][]{tyler2011detecting}.
     Here we consider all these matrices as being \textit{morphospaces}, i.e. objects containing all the combinations of traits and observations (albeit transformed differently).
-    Visualisation: different  ways to represent the morphospace in 2D.
+    \textbf{Visualisation}: different  ways to represent the morphospace in 2D.
     Visualisations can use either trait plots (directly from the trait matrix); ``flattening'' ordination of the data (e.g. using non-metric multidimensional scaling forcing the dataset into two dimensions - note that variance is lost due to the distortion stress and non-metric properties of the resulting operation); or ordination axis plots (directly from the ordinated matrix).
-    Note that in 2D representations, it is good practice to plot both axes on the same scale to avoid visually distorting the importance of one axis).
+    Note that in 2D representations, it is good practice to plot both axes on the same scale to avoid visually distorting the importance of one axis). Data depicted is from the classic ``iris'' dataset of \citep{edgar1935irises,fisher1936use}.
     }
 }
 \label{Fig:morphospace}
@@ -309,25 +309,30 @@ For all of these reasons, multidimensional data should not be ordinated automati
 
 \subsection{Measuring disparity} \label{section:metrics}
 
-Most disparity datasets are multidimensional and, consequently, a large component of any disparity analysis involves considering how to extract a meaningful (i.e. interpretable) summary of disparity.
+Most disparity datasets are multidimensional and, consequently, a large component of any disparity analysis involves considering how to extract a meaningful (i.e.
+interpretable) summary of disparity.
 This is usually achieved with a disparity measure or index \citep{Hopkins2017}.
 As with any summary of multidimensional data, disparity indices will reflect only some aspects of the morphological variation, never its whole complexity \citep{GuillermeMOMS}.
 It is therefore often beneficial to use more than one index to summarise different aspects of variation, guided by the aim of the study.
 
-When considering only one dimension, disparity indices can be used to reflect the spread of the distribution (e.g. the range, quantiles or variance) or its central tendency (i.e., mean, median or mode).
-Among these indices, some will have more attractive properties than others, such as sensitivity to outliers. Range and mean are highly sensitive, whereas quantiles, variance and median are less so, making them more or less appropriate for different questions.
-For example, if we want to characterise the extent of morphospace occupied by a group (e.g. does group A occupy as much space as group B?), indices related to the spread of the group in the morphospace are most appropriate (e.g. volume;
-\citealt{Diaz2016}, distance from the centroid; \citealt{Hopkins2017, Finlay2015}, variance and range; \citealt{Brusatte2008}).
-Furthermore, aspects other than variation (\textit{sensu} disparity) can be of interest: if we wish to describe the ``position'' of a group in a morphospace (e.g. does group A occupy the same space as group B?), indices related to the distance between the elements within a group and a fixed point in the morphospace are most appropriate \citep{GuillermeMOMS}.
-Finally, if we aim to characterise the density of morphospace occupation (e.g. is group A more closely packed than group B?) indices related to the pairwise distances between elements will be most appropriate (e.g. nearest neighbour distance, pairwise distances, etc. \citealt{Close2015} - see section \ref{section:ordination} above).
+When considering only one dimension, disparity indices can be used to reflect the spread of the distribution (e.g.
+the range, quantiles or variance) or its central tendency (i.e., mean, median or mode).
+Among these indices, some will have more attractive properties than others, such as sensitivity to outliers.
+Range and mean are highly sensitive, whereas quantiles, variance and median are less so, making them more or less appropriate for different questions.
+For example, if the goal is to characterise the extent of morphospace occupied by a group (e.g. does group A occupy as much space as group B?), indices related to the spread of the group in the morphospace are most appropriate (e.g.
+volume; \citealt{Diaz2016}, distance from the centroid; \citealt{Hopkins2017, Finlay2015}, variance and range; \citealt{Brusatte2008}).
+Furthermore, aspects other than variation (\textit{sensu} disparity) can be of interest: if we wish to describe the ``position'' of a group in a morphospace (e.g.
+does group A occupy the same space as group B?), indices related to the distance between the elements within a group and a fixed point in the morphospace are most appropriate \citep{GuillermeMOMS}.
+Finally, if we aim to characterise the density of morphospace occupation (e.g.
+is group A more closely packed than group B?) indices related to the pairwise distances between elements will be most appropriate (e.g. nearest neighbour distance, pairwise distances, etc. \citealt{Close2015} - see section \ref{section:ordination} above).
 
-In addition to considering what properties of disparity these indices should capture, it is also important to consider the mathematical properties of the indices and their associated caveats \citep{Wills2001, Ciampaglio2001}.
-For example, measuring the sum of variance-covariance for each dimension of the space is equivalent to measuring the sum of variance in a PCA (because the co-variance is null).
-However, this is not true of other transformations of the space or when not all dimensions or elements are considered, even in a PCA \citep{Legendre2012}.
+In addition to considering which properties of disparity these indices capture, it is also important to consider the mathematical properties of the indices and their associated caveats \citep{Wills2001, Ciampaglio2001}.
+For example, measuring the sum of variance for each dimension of the space is equivalent to measuring the sum of variance in a PCA (because the co-variance is null).
+However, this is no longer true of other transformations of the space or when a subset of dimensions or elements are considered, such as is often done after PCA \citep{Legendre2012}.
 
-Furthermore, multidimensional spaces have some counterintuitive properties that should be considered such as the ``curse of dimensionality'' \citep{Bellman1966}.
-In spaces with some axes of variance lower than 1, product-based indices used as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) can tend towards zero fairly quickly for spaces with even a modest number of dimensions \citep{Bellman1966}.
-Other types of indices are also extremely sensitive to outliers and can be biased easily by sample size, for example range \citep{Wills2001} or convex hull based indices \citep{Jackson2011}.
+Furthermore, multidimensional spaces have some counterintuitive properties that should be considered, such as the ``curse of dimensionality'' \citep{Bellman1966}.
+In spaces with some axes of variance lower than one, product-based indices used as proxies of volumes (e.g. product of ranges, hypervolume, hypercube, etc.) can tend quickly tend towards zero for spaces with even a modest number of dimensions \citep{Bellman1966}.
+Other types of indices are also extremely sensitive to outliers and can be biased easily by sample size, for example range \citep{Wills2001} or convex hull based \citep{Jackson2011} indices.
 
 \subsection{Testing hypotheses about the evolution of disparity} \label{section:testing}
 
