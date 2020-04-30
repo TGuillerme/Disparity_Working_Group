@@ -76,24 +76,37 @@
 \subsection{Referee: 1}
 Concerning the section on disparity through time, perhaps hyphens should be removed; also, it may be misleading to use them, as sometimes the disparity-through-time phrase refers, in abbreviated format, to what is otherwise known (in full) as "mean relative subclade disparity through time", implemented in the DTT function in geiger.
 
-% TG: change naming of disparity through time
+\textcolor{blue}{We have removed hyphens from ``disparity-through-time''}
 
 At the beginning of page 7, I am not convinced that "synapomorphies will naturally lead an apparent shift or increase in disparity when new clades appear" in all cases. This very much depends on character-state distribution and, given a sufficient number of unique traits or combinations thereof across the sample, you may have comparable levels of disparity.
 
-% TG: tone this down
+\textcolor{blue}{We changed the sentence to:}
+
+\textit{especially as synapomorphies can lead to apparent shift or increase in disparity when new clade appear (especially if the character-state distribution is skewed towards a particular clade).} l.@@@
 
 On page 8, just to avoid confusion, PCO can also applied to quantitative data ONLY. End of page 8/beginning of page 9 could do with a small (few lines) exposition of protocols for axis selection.
 
-% TG: Add this precision
+\textcolor{blue}{We've added the precision for the PCO with quantitative data:}
+
+\textit{or quantitative, or both} l.@@@
+
+\textcolor{blue}{And added a brief mention of protocols for axis selection:}
+
+\textit{(either by manually selecting the d axes that encompasses the desired variance or using methods such as the broken stick model; Legendre \& Legendre 2012 p.410)} l.@@@ + change cite to number
 
 Lines 211-213 are problematic. Do the authors mean that categorical data are ALWAYS more problematic because of the listed reasons? Some remedies at least exist for euclideanarity.
 
-% TG: Tone this down
+\textcolor{blue}{We've now added a reference to the Cailliez (1983) correction to remedy for euclideanatrity}:
+
+\textit{although this can sometimes be corrected, Cailliez 1983} l.@@@
 
 Line 269, about PERMANOVA, puzzles me. Yes, the test is used, but for geometric morphometric analyses at least, other tests have been devised.
 
-% TG: add more tests?
+\textcolor{blue}{We have added mentions to other tests common in morphological disparity analyses:}
 
+\textit{The last decade has also seen a series of development based on this test (e.g. the linear regression for multidimensional data Collyer et al 2015; or the phylogenetic ANOVA Adams 2014; but see Adams \& Collyer 2018; Lloyd 2016 for more).
+It is worth noting that most of these test do not require the morphospace to be ordinated (see section 1 above).
+Regardless of the statistical test used, they should be employed that are tailored to the question at hand, rather than simply following common practices.}
 
 \subsection{Referee: 2}
 
@@ -269,7 +282,7 @@ Such multidimensional spaces (or morphospaces - defined broadly hereafter as a m
 	More recently, this approach has been used to understand the relationship between developmental processes and morphology in the field of evolutionary development (evo-devo).
 	For example, patterns of disparity have been used successfully to compare modules of evolution in various groups \citep{goswami2010influence,bardua2019morphological}, allowing researchers to link variation in shape to a group's evolutionary or developmental constraints \citep{Hipsley2017}.
 
-	\item \textbf{Disparity-through-time.} This approach investigates how the morphologies of organisms have changed over time, by focussing on the disparity of taxa in particular time intervals or slices.
+	\item \textbf{\textcolor{blue}{Disparity through time}.} This approach investigates how the morphologies of organisms have changed over time, by focussing on the disparity of taxa in particular time intervals or slices.
 	This approach has been used widely in palaeobiology to answer a range of macroevolutionary questions, such as: how does disparity accumulate over the history of a clade \citep{prentice2011evolution, Guillerme2018}, or how does disparity change up to and across mass extinction events\citep{Friedman2010}?
 
 	\item \textbf{Disparity and taxonomic diversity.} Morphological disparity provides another perspective on biodiversity; high morphological disparity represents a high diversity of morphologies (i.e.
@@ -299,7 +312,7 @@ Throughout, it is important to remember that these tools should always be used i
 % \centering
 %    \includegraphics[width=0.9\textwidth]{Figures/figure_disparities.pdf}
 % \caption{
-%     The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{disparity-through-time} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
+%     The four main types of disparity analysis. \textbf{Descriptive disparity} focuses on describing the features of morphospace occupation; \textbf{\textcolor{blue}{disparity through time}} investigates the evolution of the morphospace through time including the effect of extinction events; \textbf{disparity and taxonomic diversity} compares different measures of biodiversity; \textbf{disparity as a proxy for ecology} uses disparity as a proxy for the ecological or functional role of a group.
 %     These categories are not independent and many disparity studies will cover more than one.
 % }
 % \label{Fig:disparity}
@@ -327,7 +340,7 @@ Where there is any doubt about which traits to analyse, it may be preferable to 
 The points above assume that researchers are collecting their own data for disparity analyses, but this is often not the case.
 Discrete characters are commonly recycled from phylogenetic studies (e.g. \citealt{Brusatte2008,Close2015}).
 This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups, since phylogenetic characters are often collected to discriminate among groups.
-This needs to be considered when interpreting results, especially as synapomorphies will naturally lead to an apparent shift or increase in disparity when new clades appear.
+This needs to be considered when interpreting results, especially \textcolor{blue}{as synapomorphies can lead to apparent shift or increase in disparity when new clade appear (especially if the character-state distribution is skewed towards a particular clade).}
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017}.
 The influence of trait choice on resulting disparity patterns can be especially challenging where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018}.
 
@@ -360,7 +373,7 @@ We consider these aspects in order below.
 Disparity analyses often use ordination techniques for dimension reduction.
 Ordinations are statistical methods that map observed variables onto a new space of reduced dimension while maintaining the requirement that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS; etc.).
 They come in many flavours depending on the data and the desired morphospace properties.
-For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (or mixed data types) can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling (NMDS; see \citealt{Legendre2012} chapter 9 for a detailed overview of ordination methods and properties).
+For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (\textcolor{blue}{or quantitative, or both}) can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling (NMDS; see \citealt{Legendre2012} chapter 9 for a detailed overview of ordination methods and properties).
 
 One of the reasons why ordination techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at a time, which can be more intuitive than through disparity indices (see section \ref{section:metrics} below).
 Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e.
@@ -370,13 +383,13 @@ In practice, this facilitates interpretation of only the major axis of a highly 
 
 Like most other aspects of disparity analyses, however, reducing dimensionality can be fraught.
 In the case of ordination, subsampling axes from the ordination can lead to misinterpretation of the results.
-Although a common technique is to consider the \textit{d} axes that encompasses 95\% or 99\% of the variance in the dataset, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
+Although a common technique is to consider the \textit{d} axes that encompasses 95\% or 99\% of the variance in the dataset \textcolor{blue}{(either by manually selecting the \textit{d} axes that encompasses the desired variance or using methods such as the broken stick model; \citealt{Legendre2012} p.410)}, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
 Visual interpretations of multidimensional data can be particularly misleading, not least as multidimensional spaces are not necessarily Euclidean even when analysing morphometric data \citep{Deline2018, Gerber2017}.
 
 Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question (for example, if the first few ordination axes represent elongation of the beak in birds, but the question is about wing disparity).
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
 For example, when the analysed data are non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
-This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear.
+This is problematic when comparing the position of groups in multidimensional space, as the distances might not be linear \textcolor{blue}{(although this can sometimes be corrected \citealt{cailliez1983})}.
 Furthermore, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible \citep{Gerber2019}.
 Although some gradients are easy to detect or interpret (e.g.
 the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018}), some are not (e.g. \citealt{Weisbecker2019}).
@@ -434,8 +447,9 @@ No matter which disparity indices have been calculated, the research question mu
 The multidimensional statistical toolkit for ecology and evolution has greatly expanded in recent years \citep{clavel2015mvmorph, Adams2018}, but some of these advances have yet to be implemented in disparity analyses.
 Instead, hypothesis testing has been mostly confined to a small set of well-established methods.
 One commonly used test is the non-parametric permutation analysis of variance (PERMANOVA) \citep{Anderson2001} that tests whether two groups share the same centroid and dispersion based on a distance matrix between observations.
-This test therefore does not require the morphospace to be ordinated (see section \ref{section:ordination} above).
-Statistical tests should be employed that are tailored to the question at hand, rather than simply following common practices.
+\textcolor{blue}{The last decade has also seen a series of development based on this test (e.g. the linear regression for multidimensional data \citealt{collyer2015method} or the phylogenetic ANOVA \citealt{Adams2014}; but see \citealt{Adams2018,lloyd2016} for more).
+It is worth noting that most of these test do not require the morphospace to be ordinated (see section \ref{section:ordination} above).
+Regardless of the statistical test used, they should be employed that are tailored to the question at hand, rather than simply following common practices.}
 
 It is also important to consider which data should be subjected to a statistical test.
 For example, in morphological disparity analysis, especially for palaeobiological questions, data are often bootstrapped.
@@ -455,7 +469,7 @@ As with all comparative datasets, the data used in disparity analyses are not in
 Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common), the non-independence between observations should be taken into account.
 It has been noted, however, that some popular phylogenetic correction methods (like phylogenetic PCA) can be inappropriate, especially when using only the first \textit{d} axis of the ordination, and can lead to incorrect interpretations of the data (such as wrongly supporting ``early burst'' type patterns; \citealt{Uyeda2015}).
 
-One other common way to take phylogeny into account in disparity analyses is using ancestral state estimations in disparity-through-time analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny \citep{brusatte2011phylogenetic}.
+One other common way to take phylogeny into account in disparity analyses is using ancestral state estimations in \textcolor{blue}{disparity through time} analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny \citep{brusatte2011phylogenetic}.
 Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-transformation, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-transformation, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix (e.g. the ordination scores; \citealt{lloyd2018}).
 
 Pre-transformation ancestral state estimation will change the way the ordination space is defined -- i.e.
