@@ -25,6 +25,7 @@
 \usepackage{dcolumn}
 \usepackage{lineno}
 \usepackage{pdflscape}
+\usepackage{xcolor}
 
 \usepackage{color,soul}
 
@@ -69,6 +70,101 @@
 %---------------------------------------------
 
 \begin{document}
+
+\section{Response to Referees}
+
+\subsection{Referee: 1}
+Concerning the section on disparity through time, perhaps hyphens should be removed; also, it may be misleading to use them, as sometimes the disparity-through-time phrase refers, in abbreviated format, to what is otherwise known (in full) as "mean relative subclade disparity through time", implemented in the DTT function in geiger.
+
+% TG: change naming of disparity through time
+
+At the beginning of page 7, I am not convinced that "synapomorphies will naturally lead an apparent shift or increase in disparity when new clades appear" in all cases. This very much depends on character-state distribution and, given a sufficient number of unique traits or combinations thereof across the sample, you may have comparable levels of disparity.
+
+% TG: tone this down
+
+On page 8, just to avoid confusion, PCO can also applied to quantitative data ONLY. End of page 8/beginning of page 9 could do with a small (few lines) exposition of protocols for axis selection.
+
+% TG: Add this precision
+
+Lines 211-213 are problematic. Do the authors mean that categorical data are ALWAYS more problematic because of the listed reasons? Some remedies at least exist for euclideanarity.
+
+% TG: Tone this down
+
+Line 269, about PERMANOVA, puzzles me. Yes, the test is used, but for geometric morphometric analyses at least, other tests have been devised.
+
+% TG: add more tests?
+
+
+\subsection{Referee: 2}
+
+That said, my biggest issue was the specific way the paper was subdivided. The "Measuring..", "Testing.." and "Phylogeny" subsections seemed a bit jumbled. For instance, a lot of the best advice on designing a custom test for your data is in the "Measuring.." section. Meanwhile, the "Testing.." section is very effective at convincing the reader not to take bootstrap values literally (a good thing to be effective at!) but doesn't contain much else in the way of advice or guidance.
+
+% TG: add guidance further than bootstraps.
+
+The "Phylogeny" section makes no explicit reference to the models of trait evolution that exist. Ancestral state estimates are mentioned, but the potential pitfalls of imposing a (possibly, if not likely) incorrect model of trait evolution is elided. Elsewhere in the paper the authors do an excellent job warning the reader away from just accepting default options, or doing something just because "that's the way it's done". Yet here, the reader is left without knowledge that accepting the default BM model uncritically could cause major issues with both Revell-style multivariate corrections and all ASRs.
+
+% TG: add a disclaimer about the methods
+
+In the first two sections, the authors reference back to the four main goals of disparity analyses they outlined. Using those four goals as a guide post for reworking the Testing and Phylogeny subsections may help improve the flow and usability of those parts.
+
+% TG: not sure what's meant here
+
+Last bit: I think Figure 2 should be redesigned, personally. I'm not sure to whom it is targeted. The top part's clear, but I suspect the bottom part would be opaque to those who would most benefit from reading this paper. Right now, it shows every step of every option all at once. But I think focusing in on a single complex and general concept (eg, a clear visual explanation of ordination alone, or a clear representation of distance generation, or...) would serve the paper better. 
+
+% TG: redesign the figure 2 to only be PCA?/PCO?
+
+\subsubsection{Specific Comments:}
+
+Line 98: "[Disparity as a proxy for ecology] is particularly common in palaeobiology" I actually don't think this is true (at least, not in the way it is most likely to be read; see last paragraph). There are entire journals (eg, Functional Ecology) dedicated to neontological studies using variation in easily measured traits across space/time (disparity) as a proxy for changes in ecosystem functions \& species interactions (ecology). Plant physiologists in particular routinely use various measurable morphological features (stem diameters, root depth, etc) as proxies for various ecological features (e.g., aridity tolerance) and compare locations. 
+Functional ecologists use different language, and rarely use the literal word "disparity", but the ideas are basically the same. The big differences I perceive are in terms of (1) how easy it is to test the reliability of the proxy and (2) how often workers even attempt to rigorously test that proxy. 
+I think, especially given the specific citation here \& preceding sentence, that the authors mean something along the lines of "disparity-as-ecology is one of the primary ways paleobiologist have for investigating ecosystem function". That is, the "particularly common" is in reference to the large proportion of studies that use this approach in palaeobiology. It's just that, as-written, I think it makes this common approach sound like a "weird" palaeobiologist think.
+
+% TG: change the terminology here and reference moms for parallels with ecology
+
+Line 150 - 158: Nothing wrong or incorrect here, but the flow of this paragraph is odd. I find it very choppy. The first sentence is a long list of problems. The second is a set of two more problems. The third is a statement that everything has problems. The above three sentences, I think, could be reworked to flow more directly attached to the main point, which is that questions need to fit their data and vice versa.
+
+% TG: change the paragraph flow
+
+Line 171-172: Don't need e.g. and etc. in same parenthetical
+
+% TG: change the paragraph flow
+
+Lines 175 - 177: The discussion of dimension reduction using PCO here makes me think that more discussion in this paper of the importance of choosing an appropriate distance metric might be needed. That is, it'd be a whole separate paper trying to review or describe what is or is not appropriate! But I do think it's worth further emphasizing that it's a critical methodological choice that shouldn't be taken lightly for those intending to use MDS/NMDS
+
+% TG: insit that the distance metric is important (cite Lloyd)
+
+Line 195: I think you mean explicitly "geometric morphometric data". If that's true, being explicit is, I think, better.
+
+% TG: fix this
+
+Lines 234 - 239: This implies that a central tendency is, on its own, a measure of disparity. Below, in the discussion of the position within morphospace of a clade, I think this point is made clearer. But I think the first few sentences here should be clarified a bit. Something like "or differences in the central tendencies (mean/median/mode) of clades [or subsets to be more general]"
+
+% TG: add this
+
+Lines 263 - 289: The "Testing hypotheses..." section. I feel as though this section needs to be fleshed out. A lot of very good points are made, especially with respect to bootstrapping, but a reader will walk away from this section (1) knowing that PERMANOVA exists, (2) being a bit skeptical of bootstrap support, and (3) not much else. The last paragraph is, I think, the most important in this section, and I would recommend cutting from the other two to expand this.
+
+% TG: change these paragraphs
+
+The general point about tailoring analyses to your data is sound, and that does make general advice hard, but not impossible. A few clear principles or even just an explanation of "same" morphospace could be useful here. That is, up in the Measuring subsection in lines 239 - 249 the authors provide a lot of good sound advice that seems more fitting here. 
+
+% TG: not sure what's meant here
+
+I'm just imagining a student who reads this paper early in their project. Then later, once they have data, tries to go back to look up some best practices and misses some good tips because they were in the "Measuring..." subsection instead of the "Testing..." subsection. It may be that the subsections should simply be reworked.
+
+% TG: move things around?
+
+Disparity \& Phylogeny section: This section is good, but perhaps overlong. Although, it doesn't discuss (what I perceive to be) the biggest problem with phylogenetic corrections to disparity analyses: the choice of trait evolution model.
+That is, "correcting" an ordination by imposing a specific model (e.g., Brownian) might cause more trouble than it solves if that model is a poor fit to the data.
+
+% TG: add something about trait evolution model for pPCA
+
+This is especially relevant as the discussion of Ancestral state estimation, which is entirely reliant on the model of trait reconstruction (as is briefly noted in line 315).
+
+% TG: also add something about the model in ACE
+
+
+
+
 %Running head
 \begin{flushright}
 Version dated: \today
@@ -399,6 +495,7 @@ All authors edited drafts and approved the final version.
 \subsection{Acknowledgements}
 
 This article results from discussion at the Royal Society International Science Seminar on `Reconciling disparate views on disparity' held at Chicheley Hall, 9-10th January, 2018.
+\textcolor{blue}{We thank the two anonymous reviewers for their helpful and positive comments.}
 AG was funded by European Research Council Starting grant 637171 ADaPTiVE;
 ALJ was funded by an Irish Research Council Laureate Award IRCLA/2017/186;
 ES was funded by a University of Adelaide Research Fellowship;
