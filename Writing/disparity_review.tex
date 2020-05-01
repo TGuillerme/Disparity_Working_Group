@@ -82,31 +82,33 @@
 
 \textcolor{blue}{We changed the sentence to:}
 
-\textit{especially as synapomorphies can lead to apparent shift or increase in disparity when new clade appear (especially if the character-state distribution is skewed towards a particular clade).} l.@@@
+\textit{especially as synapomorphies can lead to apparent shifts or increases in disparity when new clades appear (especially if the character-state distribution is skewed towards a particular clade).} l.@@@
 
 \noindent On page 8, just to avoid confusion, PCO can also applied to quantitative data ONLY. End of page 8/beginning of page 9 could do with a small (few lines) exposition of protocols for axis selection.
 
-\textcolor{blue}{We've added the precision for the PCO with quantitative data:}
+\textcolor{blue}{We've added that PCO can be used on dissimilarity matrices built using qualitative, or quantitative data, or mixed data types:}
 
-\textit{or quantitative, or both} l.@@@
+\textit{dissimilarity matrices based on qualitative, quantitative or mixed data types can be reduced using PCO} l.@@@
 
 \textcolor{blue}{And added a brief mention of protocols for axis selection:}
 
-\textit{(either by manually selecting the d axes that encompasses the desired variance or using methods such as the broken stick model; Legendre \& Legendre 2012 p.410)} l.@@@ + change cite to number
+\textit{(either by manually selecting the d axes that encompasses the desired cumulative variance or using methods such as the broken stick model; Legendre \& Legendre 2012 p.410)} l.@@@ + change cite to number
 
 \noindent Lines 211-213 are problematic. Do the authors mean that categorical data are ALWAYS more problematic because of the listed reasons? Some remedies at least exist for euclideanarity.
 
-\textcolor{blue}{We've now added a reference to the Cailliez (1983) correction to remedy for euclideanatrity}:
+% NC: Not sure if this really answers the issue they had. Do we mean that categorical are always more problematic???
+
+\textcolor{blue}{We've now added a reference to the Cailliez (1983) correction to remedy for euclideanarity}:
 
 \textit{although this can sometimes be corrected, Cailliez 1983} l.@@@
 
 \noindent Line 269, about PERMANOVA, puzzles me. Yes, the test is used, but for geometric morphometric analyses at least, other tests have been devised.
 
-\textcolor{blue}{We have added mentions to other tests common in morphological disparity analyses:}
+\textcolor{blue}{We have added mentions of other tests common in morphological disparity analyses:}
 
-\textit{The last decade has also seen a series of development based on this test (e.g. the linear regression for multidimensional data Collyer et al 2015; or the phylogenetic ANOVA Adams 2014; but see Adams \& Collyer 2018; Lloyd 2016 for more).
+\textit{The last decade has also seen a series of developments based on this test (e.g. the linear regression for multidimensional data Collyer et al 2015; or the phylogenetic ANOVA Adams 2014; but see Adams \& Collyer 2018; Lloyd 2016 for more).
 It is worth noting that most of these test do not require the morphospace to be ordinated (see section 1 above).
-Regardless of the statistical test used, they should be employed that are tailored to the question at hand, rather than simply following common practices.} l.@@@
+Regardless of the statistical test used, they should only be employed if they are tailored to the question at hand, rather than simply following common practices.} l.@@@
 
 \subsection{Referee: 2}
 
@@ -360,7 +362,7 @@ Where there is any doubt about which traits to analyse, it may be preferable to 
 The points above assume that researchers are collecting their own data for disparity analyses, but this is often not the case.
 Discrete characters are commonly recycled from phylogenetic studies (e.g. \citealt{Brusatte2008,Close2015}).
 This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups, since phylogenetic characters are often collected to discriminate among groups.
-This needs to be considered when interpreting results, especially \textcolor{blue}{as synapomorphies can lead to apparent shift or increase in disparity when new clade appear (especially if the character-state distribution is skewed towards a particular clade).}
+This needs to be considered when interpreting results, especially \textcolor{blue}{as synapomorphies can lead to apparent shifts or increases in disparity when new clades appear (especially if the character-state distribution is skewed towards a particular clade).}
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017}.
 The influence of trait choice on resulting disparity patterns can be especially challenging where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018}.
 
@@ -393,7 +395,7 @@ We consider these aspects in order below.
 Disparity analyses often use ordination techniques for dimension reduction.
 Ordinations are statistical methods that map observed variables onto a new space of reduced dimension while maintaining the requirement that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO/PCoA; non-metric multidimensional scaling - NMDS).
 They come in many flavours depending on the data and the desired morphospace properties.
-For example, quantitative (continuous) data can be reduced using PCA, and qualitative data (\textcolor{blue}{or quantitative, or both}) can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling (NMDS; see \citealt{Legendre2012} chapter 9 for a detailed overview of ordination methods and properties).
+For example, quantitative (continuous) data can be reduced using PCA, and \textcolor{blue}{dissimilarity matrices based on qualitative, quantitative or mixed data types} can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling (NMDS; see \citealt{Legendre2012} chapter 9 for a detailed overview of ordination methods and properties).
 \textcolor{blue}{Note that when using a PCO, the distance metric on which to calculate the PCO can have some significant impact on the result morphospace} \citep{lehmann2019}.
 
 One of the reasons why ordination techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at a time, which can be more intuitive than through disparity indices (see section \ref{section:metrics} below).
@@ -404,7 +406,7 @@ In practice, this facilitates interpretation of only the major axis of a highly 
 
 Like most other aspects of disparity analyses, however, reducing dimensionality can be fraught.
 In the case of ordination, subsampling axes from the ordination can lead to misinterpretation of the results.
-Although a common technique is to consider the \textit{d} axes that encompasses 95\% or 99\% of the variance in the dataset \textcolor{blue}{(either by manually selecting the \textit{d} axes that encompasses the desired variance or using methods such as the broken stick model; \citealt{Legendre2012} p.410)}, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
+Although a common technique is to consider the \textit{d} axes that encompass 95\% or 99\% of the variance in the dataset \textcolor{blue}{(either by manually selecting the \textit{d} axes that encompasses the desired cumulative variance or using methods such as the broken stick model; \citealt{Legendre2012} p.410)}, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
 Visual interpretations of multidimensional data can be particularly misleading, not least as multidimensional spaces are not necessarily Euclidean even when analysing \textcolor{blue}{geometric} morphometric data \citep{Deline2018, Gerber2017}.
 
 Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question (for example, if the first few ordination axes represent elongation of the beak in birds, but the question is about wing disparity).
@@ -468,9 +470,9 @@ No matter which disparity indices have been calculated, the research question mu
 The multidimensional statistical toolkit for ecology and evolution has greatly expanded in recent years \citep{clavel2015mvmorph, Adams2018}, but some of these advances have yet to be implemented in disparity analyses.
 Instead, hypothesis testing has been mostly confined to a small set of well-established methods.
 One commonly used test is the non-parametric permutation analysis of variance (PERMANOVA) \citep{Anderson2001} that tests whether two groups share the same centroid and dispersion based on a distance matrix between observations.
-\textcolor{blue}{The last decade has also seen a series of development based on this test (e.g. the linear regression for multidimensional data \citealt{collyer2015method} or the phylogenetic ANOVA \citealt{Adams2014}; but see \citealt{Adams2018,lloyd2016} for more).
+\textcolor{blue}{The last decade has also seen a series of developments based on this test (e.g. the linear regression for multidimensional data \citealt{collyer2015method} or the phylogenetic ANOVA \citealt{Adams2014}; but see \citealt{Adams2018,lloyd2016} for more).
 It is worth noting that most of these test do not require the morphospace to be ordinated (see section \ref{section:ordination} above).
-Regardless of the statistical test used, they should be employed that are tailored to the question at hand, rather than simply following common practices.}
+Regardless of the statistical test used, they should only be employed if they are tailored to the question at hand, rather than simply following common practices.}
 
 It is also important to consider which data should be subjected to a statistical test.
 For example, in morphological disparity analysis, especially for palaeobiological questions, data are often bootstrapped.
