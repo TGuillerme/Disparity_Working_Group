@@ -1,0 +1,210 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{natbib}
+
+%Packages
+\usepackage{textcomp}
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage{latexsym}
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{array}
+\usepackage[version=3]{mhchem}
+\usepackage{ifthen}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amstext}
+\usepackage{enumerate}
+\usepackage[osf]{mathpazo}
+\usepackage{dcolumn}
+\usepackage{lineno}
+\usepackage{pdflscape}
+\usepackage{xcolor}
+
+\usepackage{color,soul}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\pagenumbering{arabic}
+
+
+%Pagination style and stuff
+\linespread{2}
+\raggedright
+\setlength{\parindent}{0.5in}
+% \setcounter{secnumdepth}{0} 
+% \renewcommand{\section}[1]{%
+% \bigskip
+% \begin{center}
+% \begin{Large}
+% \normalfont\scshape #1
+% \medskip
+% \end{Large}
+% \end{center}}
+% \renewcommand{\subsection}[1]{%
+% \bigskip
+% \begin{center}
+% \begin{large}
+% \normalfont\itshape #1
+% \end{large}
+% \end{center}}
+% \renewcommand{\subsubsection}[1]{%
+% \vspace{2ex}
+% \noindent
+% \textit{#1.}---}
+% \renewcommand{\tableofcontents}{}
+%\bibpunct{(}{)}{;}{a}{}{,}
+
+%---------------------------------------------
+%
+%       START
+%
+%---------------------------------------------
+
+\begin{document}
+
+\section{Response to Referees}
+
+We thank the reviewers for their useful and insightful comments. We respond to them below in blue.
+
+\subsection{Referee: 1}
+\noindent Concerning the section on disparity through time, perhaps hyphens should be removed; also, it may be misleading to use them, as sometimes the disparity-through-time phrase refers, in abbreviated format, to what is otherwise known (in full) as "mean relative subclade disparity through time", implemented in the DTT function in geiger.
+
+\textcolor{blue}{We have removed hyphens from ``disparity-through-time''}
+
+\noindent At the beginning of page 7, I am not convinced that "synapomorphies will naturally lead an apparent shift or increase in disparity when new clades appear" in all cases. This very much depends on character-state distribution and, given a sufficient number of unique traits or combinations thereof across the sample, you may have comparable levels of disparity.
+
+\textcolor{blue}{We changed the sentence to:}
+
+\textcolor{blue}{\textit{especially as synapomorphies can lead to apparent shifts or increases in disparity when new clades appear (especially if the character-state distribution is skewed towards a particular clade).}} l.129-131 %@@@ lines
+
+\noindent On page 8, just to avoid confusion, PCO can also applied to quantitative data ONLY. End of page 8/beginning of page 9 could do with a small (few lines) exposition of protocols for axis selection.
+
+\textcolor{blue}{We've added that PCO can be used on dissimilarity matrices built using qualitative, or quantitative data, or mixed data types:}
+
+\textcolor{blue}{\textit{dissimilarity matrices based on qualitative, quantitative or mixed data types can be reduced using PCO}} l.166-167 %@@@ lines
+
+\textcolor{blue}{And added a brief mention of protocols for axis selection:}
+
+\textcolor{blue}{\textit{(either by manually selecting the d axes that encompasses the desired cumulative variance or using methods such as the broken stick model; Legendre and Legendre 2012)}} l.188-190 %@@@ lines + author
+
+\noindent Lines 211-213 are problematic. Do the authors mean that categorical data are ALWAYS more problematic because of the listed reasons? Some remedies at least exist for euclideanarity.
+
+\textcolor{blue}{We've now stated that it is not always problematic and added a reference to the Cailliez (1983) correction to remedy for euclideanarity}:
+
+\textcolor{blue}{\textit{This can be sometimes problematic when comparing the position of groups in multidimensional space, as the distances might not be linear (although this can sometimes be corrected; Cailliez 1983}} l.203-205 %@@@ lines + author
+
+\noindent Line 269, about PERMANOVA, puzzles me. Yes, the test is used, but for geometric morphometric analyses at least, other tests have been devised.
+
+\textcolor{blue}{We have added mention of other tests common in morphological disparity analyses:}
+
+\textcolor{blue}{\textit{The last decade has also seen a series of developments based on this test (e.g. the linear regression for multidimensional data  Collyer et al. 2015 or the phylogenetic ANOVA Adams 2014; but see Adams and Collyer 2018; Lloyd 2016 for more.
+It is worth noting that most of these test do not require the morphospace to be ordinated (see section 1 above).
+Regardless of the statistical test used, they should only be employed if they are tailored to the question at hand, rather than simply following common practices.}} l.281-287 %@@@ lines + authors (3)
+
+\subsection{Referee: 2}
+
+\noindent That said, my biggest issue was the specific way the paper was subdivided. The "Measuring..", "Testing.." and "Phylogeny" subsections seemed a bit jumbled. For instance, a lot of the best advice on designing a custom test for your data is in the "Measuring.." section. Meanwhile, the "Testing.." section is very effective at convincing the reader not to take bootstrap values literally (a good thing to be effective at!) but doesn't contain much else in the way of advice or guidance.
+
+\textcolor{blue}{We suspect this is probably due to us doing a poor job at explaining how these sections differ. In a standard disparity workflow, we tend to first extract disparity values for our chosen subsets of taxa which we refer to as "Measuring disparity". Following from this, some (though not all) studies go on to determine whether differences among subsets are statistically different. We refer to this step as "Testing hypotheses". To reduce confusion we have renamed these sections as 1) Summarising disparity using disparity indices and 2) Testing for differences in disparity. We have retained the Disparity and phylogeny subsection as this is somewhat of a side issue that is important for these studies, but depending on the clade in question might be dealt with well or might be ignored due to lack of phylogenies for the group that could actually be used for these analyses.}
+
+\textcolor{blue}{For the Testing section, we've added some references to specific tests and insisted throughout the section that it is important to choose the right statistical test according to the data and question at hand (and pointed to some general reviews detailing some of the options - see response to reviewer 1 above and response to specific comments below).}
+
+\noindent The "Phylogeny" section makes no explicit reference to the models of trait evolution that exist. Ancestral state estimates are mentioned, but the potential pitfalls of imposing a (possibly, if not likely) incorrect model of trait evolution is elided. Elsewhere in the paper the authors do an excellent job warning the reader away from just accepting default options, or doing something just because "that's the way it's done". Yet here, the reader is left without knowledge that accepting the default BM model uncritically could cause major issues with both Revell-style multivariate corrections and all ASRs.
+
+\textcolor{blue}{We've now added the following caveats to this section:}
+
+\textcolor{blue}{\textit{Furthermore, any use of phylogenies in disparity analyses must also carefully consider the underlying model of trait evolution. Standard methods assume a model of Brownian motion, i.e. a ``random walk'' model where trait variance increases linearly through time with no trend in the direction of trait evolution. In many biological situations this model is not realistic, and different models of evolution should be considered Blomberg et al. 2020. If an inappropriate model is used then methods such as phylogenetic PCA and ancestral state estimations (see below) may give misleading results, with implications for downstream results of disparity analyses.)}} l.313-321 %@@@ lines + author
+
+\textcolor{blue}{\textit{All ancestral state estimates are highly dependent on the data and method used (especially on the underlying model of trait evolution).}} l.338-339 %@@@ lines
+
+\noindent In the first two sections, the authors reference back to the four main goals of disparity analyses they outlined. Using those four goals as a guide post for reworking the Testing and Phylogeny subsections may help improve the flow and usability of those parts.
+
+\textcolor{blue}{We appreciate the reviewer's suggestion here and tried hard to implement it. Unfortunately it led to the sections being even more confused as many of our points apply across the four types of disparity analysis. We also didn't feel we had stuck to this structure in the earlier sections, so the structure here didn't make as much sense as the reviewer assumed it might. We therefore reverted back to the original structure.}
+
+\textcolor{blue}{If we understand this reviewer well, they suggest we partition the methodological section per type of disparity analysis (e.g. for descriptive disparity analysis, one could apply such and such tests, etc...). If this is the case, we unfortunately think that this will make the paper to prescriptive and probably more complex to read since methods can be applied to different types of analysis.}
+
+\noindent Last bit: I think Figure 2 should be redesigned, personally. I'm not sure to whom it is targeted. The top part's clear, but I suspect the bottom part would be opaque to those who would most benefit from reading this paper. Right now, it shows every step of every option all at once. But I think focusing in on a single complex and general concept (eg, a clear visual explanation of ordination alone, or a clear representation of distance generation, or...) would serve the paper better. 
+
+\textcolor{blue}{We have now updated the figure to be just illustrate the path from raw data to PCA (illustrating that both can be morphospaces). We updated the caption accordingly:}
+
+\textcolor{blue}{\textit{Illustration between the different morphospaces and visualisation of the same dataset (the classic ``iris'' dataset of Edgar 1935; Fisher 1936).
+Morphospaces: different mathematical representations of a morphospace. A trait matrix can be an ordinated matrix (e.g. in Tyler and Leighton 2011) or transformed into a distance matrix (e.g. in Close et al. 2015, not represented here).
+Here we consider all these matrices as being \textit{morphospaces}, i.e. objects containing all the combinations of traits and observations (albeit transformed differently).
+Visualisation: different  ways to represent the morphospace in 2D.
+Visualisations can use either trait plots (directly from the trait matrix); or ordination axis plots (directly from the ordinated matrix).
+Note that in 2D representations, it is good practice to plot both axes on the same scale to avoid visually distorting the importance of one axis).}} Figure 2. %@@@ authors (4)
+
+\subsubsection{Specific Comments:}
+
+\noindent Line 98: "[Disparity as a proxy for ecology] is particularly common in palaeobiology" I actually don't think this is true (at least, not in the way it is most likely to be read; see last paragraph). There are entire journals (eg, Functional Ecology) dedicated to neontological studies using variation in easily measured traits across space/time (disparity) as a proxy for changes in ecosystem functions \& species interactions (ecology). Plant physiologists in particular routinely use various measurable morphological features (stem diameters, root depth, etc) as proxies for various ecological features (e.g., aridity tolerance) and compare locations. 
+Functional ecologists use different language, and rarely use the literal word "disparity", but the ideas are basically the same. The big differences I perceive are in terms of (1) how easy it is to test the reliability of the proxy and (2) how often workers even attempt to rigorously test that proxy. 
+I think, especially given the specific citation here \& preceding sentence, that the authors mean something along the lines of "disparity-as-ecology is one of the primary ways paleobiologist have for investigating ecosystem function". That is, the "particularly common" is in reference to the large proportion of studies that use this approach in palaeobiology. It's just that, as-written, I think it makes this common approach sound like a "weird" palaeobiologist think.
+
+\textcolor{blue}{This is a very fair observation. We've changed the sentence mentioning disparity and ecology and palaeobiology as follows:}
+
+\textcolor{blue}{\textit{It is one of the primary ways to investigate ecosystem functioning in palaeobiology when the study species (and their functional characteristics) are extinct (Wainwright et al., 2005).}} l.80-82 %@@@ lines + author
+
+\noindent Line 150 - 158: Nothing wrong or incorrect here, but the flow of this paragraph is odd. I find it very choppy. The first sentence is a long list of problems. The second is a set of two more problems. The third is a statement that everything has problems. The above three sentences, I think, could be reworked to flow more directly attached to the main point, which is that questions need to fit their data and vice versa.
+
+\textcolor{blue}{We phrased the paragraph as shown below. Hopefully this has improved the flow to the main point.}
+
+\textcolor{blue}{\textit{Ultimately, disparity analyses are characterised by the data they use. Unfortunately, trait data suffer from the same shortcomings as most biological datasets. The data within them can be non-overlapping, hierarchical, inapplicable, ambiguous, polymorphic, and/or correlated  (Palci and Lee, 2018). There are also issues of missing data, both where a particular character cannot be measured for a given taxon, or where a given taxon cannot be sampled at all. Trait data may also be influenced by biological phenomena such as allometry and sexual dimorphism. More practically, data collection is constrained by the time and money available, making collating a ``perfect'' dataset impossible. Even when care is taken, subsamples of the universe of possible data may not have the power to uncover the full patterns of disparity. These issues should be considered when collecting data. It is particularly important to collect trait data with the scientific question in mind, or, where there are limits on the data available, to tailor the question being asked to match the data.}} l.138-150 %@@@ lines + author
+
+\noindent Line 171-172: Don't need e.g. and etc. in same parenthetical
+
+\textcolor{blue}{We removed the  ``etc.''}
+
+\noindent Lines 175 - 177: The discussion of dimension reduction using PCO here makes me think that more discussion in this paper of the importance of choosing an appropriate distance metric might be needed. That is, it'd be a whole separate paper trying to review or describe what is or is not appropriate! But I do think it's worth further emphasizing that it's a critical methodological choice that shouldn't be taken lightly for those intending to use MDS/NMDS
+
+\textcolor{blue}{We've added the following sentence highlighting the effect of the chosen distance metric and referring to a great paper looking at it in more detail:}
+
+\textcolor{blue}{\textit{Note that for PCO, the distance metric used can have significant impacts on the resulting morphospace (Lehmann et al., 2019). Choice of distance metric is therefore crucial, and should not be overlooked when using PCO.}} l.170-173 %@@@lines + author
+
+
+\noindent Line 195: I think you mean explicitly "geometric morphometric data". If that's true, being explicit is, I think, better.
+
+\textcolor{blue}{We've added the term ``geometric'' to be more explicit.}
+
+\noindent Lines 234 - 239: This implies that a central tendency is, on its own, a measure of disparity. Below, in the discussion of the position within morphospace of a clade, I think this point is made clearer. But I think the first few sentences here should be clarified a bit. Something like "or differences in the central tendencies (mean/median/mode) of clades [or subsets to be more general]"
+
+\textcolor{blue}{We've changed the sentence to:}
+
+\textcolor{blue}{\textit{disparity indices can be used to compare the spread of distributions (e.g. the range, quantiles or variance) or the differences in the central tendencies (i.e. mean, median or mode) of groups in the morphospace.}} l.237-239 %@@@ lines
+
+\textcolor{blue}{The following three points by the reviewer are closely linked so we deal with them together}
+
+\noindent Lines 263 - 289: The "Testing hypotheses..." section. I feel as though this section needs to be fleshed out. A lot of very good points are made, especially with respect to bootstrapping, but a reader will walk away from this section (1) knowing that PERMANOVA exists, (2) being a bit skeptical of bootstrap support, and (3) not much else. The last paragraph is, I think, the most important in this section, and I would recommend cutting from the other two to expand this.
+
+\noindent The general point about tailoring analyses to your data is sound, and that does make general advice hard, but not impossible. A few clear principles or even just an explanation of "same" morphospace could be useful here. That is, up in the Measuring subsection in lines 239 - 249 the authors provide a lot of good sound advice that seems more fitting here. 
+
+\noindent I'm just imagining a student who reads this paper early in their project. Then later, once they have data, tries to go back to look up some best practices and misses some good tips because they were in the "Measuring..." subsection instead of the "Testing..." subsection. It may be that the subsections should simply be reworked.
+
+\textcolor{blue}{In response to this, and comments by reviewer 1, we have fleshed out the "Testing" section to mention other existing tests. We have also, as suggested by the reviewer, shortened the other paragraphs and expanded this section. This is a difficult section to write because the possible statistical tests heavily rely on the kind of data available and the question being asked. In many studies only visual observations of differences are made without statistical testing.}
+
+\textcolor{blue}{We appreciate the reviewer's point about inattentive readers missing key sections. We hope that we have solved this in part by renaming these sections to more accurately represent their content (changed to 1) Summarising disparity using disparity indices and 2) Testing for differences in disparity). As mentioned above, we tried reshuffling some of this material, but the current structure best suits the way most disparity analyses are planned and carried out (in our experience).} 
+
+\textcolor{blue}{We avoid giving general advice because the idea with this paper was to inform but to be as non-prescriptive as possible (our take home message after the meeting at the origin of the paper was: ``do whatever disparity analysis you want but do it for the right reasons'') so we already had to tone down some prescriptive aspects in previous draft versions of this paper. We have however, highlighted the importance of applying the appropriate test to for the question and data twice in this section to really emphasize the point.}
+
+\noindent Disparity \& Phylogeny section: This section is good, but perhaps overlong. Although, it doesn't discuss (what I perceive to be) the biggest problem with phylogenetic corrections to disparity analyses: the choice of trait evolution model.
+That is, "correcting" an ordination by imposing a specific model (e.g., Brownian) might cause more trouble than it solves if that model is a poor fit to the data.
+
+\textcolor{blue}{We agree this is a really important point that we have not expanded on previously du to worries about the word count. We've now added a caveat to this section, as mentioned in the main comments:}
+
+\textcolor{blue}{\textit{Furthermore, any use of phylogenies in disparity analyses must also carefully consider the underlying model of trait evolution. Standard methods assume a model of Brownian motion, i.e. a ``random walk'' model where trait variance increases linearly through time with no trend in the direction of trait evolution. In many biological situations this model is not realistic, and different models of evolution should be considered Blomberg et al. 2020. If an inappropriate model is used then methods such as phylogenetic PCA and ancestral state estimations (see below) may give misleading results, with implications for downstream results of disparity analyses.)}} l.313-321 %@@@ lines + author
+
+\noindent This is especially relevant as the discussion of Ancestral state estimation, which is entirely reliant on the model of trait reconstruction (as is briefly noted in line 315).
+
+\textcolor{blue}{We've also added the following to emphasize this point:}
+
+\textcolor{blue}{\textit{All ancestral state estimates are highly dependent on the data and method used (especially on the underlying model of trait evolution).}} l.338-339 %@@@ lines
+
+\end{document}
