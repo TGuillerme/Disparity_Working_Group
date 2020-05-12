@@ -178,7 +178,7 @@ Such multidimensional spaces (or morphospaces - defined broadly hereafter as a m
 	For example, patterns of disparity have been used successfully to compare modules of evolution in various groups \citep{goswami2010influence,bardua2019morphological}, allowing researchers to link variation in shape to a group's evolutionary or developmental constraints \citep{Hipsley2017}.
 
 	\item \textbf{\textcolor{blue}{Disparity through time}.} This approach investigates how the morphologies of organisms have changed over time, by focussing on the disparity of taxa in particular time intervals or slices.
-	This approach has been used widely in palaeobiology to answer a range of macroevolutionary questions, such as: how does disparity accumulate over the history of a clade \citep{prentice2011evolution, Guillerme2018}, or how does disparity change up to and across mass extinction events\citep{Friedman2010}?
+	This approach has been used widely in palaeobiology to answer a range of macroevolutionary questions, such as: how does disparity accumulate over the history of a clade \citep{Brusatte2008, prentice2011evolution, Guillerme2018}, or how does disparity change up to and across mass extinction events\citep{Friedman2010}?
 
 	\item \textbf{Disparity and taxonomic diversity.} Morphological disparity provides another perspective on biodiversity; high morphological disparity represents a high diversity of morphologies (i.e.
 	shapes or body plans) and is, presumably, associated with high levels of ecological and functional diversity (but see \citealt{anderson2012}).
@@ -222,7 +222,7 @@ Throughout, it is important to remember that these tools should always be used i
 1) discrete morphological characters, e.g. coding the absence or presence of features or a discrete characteristic of a trait (e.g. \citealt{Foote1989, Deline2018});
 2) continuous measurements of features (e.g. lengths in \citealt{Friedman2010});
 or 3) more mathematical descriptors from geometric morphometric landmark data (e.g.
-Procrustes coordinates)  (e.g. \citealt{sherratt2017rates}), Fourier coefficients (e.g. \citealt{Foote1995, Spriggs2018}) or model-based descriptors (e.g. \citealt{Raup1961,Saunders2004} - Fig. \ref{Fig:data}).
+Procrustes coordinates)  (e.g. \citealt{sherratt2017rates}), Fourier coefficients (e.g. \citealt{Foote1989, Spriggs2018}) or model-based descriptors (e.g. \citealt{Raup1961,Saunders2004} - Fig. \ref{Fig:data}).
 None of these approaches is superior, but they may be more or less well-suited to characterising the traits compared and to the question being asked using those traits \citep{hetherington2015cladistic,Hopkins2017}.
 
 For example, if investigating variation of bat wing shapes, both homologous landmarks and continuous measurements of bones may be appropriate to capture patterns of wing variation.
@@ -234,8 +234,8 @@ Where there is any doubt about which traits to analyse, it may be preferable to 
 
 The points above assume that researchers are collecting their own data for disparity analyses, but this is often not the case.
 Discrete characters are commonly recycled from phylogenetic studies (e.g. \citealt{Brusatte2008,Close2015}).
-This is an efficient approach to character sampling, but it may artifactually increase disparity between phylogenetically distinct groups, since phylogenetic characters are often collected to discriminate among groups.
-This needs to be considered when interpreting results, especially \textcolor{blue}{as synapomorphies can lead to apparent shifts or increases in disparity when new clades appear (especially if the character-state distribution is skewed towards a particular clade).}
+This approach may artifactually increase disparity between phylogenetically distinct groups, since phylogenetic characters are often collected to discriminate among groups.
+This needs to be considered when interpreting results, especially \textcolor{blue}{as synapomorphies can lead to apparent shifts or increases in disparity when new clades appear (particularly if the character-state distribution is skewed towards a particular clade).}
 Furthermore, many datasets are limited to subsets of anatomy that are at least implicit samples of overall anatomy, but explicit tests of this assumption have shown that different aspects of morphology can exhibit different patterns of disparity \citep{Hopkins2017}.
 The influence of trait choice on resulting disparity patterns can be especially challenging where the available data has non-random missing anatomical parts, such as the absence of soft tissue in the fossil record \citep{Deline2018}.
 
@@ -259,9 +259,9 @@ The influence of trait choice on resulting disparity patterns can be especially 
 Study design encompasses several key aspects including \ref{section:ordination} the difficulty of dealing with multidimensional data; \ref{section:metrics} the indices used to summarise the relative disparity of groups; \ref{section:testing} the methods used for hypothesis testing within the disparity analysis framework; and \ref{section:phylo} the influence of phylogeny on disparity analyses.
 We consider these aspects in order below.
 
-\subsection{To ordinate or not to ordinate - that is the (multidimensional) question} \label{section:ordination}
+\subsection{To ordinate or not to ordinate? That is the (multidimensional) question} \label{section:ordination}
 
-Disparity analyses often use ordination techniques for dimension reduction.
+Disparity analyses often use ordination techniques for dimensionality reduction.
 Ordinations are statistical methods that map observed variables onto a new space of reduced dimension while maintaining the requirement that similar observations are closer together than dissimilar ones (e.g. principal component analysis - PCA; principal coordinates analysis - PCO; non-metric multidimensional scaling - NMDS).
 They come in many flavours depending on the data and the desired morphospace properties.
 For example, quantitative (continuous) data can be reduced using PCA, and \textcolor{blue}{dissimilarity matrices based on qualitative, quantitative or mixed data types} can be reduced using PCO (which is equivalent to metric multidimensional scaling (MDS)) or non-metric multidimensional scaling (NMDS; see \citealt{Legendre2012} chapter 9 for a detailed overview of ordination methods and properties).
@@ -271,25 +271,26 @@ For example, quantitative (continuous) data can be reduced using PCA, and \textc
 One of the reasons why ordination techniques are common in disparity analysis is that they make it easier for researchers to comprehend patterns in two or three spatial dimensions at a time, which can be more intuitive than through disparity indices (see section \ref{section:metrics} below).
 Additionally, after ordinating the data, it is possible to focus on just a subset of axes of the morphospace (i.e.
 selecting only those axes that describe the majority of the variation in the dataset - e.g. 95\%).
-In the case of geometric morphometric data, ordination is particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions \citep{Legendre2012,dryden2016statistical}.
+In the case of geometric morphometric data, some ordination techniques (e.g. PCA) can be particularly useful as it conserves the mathematical properties of the data while efficiently reducing the dimensions \citep{dryden2016statistical}.
 In practice, this facilitates interpretation of only the major axis of a highly dimensional dataset as major gradients of biological variation (e.g. the elongation and flattening of birds beaks; \citealt{bright2016shapes}).
 
 Like most other aspects of disparity analyses, however, reducing dimensionality can be fraught.
 In the case of ordination, subsampling axes from the ordination can lead to misinterpretation of the results.
-Although a common technique is to consider the \textit{d} axes that encompass 95\% or 99\% of the variance in the dataset \textcolor{blue}{(either by manually selecting the \textit{d} axes that encompasses the desired cumulative variance or using methods such as the broken stick model; \citealt{Legendre2012} p.410)}, the interpretation of these principal axes can be unrepresentative of the data and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
-Visual interpretations of multidimensional data can be particularly misleading, not least as multidimensional spaces are not necessarily Euclidean even when analysing \textcolor{blue}{geometric} morphometric data \citep{Deline2018, Gerber2017}.
+Although a common technique is to consider the \textit{d} axes that encompass 95\% or 99\% of the variance in the dataset \textcolor{blue}{(either by manually selecting the \textit{d} axes that encompasses the desired cumulative variance or using methods such as the broken stick model; \citealt{Legendre2012} p.410)}, the interpretation of these principal axes can \textcolor{blue}{miss some aspects of the structure of the data} and lead to misinterpretation of the biological variation mapped on these axes \citep{Bookstein2015, Weisbecker2019}.
+Visual interpretations of multidimensional data can be particularly misleading, not least as multidimensional spaces 
+\textcolor{blue}{might not possess the Euclidean properties one often intuitively assumes} \citep{Deline2018, Gerber2017}.
 
 Interpreting biological variation along the axes is always a \textit{post-hoc} procedure and may have little relation to the overall question (for example, if the first few ordination axes represent elongation of the beak in birds, but the question is about wing disparity).
 Additionally, in some cases, reducing the dimensionality of a dataset can render its interpretation more problematic.
-For example, when the analysed data are non-Euclidean (e.g. some types of discrete morphological characters such as inapplicable characters), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
-\textcolor{blue}{This can be sometimes problematic when comparing the position of groups in multidimensional space, as the distances might not be linear (although this can sometimes be corrected  \citealt{cailliez1983})}.
+For example, when the analysed \textcolor{blue}{dissimilarity} data are non-Euclidean (e.g. \textcolor{blue}{as induced for instance with inapplicable characters in discrete character schemes}), interpreting the resulting ordinated space can be challenging \citep{Gerber2019}.
+\textcolor{blue}{This can sometimes problematic be when comparing the position of groups in multidimensional space, as true dissimilarities might not be reliably conveyed (although this can sometimes be improved \citealt{cailliez1983})}.
 Furthermore, \textit{post-hoc} interpretations of the gradient of variation on the ordination axes may be biologically meaningless or simply impossible \citep{Gerber2019}.
 Although some gradients are easy to detect or interpret (e.g.
 the elongation and depth of mandibles in fishes on first and second PC axes, respectively; \citealt{Hill2018}), some are not (e.g. \citealt{Weisbecker2019}).
 For example, with discrete morphological data, a gradient between the species that have many characters in state 1 and those that have more in state 0 has no biological meaning if these are binary alternate states.
 
-In general, categorical data are a good deal more problematic than continuous data, because the characters themselves are invariably non-equivalent, non-independent, and mostly non-Euclidean, and the distribution of the variance is usually more evenly distributed across axes (i.e. contrary to a PCA, the first few axes do not encompass most variance of the dataset).
-Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some dimensions are not actually straight and, character coding and missing data can make the pairwise dissimilarity matrix lose its metric properties (i.e. the distance between A and B is not equal to the distance between B and A; \citealt{Gerber2014}).
+In general, categorical data are a good deal more problematic than continuous data, because the characters themselves are invariably non-equivalent, non-independent, and the distribution of the variance is usually more evenly distributed across axes (i.e. contrary to a PCA, the first few axes do not encompass most variance of the dataset).
+Such non-Euclidean spaces often have non-intuitive properties, for example, straight lines viewed in bivariate plots of some dimensions are not actually straight and, character coding and missing data can make the pairwise dissimilarity matrix lose its metric properties (i.e. the distance between A and B is not equal to the distance between B and A; \citealt{Gerber2019}).
 Last, but not least, in many cases, ordination might not be necessary.
 For example, if an index characterising disparity can use all of the data, it is not necessary to calculate it on the ordinated dataset (e.g. \citealt{Close2015}).
 For all of these reasons, multidimensional data should not be ordinated automatically, and careful consideration should be given to whether the aim of the study can be achieved without ordination \citep{lloyd2016,lloyd2018}.
@@ -322,12 +323,12 @@ Range and mean are highly sensitive, whereas quantiles, variance and median are 
 For example, if the goal is to characterise the extent of morphospace occupied by a group (e.g. does group A occupy as much space as group B?), indices related to the spread of the group in the morphospace are most appropriate (e.g.
 volume; \citealt{Diaz2016}, distance from the centroid; \citealt{Hopkins2017, Finlay2015}, variance and range; \citealt{Brusatte2008}).
 Furthermore, aspects other than variation (\textit{sensu} disparity) can be of interest: if we wish to describe the ``position'' of a group in a morphospace (e.g.
-does group A occupy the same space as group B?), indices related to the distance between the elements within a group and a fixed point in the morphospace are most appropriate \citep{GuillermeMOMS}.
+does group A occupy the same region of morphospace as group B?), indices related to the distance between the elements within a group and a fixed point in the morphospace are most appropriate \citep{GuillermeMOMS}.
 Finally, if we aim to characterise the density of morphospace occupation (e.g.
 is group A more closely packed than group B?) indices related to the pairwise distances between elements will be most appropriate (e.g. nearest neighbour distance, pairwise distances, etc. \citealt{Close2015} - see section \ref{section:ordination} above).
 
 In addition to considering which properties of disparity these indices capture, it is also important to consider the mathematical properties of the indices and their associated caveats \citep{Wills2001, Ciampaglio2001}.
-For example, measuring the sum of variance for each dimension of the space is equivalent to measuring the sum of variance in a PCA (because the co-variance is null).
+For example, measuring the sum of variance for each dimension of the space before or after ordination via PCA is equivalent.
 However, this is no longer true of other transformations of the space or when a subset of dimensions or elements are considered, such as is often done after PCA \citep{Legendre2012}.
 
 Furthermore, multidimensional spaces have some counterintuitive properties that should be considered, such as the ``curse of dimensionality'' \citep{Bellman1966}.
@@ -341,7 +342,7 @@ The multidimensional statistical toolkit for ecology and evolution has greatly e
 Instead, hypothesis testing has been mostly confined to a small set of well-established methods.
 One commonly used test is the non-parametric permutation analysis of variance (PERMANOVA) \citep{Anderson2001} that tests whether two groups share the same centroid and dispersion based on a distance matrix between observations.
 \textcolor{blue}{The last decade has also seen a series of developments based on this test (e.g. the linear regression for multidimensional data \citealt{collyer2015method} or the phylogenetic ANOVA \citealt{adams2014}; but see \citealt{Adams2018,lloyd2016} for more).
-It is worth noting that most of these test do not require the morphospace to be ordinated (see section \ref{section:ordination} above).
+It is worth noting that most of these tests do not require the morphospace to be ordinated (see section \ref{section:ordination} above).
 Regardless of the statistical test used, they should only be employed if they are tailored to the question at hand, rather than simply following common practices.}
 
 It is also important to consider which data should be subjected to a statistical test.
@@ -359,7 +360,7 @@ This can be the case when comparing elements with different numbers of landmarks
 As with all comparative datasets, the data used in disparity analyses are not independent because close relatives will tend to have more similar morphologies than more distant relatives \citep{Harvey1998}.
 Thus, for disparity analyses that consider groups with phylogenetic relationships (which is common), the non-independence between observations should be taken into account.
 It has been noted, however, that some popular phylogenetic correction methods (like phylogenetic PCA) can be inappropriate, especially when using only the first \textit{d} axes of the ordination, and can lead to incorrect interpretations of the data (such as wrongly supporting ``early burst'' type patterns; \citealt{Uyeda2015}).
-\textcolor{blue}{Furthermore, any use of phylogenies in disparity analyses must also carefully consider the underlying model of trait evolution. Standard methods assume a model of Brownian motion, i.e. a ``random walk'' model where trait variance increases linearly through time with no trend in the direction of trait evolution. In many biological situations this model is not realistic, and different models of evolution should be considered \citealt{blomberg2020}. If an inappropriate model is used then methods such as phylogenetic PCA and ancestral state estimations (see below) may give misleading results, with implications for downstream results of disparity analyses.} 
+\textcolor{blue}{Furthermore, any use of phylogenies in disparity analyses must also carefully consider the underlying model of trait evolution. Standard methods assume a model of Brownian motion, i.e. a ``random walk'' model where trait variance increases linearly through time with no trend in the direction of trait evolution. In many biological situations this model is not realistic, and different models of evolution should be considered \citealt{Gerber2014, blomberg2020}. If an inappropriate model is used then methods such as phylogenetic PCA and ancestral state estimations (see below) may give misleading results, with implications for downstream results of disparity analyses.} 
 
 One other common way to take phylogeny into account in disparity analyses is using ancestral state estimations in \textcolor{blue}{disparity through time} analyses to extract disparity estimates for non-sampled taxa and/or nodes of a phylogeny \citep{brusatte2011phylogenetic,Guillerme2018}.
 Ancestral state estimation can be performed at two points in the disparity analysis pipeline: either (1) pre-transformation, i.e. the estimation is done before transformation of the data (e.g. ordination, or distance matrix construction) and is simply based on the original data; or (2) post-transformation, i.e. the estimation is done after transformation of the data by estimating the ancestral states using the transformed matrix (e.g. the ordination scores; \citealt{lloyd2018}).
@@ -367,7 +368,7 @@ Ancestral state estimation can be performed at two points in the disparity analy
 Pre-transformation ancestral state estimation will change the way the ordination space is defined -- i.e.
 the relationship between the points is not yet estimated -- and requires longer computational times.
 However, once the morphospace is defined, its properties will not change.
-Post-transformation ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \citep{lloyd2018}.
+Post-transformation ancestral state estimation will not change the empirical ordination space and is faster to compute, but it will add elements in the space, whose estimated positions can be problematic for statistical tests and evolutionary inferences down the line \citep{lloyd2018,Gerber2019}.
 
 \textcolor{blue}{All ancestral state estimates are highly dependent on the data and method used (especially on the underlying model of trait evolution)} \cite{louca2020}.
 In general, using ancestral state estimation can help with recovering patterns of change in disparity but should not be used simply to generate extra data points to increase statistical power.
