@@ -1,0 +1,491 @@
+apply(penguins_sub, 1, scale)
+iris_pca <- princomp(apply(penguins_sub, 2, scale))$scores
+iris_pca
+write.csv(round(head(iris_pca), digits = 2), file = "../Writing/Figures/trait.space.pca.csv")
+setwd("/Users/TGuillerme/Projects/Disparity_Working_Group/Analysis")
+set.seed(42)#
+## Preparing the dataset#
+library(palmerpenguins)#
+#
+## Sorting the dataset into the correct format (to look like penguins_sub: 150*4)#
+penguins_sub <- penguins#
+class(penguins_sub) <- "data.frame"#
+penguins_sub <- penguins_sub[,c(1, 3:6)]#
+#
+## Removing NAs#
+nas <- apply(penguins_sub[,-1], 1, function(x) any(is.na(x)))#
+penguins_sub <- penguins_sub[!nas, ]#
+#
+## Selecting only 50 specimens per species#
+selected <- numeric()#
+for(species in as.character(unique(penguins_sub[,1]))) {#
+    specimens <- which(penguins_sub[,1] == species)#
+    selected <- c(selected, sample(specimens, 50))#
+}#
+penguins_sub <- penguins_sub[selected, ]#
+#
+## Z transform the data#
+# penguins_sub[,c(2:5)] <- apply(penguins_sub[, c(2:5)], 1, scale)#
+#
+## Rownames#
+rownames(penguins_sub) <- c(paste0(unique(penguins_sub[,1])[[1]], 1:50),#
+                            paste0(unique(penguins_sub[,1])[[2]], 1:50),#
+                            paste0(unique(penguins_sub[,1])[[3]], 1:50))#
+penguins_sp <- penguins_sub[, 1]#
+penguins_sub <- penguins_sub[,-1]#
+#
+## Colnames #
+colnames(penguins_sub) <- c("Culmen\nlength", "Culmen\ndepth", "Glipper\nlength", "Body\nmass")
+write.csv(head(penguins_sub), file = "../Writing/Figures/trait.space.no_trans.csv")
+penguins_sub_dist <- dist(penguins_sub)#
+write.csv(round(head(as.matrix(penguins_sub_dist)[1:5, 1:5]), digits = 2), file = "../Writing/Figures/trait.space.distance.csv")
+penguins_sub_pca <- princomp(apply(penguins_sub, 2, scale))$scores#
+write.csv(round(head(penguins_sub_pca), digits = 2), file = "../Writing/Figures/trait.space.pca.csv")#
+penguins_sub_pco <-cmdscale(penguins_sub_dist, k = 2)
+col_var <- c("orange", "blue", "green")[as.factor(penguins_sp)]
+plot(penguins_sub,#
+    pch = 19,#
+    col = col_var)
+## Colnames #
+colnames(penguins_sub) <- c("Culmen\nlength", "Culmen\ndepth", "Flipper\nlength", "Body\nmass")
+## No transformations#
+write.csv(head(penguins_sub), file = "../Writing/Figures/trait.space.no_trans.csv")#
+#
+## Distance matrix#
+penguins_sub_dist <- dist(penguins_sub)#
+write.csv(round(head(as.matrix(penguins_sub_dist)[1:5, 1:5]), digits = 2), file = "../Writing/Figures/trait.space.distance.csv")#
+#
+## Ordinations#
+penguins_sub_pca <- princomp(apply(penguins_sub, 2, scale))$scores#
+write.csv(round(head(penguins_sub_pca), digits = 2), file = "../Writing/Figures/trait.space.pca.csv")#
+penguins_sub_pco <-cmdscale(penguins_sub_dist, k = 2)
+## biplots#
+col_var <- c("orange", "blue", "green")[as.factor(penguins_sp)]#
+pdf(file = "../Writing/Figures/figure_methods_biplots.pdf", width = 5, height = 5)#
+plot(penguins_sub,#
+    pch = 19,#
+    col = col_var)#
+dev.off()
+pdf(file = "../Writing/Figures/figure_methods_PCO.pdf", width = 5, height = 5)
+vars <- round(apply(penguins_sub_pco, 2, var)/sum(apply(penguins_sub_pco, 2, var))*100, 2)#
+plot(penguins_sub_pco,#
+    pch = 19,#
+    col = col_var,#
+    xlab = paste0("PCO 1 (", vars[1], "%)"),#
+    ylab = paste0("PCO 21 (", vars[2], "%)"),#
+    xlim = range(penguins_sub_pco),#
+    ylim = range(penguins_sub_pco))
+dev.off()
+vars <- round(apply(penguins_sub_pca, 2, var)/sum(apply(penguins_sub_pca, 2, var))*100, 2) #
+ranges <- apply(penguins_sub_pca, 2, range)#
+#
+par(mfrow = c(4,4), mar = c(1,1,1,1), oma = c(2,2,2,2))#
+## First row#
+# 1#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 1\n(", vars[1], "%)"), cex = 1.9)#
+# 2#
+plot(penguins_sub_pca[, c(1,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(3)#
+# 3#
+plot(penguins_sub_pca[, c(1,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 4#
+plot(penguins_sub_pca[, c(1,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(3)#
+axis(4)#
+#
+## Second row#
+# 1#
+plot(penguins_sub_pca[, c(2,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(2)#
+# 2#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 2\n(", vars[2], "%)"), cex = 1.9)#
+# 3#
+plot(penguins_sub_pca[, c(2,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 4#
+plot(penguins_sub_pca[, c(2,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(4)#
+#
+## Third row#
+# 1#
+plot(penguins_sub_pca[, c(3,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(2)#
+# 3#
+plot(penguins_sub_pca[, c(3,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 3#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 3\n(", vars[3], "%)"), cex = 1.9)#
+# 4#
+plot(penguins_sub_pca[, c(3,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(4)#
+#
+## Fourth row#
+# 1#
+plot(penguins_sub_pca[, c(4,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(1)#
+axis(2)#
+# 3#
+plot(penguins_sub_pca[, c(4,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 3#
+plot(penguins_sub_pca[, c(4,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(1)#
+# 4#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 4\n(", vars[4], "%)"), cex = 1.9)
+pdf(file = "../Writing/Figures/figure_methods_PCA.pdf", width = 5, height = 5)#
+vars <- round(apply(penguins_sub_pca, 2, var)/sum(apply(penguins_sub_pca, 2, var))*100, 2) #
+ranges <- apply(penguins_sub_pca, 2, range)#
+#
+par(mfrow = c(4,4), mar = c(1,1,1,1), oma = c(2,2,2,2))#
+## First row#
+# 1#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 1\n(", vars[1], "%)"), cex = 1.9)#
+# 2#
+plot(penguins_sub_pca[, c(1,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(3)#
+# 3#
+plot(penguins_sub_pca[, c(1,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 4#
+plot(penguins_sub_pca[, c(1,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(3)#
+axis(4)#
+#
+## Second row#
+# 1#
+plot(penguins_sub_pca[, c(2,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(2)#
+# 2#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 2\n(", vars[2], "%)"), cex = 1.9)#
+# 3#
+plot(penguins_sub_pca[, c(2,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 4#
+plot(penguins_sub_pca[, c(2,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(4)#
+#
+## Third row#
+# 1#
+plot(penguins_sub_pca[, c(3,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(2)#
+# 3#
+plot(penguins_sub_pca[, c(3,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 3#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 3\n(", vars[3], "%)"), cex = 1.9)#
+# 4#
+plot(penguins_sub_pca[, c(3,4)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(4)#
+#
+## Fourth row#
+# 1#
+plot(penguins_sub_pca[, c(4,1)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(1)#
+axis(2)#
+# 3#
+plot(penguins_sub_pca[, c(4,2)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+# 3#
+plot(penguins_sub_pca[, c(4,3)], xaxt = "n", yaxt = "n", ylab = "", xlab = "",#
+    pch = 19,#
+    col = col_var)#
+axis(1)#
+# 4#
+plot(NULL, xlim = c(-0.5, 0.5), ylim = c(-0.5, 0.5), xaxt = "n", yaxt = "n", xlab = "", ylab = "")#
+text(0,0, paste0("PC 4\n(", vars[4], "%)"), cex = 1.9)#
+dev.off()
+plot(penguins_sub_pca[, c(1,2)])
+vars <- round(apply(penguins_sub_pca, 2, var)/sum(apply(penguins_sub_pca, 2, var))*100, 2)
+vars
+plot(penguins_sub_pca[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = paste0("PCA 1 (", vars[1], "%)"),#
+    ylab = paste0("PCA 2 (", vars[2], "%)"),#
+    xlim = range(penguins_sub_pco),#
+    ylim = range(penguins_sub_pco))
+vars <- round(apply(penguins_sub_pca, 2, var)/sum(apply(penguins_sub_pca, 2, var))*100, 2)#
+plot(penguins_sub_pca[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = paste0("PCA 1 (", vars[1], "%)"),#
+    ylab = paste0("PCA 2 (", vars[2], "%)"),#
+    xlim = range(penguins_sub_pca),#
+    ylim = range(penguins_sub_pca))
+plot(penguins_sub[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "",#
+    ylab = "")
+apply(penguins_sub, 2, scale)[,c(1,2)]
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))
+names(peguins_ordination)
+peguins_ordination$center
+peguins_ordination$scale
+peguins_ordination$sdev
+dev.new(plot(penguins_sub_pca[, c(1,2)]))
+peguins_ordination$loading
+?abline
+abline(b = 0.428)
+peguins_ordination$loadings[[1]]
+peguins_ordination$loadings[1,1]
+yaxis_loading <- peguins_ordination$loadings[2,2]
+yaxis_loading
+?arroes
+?arrows
+xaxis_loading <- peguins_ordination$loadings[1,1]#
+yaxis_loading <- peguins_ordination$loadings[2,2]
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading)
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = yaxis_loading, lwd = 2)
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)
+abline(a = 0, b = 0.428)
+abline(a = 0, b = 0.755)
+abline(a = 0, b = 0.656)
+library(ade4)#
+#
+irisX <- iris[,1:4]      # Iris data#
+ncomp <- 2#
+# With ade4#
+dudi_iris <- dudi.pca(irisX, scannf = FALSE, nf = ncomp)#
+#
+rotate_dudi.pca <- function(pca, ncomp = 2) {#
+#
+  rawLoadings <- as.matrix(pca$c1[,1:ncomp]) %*% diag(sqrt(pca$eig), ncomp, ncomp)#
+  pca$c1 <- rawLoadings#
+  pca$li <- scale(pca$li[,1:ncomp]) %*% varimax(rawLoadings)$rotmat#
+#
+  return(pca)#
+} #
+rot_iris <- rotate_dudi.pca(pca = dudi_iris, ncomp = ncomp)#
+print(rot_iris$li[1:5,])                   # Scores computed via rotating the scores#
+#>        [,1]       [,2]#
+#> 1 -1.083475 -0.9067262#
+#> 2 -1.377536  0.2648876
+x <- matrix(rnorm(600),60,10)#
+ prc <- prcomp(x, center=TRUE, scale=TRUE)#
+ varimax7 <- varimax(prc$rotation[,1:7])#
+ newData <- scale(x) %*% varimax7$loadings
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = -0.383, lwd = 2)
+abline(a = 0, b = 1.383)
+identify()
+identify(penguins_sub)
+plot(penguins_sub_pca[, c(1,2)],#
+        pch = 19,#
+    col = col_var)
+abline(v = 0)
+abline(h = 0)
+identify(penguins_sub_pca[, c(1,2)])
+var(apply(penguins_sub, 2, scale))
+dev.new()
+abline(a = 0, b = -0.383)
+abline(a = 0, b = -0.516)
+abline(a = 0, b = -0.780)
+abline(a = 0, b = -0.8)
+abline(a = 0, b = 1)
+identify(apply(penguins_sub, 2, scale)[,c(1,2)])
+abline(a = 0 v = -1)
+abline(a = 0, b = -1)
+peguins_ordination$loadings
+biplot(peguins_ordination)
+peguins_ordination$loadings[2,1]
+peguins_ordination$loadings[1,2]
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")
+arrows(x0 = 0, y0 = 0, x1 = xaxis_loading, y1 = 1, lwd = 2)
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)
+xaxis_loading
+text(x = 1, y = xaxis_loading, "PC1")
+text(x = 1, y = xaxis_loading+ 0.5, "PC1")
+text(x = 1.5, y = xaxis_loading, "PC1")
+text(x = 1.5, y = xaxis_loading, "PC1", cex = 2)
+text(x = 1.5, y = yaxis_loading, "PC2", cex = 2)
+text(x = yaxis_loading, y = 1, "PC2", cex = 2)
+text(x = yaxis_loading, y = 1.2, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)#
+text(x = 1.5, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading, y = 1.2, "PC2", cex = 2)
+text(x = yaxis_loading, y = 1.1, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)#
+text(x = 1.15, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading, y = 1.15, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)#
+text(x = 1.25, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading, y = 1.15, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)#
+text(x = 1.35, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading+0.1, y = 1.15, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2)#
+text(x = 1.35, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading+0.05, y = 1.15, "PC2", cex = 2)
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2.5)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2.5)#
+text(x = 1.35, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading+0.05, y = 1.15, "PC2", cex = 2)
+pdf(file = "../Writing/Figures/figure_methods_PCA_rotation.pdf", width = 5, height = 5)#
+#
+peguins_ordination <- princomp(apply(penguins_sub, 2, scale))#
+#
+xaxis_loading <- peguins_ordination$loadings[2,1]#
+yaxis_loading <- peguins_ordination$loadings[1,2]#
+#
+plot(apply(penguins_sub, 2, scale)[,c(1,2)],#
+    pch = 19,#
+    col = col_var,#
+    xlab = "Scaled culmen length",#
+    ylab = "Scaled culmen depth")#
+#
+arrows(x0 = 0, y0 = 0, x1 = 1, y1 = xaxis_loading, lwd = 2.5)#
+arrows(x0 = 0, y0 = 0, x1 = yaxis_loading, y1 = 1, lwd = 2.5)#
+text(x = 1.35, y = xaxis_loading, "PC1", cex = 2)#
+text(x = yaxis_loading+0.05, y = 1.15, "PC2", cex = 2)#
+#
+dev.off()
+head(penguins)
+head(penguins_sub)
+head(penguins_pca)
+head(penguins_sub_pca)
+citation("palmerpenguins")
+?iris
